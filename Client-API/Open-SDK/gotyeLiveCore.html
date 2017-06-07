@@ -1,0 +1,3647 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from docs.apicloud.com/Client-API/Open-SDK/gotyeLiveCore by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 May 2017 08:30:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>
+            
+            亲加视频直播
+        </title>
+        <!-- <title>
+            亲加视频直播 - APICloud Docs
+        </title> -->
+        <meta name="description" content="亲加视频直播SDK使用指南"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" href="../../favicon.png"/>
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../../bower_components/highlightjs/styles/vs.css"/>
+        <link rel="stylesheet" href="../../styles/font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="../../styles/raneto.css"/>
+        <link rel="stylesheet" href="../../styles/homenewlayout.css"/>
+        <style>
+            header{
+                top:0;
+            }
+            header div.authenticated{
+                display: none;
+            }
+            .authenticated.active{
+                display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+                display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+                display: -ms-flexbox;      /* TWEENER - IE 10 */
+                display: -webkit-flex;     /* NEW - Chrome */
+                display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+            }
+            .link-group.active{
+                display: none;
+            }
+            .copyright a{
+                color: #999 !important;
+                margin-right: 16px !important;
+            }
+            /*红点 start*/
+            /*.item-notice-out,
+            .item-notice-in{
+                position: relative;
+            }
+            .item-notice-out:after,
+            .item-notice-in:after{
+                position: absolute;
+                content: " ";
+                width: 6px;
+                height: 6px;
+                border-radius: 10px;
+                background-color: #ee3131;
+            }
+            .item-notice-out:after{
+                top: 13px;
+                right: 15px;
+            }
+            .item-notice-in:after{
+                top: 10px;
+                right: 14px;
+            }*/
+            /*红点 end*/
+        </style>
+        <link href="../../styles/video-js.css" rel="stylesheet" type="text/css"/>
+        <script src="../../scripts/video.js">
+        </script>
+        <script>
+            videojs.options.flash.swf = "../../video-js.swf";
+        </script>
+        
+    </head>
+    <body class="page-client-a-p-i-open-s-d-k-gotye-live-core">
+        <header class="light">
+            <div class="nav-left">
+                <a href="http://www.apicloud.com/" class="logo" title=''>
+                    <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 19.4" style="enable-background:new 0 0 120 19.4;" xml:space="preserve">
+                          <style type="text/css">
+                            .st0 {
+                              fill: #95BA1F;
+                            }
+                            
+                            .st1 {
+                              fill: #FFFFFF;
+                            }
+                          </style>
+                            <g id="XMLID_34_">
+                            <path id="XMLID_35_" class="st0" d="M23.6,18h-2.6v-3h2.6c1.5,0,2.8-1.3,2.8-2.8c0-1.5-1.3-2.8-2.8-2.8h-0.5
+                        c-0.2,4.7-4.2,8.5-9,8.5H5.7C2.6,18,0,15.4,0,12.2c0-3.2,2.6-5.7,5.7-5.7h13.9c-1-2.1-3.1-3.5-5.5-3.5c-1.9,0-3.6,0.9-4.8,2.3
+                        L8.4,6.5L6.1,4.6L7,3.5C8.7,1.3,11.3,0,14.1,0c4.1,0,7.6,2.7,8.6,6.5h0.8c3.2,0,5.7,2.6,5.7,5.7C29.3,15.4,26.7,18,23.6,18z
+                        M5.7,9.5C4.2,9.5,3,10.7,3,12.2C3,13.8,4.2,15,5.7,15h8.4c3.2,0,5.8-2.5,6-5.6H5.7z" />
+                            </g>
+                            <path id="XMLID_31_" class="st1" d="M46.1,13.9H41l-1.3,4.2h-2.4l4.9-14.8h2.7l4.9,14.8h-2.5L46.1,13.9z M45.6,12.1l-0.6-2
+                        c-0.5-1.6-0.9-3.3-1.4-4.9h-0.1c-0.4,1.7-0.9,3.3-1.4,4.9l-0.6,2H45.6z" />
+                            <path id="XMLID_28_" class="st1" d="M51.8,3.4h4.5c3.3,0,5.6,1.1,5.6,4.5c0,3.2-2.4,4.7-5.6,4.7h-2.2v5.6h-2.3V3.4z M56.1,10.7
+                        c2.4,0,3.5-0.9,3.5-2.9c0-1.9-1.2-2.6-3.6-2.6h-1.9v5.4H56.1z" />
+                            <path id="XMLID_26_" class="st1" d="M64.8,3.4h2.3v14.8h-2.3V3.4z" />
+                            <g id="XMLID_16_">
+                            <path id="XMLID_7_" class="st1" d="M80,15.7c-1.1,1.2-2.2,1.8-3.6,1.8c-3.1,0-5.1-2.6-5.1-6.7c0-4.1,2-6.6,5.2-6.6
+                            C78,4.2,79,5,79.5,5.7l0.1,0.2L80.4,5l-0.1-0.1c-0.5-0.5-1.7-1.8-3.9-1.8c-3.9,0-6.3,3-6.3,7.7c0,4.7,2.5,7.8,6.2,7.8
+                            c1.8,0,3.2-0.7,4.4-2.1l0.1-0.1l-0.7-0.8L80,15.7z" />
+                            <path id="XMLID_6_" class="st1" d="M85.1,17.5c-0.2,0-0.3,0-0.4,0c-0.1,0-0.3,0-0.3-0.5V2h-1.1V17c0,1.4,0.7,1.6,1.3,1.6
+                            c0.3,0,0.4,0,0.6-0.1l0.3-0.1l-0.2-1L85.1,17.5z" />
+                            <path id="XMLID_21_" class="st1" d="M92.5,7.1c-2.9,0-4.9,2.4-4.9,5.8c0,3.4,2,5.7,4.9,5.7c2.9,0,4.9-2.4,4.9-5.7
+                            C97.4,9.5,95.3,7.1,92.5,7.1z M92.5,17.5c-2.2,0-3.7-1.9-3.7-4.7c0-2.7,1.6-4.7,3.7-4.7c2.2,0,3.8,2,3.8,4.7
+                            C96.2,15.6,94.6,17.5,92.5,17.5z" />
+                            <path id="XMLID_3_" class="st1" d="M106.9,15.4c-1.4,1.6-2.3,2.1-3.4,2.1c-1.1,0-2.4-0.4-2.4-3.3V7.5h-0.9v6.9c0,2.9,1,4.2,3.3,4.2
+                            c1.5,0,2.6-0.9,3.4-1.8l0.1,1.5h1V7.5h-1.1V15.4z" />
+                            <path id="XMLID_17_" class="st1" d="M118.9,2v4.6l0,1.6c-1-0.7-1.8-1.1-3.1-1.1c-2.9,0-4.9,2.4-4.9,5.8c0,3.6,1.7,5.7,4.6,5.7
+                            c1.2,0,2.4-0.5,3.4-1.5l0.1,1.1h1V2H118.9z M118.9,9.5v6.3c-1.2,1.2-2.2,1.7-3.3,1.7c-2.1,0-3.5-1.8-3.5-4.7c0-2.7,1.7-4.7,3.8-4.7
+                            C116.9,8.1,117.8,8.5,118.9,9.5z" />
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="nav-right mw-8">
+                <div class="nav-right">
+                    <div class="authenticated" id="ifSigned">
+                    <ul>
+                        <li class="ifSigned-list">
+                            <div  class="profile toConsole">
+                                <img src="../../img/favicon-30.png"  alt="APICloud" />
+                                <span class="login-name">
+                                </span>
+                                <span class="arr-b">
+                                </span>
+                            </div>
+                            <ul class="nav-list single console-list">
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/console" class="nav-link-single">
+                                        <i class="fa icon-tasks">
+                                        </i>
+                                        <span>
+                                            开发控制台
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://app.apicloud.com/demandlist" class="nav-link-single">
+                                        <i class="fa icon-demand">
+                                        </i>
+                                        <span>
+                                            我的定制需求
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/module_pub_history" class="nav-link-single">
+                                        <i class="fa icon-inbox">
+                                        </i>
+                                        <span>
+                                            模块管理
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/myService" class="nav-link-single myBill">
+                                        <i class="fa icon-user">
+                                        </i>
+                                        <span>
+                                            我的账户
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/member" class="nav-link-single">
+                                        <i class="fa icon-group"></i>
+                                        <span>
+                                            团队协作
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/profile" class="nav-link-single">
+                                        <i class="fa icon-cog">
+                                        </i>
+                                        <span>
+                                            设置
+                                        </span>
+                                    </a>
+                                </li>
+                                <!-- <li class="nav-list-item" id="sign_out">
+                                    <a href="javascript:void(0)" class="nav-link-single">
+                                        <i class="fa icon-signout">
+                                        </i>
+                                        <span>
+                                            退出
+                                        </span>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="unauthenticated link-group">
+                        <a href="http://www.apicloud.com/signin">
+                            登录
+                        </a>
+                        <span>
+                        </span>
+                        <a href="http://www.apicloud.com/signup">
+                            注册
+                        </a>
+                    </div>
+                </div>
+                <ul class="nav nav-right">
+                    <li id="nav_point">
+                        <!-- 活动红点 -->
+                        <!-- <a href="http://www.apicloud.com" class="badge-red"> -->
+                        <a href="javascript:void(0)">
+                            APP开发平台
+                        </a>
+                        <ul class="nav-list pointer">
+                            <li class="nav-list-item mousein" id="operatingApp">
+                                <a href="javascript:void(0)" class="nav-link operatingApp_link">
+                                    <span class="APP">APP引擎</span>
+                                    <i class="icon-angle-right"></i>
+                                </a>
+                                <span class="mouse mouse1">
+                                    <ul class="nav-list mouse-ul pointer_right">
+                                        <li class="nav-list-item ">
+                                            <a href="http://apicloud.com/superwebview" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_superwebview"></span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                           SuperWebView
+                                                    </span>
+                                                    <span class="nav-description">
+                                                            帮助原生程序员快速迭代
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-list-item nav-list-item1">
+                                            <a href="http://apicloud.com/deepengine" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_deepengine">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        Deep Engine
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        高效的跨平台APP引擎
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>   
+                                    </ul>
+                                </sapn>
+                            </li>
+                            <li class="nav-list-item mousein" id="operatingCloud">
+                                <a href="javascript:void(0)"  class="nav-link operatingCloud_link">
+                                    <span class="APP">云引擎</span>
+                                    <i class="icon-angle-right"></i>
+                                </a>
+                                <span class="mouse mouse2">
+                                    <ul class="nav-list mouse-ul pointer_right">
+                                        <li class="nav-list-item">
+                                            <a href="http://apicloud.com/cloudservice" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_cloudservice">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        数据云
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        无需编程 自动生成Server端
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-list-item nav-list-item1">
+                                            <a href="http://apicloud.com/cloudmanage" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_cloudoperating">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        运营云
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        提升您的运维效率
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>        
+                                    </ul>
+                                </sapn>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/modulestore"  class="nav-link">
+                                    <span class="APP">模块Store</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="../../APICloud/junior-develop-guide.html"  class="nav-link">
+                                    <span class="APP">新手指南</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/devtools" class="nav-link">
+                                    <span class="APP">开发工具</span>
+                                </a>
+                            </li>
+                            <!-- <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/vipservice/price" class="nav-link">
+                                    <span class="APP badge-red">价格</span>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://app.apicloud.com/" target="_blank">
+                            APP定制服务
+                        </a>
+                        <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/" class="nav-link" target="_blank">
+                                APP定制
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/appCustom" class="nav-link" target="_blank">
+                                模板Store
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://community.apicloud.com/" target="_blank">
+                            开发者社区
+                        </a>
+                        <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://community.apicloud.com/bbs/forum.php" class="nav-link" target="_blank">
+                                    在线社区
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../../index.html" class="nav-link" target="_blank">
+                                    文档
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/video_list" class="nav-link">
+                                    视频教程
+                                </a> 
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/source_code" class="nav-link">
+                                    源码
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://apicloud.com/vipservice/price"  target="_blank">
+                            VIP服务
+                        </a>
+                        <!-- <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/price" class="nav-link">
+                                    VIP服务
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/plan" class="nav-link">
+                                    云服务价格
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/channel" class="nav-link">
+                                    渠道打包
+                                </a> 
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/enterpEdition" class="nav-link">
+                                    优先技术支持
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/course" class="nav-link">
+                                    培训课程
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/attest" class="nav-link">
+                                    认证工程师
+                                </a>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href="http://apicloud.com/cases" target="_blank" class="item-notice-out">
+                            案例
+                        </a>
+                        <ul class="nav-list single">
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/cases" class="nav-link" target="_blank">
+                                    开发案例
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/cases" class="nav-link" target="_blank">
+                                    定制案例
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="row main-container">
+    <div class="col-sm-2 main-menu">
+        <!--search box-->
+        <form class="search-form form-inline" role="form" action="http://docs.apicloud.com/">
+            <div class="form-group">
+                <label class="sr-only" for="search">Search</label>
+                <input type="search" class="form-control" name="search" id="search" size="30" value="" placeholder="Search">
+            </div>
+        </form>
+        <ul class="menu">
+                    <li class="page"><a href="../../index.html">开发文档</a></li>
+            <li class="category">
+                <h5 class="category-title">Apicloud</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../APICloud/platform-intro.html">APP开发平台介绍</a></li>
+                    <li class="page"><a href="../../APICloud/APP-custom-info.html">APP定制平台介绍</a></li>
+                    <li class="page"><a href="../../APICloud/junior-develop-guide.html">新手开发指南</a></li>
+                    <li class="page"><a href="../../APICloud/creating-first-app.html">创建第一个应用</a></li>
+                    <li class="page"><a href="../../APICloud/APP-Template-Guide.html">模板使用流程</a></li>
+                    <li class="page"><a href="../../APICloud/app-guide.html">如何开发出优秀的APICloud应用</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">模块开发</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Module-Dev/module-dev-standard.html">开发模块设计规范</a></li>
+                    <li class="page"><a href="../../Module-Dev/module-dev-guide-for-ios.html">模块开发指南_iOS</a></li>
+                    <li class="page"><a href="../../Module-Dev/module-dev-guide-for-android.html">模块开发指南_Android</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-audit-specification-ios.html">模块审核规范-iOS</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-audit-specification-Android.html">模块审核规范-Android</a></li>
+                    <li class="page"><a href="../../Module-Dev/Upload-custom-module.html">自定义模块使用说明</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-Store-Guide.html">模块Store规范</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-Store-Service-Agreement.html">模块Store服务协议</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">端API</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../api.html">API对象</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">设备访问
+</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Device-Access/3DTouch.html">3DTouch</a></li>
+                    <li class="page"><a href="../Device-Access/DVTorch.html">DVTorch</a></li>
+                    <li class="page"><a href="../Device-Access/FNSettings.html">FNSettings</a></li>
+                    <li class="page"><a href="../Device-Access/accelerometer.html">accelerometer</a></li>
+                    <li class="page"><a href="../Device-Access/accelerometerSensor.html">accelerometerSensor</a></li>
+                    <li class="page"><a href="../Device-Access/appSettings.html">appSettings</a></li>
+                    <li class="page"><a href="../Device-Access/appVersionUpdate.html">appVersionUpdate</a></li>
+                    <li class="page"><a href="../Device-Access/ble.html">ble</a></li>
+                    <li class="page"><a href="../Device-Access/bluetooth.html">bluetooth</a></li>
+                    <li class="page"><a href="../Device-Access/brightness2016.html">brightness2016</a></li>
+                    <li class="page"><a href="../Device-Access/btmodule.html">btmodule</a></li>
+                    <li class="page"><a href="../Device-Access/btsppiot.html">btsppiot</a></li>
+                    <li class="page"><a href="../Device-Access/calendarMemo.html">calendarMemo</a></li>
+                    <li class="page"><a href="../Device-Access/callRecord.html">callRecord</a></li>
+                    <li class="page"><a href="../Device-Access/cameraTool.html">cameraTool</a></li>
+                    <li class="page"><a href="../Device-Access/clipBoard.html">clipBoard</a></li>
+                    <li class="page"><a href="../Device-Access/compassLeveler.html">compassLeveler</a></li>
+                    <li class="page"><a href="../Device-Access/contact.html">contact</a></li>
+                    <li class="page"><a href="../Device-Access/contacts.html">contacts</a></li>
+                    <li class="page"><a href="../Device-Access/easyNFC.html">easyNFC</a></li>
+                    <li class="page"><a href="../Device-Access/gps.html">gps</a></li>
+                    <li class="page"><a href="../Device-Access/gpsState.html">gpsState</a></li>
+                    <li class="page"><a href="../Device-Access/gravitySensor.html">gravitySensor</a></li>
+                    <li class="page"><a href="../Device-Access/gyro.html">gyro</a></li>
+                    <li class="page"><a href="../Device-Access/gyroscopeSensor.html">gyroscopeSensor</a></li>
+                    <li class="page"><a href="../Device-Access/hardwareInfo.html">hardwareInfo</a></li>
+                    <li class="page"><a href="../Device-Access/ipAddress.html">ipAddress</a></li>
+                    <li class="page"><a href="../Device-Access/lightSensor.html">lightSensor</a></li>
+                    <li class="page"><a href="../Device-Access/linearAcceleration.html">linearAcceleration</a></li>
+                    <li class="page"><a href="../Device-Access/magneticFieldSensor.html">magneticFieldSensor</a></li>
+                    <li class="page"><a href="../Device-Access/magnetometer.html">magnetometer</a></li>
+                    <li class="page"><a href="../Device-Access/mediaScanner.html">mediaScanner</a></li>
+                    <li class="page"><a href="../Device-Access/moduleSMS.html">moduleSMS</a></li>
+                    <li class="page"><a href="../Device-Access/multiScreen.html">multiScreen</a></li>
+                    <li class="page"><a href="../Device-Access/myAppInfo.html">myAppInfo</a></li>
+                    <li class="page"><a href="../Device-Access/myListeningInfo.html">myListeningInfo</a></li>
+                    <li class="page"><a href="../Device-Access/mySettingInfo.html">mySettingInfo</a></li>
+                    <li class="page"><a href="../Device-Access/orientationSensor.html">orientationSensor</a></li>
+                    <li class="page"><a href="../Device-Access/pasteboard.html">pasteboard</a></li>
+                    <li class="page"><a href="../Device-Access/pedometer.html">pedometer</a></li>
+                    <li class="page"><a href="../Device-Access/phoneInfo.html">phoneInfo</a></li>
+                    <li class="page"><a href="../Device-Access/pingModule.html">pingModule</a></li>
+                    <li class="page"><a href="../Device-Access/playText.html">playText</a></li>
+                    <li class="page"><a href="../Device-Access/posPrinter.html">posPrinter</a></li>
+                    <li class="page"><a href="../Device-Access/posScanner.html">posScanner</a></li>
+                    <li class="page"><a href="../Device-Access/proximitySensor.html">proximitySensor</a></li>
+                    <li class="page"><a href="../Device-Access/rotationVector.html">rotationVector</a></li>
+                    <li class="page"><a href="../Device-Access/seblePrinter.html">seblePrinter</a></li>
+                    <li class="page"><a href="../Device-Access/simInfo.html">simInfo</a></li>
+                    <li class="page"><a href="../Device-Access/simInfoImp.html">simInfoImp</a></li>
+                    <li class="page"><a href="../Device-Access/spModule.html">spModule</a></li>
+                    <li class="page"><a href="../Device-Access/statusBar.html">statusBar</a></li>
+                    <li class="page"><a href="../Device-Access/sunmiPrinter.html">sunmiPrinter</a></li>
+                    <li class="page"><a href="../Device-Access/toBackground.html">toBackground</a></li>
+                    <li class="page"><a href="../Device-Access/torch.html">torch</a></li>
+                    <li class="page"><a href="../Device-Access/touchID.html">touchID</a></li>
+                    <li class="page"><a href="../Device-Access/wifi.html">wifi</a></li>
+                    <li class="page"><a href="../Device-Access/wifiMgr.html">wifiMgr</a></li>
+                    <li class="page"><a href="../Device-Access/wifiSSID.html">wifiSSID</a></li>
+                    <li class="page"><a href="../Device-Access/yunnex.html">yunnex</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">功能扩展</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Func-Ext/FNImageClip.html">FNImageClip</a></li>
+                    <li class="page"><a href="../Func-Ext/FNPhotograph.html">FNPhotograph</a></li>
+                    <li class="page"><a href="../Func-Ext/FNScanner.html">FNScanner</a></li>
+                    <li class="page"><a href="../Func-Ext/aemail.html">aemail</a></li>
+                    <li class="page"><a href="../Func-Ext/alarmNotification.html">alarmNotification</a></li>
+                    <li class="page"><a href="../Func-Ext/appControl.html">appControl</a></li>
+                    <li class="page"><a href="../Func-Ext/appManage.html">appManage</a></li>
+                    <li class="page"><a href="../Func-Ext/arcColorPicker.html">arcColorPicker</a></li>
+                    <li class="page"><a href="../Func-Ext/audio.html">audio</a></li>
+                    <li class="page"><a href="../Func-Ext/audioCover.html">audioCover</a></li>
+                    <li class="page"><a href="../Func-Ext/audioPlayer.html">audioPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/audioRecorder.html">audioRecorder</a></li>
+                    <li class="page"><a href="../Func-Ext/autoStartUp.html">autoStartUp</a></li>
+                    <li class="page"><a href="../Func-Ext/batteryManager.html">batteryManager</a></li>
+                    <li class="page"><a href="../Func-Ext/blurredView.html">blurredView</a></li>
+                    <li class="page"><a href="../Func-Ext/bookReader.html">bookReader</a></li>
+                    <li class="page"><a href="../Func-Ext/brightness.html">brightness</a></li>
+                    <li class="page"><a href="../Func-Ext/cardReader.html">cardReader</a></li>
+                    <li class="page"><a href="../Func-Ext/chromeDebug.html">chromeDebug</a></li>
+                    <li class="page"><a href="../Func-Ext/cnKeyBoard.html">cnKeyBoard</a></li>
+                    <li class="page"><a href="../Func-Ext/cocoVideo.html">cocoVideo</a></li>
+                    <li class="page"><a href="../Func-Ext/codeLog.html">codeLog</a></li>
+                    <li class="page"><a href="../Func-Ext/compactPicture.html">compactPicture</a></li>
+                    <li class="page"><a href="../Func-Ext/db.html">db</a></li>
+                    <li class="page"><a href="../Func-Ext/djyPrinter.html">djyPrinter</a></li>
+                    <li class="page"><a href="../Func-Ext/docInteraction.html">docInteraction</a></li>
+                    <li class="page"><a href="../Func-Ext/docReader.html">docReader</a></li>
+                    <li class="page"><a href="../Func-Ext/downloadManager.html">downloadManager</a></li>
+                    <li class="page"><a href="../Func-Ext/drawingBoard.html">drawingBoard</a></li>
+                    <li class="page"><a href="../Func-Ext/exifInterface.html">exifInterface</a></li>
+                    <li class="page"><a href="../Func-Ext/fileBrowser.html">fileBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/fs.html">fs</a></li>
+                    <li class="page"><a href="../Func-Ext/getWebUrl.html">getWebUrl</a></li>
+                    <li class="page"><a href="../Func-Ext/headphone.html">headphone</a></li>
+                    <li class="page"><a href="../Func-Ext/iap.html">iap</a></li>
+                    <li class="page"><a href="../Func-Ext/imageBrowser.html">imageBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/imageClip.html">imageClip</a></li>
+                    <li class="page"><a href="../Func-Ext/imageCrop.html">imageCrop</a></li>
+                    <li class="page"><a href="../Func-Ext/imageFilter.html">imageFilter</a></li>
+                    <li class="page"><a href="../Func-Ext/imagePalette.html">imagePalette</a></li>
+                    <li class="page"><a href="../Func-Ext/imageSelect.html">imageSelect</a></li>
+                    <li class="page"><a href="../Func-Ext/imageTool.html">imageTool</a></li>
+                    <li class="page"><a href="../Func-Ext/launchImage.html">launchImage</a></li>
+                    <li class="page"><a href="../Func-Ext/liveAudioPlayer.html">liveAudioPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/logger.html">logger</a></li>
+                    <li class="page"><a href="../Func-Ext/marketScore.html">marketScore</a></li>
+                    <li class="page"><a href="../Func-Ext/mdReader.html">mdReader</a></li>
+                    <li class="page"><a href="../Func-Ext/micoMqtt.html">micoMqtt</a></li>
+                    <li class="page"><a href="../Func-Ext/mqtt.html">mqtt</a></li>
+                    <li class="page"><a href="../Func-Ext/myTimer.html">myTimer</a></li>
+                    <li class="page"><a href="../Func-Ext/navigator.html">navigator</a></li>
+                    <li class="page"><a href="../Func-Ext/netAudio.html">netAudio</a></li>
+                    <li class="page"><a href="../Func-Ext/openAppStore.html">openAppStore</a></li>
+                    <li class="page"><a href="../Func-Ext/patternLock.html">patternLock</a></li>
+                    <li class="page"><a href="../Func-Ext/pdfReader.html">pdfReader</a></li>
+                    <li class="page"><a href="../Func-Ext/phoneListener.html">phoneListener</a></li>
+                    <li class="page"><a href="../Func-Ext/photoBrowser.html">photoBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/photoPicker.html">photoPicker</a></li>
+                    <li class="page"><a href="../Func-Ext/photoSelect.html">photoSelect</a></li>
+                    <li class="page"><a href="../Func-Ext/photoStream.html">photoStream</a></li>
+                    <li class="page"><a href="../Func-Ext/playModule.html">playModule</a></li>
+                    <li class="page"><a href="../Func-Ext/playRtsp.html">playRtsp</a></li>
+                    <li class="page"><a href="../Func-Ext/privacy.html">privacy</a></li>
+                    <li class="page"><a href="../Func-Ext/realNetwork.html">realNetwork</a></li>
+                    <li class="page"><a href="../Func-Ext/recentPic.html">recentPic</a></li>
+                    <li class="page"><a href="../Func-Ext/recordVideo.html">recordVideo</a></li>
+                    <li class="page"><a href="../Func-Ext/richText.html">richText</a></li>
+                    <li class="page"><a href="../Func-Ext/runBackground.html">runBackground</a></li>
+                    <li class="page"><a href="../Func-Ext/sangforvpn.html">sangforvpn</a></li>
+                    <li class="page"><a href="../Func-Ext/scanner.html">scanner</a></li>
+                    <li class="page"><a href="../Func-Ext/screenClip.html">screenClip</a></li>
+                    <li class="page"><a href="../Func-Ext/screenLock.html">screenLock</a></li>
+                    <li class="page"><a href="../Func-Ext/shareAction.html">shareAction</a></li>
+                    <li class="page"><a href="../Func-Ext/sharePics.html">sharePics</a></li>
+                    <li class="page"><a href="../Func-Ext/shareTool.html">shareTool</a></li>
+                    <li class="page"><a href="../Func-Ext/shortCut.html">shortCut</a></li>
+                    <li class="page"><a href="../Func-Ext/signature.html">signature</a></li>
+                    <li class="page"><a href="../Func-Ext/socketManager.html">socketManager</a></li>
+                    <li class="page"><a href="../Func-Ext/svideo.html">svideo</a></li>
+                    <li class="page"><a href="../Func-Ext/timer.html">timer</a></li>
+                    <li class="page"><a href="../Func-Ext/touchDebugger.html">touchDebugger</a></li>
+                    <li class="page"><a href="../Func-Ext/trans.html">trans</a></li>
+                    <li class="page"><a href="../Func-Ext/ttsModule.html">ttsModule</a></li>
+                    <li class="page"><a href="../Func-Ext/uimusic.html">uimusic</a></li>
+                    <li class="page"><a href="../Func-Ext/videoKit.html">videoKit</a></li>
+                    <li class="page"><a href="../Func-Ext/videoPlayer.html">videoPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/videoRecorder.html">videoRecorder</a></li>
+                    <li class="page"><a href="../Func-Ext/videoTool.html">videoTool</a></li>
+                    <li class="page"><a href="../Func-Ext/voiceMag.html">voiceMag</a></li>
+                    <li class="page"><a href="../Func-Ext/vpnIOS.html">vpnIOS</a></li>
+                    <li class="page"><a href="../Func-Ext/vrPlayer.html">vrPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/vtingPlayer.html">vtingPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/wallPaper.html">wallPaper</a></li>
+                    <li class="page"><a href="../Func-Ext/webBrowser.html">webBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/webSocket.html">webSocket</a></li>
+                    <li class="page"><a href="../Func-Ext/ytylive.html">ytylive</a></li>
+                    <li class="page"><a href="../Func-Ext/zip.html">zip</a></li>
+                    <li class="page"><a href="../Func-Ext/zxycamera.html">zxycamera</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">界面布局</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../UI-Layout/UIActionProgress.html">UIActionProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/UIActionSelector.html">UIActionSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/UIAlbumBrowser.html">UIAlbumBrowser</a></li>
+                    <li class="page"><a href="../UI-Layout/UIBarChart.html">UIBarChart</a></li>
+                    <li class="page"><a href="../UI-Layout/UIButton.html">UIButton</a></li>
+                    <li class="page"><a href="../UI-Layout/UICalendar.html">UICalendar</a></li>
+                    <li class="page"><a href="../UI-Layout/UIChatBox.html">UIChatBox</a></li>
+                    <li class="page"><a href="../UI-Layout/UIChatTools.html">UIChatTools</a></li>
+                    <li class="page"><a href="../UI-Layout/UICityList.html">UICityList</a></li>
+                    <li class="page"><a href="../UI-Layout/UICoverFlow.html">UICoverFlow</a></li>
+                    <li class="page"><a href="../UI-Layout/UICustomPicker.html">UICustomPicker</a></li>
+                    <li class="page"><a href="../UI-Layout/UIGraph.html">UIGraph</a></li>
+                    <li class="page"><a href="../UI-Layout/UIInput.html">UIInput</a></li>
+                    <li class="page"><a href="../UI-Layout/UILineChart.html">UILineChart</a></li>
+                    <li class="page"><a href="../UI-Layout/UILinkedPicker.html">UILinkedPicker</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListCard.html">UIListCard</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListCheck.html">UIListCheck</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListContacts.html">UIListContacts</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListMeeting.html">UIListMeeting</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListSearch.html">UIListSearch</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListView.html">UIListView</a></li>
+                    <li class="page"><a href="../UI-Layout/UILoading.html">UILoading</a></li>
+                    <li class="page"><a href="../UI-Layout/UIMediaScanner.html">UIMediaScanner</a></li>
+                    <li class="page"><a href="../UI-Layout/UIMultiSelector.html">UIMultiSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefresh.html">UIPullRefresh</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefreshDrop.html">UIPullRefreshDrop</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefreshFlash.html">UIPullRefreshFlash</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefreshMotive.html">UIPullRefreshMotive</a></li>
+                    <li class="page"><a href="../UI-Layout/UIScrollPicture.html">UIScrollPicture</a></li>
+                    <li class="page"><a href="../UI-Layout/UIScrollPromptView.html">UIScrollPromptView</a></li>
+                    <li class="page"><a href="../UI-Layout/UISearchBar.html">UISearchBar</a></li>
+                    <li class="page"><a href="../UI-Layout/UISelector.html">UISelector</a></li>
+                    <li class="page"><a href="../UI-Layout/UISlider.html">UISlider</a></li>
+                    <li class="page"><a href="../UI-Layout/UISwitchButton.html">UISwitchButton</a></li>
+                    <li class="page"><a href="../UI-Layout/UIVividLine.html">UIVividLine</a></li>
+                    <li class="page"><a href="../UI-Layout/UIWebBrowser.html">UIWebBrowser</a></li>
+                    <li class="page"><a href="../UI-Layout/addressView.html">addressView</a></li>
+                    <li class="page"><a href="../UI-Layout/applause.html">applause</a></li>
+                    <li class="page"><a href="../UI-Layout/arcProgress.html">arcProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/barChart.html">barChart</a></li>
+                    <li class="page"><a href="../UI-Layout/brokenLine.html">brokenLine</a></li>
+                    <li class="page"><a href="../UI-Layout/button.html">button</a></li>
+                    <li class="page"><a href="../UI-Layout/calendar.html">calendar</a></li>
+                    <li class="page"><a href="../UI-Layout/chatBox.html">chatBox</a></li>
+                    <li class="page"><a href="../UI-Layout/cityList.html">cityList</a></li>
+                    <li class="page"><a href="../UI-Layout/citySelector.html">citySelector</a></li>
+                    <li class="page"><a href="../UI-Layout/coverFlow.html">coverFlow</a></li>
+                    <li class="page"><a href="../UI-Layout/customSelector.html">customSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/customToast.html">customToast</a></li>
+                    <li class="page"><a href="../UI-Layout/dialogBox.html">dialogBox</a></li>
+                    <li class="page"><a href="../UI-Layout/divisionalLineChart.html">divisionalLineChart</a></li>
+                    <li class="page"><a href="../UI-Layout/doubleBarChart.html">doubleBarChart</a></li>
+                    <li class="page"><a href="../UI-Layout/fluttering.html">fluttering</a></li>
+                    <li class="page"><a href="../UI-Layout/goodsList.html">goodsList</a></li>
+                    <li class="page"><a href="../UI-Layout/graph.html">graph</a></li>
+                    <li class="page"><a href="../UI-Layout/groupList.html">groupList</a></li>
+                    <li class="page"><a href="../UI-Layout/guide.html">guide</a></li>
+                    <li class="page"><a href="../UI-Layout/hintChatBox.html">hintChatBox</a></li>
+                    <li class="page"><a href="../UI-Layout/iOSDialog.html">iOSDialog</a></li>
+                    <li class="page"><a href="../UI-Layout/inputField.html">inputField</a></li>
+                    <li class="page"><a href="../UI-Layout/keyboard.html">keyboard</a></li>
+                    <li class="page"><a href="../UI-Layout/lineChart.html">lineChart</a></li>
+                    <li class="page"><a href="../UI-Layout/listContact.html">listContact</a></li>
+                    <li class="page"><a href="../UI-Layout/listView.html">listView</a></li>
+                    <li class="page"><a href="../UI-Layout/loadingLabel.html">loadingLabel</a></li>
+                    <li class="page"><a href="../UI-Layout/matrixLock.html">matrixLock</a></li>
+                    <li class="page"><a href="../UI-Layout/messageList.html">messageList</a></li>
+                    <li class="page"><a href="../UI-Layout/multiSelector.html">multiSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/orderList.html">orderList</a></li>
+                    <li class="page"><a href="../UI-Layout/overviewList.html">overviewList</a></li>
+                    <li class="page"><a href="../UI-Layout/panorama.html">panorama</a></li>
+                    <li class="page"><a href="../UI-Layout/payPasswordInput.html">payPasswordInput</a></li>
+                    <li class="page"><a href="../UI-Layout/periodSelector.html">periodSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/personalCenter.html">personalCenter</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserQQ.html">photoBrowserQQ</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserTouTiao.html">photoBrowserTouTiao</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserWeiBo.html">photoBrowserWeiBo</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserWeiXin.html">photoBrowserWeiXin</a></li>
+                    <li class="page"><a href="../UI-Layout/pieChart.html">pieChart</a></li>
+                    <li class="page"><a href="../UI-Layout/pullRefreshLoop.html">pullRefreshLoop</a></li>
+                    <li class="page"><a href="../UI-Layout/scrollPicture.html">scrollPicture</a></li>
+                    <li class="page"><a href="../UI-Layout/searchBar.html">searchBar</a></li>
+                    <li class="page"><a href="../UI-Layout/selectList.html">selectList</a></li>
+                    <li class="page"><a href="../UI-Layout/shakeView.html">shakeView</a></li>
+                    <li class="page"><a href="../UI-Layout/slider.html">slider</a></li>
+                    <li class="page"><a href="../UI-Layout/slidingList.html">slidingList</a></li>
+                    <li class="page"><a href="../UI-Layout/slipList.html">slipList</a></li>
+                    <li class="page"><a href="../UI-Layout/suspensionWindow.html">suspensionWindow</a></li>
+                    <li class="page"><a href="../UI-Layout/thwartwiseBarChart.html">thwartwiseBarChart</a></li>
+                    <li class="page"><a href="../UI-Layout/timeSelector.html">timeSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/waterBallProgress.html">waterBallProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/waveProgress.html">waveProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/welcomePage.html">welcomePage</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">导航菜单</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Nav-Menu/MNActionButton.html">MNActionButton</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNNavigationMenu.html">MNNavigationMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNPopups.html">MNPopups</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNRotationMenu.html">MNRotationMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNStack.html">MNStack</a></li>
+                    <li class="page"><a href="../Nav-Menu/NVNavigationBar.html">NVNavigationBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/NVTabBar.html">NVTabBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/actionButton.html">actionButton</a></li>
+                    <li class="page"><a href="../Nav-Menu/arcMenu.html">arcMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/bubbleMenu.html">bubbleMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/circularMenu.html">circularMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/navigationBar.html">navigationBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/navigationMenu.html">navigationMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/pullMenu.html">pullMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/scrollRotation.html">scrollRotation</a></li>
+                    <li class="page"><a href="../Nav-Menu/sideMenu.html">sideMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/stackMenu.html">stackMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/tabBar.html">tabBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/tabBarMenu.html">tabBarMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/tuberBar.html">tuberBar</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开放SDK</h5>
+                <ul class="pages">
+                    <li class="page"><a href="QQPlus.html">QQPlus</a></li>
+                    <li class="page"><a href="aMap.html">aMap</a></li>
+                    <li class="page"><a href="aMapLBS.html">aMapLBS</a></li>
+                    <li class="page"><a href="aMapLocation.html">aMapLocation</a></li>
+                    <li class="page"><a href="aMapNavigation.html">aMapNavigation</a></li>
+                    <li class="page"><a href="aMapReportLocation.html">aMapReportLocation</a></li>
+                    <li class="page"><a href="admob.html">admob</a></li>
+                    <li class="page"><a href="adsDomob.html">adsDomob</a></li>
+                    <li class="page"><a href="adsYoumi.html">adsYoumi</a></li>
+                    <li class="page"><a href="agoraVideo.html">agoraVideo</a></li>
+                    <li class="page"><a href="ajpush.html">ajpush</a></li>
+                    <li class="page"><a href="aliOSS.html">aliOSS</a></li>
+                    <li class="page"><a href="aliPay.html">aliPay</a></li>
+                    <li class="page"><a href="aliPayPlus.html">aliPayPlus</a></li>
+                    <li class="page"><a href="aliPayTrade.html">aliPayTrade</a></li>
+                    <li class="page"><a href="aliPayTradePlus.html">aliPayTradePlus</a></li>
+                    <li class="page"><a href="aliPush.html">aliPush</a></li>
+                    <li class="page"><a href="aliPushNoUtdId.html">aliPushNoUtdId</a></li>
+                    <li class="page"><a href="aliTrade.html">aliTrade</a></li>
+                    <li class="page"><a href="aliTradePlus.html">aliTradePlus</a></li>
+                    <li class="page"><a href="alibaichuan.html">alibaichuan</a></li>
+                    <li class="page"><a href="aliyunLive.html">aliyunLive</a></li>
+                    <li class="page"><a href="anyRTCModule.html">anyRTCModule</a></li>
+                    <li class="page"><a href="aplayer.html">aplayer</a></li>
+                    <li class="page"><a href="appleUnionPay.html">appleUnionPay</a></li>
+                    <li class="page"><a href="bMap.html">bMap</a></li>
+                    <li class="page"><a href="baiXing.html">baiXing</a></li>
+                    <li class="page"><a href="baiduAd.html">baiduAd</a></li>
+                    <li class="page"><a href="baiduAppx.html">baiduAppx</a></li>
+                    <li class="page"><a href="baiduLocation.html">baiduLocation</a></li>
+                    <li class="page"><a href="baiduMTJ.html">baiduMTJ</a></li>
+                    <li class="page"><a href="baiduMap.html">baiduMap</a></li>
+                    <li class="page"><a href="baiduNavigation.html">baiduNavigation</a></li>
+                    <li class="page"><a href="baiduPanorama.html">baiduPanorama</a></li>
+                    <li class="page"><a href="baiduSpeechRecognizer.html">baiduSpeechRecognizer</a></li>
+                    <li class="page"><a href="baiduTrace.html">baiduTrace</a></li>
+                    <li class="page"><a href="bcapplepay.html">bcapplepay</a></li>
+                    <li class="page"><a href="beecloud.html">beecloud</a></li>
+                    <li class="page"><a href="bmobPush.html">bmobPush</a></li>
+                    <li class="page"><a href="brightBeacon.html">brightBeacon</a></li>
+                    <li class="page"><a href="bugTags.html">bugTags</a></li>
+                    <li class="page"><a href="camera360.html">camera360</a></li>
+                    <li class="page"><a href="cchelperModule.html">cchelperModule</a></li>
+                    <li class="page"><a href="chanceAd.html">chanceAd</a></li>
+                    <li class="page"><a href="ciaYi.html">ciaYi</a></li>
+                    <li class="page"><a href="cloudwise.html">cloudwise</a></li>
+                    <li class="page"><a href="cloudwiseMAgent.html">cloudwiseMAgent</a></li>
+                    <li class="page"><a href="coinport.html">coinport</a></li>
+                    <li class="page"><a href="csOpenApi.html">csOpenApi</a></li>
+                    <li class="page"><a href="didi.html">didi</a></li>
+                    <li class="page"><a href="discuz.html">discuz</a></li>
+                    <li class="page"><a href="dkSDK.html">dkSDK</a></li>
+                    <li class="page"><a href="duiBa.html">duiBa</a></li>
+                    <li class="page"><a href="duibaSales.html">duibaSales</a></li>
+                    <li class="page"><a href="duibaView.html">duibaView</a></li>
+                    <li class="page"><a href="easeChat.html">easeChat</a></li>
+                    <li class="page"><a href="facebook.html">facebook</a></li>
+                    <li class="page"><a href="fog2.html">fog2</a></li>
+                    <li class="page"><a href="fuQianLa.html">付钱拉</a></li>
+                    <li class="page"><a href="geeTest.html">geeTest</a></li>
+                    <li class="page"><a href="gizWifiSDK.html">gizWifiSDK</a></li>
+                    <li class="page"><a href="googleAnalytics.html">googleAnalytics</a></li>
+                    <li class="page"><a href="googleMap.html">googleMap</a></li>
+                    <li class="page active"><a href="gotyeLiveCore.html">亲加视频直播</a></li>
+                    <li class="page"><a href="hanvonCloudBcardReader.html">hanvonCloudBcardReader</a></li>
+                    <li class="page"><a href="hanvonCloudIdCardReader.html">hanvonCloudIdCardReader</a></li>
+                    <li class="page"><a href="hanvonCloudNumberReader.html">hanvonCloudNumberReader</a></li>
+                    <li class="page"><a href="hanvonCloudOcrFormulaReader.html">hanvonCloudOcrFormulaReader</a></li>
+                    <li class="page"><a href="hanvonCloudTableReader.html">hanvonCloudTableReader</a></li>
+                    <li class="page"><a href="huanxin.html">huanxin</a></li>
+                    <li class="page"><a href="huaweiPush.html">huaweiPush</a></li>
+                    <li class="page"><a href="idcard.html">idcard</a></li>
+                    <li class="page"><a href="iflytekvoiceads.html">iflytekvoiceads</a></li>
+                    <li class="page"><a href="ipaynow.html">ipaynow</a></li>
+                    <li class="page"><a href="ipaynowScanner.html">ipaynowScanner</a></li>
+                    <li class="page"><a href="jd.html">jd</a></li>
+                    <li class="page"><a href="jyVerify.html">jyVerify</a></li>
+                    <li class="page"><a href="kf5.html">kf5</a></li>
+                    <li class="page"><a href="kf5sdk.html">kf5sdk</a></li>
+                    <li class="page"><a href="ksi.html">ksi</a></li>
+                    <li class="page"><a href="ksisdk.html">ksisdk</a></li>
+                    <li class="page"><a href="leCloudLive.html">leCloudLive</a></li>
+                    <li class="page"><a href="leCloudPlay.html">leCloudPlay</a></li>
+                    <li class="page"><a href="leShiLive.html">leShiLive</a></li>
+                    <li class="page"><a href="line.html">line</a></li>
+                    <li class="page"><a href="liuLiangQianBao.html">liuLiangQianBao</a></li>
+                    <li class="page"><a href="logCrash.html">logCrash</a></li>
+                    <li class="page"><a href="magicWindow.html">magicWindow</a></li>
+                    <li class="page"><a href="maketionCardReader.html">maketionCardReader</a></li>
+                    <li class="page"><a href="meChat.html">meChat</a></li>
+                    <li class="page"><a href="meiQia.html">meiQia</a></li>
+                    <li class="page"><a href="mico.html">mico</a></li>
+                    <li class="page"><a href="miniQuPai.html">miniQuPai</a></li>
+                    <li class="page"><a href="miniQuPaiPlus.html">miniQuPaiPlus</a></li>
+                    <li class="page"><a href="miniVideoRecord.html">miniVideoRecord</a></li>
+                    <li class="page"><a href="mipush.html">mipush</a></li>
+                    <li class="page"><a href="mobShare.html">mobShare</a></li>
+                    <li class="page"><a href="mobVerify.html">mobVerify</a></li>
+                    <li class="page"><a href="moduleShareSMS.html">moduleShareSMS</a></li>
+                    <li class="page"><a href="mogoAds.html">mogoAds</a></li>
+                    <li class="page"><a href="mogoAdsBaidu.html">mogoAdsBaidu</a></li>
+                    <li class="page"><a href="mogoAdsGDT.html">mogoAdsGDT</a></li>
+                    <li class="page"><a href="mogoAdsdomob.html">mogoAdsdomob</a></li>
+                    <li class="page"><a href="nuanceSpeechRecognizer.html">nuanceSpeechRecognizer</a></li>
+                    <li class="page"><a href="paypal.html">paypal</a></li>
+                    <li class="page"><a href="pingpp.html">pingpp</a></li>
+                    <li class="page"><a href="polyVideo.html">polyVideo</a></li>
+                    <li class="page"><a href="polyvVideo.html">polyvVideo</a></li>
+                    <li class="page"><a href="pushGeTui.html">pushGeTui</a></li>
+                    <li class="page"><a href="pushRtmpOrVideoPlay.html">pushRtmpOrVideoPlay</a></li>
+                    <li class="page"><a href="qCloudVODPlayer.html">qCloudVODPlayer</a></li>
+                    <li class="page"><a href="qiniuLive.html">qiniuLive</a></li>
+                    <li class="page"><a href="qiniuStorage.html">qiniuStorage</a></li>
+                    <li class="page"><a href="qiniuUpfile.html">qiniuUpfile</a></li>
+                    <li class="page"><a href="qiyuSdk.html">qiyuSdk</a></li>
+                    <li class="page"><a href="qq.html">qq</a></li>
+                    <li class="page"><a href="quPaiModule.html">quPaiModule</a></li>
+                    <li class="page"><a href="qupai.html">qupai</a></li>
+                    <li class="page"><a href="qupaiLive.html">qupaiLive</a></li>
+                    <li class="page"><a href="recordVideo.html">recordVideo</a></li>
+                    <li class="page"><a href="reportLocation.html">reportLocation</a></li>
+                    <li class="page"><a href="rongCloud.html">rongCloud</a></li>
+                    <li class="page"><a href="rongCloud2.html">rongCloud2</a></li>
+                    <li class="page"><a href="seckenModule.html">seckenModule</a></li>
+                    <li class="page"><a href="sendSms.html">sendSms</a></li>
+                    <li class="page"><a href="sensorsAnalyticsAPICloudSDK.html">sensorsAnalyticsAPICloudSDK</a></li>
+                    <li class="page"><a href="shareMorePic.html">shareMorePic</a></li>
+                    <li class="page"><a href="sinaWeiBo.html">sinaWeiBo</a></li>
+                    <li class="page"><a href="smsVerification.html">smsVerification</a></li>
+                    <li class="page"><a href="smsVerify.html">smsVerify</a></li>
+                    <li class="page"><a href="speechRecognizer.html">speechRecognizer</a></li>
+                    <li class="page"><a href="superID.html">superID</a></li>
+                    <li class="page"><a href="talkingData.html">talkingData</a></li>
+                    <li class="page"><a href="taobao.html">taobao</a></li>
+                    <li class="page"><a href="tencentAds.html">tencentAds</a></li>
+                    <li class="page"><a href="tencentMTA.html">tencentMTA</a></li>
+                    <li class="page"><a href="tencentPlayer.html">tencentPlayer</a></li>
+                    <li class="page"><a href="tencentPush.html">tencentPush</a></li>
+                    <li class="page"><a href="tingyun.html">tingyun</a></li>
+                    <li class="page"><a href="tulingapi.html">tulingapi</a></li>
+                    <li class="page"><a href="tyRTC.html">tyRTC</a></li>
+                    <li class="page"><a href="tyRTCLive.html">tyRTCLive</a></li>
+                    <li class="page"><a href="udesk.html">udesk</a></li>
+                    <li class="page"><a href="umengAnalytics.html">umengAnalytics</a></li>
+                    <li class="page"><a href="umengTJ.html">umengTJ</a></li>
+                    <li class="page"><a href="unionPay.html">unionPay</a></li>
+                    <li class="page"><a href="updatethis.html">updatethis</a></li>
+                    <li class="page"><a href="upyunUpfile.html">upyunUpfile</a></li>
+                    <li class="page"><a href="uscSpeechRecognizer.html">uscSpeechRecognizer</a></li>
+                    <li class="page"><a href="vcloudLive.html">vcloudLive</a></li>
+                    <li class="page"><a href="vcloudPlay.html">vcloudPlay</a></li>
+                    <li class="page"><a href="wapsAd.html">wapsAd</a></li>
+                    <li class="page"><a href="weiXin.html">weiXin</a></li>
+                    <li class="page"><a href="weibo.html">weibo</a></li>
+                    <li class="page"><a href="wx.html">wx</a></li>
+                    <li class="page"><a href="wxPay.html">wxPay</a></li>
+                    <li class="page"><a href="xGprinter.html">xGprinter</a></li>
+                    <li class="page"><a href="ximalaya.html">ximalaya</a></li>
+                    <li class="page"><a href="youkuPlayer.html">youkuPlayer</a></li>
+                    <li class="page"><a href="yzxVerification.html">yzxVerification</a></li>
+                    <li class="page"><a href="zhiChiSobot.html">zhiChiSobot</a></li>
+                    <li class="page"><a href="zhuge.html">zhuge</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">云服务对接</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Cloud-Service/mam.html">mam</a></li>
+                    <li class="page"><a href="../Cloud-Service/mcm.html">mcm</a></li>
+                    <li class="page"><a href="../Cloud-Service/msm.html">msm</a></li>
+                    <li class="page"><a href="../Cloud-Service/push.html">push</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">前端框架</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Front-end-Framework/framework-dev-guide.html">APICloud前端框架</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">云API</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Cloud-API/data-cloud-api.html">数据云API</a></li>
+                    <li class="page"><a href="../../Cloud-API/stat-cloud-api.html">统计云API</a></li>
+                    <li class="page"><a href="../../Cloud-API/push-cloud-api.html">推送云API</a></li>
+                    <li class="page"><a href="../../Cloud-API/sdk-cloud-api.html">云API SDK</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">技术专题</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Dev-Guide/Android-License-Application-Guidance.html">Android签名证书描述及使用流程</a></li>
+                    <li class="page"><a href="../../Dev-Guide/Git-APICloud-guide.html">Git 代码托管指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/X5-APICloud-guide.html">如何在APICloud平台使用腾讯X5引擎</a></li>
+                    <li class="page"><a href="../../Dev-Guide/screen-adapt-guide.html">屏幕适配原理及实现</a></li>
+                    <li class="page"><a href="../../Dev-Guide/smartUpdate.html">云修复</a></li>
+                    <li class="page"><a href="../../Dev-Guide/start-page-ad-guid.html">启动页闪屏广告</a></li>
+                    <li class="page"><a href="../../Dev-Guide/version_update.html">版本更新</a></li>
+                    <li class="page"><a href="../../Dev-Guide/app-config-manual.html">config.xml应用配置说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/widget-package-structure-manual.html">Widget包结构说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/module-package-structure-manual.html">模块包结构说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/Custom_Loader.html">自定义loader说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/data-cloud-dev-guide.html">数据云服务开发指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/data-storage-dev-guide.html">数据存储开发指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/push-guide.html">推送技术指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/key.html">key.xml文件配置说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/iOS-License-Application-Guidance.html">iOS证书及描述文件制作流程</a></li>
+                    <li class="page"><a href="../../Dev-Guide/SuperWebview-guide-for-android.html">SuperWebview开发指南Android</a></li>
+                    <li class="page"><a href="../../Dev-Guide/SuperWebview-guide-for-ios.html">SuperWebview开发指南iOS</a></li>
+                    <li class="page"><a href="../../Dev-Guide/apple-watch-dev-guide.html">Apple Watch开发指南</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开发工具</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Dev-Tools/studio-dev-guide.html">APICloud Studio 2 快速入门</a></li>
+                    <li class="page"><a href="../../Dev-Tools/sublime-apicloud-plugin.html">工具：Sublime插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/Atom-apicloud-plugin.html">工具：Atom插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/ide-dev-guide.html">工具：Eclipse 插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/webStorm-apicloud-plugin.html">工具：WebStorm插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/sublime-apicloud-snippets.html">Sublime APICloud 语法提示</a></li>
+                    <li class="page"><a href="../../Dev-Tools/Atom-apicloud-snippets.html">Atom APICloud 语法提示</a></li>
+                    <li class="page"><a href="../../Dev-Tools/webStorm-apicloud-snippets.html">webStorm APICloud代码提示插件编写</a></li>
+                    <li class="page"><a href="../../Dev-Tools/eclipse-wifi.html">Eclipse  WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/sublime-wifi-sync.html">Sublime WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/wifi-debug.html">APICloud Studio WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/webStorm-wifi-sync.html">WebStorm WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/apicloud-tools-core.html">APICloud 开发工具核心库</a></li>
+                    <li class="page"><a href="../../Dev-Tools/apicloud-cli.html">apicloud-cli 工具使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/apicloud-polyfill.html">apicloud-polyfill</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">下载</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Download/download.html">Download</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">七天培训课教程</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Seven/Day1.html">Day1</a></li>
+                    <li class="page"><a href="../../Seven/Day2.html">Day2</a></li>
+                    <li class="page"><a href="../../Seven/Day3.html">Day3</a></li>
+                    <li class="page"><a href="../../Seven/Day4.html">Day4</a></li>
+                    <li class="page"><a href="../../Seven/Day5.html">Day5</a></li>
+                    <li class="page"><a href="../../Seven/Day6.html">Day6</a></li>
+                    <li class="page"><a href="../../Seven/Day7.html">Day7</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">其他</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Others/app-custom-faq.html">定制平台常见问题</a></li>
+                    <li class="page"><a href="../../Others/app-customization.html">APICloud需求预评估服务规则</a></li>
+                    <li class="page"><a href="../../Others/privacy-policy.html">隐私条款</a></li>
+                    <li class="page"><a href="../../Others/terms-of-service.html">服务条款</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">Faq</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Others/FAQ/Client-Dev.html">端开发</a></li>
+                    <li class="page"><a href="../../Others/FAQ/Cloud-Dev.html">云开发</a></li>
+                    <li class="page"><a href="../../Others/FAQ/IDE.html">APICloud Studio</a></li>
+                    <li class="page"><a href="../../Others/FAQ/app-service.html">应用服务</a></li>
+                    <li class="page"><a href="../../Others/FAQ/Other.html">其它</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开放平台接入指南</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/adsYoumi.html">有米广告SDK接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/baiXing.html">百姓网SDK接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/baiduMTJ.html">百度移动统计平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/dkSDK.html">点开广告平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/kf5sdk.html">kf5云客服平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/polyvVideo.html">保利威视平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/pushGeTui_manual.html">个推接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/sensorsAnalyticsAPICloudSDK.html">神策数据分析平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/tyRTC.html">天翼RTC平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/umengAnalytics.html">友盟统计平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/H2.html">H2移动广告交易平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/alipay.html">支付宝支付平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/baidu.html">百度开放平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/bmobPush.html">Bmob平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/brightBeacon.html">brightBeacon接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/cchelperModule.html">CChelper移动应用远程协助平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/chanceAd.html">畅思广告平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/domob.html">多盟广告平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/gizWifiSDK.html">gizWifiSDK接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/kuguo.html">酷果广告平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/meiQia.html">美洽客服平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/qiyuSdk.html">网易七鱼云客服平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/qq.html">QQ开放平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/rongCloud2.html">融云IM 平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/sina.html">新浪微博平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/superID.html">一登刷脸登录平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/talkingData.html">talkingData平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/tingyun.html">听云App iOS SDK接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/udsk.html">Udesk客服平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/weChat.html">微信开放平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/youkuPlayer.html">优酷播放器接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/zhiChi.html">智齿客服平台接入</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    <div class="col-sm-10 main-content">
+
+        <section class="content">
+            <h1 class="title">亲加视频直播</h1>
+
+            <p style="color: #ccc;margin-bottom: 30px;">来自于：亲加<a style="background-color: #95ba20; color:#fff; padding:4px 8px;border-radius:5px;margin-left:30px; margin-bottom:0px; font-size:12px;text-decoration:none;" target="_blank" href="http://www.apicloud.com/mod_detail?mdId=34497">立即使用</a></p>
+
+<!-- MarkdownTOC -->
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#基础模块gotyelivecore">基础模块(gotyeLiveCore)</a></li>
+<li><a href="#聊天室模块gotyelivechat">聊天室模块(gotyeLiveChat)</a></li>
+<li><a href="#播放器模块gotyeliveplayer">播放器模块(gotyeLivePlayer)</a></li>
+<li><a href="#直播模块gotyelivepublisher">直播模块(gotyeLivePublisher)</a></li>
+<li><a href="#连麦模块gotyelivep2p">连麦模块(gotyeLiveP2P)</a></li>
+</ul>
+<!-- /MarkdownTOC -->
+<p><style type="text/css">
+    .colored {
+        display: block;
+        color:rgb(51, 153, 255);
+        padding-bottom: 0.3em;
+        line-height: 1.225;
+    }
+    .border {
+        border-bottom: 1px solid #eee;
+    }
+    h3 {
+        color:rgb(51, 153, 255);
+        border-bottom: 1px solid #eee;
+    };
+</style>
+<a name="简介"></a></p>
+<h2 id="-">简介</h2>
+<p>亲加视频直播SDK是一套完整的视频直播SDK产品，包含了直播、聊天室聊天、观看直播，且每个模块都是独立的，开发者可以根据自己的需求选择相应的模块进行集成。
+<strong>功能包括：</strong>
+     1、直播
+     2、聊天室、送礼物等
+     3、连麦
+     4、脸萌特效（可体验demo，测试key，2分钟内有效）
+     5、音效、小视屏等功能
+     开发者可以快速接入与直播相关大部分功能，从而减少开发工作量和开发时间，提高系统稳定性。
+相关Demo参考及源码可以参考：[<a href="https://github.com/QPlus/APICloudLiveDemo" target="_blank">https://github.com/QPlus/APICloudLiveDemo</a>]</p>
+<p><strong>注：如没有特别说明，文档中提及的接口都是iOS和Android通用的</strong></p>
+<p><a name="基础模块gotyelivecore"></a></p>
+<h2 id="-a-name-gotyelivecore-a-gotyelivecore-"><a name="gotyelivecore"></a>基础模块(gotyeLiveCore)</h2>
+<p>包含了各个模块所必需的接口实现，在集成其它模块之前都需要<strong>先把当前模块集成到项目中</strong></p>
+<ul>
+<li><a href="#registerapp">registerApp</a></li>
+<li><a href="#setdebuglogenabled">setDebugLogEnabled</a></li>
+<li><a href="#authroomsession">authRoomSession</a></li>
+<li><a href="#destroyroomsession">destroyRoomSession</a></li>
+<li><a href="#getlivecontext">getLiveContext</a></li>
+<li><a href="#getclienturl">getClientUrl</a></li>
+<li><a href="#错误码说明">错误码说明</a></li>
+</ul>
+<p><a name="registerapp"></a></p>
+<h3 id="-a-name-coreinit-a-span-class-colored-registerapp-span-"><a name="coreInit"></a><span class="colored">registerApp</span></h3>
+<p>初始化函数。如果在<strong>config.xml</strong>文件中配置了appKey以及accessSecret的信息，那么在模块初始化的时候底层会自动调用此接口，无需再手动调用。</p>
+<p>registerApp({params})</p>
+<p><a name="params"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>appKey:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：<a href="https://livevip.com.cn/live" target="_blank">亲加管理后台</a>中的<em>appKey*</em></li>
+</ul>
+<p>accessSecret:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：<a href="https://livevip.com.cn/live" target="_blank">亲加管理后台</a>中的<strong>accessSecret</strong></li>
+</ul>
+<p>companyId:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：（可选项）<a href="https://livevip.com.cn/live" target="_blank">亲加管理后台</a>中的<strong>公司唯一标识</strong>。当roomId类型为<strong>custom</strong>时，此字段为必须</li>
+</ul>
+<p><a name="示例代码"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-javascript">var core = api.require(&#39;gotyeLiveCore&#39;);
+core.registerApp({
+    appKey: &quot;46712182-****-11e5-8fee-5254009b7711&quot;,
+    accessSecret: &quot;eaa6da7a9******e8279677470a1eb9f&quot;
+});
+</code></pre>
+<p>config.xml配置示例：</p>
+<pre><code class="lang-xml">&lt;feature name=&quot;gotyeLiveCore&quot;&gt;
+  &lt;param name=&quot;appKey&quot; value=&quot;46712182-****-11e5-8fee-5254009b7711&quot; /&gt;
+  &lt;param name=&quot;accessSecret&quot; value=&quot;eaa6da7a9****e8279677470a1eb9f&quot; /&gt;
+&lt;/feature&gt;
+</code></pre>
+<p><a name="setdebuglogenabled"></a></p>
+<h3 id="-span-class-colored-setdebuglogenabled-span-"><span class="colored">setDebugLogEnabled</span></h3>
+<p>设置是否打印debug日志。默认情况下不打印</p>
+<p>setDebugLogEnabled({params})</p>
+<p><a name="params-1"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>enabled:</p>
+<ul>
+<li>类型：布尔值</li>
+<li>默认值：false</li>
+<li>描述：是否打印debug日志</li>
+</ul>
+<p><a name="示例代码-1"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-javascript">core.setDebugLogEnabled({
+    enabled: true
+});
+</code></pre>
+<p><a name="authroomsession"></a></p>
+<h3 id="-a-name-auth-a-span-class-colored-authroomsession-span-"><a name="auth"></a><span class="colored">authRoomSession</span></h3>
+<p>验证房间信息。session是对应一个直播房间的，验证通过才能获取直播间的信息</p>
+<p>authRoomSession({params}, callback(ret, err))</p>
+<p><a name="params-2"></a></p>
+<h4 id="-a-name-authparam-a-span-class-colored-params-span-"><a name="authParam"></a><span class="colored">params</span></h4>
+<p>type:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：default</li>
+<li>描述：roomId类型。default为亲加后台系统默认的id，custom为自定义的id</li>
+</ul>
+<p>roomId:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：直播间的唯一标识</li>
+</ul>
+<p>password:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：直播间的登录密码。不同的登录密码对应不同的用户级别</li>
+</ul>
+<p>nickname:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：登录用户的昵称</li>
+</ul>
+<p><a name="callbackret-err"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    accessToken:&#39;&#39;,         //认证token
+    createTime:1461223473,  //创建时间，本地维护
+    expired:false,          //当前token是否过期。false表示没过期，true表示过期
+    expiresIn:21600,        //有效时间,单位（秒）
+    role:2,                 //当前token的用户级别。1表示后台用户，2表示主播用户，3表示助理用户，4表示普通用户
+    userStatus:0           //（可选）当前用户状态
+}
+</code></pre>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-2"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">var session = {
+    roomId: &#39;&#39;,
+    password: &#39;&#39;,
+    nickname: &#39;&#39;
+};
+core.authRoomSession(session, function( ret, err ){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="destroyroomsession"></a></p>
+<h3 id="-span-class-colored-destroyroomsession-span-"><span class="colored">destroyRoomSession</span></h3>
+<p>清除房间验证信息，销毁session实例。退出直播间时调用</p>
+<p>destroyRoomSession({params})</p>
+<p><a name="params-3"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>与<a href="#authParam">authRoomSession</a>的参数一致</p>
+<p><a name="示例代码-3"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">var session = {
+    roomId: &#39;&#39;,
+    password: &#39;&#39;,
+    nickname: &#39;&#39;
+};
+core.destroyRoomSession(session);
+</code></pre>
+<p><a name="getlivecontext"></a></p>
+<h3 id="-span-class-colored-getlivecontext-span-"><span class="colored">getLiveContext</span></h3>
+<p>查询直播间详情</p>
+<p>getLiveContext({params}, callback(ret, err))</p>
+<p><a name="params-4"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>与<a href="#authParam">authRoomSession</a>的参数一致</p>
+<p><a name="callbackret-err-1"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    recordingStatus:0,         //当前直播状态。1-录制中 0-停录中
+    playUserCount:0,           //当前播放视频人数
+}
+</code></pre>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-4"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">var session = {
+    roomId: &#39;&#39;,
+    password: &#39;&#39;,
+    nickname: &#39;&#39;
+};
+core.getLiveContext(session, function(ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="getclienturl"></a></p>
+<h3 id="-span-class-colored-getclienturl-span-"><span class="colored">getClientUrl</span></h3>
+<p>获取客户端的网页播放地址等信息</p>
+<p>getClientUrl({params}, callback(ret, err))</p>
+<p><a name="params-5"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>与<a href="#authParam">authRoomSession</a>的参数一致</p>
+<p><a name="callbackret-err-2"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    educVisitorUrl:&#39;&#39;,               //直播观看地址。可用于分享
+    modVisitorShareUrl:&#39;&#39;,           //课件观看端页面地址
+}
+</code></pre>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-5"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">var session = {
+    roomId: &#39;&#39;,
+    password: &#39;&#39;,
+    nickname: &#39;&#39;
+};
+core.getClientUrl(session, function(ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="错误码说明"></a></p>
+<h3 id="-span-class-colored-span-"><span class="colored">错误码说明</span></h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>401</td>
+<td>验证失败，或者是没有验证成功的情况下调用了别的接口</td>
+</tr>
+<tr>
+<td>-101</td>
+<td>JSON解析出错</td>
+</tr>
+<tr>
+<td>-102</td>
+<td>网络错误</td>
+</tr>
+<tr>
+<td>-106</td>
+<td>超时</td>
+</tr>
+<tr>
+<td>-999</td>
+<td>未知错误</td>
+</tr>
+</tbody>
+</table>
+<p><a name="聊天室模块gotyelivechat"></a></p>
+<h2 id="-a-name-gotyelivechat-a-gotyelivechat-"><a name="gotyelivechat"></a>聊天室模块(gotyeLiveChat)</h2>
+<p>实现了聊天室功能，用户可以在聊天室中进行聊天</p>
+<ul>
+<li><a href="#init">init</a></li>
+<li><a href="#login">login</a></li>
+<li><a href="#logout">logout</a></li>
+<li><a href="#sendtext">sendText</a></li>
+<li><a href="#sendnotify">sendNotify</a></li>
+<li><a href="#sendmessage">sendMessage</a></li>
+<li><a href="#getroommembercount">getRoomMemberCount</a></li>
+<li><a href="#queryUserList">queryUserList</a></li>
+<li><a href="#currentloginuser">currentLoginUser</a></li>
+<li><a href="#addeventlistener">addEventListener</a></li>
+<li><a href="#removeeventlistener">removeEventListener</a></li>
+<li><a href="#removealleventlisteners">removeAllEventListeners</a></li>
+<li><a href="#事件">事件</a></li>
+<li><a href="#错误码说明-1">错误码说明</a></li>
+</ul>
+<p><a name="init"></a></p>
+<h3 id="-span-class-colored-init-span-"><span class="colored">init</span></h3>
+<p>初始化聊天模块。聊天模块是与直播间绑定的，只有<a href="#auth">验证成功</a>，才能正常使用聊天功能</p>
+<p>init({params})</p>
+<p><a name="params-6"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>与<a href="#authParam">authRoomSession</a>的参数一致</p>
+<p><a name="示例代码-6"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">var session = {
+    roomId: &#39;&#39;,
+    password: &#39;&#39;,
+    nickname: &#39;&#39;
+};
+var chat = api.require(&#39;gotyeLiveChat&#39;);
+chat.init(session);
+</code></pre>
+<p><a name="login"></a></p>
+<h3 id="-span-class-colored-login-span-"><span class="colored">login</span></h3>
+<p>登录直播间聊天室</p>
+<p>login(callback(ret, err))</p>
+<p><a name="callbackret-err-3"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    account:&#39;&#39;,            //系统分配的唯一身份标识
+    nickname:&#39;&#39;,           //登录用户昵称。与authRoomSession时传入的昵称一致
+}
+</code></pre>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-7"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">chat.login(function(ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="补充说明"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<p>如果登录失败的话，SDK不会自动重连。但是如果在登录成功的情况下因为网络的问题或者其它问题导致的掉线，SDK底层会自动进行重连，直到登录成功或者开发者主动调用了<code>logout</code></p>
+<p><a name="logout"></a></p>
+<h3 id="-span-class-colored-logout-span-"><span class="colored">logout</span></h3>
+<p>退出聊天室登录，并断开连接，不再接收消息</p>
+<p>logout()</p>
+<p><a name="示例代码-8"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">chat.logout();
+</code></pre>
+<p><a name="sendtext"></a></p>
+<h3 id="-span-class-colored-sendtext-span-"><span class="colored">sendText</span></h3>
+<p>发送文本消息（type为1）</p>
+<p>sendText({params}, callback(ret, err))</p>
+<p><a name="params-7"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>text:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：需要发送的文本内容。如果文本内容为空，此接口不会做任何事情</li>
+</ul>
+<p>extra:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：（可选项）额外信息文本</li>
+</ul>
+<p><a name="callbackret-err-4"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>描述：总是为空</li>
+</ul>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：发送成功时为空，发送失败时不为空</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-9"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">chat.sendText({text: &quot;text&quot;, extra: &quot;extra&quot;}, function(ret, err) {
+    if( err ){
+        alert( JSON.stringify( err ) );
+    }else{
+        alert( &#39;发送成功&#39; );
+    }
+});
+</code></pre>
+<p><a name="sendnotify"></a></p>
+<h3 id="-span-class-colored-sendnotify-span-"><span class="colored">sendNotify</span></h3>
+<p>发送通知消息（type为3）</p>
+<p>sendNotify({params}, callback(ret, err))</p>
+<p><a name="params-8"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>notify:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：需要发送的通知内容。如果通知内容为空，此接口不会做任何事情</li>
+</ul>
+<p>extra:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：（可选项）额外信息文本</li>
+</ul>
+<p><a name="callbackret-err-5"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>描述：总是为空</li>
+</ul>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：发送成功时为空，发送失败时不为空</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-10"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">chat.sendNotify({notify: &quot;notify&quot;, extra: &quot;extra&quot;}, function(ret, err) {
+    if( err ){
+        alert( JSON.stringify( err ) );
+    }else{
+        alert( &#39;发送成功&#39; );
+    }
+});
+</code></pre>
+<p><a name="sendmessage"></a></p>
+<h3 id="-span-class-colored-sendmessage-span-"><span class="colored">sendMessage</span></h3>
+<p>发送自定义内容的消息</p>
+<p>sendMessage({params}, callback(ret, err))</p>
+<p><a name="params-9"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>type:</p>
+<ul>
+<li>类型：数字</li>
+<li>默认值：0</li>
+<li>描述：消息的类型。这个类型服务器不会做任何判断和处理，发送端填什么类型接收端收到的就是什么类型</li>
+</ul>
+<p>text:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：需要发送的通知内容。如果通知内容为空，此接口不会做任何事情</li>
+</ul>
+<p>extra:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：（可选项）额外信息文本</li>
+</ul>
+<p><a name="callbackret-err-6"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>描述：总是为空</li>
+</ul>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：发送成功时为空，发送失败时不为空</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-11"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">chat.sendMessage({type: 1, text: &quot;text&quot;, extra: &quot;extra&quot;}, function(ret, err) {
+    if( err ){
+        alert( JSON.stringify( err ) );
+    }else{
+        alert( &#39;发送成功&#39; );
+    }
+});
+</code></pre>
+<p><a name="补充说明-1"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<p>SDK目前只支持纯文本内容的发送，但是消息的格式是可以自定义的，换句话说，只要使用合适的格式，开发者是很容易就能够实现红包、点赞诸如此类的功能的。</p>
+<p><a name="getroommembercount"></a></p>
+<h3 id="-span-class-colored-getroommembercount-span-"><span class="colored">getRoomMemberCount</span></h3>
+<p>获取聊天室当前在线人数</p>
+<p>getRoomMemberCount(callback(ret, err))</p>
+<p><a name="callbackret-err-7"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    count:0,      //聊天室人数
+}
+</code></pre>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-12"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">chat.getRoomMemberCount(function(ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="queryUserList"></a></p>
+<h3 id="-span-class-colored-queryuserlist-span-"><span class="colored"> queryUserList </span></h3>
+<p>获取聊天室用户列表</p>
+<p>queryUserList(param, callback(ret, err))</p>
+<p><a name="params"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>index:</p>
+<ul>
+<li>类型：整数类型</li>
+<li>默认值：无</li>
+<li>描述：开始查询的位置</li>
+</ul>
+<p>totoal:</p>
+<ul>
+<li>类型：整数类型</li>
+<li>默认值：无</li>
+<li>描述：查询的人数</li>
+</ul>
+<p><a name="callbackret-err-7"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    total:1,      //实际查询到的总人数
+    entities:[
+    {&quot;account&quot;:&quot;publisher_2184&quot;,  //账户ID
+     &quot;nickname&quot;:&quot;445&quot;,            //昵称
+     &quot;role&quot; : 2}                  //角色； 2:主播，3:助理，4:观看端
+    ]
+}
+</code></pre>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:201,               //错误的状态码
+    description:&quot;用户未登录&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-12"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">queryUserList({index:1,total:20},function(ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="currentloginuser"></a></p>
+<h3 id="-span-class-colored-currentloginuser-span-"><span class="colored">currentLoginUser</span></h3>
+<p>获取聊天室当前登录用户的信息</p>
+<p>currentLoginUser(callback(ret, err))</p>
+<p><a name="callbackret-err-8"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    account:&#39;&#39;,            //系统分配的唯一身份标识
+    nickname:&#39;&#39;,           //登录用户昵称。与authRoomSession时传入的昵称一致
+}
+</code></pre>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-13"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">chat.currentLoginUser(function(ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="addeventlistener"></a></p>
+<h3 id="-span-class-colored-addeventlistener-span-"><span class="colored">addEventListener</span></h3>
+<p>添加聊天模块事件的监听</p>
+<p>addEventListener({params}, callback(ret, err))</p>
+<p><a name="params-10"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>name:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：sdk事件名称（详见<a href="#chatEvent">事件</a>）</li>
+</ul>
+<p><a name="callbackret-err-9"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：事件发生时传递的参数，可能为空</li>
+</ul>
+<p><a name="示例代码-14"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+chat.addEventListener({
+    name:&#39;disconnected&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="removeeventlistener"></a></p>
+<h3 id="-span-class-colored-removeeventlistener-span-"><span class="colored">removeEventListener</span></h3>
+<p>移除事件监听</p>
+<p>removeEventListener({params})</p>
+<p><a name="params-11"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>name:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：sdk事件名称（详见<a href="#chatEvent">事件</a>）</li>
+</ul>
+<p><a name="示例代码-15"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">chat.removeEventListener({
+    name: &#39;disconnected&#39;
+});
+</code></pre>
+<p><a name="removealleventlisteners"></a></p>
+<h3 id="-span-class-colored-removealleventlisteners-span-"><span class="colored">removeAllEventListeners</span></h3>
+<p>移除所有的事件监听</p>
+<p>removeAllEventListeners()</p>
+<p><a name="示例代码-16"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">chat.removeAllEventListeners();
+</code></pre>
+<p><a name="事件"></a></p>
+<h3 id="-a-name-chatevent-a-span-class-colored-span-"><a name="chatEvent"></a><span class="colored">事件</span></h3>
+<ul>
+<li><a href="#receiveMsg">receiveMsg</a></li>
+<li><a href="#reconnecting">reconnecting</a></li>
+<li><a href="#reloginSuccess">reloginSuccess</a></li>
+<li><a href="#reloginFailed">reloginFailed</a></li>
+<li><a href="#forceLogout">forceLogout</a></li>
+</ul>
+<p><a name="receiveMsg"></a></p>
+<h4 id="-span-class-colored-border-receivemsg-span-"><span class="colored border">receiveMsg</span></h4>
+<p>收到新消息事件</p>
+<p><a name="callbackret"></a></p>
+<h5 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h5>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：返回消息的具体内容，不为空</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    text:&#39;&#39;             //消息的文本内容
+    sendId:&#39;&#39;           //发送者的账号
+    sendName:&#39;&#39;         //发送者昵称
+    extra:&#39;&#39;            //消息的额外内容，可能为空
+    type:1              //消息类型。与发送端设置的消息类型一致
+    status:0            //消息状态。这个字段是本地维护的，收到的消息status均为0
+}
+</code></pre>
+<p><a name="示例代码-17"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+chat.addEventListener({
+    name:&#39;receiveMsg&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="disconnected"></a></p>
+<h5 id="-span-class-colored-border-disconnected-span-"><span class="colored border">disconnected</span></h5>
+<p>与服务器异常断开事件。用户主动断开连接不会触发此事件</p>
+<p><a name="callback"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不能为空</p>
+<p><a name="示例代码-18"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+chat.addEventListener({
+    name:&#39;disconnected&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="reconnecting"></a></p>
+<h4 id="-span-class-colored-border-reconnecting-span-"><span class="colored border">reconnecting</span></h4>
+<p>异常断开之后，sdk底层自动重连事件</p>
+<p><a name="callback-1"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不能为空</p>
+<p><a name="示例代码-19"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+chat.addEventListener({
+    name:&#39;reconnecting&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="reloginSuccess"></a></p>
+<h4 id="-span-class-colored-border-reloginsuccess-span-"><span class="colored border">reloginSuccess</span></h4>
+<p>sdk自动重连并登录服务器成功事件</p>
+<p><a name="callback-2"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不能为空</p>
+<p><a name="示例代码-20"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+chat.addEventListener({
+    name:&#39;reloginSuccess&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="reloginFailed"></a></p>
+<h4 id="-span-class-colored-border-reloginfailed-span-"><span class="colored border">reloginFailed</span></h4>
+<p>sdk尝试重新登录服务器失败事件</p>
+<p><a name="callbackret-1"></a></p>
+<h5 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h5>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：返回登录失败的错误信息，不为空</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401             //错误的状态码
+    description:&#39;&#39;       //错误的具体描述
+}
+</code></pre>
+<p><a name="示例代码-21"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+chat.addEventListener({
+    name:&#39;reloginFailed&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="forceLogout"></a></p>
+<h4 id="-span-class-colored-border-forcelogout-span-"><span class="colored border">forceLogout</span></h4>
+<p>账号在另外的设备登录，当前设备被强制踢下线事件</p>
+<p><a name="callback-3"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不能为空</p>
+<p><a name="示例代码-22"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+chat.addEventListener({
+    name:&#39;forceLogout&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="补充说明-2"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">补充说明</span></h5>
+<p>昵称并不是区分用户的字段，所以昵称相同的普通用户之间并不会互相踢下线。目前只有主播用户和助理用户会相互踢下线</p>
+<p><a name="错误码说明-1"></a></p>
+<h3 id="-">错误码说明</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>300</td>
+<td>失败</td>
+</tr>
+<tr>
+<td>401</td>
+<td>验证失败</td>
+</tr>
+<tr>
+<td>403</td>
+<td>无效角色，只有聊天室role可以登录</td>
+</tr>
+<tr>
+<td>500</td>
+<td>系统异常</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>无操作权限</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>已被禁言</td>
+</tr>
+<tr>
+<td>1005</td>
+<td>消息内容和附加字段都为空</td>
+</tr>
+<tr>
+<td>1007</td>
+<td>无效TARGET_ID</td>
+</tr>
+<tr>
+<td>1009</td>
+<td>已经被禁止登陆 </td>
+</tr>
+<tr>
+<td>-101</td>
+<td>数据解析出错</td>
+</tr>
+<tr>
+<td>-102</td>
+<td>网络错误</td>
+</tr>
+<tr>
+<td>-103</td>
+<td>当前没有登录</td>
+</tr>
+<tr>
+<td>-104</td>
+<td>已经登录</td>
+</tr>
+<tr>
+<td>-105</td>
+<td>获取服务器地址失败</td>
+</tr>
+<tr>
+<td>-106</td>
+<td>超时</td>
+</tr>
+</tbody>
+</table>
+<p><a name="播放器模块gotyeLivePlayer"></a></p>
+<h2 id="-a-name-gotyeliveplayer-a-gotyeliveplayer-"><a name="gotyeliveplayer"></a>播放器模块(gotyeLivePlayer)</h2>
+<p>实现了视频播放功能</p>
+<ul>
+<li><a href="#init-1">init</a></li>
+<li><a href="#play">play</a></li>
+<li><a href="#stop">stop</a></li>
+<li><a href="#setmute">setMute</a></li>
+<li><a href="#getmutestatus">getMuteStatus</a></li>
+<li><a href="#getinfo">getInfo</a></li>
+<li><a href="#setdisplaymode">setDisplayMode</a></li>
+<li><a href="#switchtoquality">switchToQuality</a></li>
+<li><a href="#getvideoquality">getVideoQuality</a></li>
+<li><a href="#getavailablequalities">getAvailableQualities</a></li>
+<li><a href="#addeventlistener-1">addEventListener</a></li>
+<li><a href="#removeeventlistener-1">removeEventListener</a></li>
+<li><a href="#removealleventlisteners-1">removeAllEventListeners</a></li>
+<li><a href="#事件-1">事件</a></li>
+<li><a href="#错误码说明-2">错误码说明</a></li>
+</ul>
+<p><a name="init-1"></a></p>
+<h3 id="-span-class-colored-init-span-"><span class="colored">init</span></h3>
+<p>初始化播放器模块</p>
+<p>init({params})</p>
+<p>播放器支持两种模式:</p>
+<p><a name="模式一"></a></p>
+<h4 id="-a-name-player1-a-span-class-colored-span-"><a name="player1"></a><span class="colored">模式一</span></h4>
+<p>与直播间绑定，支持直播间的状态判断以及人数统计</p>
+<p><a name="params-12"></a></p>
+<h5 id="-span-class-colored-params-span-"><span class="colored">params</span></h5>
+<p>session:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>默认值：无</li>
+<li>描述：直播间信息，格式与<a href="#authParam">authRoomSession</a>的参数一致</li>
+</ul>
+<p><a name="示例代码-23"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">var session = {
+    roomId: &#39;&#39;,
+    password: &#39;&#39;,
+    nickname: &#39;&#39;
+};
+var player = api.require(&#39;gotyeLivePlayer&#39;);
+player.init({session:session});
+</code></pre>
+<p><a name="模式二"></a></p>
+<h4 id="-a-name-player2-a-span-class-colored-span-"><a name="player2"></a><span class="colored">模式二</span></h4>
+<p>只需要一个播放url就可以进行播放的（目前只支持rtmp流以及flv流的播放），没有直播状态的概念</p>
+<p><a name="params-13"></a></p>
+<h5 id="-span-class-colored-params-span-"><span class="colored">params</span></h5>
+<p>url:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：rtmp或者flv的播放链接，不能为空</li>
+</ul>
+<p><a name="示例代码-24"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">player.init({
+    url:&#39;rtmp://xxxx&#39;
+});
+</code></pre>
+<p><a name="补充说明-2"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<p>如果参数中既有<code>session</code>字段又有<code>url</code>字段，那么优先使用<code>session</code>来初始化</p>
+<p><a name="play"></a></p>
+<h3 id="-span-class-colored-play-span-"><span class="colored">play</span></h3>
+<p>开始播放</p>
+<p>play({params})</p>
+<p><a name="params-12"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>playView:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：视频显示的窗口名称。视频视图将以子view的方式添加到这个窗口上</li>
+</ul>
+<p>rect:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>默认值：充满整个父页面</li>
+<li>描述：（可选项）frame的位置和大小</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    x:0,             //左上角x坐标
+    y:0,             //左上角y坐标
+    w:320,           //宽度
+    h:480            //高度
+}
+</code></pre>
+<p>fixed:</p>
+<ul>
+<li>类型：布尔值</li>
+<li>默认值：false</li>
+<li>描述：视图是否固定，为false时跟随目标窗口内容滚动而滚动</li>
+</ul>
+<p><a name="videoQuality"></a>quality:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：只有在<a href="#player1"><strong>模式一</strong></a>下有效，表示播放视频的清晰度。<strong>original</strong>表示原始清晰度，<strong>high</strong>表示高清清晰度，<strong>medium</strong>表示标清清晰度，<strong>low</strong>表示流畅清晰度</li>
+</ul>
+<p><a name="示例代码-17"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">player.play({playView: &quot;frmMine&quot;});
+</code></pre>
+<p><a name="补充说明-3"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<ul>
+<li>使用<a href="#player1"><strong>模式一</strong></a>时，SDK会验证当前roomSession的有效性，如果没有验证成功，播放会失败；如果当前直播间没有直播，播放也会失败，但是SDK会去定时获取直播状态，当检测到直播开始后，会自动开始播放。</li>
+<li>使用<a href="#player2"><strong>模式二</strong></a>时，SDK会验证<a href="#coreInit"><strong>基础模块初始化</strong></a>时传入的<strong>App Key</strong>和<strong>Access Secret</strong>，判断当前账户的状态，如果验证失败，则播放失败。</li>
+<li>不管是哪种模式，如果播放失败了或者播放过程中出现了什么问题导致播放中断，SDK都会自动进行重连（直播间结束直播了除外），直到重新播放成功或者调用了<code>stop()</code>为止。</li>
+<li>目前SDK的设定是如果当前正在播放，app切换到后台时播放会自动停止，切换回前台后自动开始重连（直播间结束直播了除外）。</li>
+</ul>
+<p><a name="stop"></a></p>
+<h3 id="-span-class-colored-stop-span-"><span class="colored">stop</span></h3>
+<p>结束播放</p>
+<p>stop()</p>
+<p><a name="示例代码-18"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">player.stop();
+</code></pre>
+<p><a name="setmute"></a></p>
+<h3 id="-span-class-colored-setmute-span-"><span class="colored">setMute</span></h3>
+<p>打开/关闭视频的声音</p>
+<p>setMute({params})</p>
+<p><a name="params-13"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>mute:</p>
+<ul>
+<li>类型：布尔值</li>
+<li>默认值：false</li>
+<li>描述：声音是否关闭</li>
+</ul>
+<p><a name="示例代码-19"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">player.setMute({mute:true});
+</code></pre>
+<p><a name="getmutestatus"></a></p>
+<h3 id="-span-class-colored-getmutestatus-span-"><span class="colored">getMuteStatus</span></h3>
+<p>判断当前视频声音是否关闭</p>
+<p>getMuteStatus(callback(ret))</p>
+<p><a name="callbackret"></a></p>
+<h4 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：如果当前播放器没有初始化，返回为空。</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    mute:false               //false表示声音没关闭，true表示声音关闭
+}
+</code></pre>
+<p><a name="示例代码-20"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">player.getMuteStatus(function(ret) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }
+});
+</code></pre>
+<p><a name="getinfo"></a></p>
+<h3 id="-span-class-colored-getinfo-span-"><span class="colored">getInfo</span></h3>
+<p>获取当前播放器的一些状态信息</p>
+<p>getInfo(callback(ret))</p>
+<p><a name="callbackret-1"></a></p>
+<h4 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：如果当前播放器没有初始化，返回为空。</li>
+</ul>
+<p><a name="playerInfo"></a>内部字段：</p>
+<pre><code class="lang-js">{
+    connectionTime:500,         //播放器连接到服务器所花费的时间，单位毫秒
+    bps:700,                     //当前播放器的码流大小，单位kbps
+    videoBuffer:50,             //当前流的视频缓冲大小
+    audioBuffer:100,            //当前流的音频缓冲大小
+    delay:300                    //当前视频延时，单位为毫秒。
+}
+</code></pre>
+<p><a name="示例代码-21"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">player.getInfo(function(ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }
+});
+</code></pre>
+<p><a name="补充说明-4"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<p><a href="#playerInfo">播放器状态</a>中，<code>delay</code>字段的计算方法为，视频开始播放时记录一个本地时间，然后根据本地时钟得到的时长减去视频播放的时长，即为该延时。有可能为负值</p>
+<p><a name="setdisplaymode"></a></p>
+<h3 id="-span-class-colored-setdisplaymode-span-"><span class="colored">setDisplayMode</span></h3>
+<p>设置视频的显示模式</p>
+<p>setDisplayMode({params})</p>
+<p><a name="params-14"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>mode:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：aspectFit</li>
+<li>描述：视频视图的拉伸模式。<strong>aspectFit</strong>表示保持比例居中，视频会按照比例放大直到撑满屏幕某一边为止；<strong>aspectFill</strong>表示保持比例撑满，视频会按照比例放大直到撑满屏幕为止</li>
+</ul>
+<p><a name="示例代码-22"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">player.setDisplayMode({mode:&#39;aspectFit&#39;});
+</code></pre>
+<p><a name="switchtoquality"></a></p>
+<h3 id="-span-class-colored-switchtoquality-span-"><span class="colored">switchToQuality</span></h3>
+<p>切换视频清晰度。仅<a href="#player1"><strong>模式一</strong></a>有效</p>
+<p>switchToQuality({params})</p>
+<p><a name="params-15"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>quality:
+与<a href="#videoQuality"><code>play()</code></a>接口中的quality字段一致</p>
+<p><a name="示例代码-23"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">chat.switchToQuality({quality:&#39;high&#39;});
+</code></pre>
+<p><a name="补充说明-5"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<p>如果切换的清晰度与当前清晰度一样，接口不会做任何事情。如果不一样，播放器会停止当前播放，并尝试播放参数中指定的清晰度，如果当前直播间的配置没有接口希望选择的清晰度，那么会由高到低选择一个最高的清晰度进行播放</p>
+<p><a name="getvideoquality"></a></p>
+<h3 id="-span-class-colored-getvideoquality-span-"><span class="colored">getVideoQuality</span></h3>
+<p>获取客户端的当前播放视频的清晰度。仅<a href="#player1"><strong>模式一</strong></a>有效</p>
+<p>getVideoQuality(callback(ret))</p>
+<p><a name="callbackret-2"></a></p>
+<h4 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：如果当前播放器没有初始化，返回为空。</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    quality:&#39;original&#39;          //视频清晰度。
+                                //original表示原始清晰度
+                                //high表示高清清晰度
+                                //medium表示标清清晰度
+                                //low表示流畅清晰度
+}
+</code></pre>
+<p><a name="示例代码-24"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">player.getVideoQuality(function(ret) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }
+});
+</code></pre>
+<p><a name="getavailablequalities"></a></p>
+<h3 id="-span-class-colored-getavailablequalities-span-"><span class="colored">getAvailableQualities</span></h3>
+<p>获取当前直播间的视频清晰度列表。仅<a href="#player1"><strong>模式一</strong></a>有效</p>
+<p>getAvailableQualities(callback(ret))</p>
+<p><a name="callbackret-3"></a></p>
+<h4 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：如果当前播放器没有初始化，返回为空。</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    qualities:[&#39;original&#39;]          //视频清晰度列表
+                                    //original表示原始清晰度
+                                    //high表示高清清晰度
+                                    //medium表示标清清晰度
+                                    //low表示流畅清晰度
+}
+</code></pre>
+<p><a name="示例代码-25"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">player.getAvailableQualities(function(ret) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }
+});
+</code></pre>
+<p><a name="补充说明-6"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<p>默认情况下直播间都只有原始清晰度这一配置，若需要配置多清晰度的流，需要在后台中额外设置</p>
+<p><a name="addeventlistener-1"></a></p>
+<h3 id="-span-class-colored-addeventlistener-span-"><span class="colored">addEventListener</span></h3>
+<p>添加播放器模块事件的监听</p>
+<p>addEventListener({params}, callback(ret, err))</p>
+<p><a name="params-16"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>name:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：sdk事件名称（详见<a href="#playerEvent">事件</a>）</li>
+</ul>
+<p><a name="callbackret-err-10"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：事件发生时传递的参数，可能为空</li>
+</ul>
+<p><a name="示例代码-26"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+player.addEventListener({
+    name:&#39;connected&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="removeeventlistener-1"></a></p>
+<h3 id="-span-class-colored-removeeventlistener-span-"><span class="colored">removeEventListener</span></h3>
+<p>移除事件监听</p>
+<p>removeEventListener({params})</p>
+<p><a name="params-17"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>name:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：sdk事件名称（详见<a href="#playerEvent">事件</a>）</li>
+</ul>
+<p><a name="示例代码-27"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">player.removeEventListener({
+    name: &#39;connected&#39;
+});
+</code></pre>
+<p><a name="removealleventlisteners-1"></a></p>
+<h3 id="-span-class-colored-removealleventlisteners-span-"><span class="colored">removeAllEventListeners</span></h3>
+<p>移除所有的事件监听</p>
+<p>removeAllEventListeners()</p>
+<p><a name="示例代码-28"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">player.removeAllEventListeners();
+</code></pre>
+<p><a name="事件-1"></a></p>
+<h3 id="-a-name-playerevent-a-span-class-colored-span-"><a name="playerEvent"></a><span class="colored">事件</span></h3>
+<ul>
+<li><a href="#connected">connected</a></li>
+<li><a href="#disconnected">disconnected</a></li>
+<li><a href="#reconnecting-1">reconnecting</a></li>
+<li><a href="#buffering">buffering</a></li>
+<li><a href="#bufferCompleted">bufferCompleted</a></li>
+<li><a href="#statusUpdate">statusUpdate</a></li>
+<li><a href="#error">error</a></li>
+<li><a href="#liveStop">liveStop</a></li>
+<li><a href="#liveStart">liveStart</a></li>
+</ul>
+<p><a name="connected"></a></p>
+<h4 id="-span-class-colored-border-connected-span-"><span class="colored border">connected</span></h4>
+<p>播放器成功连接服务器的事件</p>
+<p><a name="callback-4"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-37"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+player.addEventListener({
+    name:&#39;connected&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="disconnected"></a></p>
+<h4 id="-span-class-colored-border-disconnected-span-"><span class="colored border">disconnected</span></h4>
+<p>播放器与服务器断开连接的事件</p>
+<p><a name="callback-5"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-38"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+player.addEventListener({
+    name:&#39;disconnected&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="reconnecting-1"></a></p>
+<h4 id="-span-class-colored-border-reconnecting-span-"><span class="colored border">reconnecting</span></h4>
+<p>播放器正在尝试重新连接服务器的事件</p>
+<p><a name="callback-6"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-39"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+player.addEventListener({
+    name:&#39;reconnecting&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="buffering"></a></p>
+<h4 id="-span-class-colored-border-buffering-span-"><span class="colored border">buffering</span></h4>
+<p>播放器正在缓冲的事件</p>
+<p><a name="callback-7"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-40"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+player.addEventListener({
+    name:&#39;buffering&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="buffercompleted"></a></p>
+<h4 id="-span-class-colored-border-buffercompleted-span-"><span class="colored border">bufferCompleted</span></h4>
+<p>播放器缓冲完毕的事件</p>
+<p><a name="callback-8"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-41"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+player.addEventListener({
+    name:&#39;bufferCompleted&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="statusUpdate"></a></p>
+<h4 id="-span-class-colored-border-statusupdate-span-"><span class="colored border">statusUpdate</span></h4>
+<p>播放器状态信息更新的事件</p>
+<p><a name="callback-9"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-42"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+player.addEventListener({
+    name:&#39;statusUpdate&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="补充说明-8"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">补充说明</span></h5>
+<p>播放器连接成功后，sdk底层每隔1秒会发送此事件，表示<a href="#playerInfo">状态信息</a>有更新</p>
+<p><a name="error"></a></p>
+<h4 id="-span-class-colored-border-error-span-"><span class="colored border">error</span></h4>
+<p>播放器出现错误的事件。详见<a href="#playerError">错误码说明</a></p>
+<p><a name="callbackret-6"></a></p>
+<h5 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h5>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：错误的具体信息，不为空</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-43"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+player.addEventListener({
+    name:&#39;error&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="livestop"></a></p>
+<h4 id="-span-class-colored-border-livestop-span-"><span class="colored border">liveStop</span></h4>
+<p>直播结束的事件。仅<a href="#player1"><strong>模式一</strong></a>有效</p>
+<p><a name="callback-10"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-44"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+player.addEventListener({
+    name:&#39;liveStop&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="补充说明-9"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">补充说明</span></h5>
+<p>这个事件只有在播放过程中才会触发，表示主播已经结束直播</p>
+<p><a name="livestart"></a></p>
+<h4 id="-span-class-colored-border-livestart-span-"><span class="colored border">liveStart</span></h4>
+<p>直播开始的事件。仅<a href="#player1"><strong>模式一</strong></a>有效</p>
+<p><a name="callback-11"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-45"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+player.addEventListener({
+    name:&#39;liveStart&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="补充说明-10"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">补充说明</span></h5>
+<p>如果之前已经调用过<code>play()</code>并且没有调用<code>stop()</code>，那么收到此事件的同时，sdk底层会自动尝试播放直播间的视频</p>
+<p><a name="错误码说明-2"></a></p>
+<h3 id="-a-name-playererror-a-"><a name="playerError"></a>错误码说明</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>401</td>
+<td>验证失败</td>
+</tr>
+<tr>
+<td>-101</td>
+<td>获取直播状态失败</td>
+</tr>
+<tr>
+<td>-102</td>
+<td>网络错误</td>
+</tr>
+<tr>
+<td>-103</td>
+<td>获取直播url失败</td>
+</tr>
+<tr>
+<td>-104</td>
+<td>直播未开始</td>
+</tr>
+</tbody>
+</table>
+<p><a name="直播模块gotyelivepublisher"></a></p>
+<h2 id="-a-name-gotyelivepublisher-a-gotyelivepublisher-"><a name="gotyelivepublisher"></a>直播模块(gotyeLivePublisher)</h2>
+<p>实现了手机直播功能</p>
+<ul>
+<li><a href="#init-2">init</a></li>
+<li><a href="#startpreview">startPreview</a></li>
+<li><a href="#publish">publish</a></li>
+<li><a href="#unpublish">unpublish</a></li>
+<li><a href="#stop-1">stop</a></li>
+<li><a href="#switchcamera">switchCamera</a></li>
+<li><a href="#addwatermark">addWatermark</a></li>
+<li><a href="#clearwatermark">clearWatermark</a></li>
+<li><a href="#settorchon">setTorchOn</a></li>
+<li><a href="#gettorchstatus">getTorchStatus</a></li>
+<li><a href="#setmute-1">setMute</a></li>
+<li><a href="#getmutestatus-1">getMuteStatus</a></li>
+<li><a href="#setvideopreset">setVideoPreset</a></li>
+<li><a href="#getvideopreset">getVideoPreset</a></li>
+<li><a href="#setfilter">setFilter</a></li>
+<li><a href="#getfilter">getFilter</a></li>
+<li><a href="#setsmoothskinfactor">setSmoothSkinFactor</a></li>
+<li><a href="#getsmoothskinfactor">getSmoothSkinFactor</a></li>
+<li><a href="#initfacedetection">initFaceDetection</a></li>
+<li><a href="#setfacedetectionfilter">setFaceDetectionFilter</a></li>
+<li><a href="#changebeautifyparams">changeBeautifyParams</a></li>
+<li><a href="#getinfo-1">getInfo</a></li>
+<li><a href="#addeventlistener-2">addEventListener</a></li>
+<li><a href="#removeeventlistener-2">removeEventListener</a></li>
+<li><a href="#removealleventlisteners-2">removeAllEventListeners</a></li>
+<li><a href="#login-1">login</a></li>
+<li><a href="#logout-1">logout</a></li>
+<li><a href="#beginrecording">beginRecording</a></li>
+<li><a href="#endrecording">endRecording</a></li>
+<li><a href="#事件-2">事件</a></li>
+<li><a href="#错误码说明-3">错误码说明</a></li>
+</ul>
+<p><a name="init-2"></a></p>
+<h3 id="-span-class-colored-init-span-"><span class="colored">init</span></h3>
+<p>初始化直播模块</p>
+<p>init({params})</p>
+<p>与播放器一样，推流端也支持两种模式的初始化：
+<a name="模式一-1"></a></p>
+<h4 id="-a-name-publisher1-a-span-class-colored-span-"><a name="publisher1"></a><span class="colored">模式一</span></h4>
+<p>与直播间绑定，支持直播间主播账号的登录以及直播状态的设置</p>
+<p><a name="params-20"></a></p>
+<h5 id="-span-class-colored-params-span-"><span class="colored">params</span></h5>
+<p>session:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>默认值：无</li>
+<li>描述：直播间信息，格式与<a href="#authParam">authRoomSession</a>的参数一致</li>
+</ul>
+<p><a name="示例代码-46"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">var session = {
+    roomId: &#39;&#39;,
+    password: &#39;&#39;,
+    nickname: &#39;&#39;
+};
+var publisher = api.require(&#39;gotyeLivePublisher&#39;);
+publisher.init({session:session});
+</code></pre>
+<p><a name="模式二-1"></a></p>
+<h4 id="-a-name-publisher2-a-span-class-colored-span-"><a name="publisher2"></a><span class="colored">模式二</span></h4>
+<p>需要一个推流地址的url即可发布直播（目前只支持rtmp服务器的推流），没有直播状态的概念</p>
+<p><a name="params-21"></a></p>
+<h5 id="-span-class-colored-params-span-"><span class="colored">params</span></h5>
+<p>url:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：rtmp推流地址，不能为空</li>
+</ul>
+<p><a name="示例代码-47"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">publisher.init({
+    url:&#39;rtmp://xxxx&#39;
+});
+</code></pre>
+<p><a name="补充说明-7"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<p>如果参数中既有<code>session</code>字段又有<code>url</code>字段，那么优先使用<code>session</code>来初始化</p>
+<p><a name="startpreview"></a></p>
+<h3 id="-span-class-colored-startpreview-span-"><span class="colored">startPreview</span></h3>
+<p>在推流之前，需要先打开设备的摄像头</p>
+<p>startPreview({params}, callback(ret, err))</p>
+<p><a name="params-18"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>preview:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：显示预览的窗口名字，预览画面将以子视图的方式添加到窗口上</li>
+</ul>
+<p>position:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：front</li>
+<li>描述：打开摄像头的位置。<strong>front</strong>为前置摄像头，<strong>back</strong>为后置摄像头</li>
+</ul>
+<p>rect:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>默认值：充满整个父页面</li>
+<li>描述：（可选项）frame的位置和大小</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    x:0,             //左上角x坐标
+    y:0,             //左上角y坐标
+    w:320,           //宽度
+    h:480            //高度
+}
+</code></pre>
+<p>fixed:</p>
+<ul>
+<li>类型：布尔值</li>
+<li>默认值：false</li>
+<li>描述：视图是否固定，为false时跟随目标窗口内容滚动而滚动</li>
+</ul>
+<p><a name="callbackret-err-11"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>描述：总是为空</li>
+</ul>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：打开摄像头成功时为空，失败时不为空</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:-104,               //错误的状态码
+    description:&quot;验证失败&quot;    //无法获取摄像头    
+}
+</code></pre>
+<p><a name="示例代码-29"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.startPreview({preview: &quot;frmMine&quot;}, function(ret, err) {
+    if( err ){
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="补充说明-8"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<p>摄像头的方向是与<code>ViewController</code>的方向一致的</p>
+<p><a name="publish"></a></p>
+<h3 id="-span-class-colored-publish-span-"><span class="colored">publish</span></h3>
+<p>开始直播</p>
+<p>publish()</p>
+<p><a name="示例代码-30"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.publish();
+</code></pre>
+<p><a name="补充说明-9"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<ul>
+<li>如果使用的是<a href="#publisher1">模式一</a>，那么在直播之前需要先<a href="#loginPublisher">登录直播间</a></li>
+<li>推流过程中如果出现了中断的情况，那么SDK底层会<strong>自动进行重连</strong>，直到重连成功或者手动调用了<code>unpublish()</code>或者<code>stop()</code>为止</li>
+</ul>
+<p><a name="unpublish"></a></p>
+<h3 id="-span-class-colored-unpublish-span-"><span class="colored">unpublish</span></h3>
+<p>断开主播端与推流服务器的连接，<strong>不停止</strong>预览</p>
+<p>unpublish()</p>
+<p><a name="示例代码-31"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.unpublish();
+</code></pre>
+<p><a name="stop-1"></a></p>
+<h3 id="-span-class-colored-stop-span-"><span class="colored">stop</span></h3>
+<p>断开主播端与推流服务器的连接并<strong>停止</strong>预览</p>
+<p>stop()</p>
+<p><a name="示例代码-32"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.stop();
+</code></pre>
+<p><a name="switchcamera"></a></p>
+<h3 id="-span-class-colored-switchcamera-span-"><span class="colored">switchCamera</span></h3>
+<p>切换前后摄像头</p>
+<p>switchCamera()</p>
+<p><a name="示例代码-33"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.switchCamera();
+</code></pre>
+<p><a name="addwatermark"></a></p>
+<h3 id="-span-class-colored-addwatermark-span-"><span class="colored">addWatermark</span></h3>
+<p>添加水印</p>
+<p>addWatermark({params})</p>
+<p><a name="params-19"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>src:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：水印图片的本地路径。支持相对路径</li>
+</ul>
+<p>rect:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>默认值：无</li>
+<li>描述：水印的位置和大小。这个位置和大小是以视频分辨率为参考坐标系的，也就是说，同样的位置和大小，在不同的视频分辨率上显示效果是不同的</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    x:0,             //左上角x坐标
+    y:0,             //左上角y坐标
+    w:100,           //宽度
+    h:100            //高度
+}
+</code></pre>
+<p><a name="示例代码-34"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.addWatermark({
+    src: &quot;../image/api100.png&quot;, 
+    rect: {x: 10, y: 10, w: 100, h: 37}
+});
+</code></pre>
+<p><a name="可用性"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">可用性</span></h4>
+<p>仅适用于iOS</p>
+<p><a name="clearwatermark"></a></p>
+<h3 id="-span-class-colored-clearwatermark-span-"><span class="colored">clearWatermark</span></h3>
+<p>清除当前所有水印，需要在下次直播开始时才生效</p>
+<p>clearWatermark()</p>
+<p><a name="示例代码-35"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.clearWatermark();
+</code></pre>
+<p><a name="可用性-1"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">可用性</span></h4>
+<p>仅适用于iOS</p>
+<p><a name="settorchon"></a></p>
+<h3 id="-span-class-colored-settorchon-span-"><span class="colored">setTorchOn</span></h3>
+<p>打开/关闭闪光灯</p>
+<p>setTorchOn({params})</p>
+<p><a name="params-20"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>on:</p>
+<ul>
+<li>类型：布尔值</li>
+<li>默认值：false</li>
+<li>描述：是否打开闪光灯</li>
+</ul>
+<p><a name="示例代码-36"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.setTorchOn({
+    on: true
+});
+</code></pre>
+<p><a name="gettorchstatus"></a></p>
+<h3 id="-span-class-colored-gettorchstatus-span-"><span class="colored">getTorchStatus</span></h3>
+<p>获取当前闪光灯状态</p>
+<p>getTorchStatus(callback(ret, err))</p>
+<p><a name="callbackret-err-12"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    on:false              //false表示关闭状态，true表示打开状态
+}
+</code></pre>
+<p><a name="示例代码-37"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.getTorchStatus(function(ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="setmute-1"></a></p>
+<h3 id="-span-class-colored-setmute-span-"><span class="colored">setMute</span></h3>
+<p>打开/关闭麦克风</p>
+<p>setTorchOn({params})</p>
+<p><a name="params-21"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>mute:</p>
+<ul>
+<li>类型：布尔值</li>
+<li>默认值：false</li>
+<li>描述：是否关闭麦克风</li>
+</ul>
+<p><a name="示例代码-38"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.setMute({
+    mute: true
+});
+</code></pre>
+<p><a name="getmutestatus-1"></a></p>
+<h3 id="-span-class-colored-getmutestatus-span-"><span class="colored">getMuteStatus</span></h3>
+<p>获取当前麦克风状态（是否关闭）</p>
+<p>getMuteStatus(callback(ret, err))</p>
+<p><a name="callbackret-err-13"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：如果当前推流端没有初始化，返回为空。</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    mute:false              //false表示麦克风没关闭，true表示关闭
+}
+</code></pre>
+<p><a name="示例代码-39"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.getMuteStatus(function(ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="setvideopreset"></a></p>
+<h3 id="-span-class-colored-setvideopreset-span-"><span class="colored">setVideoPreset</span></h3>
+<p>设置视频编码参数</p>
+<p>setVideoPreset({params})</p>
+<p><a name="params-22"></a></p>
+<h4 id="-a-name-videopreset-a-span-class-colored-params-span-"><a name="videoPreset"></a><span class="colored">params</span></h4>
+<p>width:</p>
+<ul>
+<li>类型：数字</li>
+<li>默认值：0</li>
+<li>描述：推送视频的像素宽度</li>
+</ul>
+<p>height:</p>
+<ul>
+<li>类型：数字</li>
+<li>默认值：0</li>
+<li>描述：推送视频的像素高度</li>
+</ul>
+<p>bps:</p>
+<ul>
+<li>类型：数字</li>
+<li>默认值：0</li>
+<li>描述：推送视频的最高码率限制，单位为kbps</li>
+</ul>
+<p>fps:</p>
+<ul>
+<li>类型：数字</li>
+<li>默认值：0</li>
+<li>描述：摄像机的视频帧率，如果使用默认值0将会使用摄像机默认的帧率</li>
+</ul>
+<p><a name="示例代码-40"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.setVideoPreset({
+    width: 360, 
+    height: 640, 
+    bps: 640, 
+    fps: 24
+});
+</code></pre>
+<p><a name="补充说明-10"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<ul>
+<li>默认情况下，直播出去的视频分辨率为<strong>640x360</strong>，码率为<strong>480kbps</strong>，帧率为<strong>20</strong></li>
+<li>视频预览的参数是不可修改的，只能根据视图的方向旋转而已。这个接口设置的只是视频编码的参数（iOS）</li>
+<li>当视频编码的分辨率与本地预览的分辨率不一致时，最终推送出去的视频将会是<strong>预览画面保持比例居中</strong>（iOS）</li>
+<li>码率的设置是最大值的设置，码率过低容易导致画面模糊，特别是当画面抖动的时候。</li>
+<li>需要<strong>在预览开始前</strong>就设置，如果当前正在直播，那么设置会在下次直播才生效。</li>
+<li>在<strong>Android</strong>系统上，调用这个接口会<strong>改变摄像头的预览分辨率</strong>，sdk底层会根据传入的视频宽度和长度自动选择最接近的分辨率</li>
+</ul>
+<p><a name="getvideopreset"></a></p>
+<h3 id="-span-class-colored-getvideopreset-span-"><span class="colored">getVideoPreset</span></h3>
+<p>获取当前视频编码参数</p>
+<p>getVideoPreset(callback(ret, err))</p>
+<p><a name="callbackret-err-14"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：如果当前推流端没有初始化，返回为空。</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    width:360               //推送视频的像素宽度
+    height:640              //推送视频的像素高度
+    bps:640                 //推送视频的最高码率限制，单位为kbps
+    fps:24                  //摄像机的视频帧率
+}
+</code></pre>
+<p><a name="示例代码-41"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.getVideoPreset(function(ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="setfilter"></a></p>
+<h3 id="-span-class-colored-setfilter-span-"><span class="colored">setFilter</span></h3>
+<p>设置滤镜模式</p>
+<p>setFilter({params})</p>
+<p><a name="params-23"></a></p>
+<h4 id="-a-name-videopreset-a-span-class-colored-params-span-"><a name="videoPreset"></a><span class="colored">params</span></h4>
+<p>filter:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：normal</li>
+<li>描述：滤镜模式。<strong>normal</strong>表示不添加滤镜，<strong>smoothSkin</strong>表示美白磨皮滤镜</li>
+</ul>
+<p><a name="示例代码-42"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.setFilter({filter: &#39;smoothSkin&#39;})
+</code></pre>
+<p><a name="补充说明-11"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<p>滤镜的设置是实时生效的</p>
+<p><a name="getfilter"></a></p>
+<h3 id="-span-class-colored-getfilter-span-"><span class="colored">getFilter</span></h3>
+<p>获取当前滤镜模式</p>
+<p>getFilter(callback(ret))</p>
+<p><a name="callbackret-4"></a></p>
+<h4 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：如果当前推流端没有初始化，返回为空。</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    filter:&#39;normal&#39;     //normal表示不添加滤镜，smoothSkin表示美白磨皮滤镜
+}
+</code></pre>
+<p><a name="示例代码-43"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.getFilter(function(ret) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }
+});
+</code></pre>
+<p><a name="setsmoothskinfactor"></a></p>
+<h3 id="-span-class-colored-setsmoothskinfactor-span-"><span class="colored">setSmoothSkinFactor</span></h3>
+<p>设置美白磨皮滤镜的效果强度</p>
+<p>setSmoothSkinFactor({params})</p>
+<p><a name="params-24"></a></p>
+<h4 id="-a-name-videopreset-a-span-class-colored-params-span-"><a name="videoPreset"></a><span class="colored">params</span></h4>
+<p>factor:</p>
+<ul>
+<li>类型：浮点数</li>
+<li>默认值：0.5</li>
+<li>描述：表示磨皮效果强度的一个因子，该值越大，效果越强。取值范围为0~1</li>
+</ul>
+<p><a name="示例代码-44"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.setSmoothSkinFactor({factor: 0.3})
+</code></pre>
+<p><a name="getsmoothskinfactor"></a></p>
+<h3 id="-span-class-colored-getsmoothskinfactor-span-"><span class="colored">getSmoothSkinFactor</span></h3>
+<p>获取当前美白磨皮滤镜的效果强度</p>
+<p>getSmoothSkinFactor(callback(ret))</p>
+<p><a name="callbackret-5"></a></p>
+<h4 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：如果当前推流端没有初始化，返回为空。</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    factor:0.5,     //表示磨皮效果强度的一个因子，该值越大，效果越强,取值范围为0~1
+}
+</code></pre>
+<p><a name="示例代码-45"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.getSmoothSkinFactor(function(ret) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }
+});
+</code></pre>
+<p>以下接口为人脸识别功能，脸萌特效，包括大眼、瘦脸、美颜、滤镜等。如需该功能，请联系亲加客服。
+<a name="initfacedetection"></a></p>
+<h3 id="-span-class-colored-initfacedetection-span-"><span class="colored">initFaceDetection</span></h3>
+<p>初始化人脸识别功能，设置一些基本参数</p>
+<p>initFaceDetection({params})</p>
+<p><a name="params-25"></a></p>
+<h4 id="params">params</h4>
+<p>externalPath:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：faceUnity资源部存储的外部路径，如暂时没有动态下载功能可为空</li>
+</ul>
+<p>portrait:</p>
+<ul>
+<li>类型：布尔值</li>
+<li>默认值：true</li>
+<li>描述：是否竖屏使用，默认true</li>
+</ul>
+<p><a name="setfacedetectionfilter"></a></p>
+<h3 id="-span-class-colored-setfacedetectionfilter-span-"><span class="colored">setFaceDetectionFilter</span></h3>
+<p>设置贴图以及滤镜</p>
+<p>setFaceDetectionFilter({params})</p>
+<p><a name="params-26"></a></p>
+<h4 id="params">params</h4>
+<p>face:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：贴图名称，如果是使用内置的贴图，只需要传入名字即可（不带后缀名）。如果是使用外部下载的贴图，需要传入带后缀名的文件名称。</li>
+</ul>
+<p>默认贴图：</p>
+<pre><code class="lang-js">&quot;tiara&quot;, &quot;item0208&quot;, &quot;YellowEar&quot;, &quot;PrincessCrown&quot;, &quot;Mood&quot; , &quot;Deer&quot; , &quot;BeagleDog&quot;, &quot;item0501&quot;, &quot;ColorCrown&quot;, &quot;item0210&quot;,  &quot;HappyRabbi&quot;, &quot;item0204&quot;, &quot;hartshorn&quot;
+</code></pre>
+<p>最终内置贴图以faceUnity那边提供的资源和产品需求为准。</p>
+<p>beautify:</p>
+<ul>
+<li>类型：json字段</li>
+<li>默认值：无</li>
+<li>描述：美颜参数，如无需美颜，则不传该参数</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    filter: //滤镜名称
+}
+//滤镜列表：&quot;nature&quot;, &quot;delta&quot;, &quot;electric&quot;, &quot;slowlived&quot;, &quot;tokyo&quot;, &quot;warm&quot;
+</code></pre>
+<p><a name="changebeautifyparams"></a></p>
+<h3 id="-span-class-colored-changebeautifyparams-span-"><span class="colored">changeBeautifyParams</span></h3>
+<p>修改美颜参数。美颜滤镜都有默认值，如无需求可不修改</p>
+<p>changeBeautifyParams({params})</p>
+<p><a name="params-27"></a></p>
+<h4 id="params">params</h4>
+<p>cheekThinningLevel:</p>
+<ul>
+<li>类型：浮点数</li>
+<li>默认值：无</li>
+<li>描述：设置瘦脸级别。大于等于0的浮点数，0为关闭效果，1为默认效果，大于1为进一步增强效果</li>
+</ul>
+<p>eyeEnlargingLevel:</p>
+<ul>
+<li>类型：浮点数</li>
+<li>默认值：无</li>
+<li>描述：设置大眼级别。大于等于0的浮点数，0为关闭效果，1为默认效果，大于1为进一步增强效果</li>
+</ul>
+<p>colorLevel:</p>
+<ul>
+<li>类型：浮点数</li>
+<li>默认值：无</li>
+<li>描述：设置美白级别。大于等于0的浮点数，0为关闭效果，1为默认效果，大于1为进一步增强效果</li>
+</ul>
+<p>blurLevel:</p>
+<ul>
+<li>类型：整数</li>
+<li>默认值：无</li>
+<li>描述：设置美白级别。取值范围为0-5，对应6个不同的磨皮程度。默认值1</li>
+</ul>
+<p>redLevel:</p>
+<ul>
+<li>类型：浮点数</li>
+<li>默认值：无</li>
+<li>描述：设置红润程度。 推荐取值范围为[0, 1]，0为无效果，0.5为默认效果，大于1为继续增强效果</li>
+</ul>
+<p><a name="getinfo-1"></a></p>
+<h3 id="-span-class-colored-getinfo-span-"><span class="colored">getInfo</span></h3>
+<p>获取当前推流端的一些状态信息</p>
+<p>getInfo(callback(ret))</p>
+<p><a name="callbackret-6"></a></p>
+<h4 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：如果当前推流端没有初始化，返回为空。</li>
+</ul>
+<p><a name="publisherInfo"></a>内部字段：</p>
+<pre><code class="lang-js">{
+    connectionTime:500,         //推流端连接到服务器所花费的时间，单位毫秒
+    bps:700,                     //当前推流端的码流大小，单位kbps
+    bufferSize:50,              //当前推流端的本地数据缓存大小，单位byte
+}
+</code></pre>
+<p><a name="示例代码-46"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.getInfo(function(ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }
+});
+</code></pre>
+<p><a name="addeventlistener-2"></a></p>
+<h3 id="-span-class-colored-addeventlistener-span-"><span class="colored">addEventListener</span></h3>
+<p>添加直播模块事件的监听</p>
+<p>addEventListener({params}, callback(ret, err))</p>
+<p><a name="params-28"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>name:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：事件名称（详见<a href="#publisherEvent">事件</a>）</li>
+</ul>
+<p><a name="callbackret-err-15"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：事件发生时传递的参数，可能为空</li>
+</ul>
+<p><a name="示例代码-47"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+publisher.addEventListener({
+    name:&#39;disconnected&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="removeeventlistener-2"></a></p>
+<h3 id="-span-class-colored-removeeventlistener-span-"><span class="colored">removeEventListener</span></h3>
+<p>移除事件监听</p>
+<p>removeEventListener({params})</p>
+<p><a name="params-29"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>name:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：sdk事件名称（详见<a href="#publisherEvent">事件</a>）</li>
+</ul>
+<p><a name="示例代码-48"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.removeEventListener({
+    name: &#39;disconnected&#39;
+});
+</code></pre>
+<p><a name="removealleventlisteners-2"></a></p>
+<h3 id="-span-class-colored-removealleventlisteners-span-"><span class="colored">removeAllEventListeners</span></h3>
+<p>移除所有的事件监听</p>
+<p>removeAllEventListeners()</p>
+<p><a name="示例代码-49"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.removeAllEventListeners();
+</code></pre>
+<p><a name="login-1"></a></p>
+<h3 id="-a-name-loginpublisher-a-span-class-colored-login-span-"><a name="loginPublisher"></a><span class="colored">login</span></h3>
+<p>登录直播间的主播账号。仅<a href="#publisher1"><strong>模式一</strong></a>有效</p>
+<p>login({params}, callback(ret, err))</p>
+<p><a name="params-30"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>force:</p>
+<ul>
+<li>类型：布尔值</li>
+<li>默认值：false</li>
+<li>描述：如果当前已经有主播登录了该直播间，是否强制踢出当前登录的主播</li>
+</ul>
+<p><a name="callbackret-err-16"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：始终为空</li>
+</ul>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：登录成功成功时为空，失败时不为空</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-50"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.login({force:true}, function(ret, err) {
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="logout-1"></a></p>
+<h3 id="-span-class-colored-logout-span-"><span class="colored">logout</span></h3>
+<p>退出主播间直播账号的登录。仅<a href="#publisher1"><strong>模式一</strong></a>有效</p>
+<p>logout()</p>
+<p><a name="示例代码-51"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.logout();
+</code></pre>
+<p><a name="beginrecording"></a></p>
+<h3 id="-span-class-colored-beginrecording-span-"><span class="colored">beginRecording</span></h3>
+<p>将当时时间设为保存录像的起点。仅<a href="#publisher1"><strong>模式一</strong></a>有效</p>
+<p>beginRecording()</p>
+<p><a name="示例代码-52"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.beginRecording();
+</code></pre>
+<p><a name="补充说明-12"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<p>如果重复调用，那么会忽略上一次的时间点，将起点重置为当前时间</p>
+<p><a name="endrecording"></a></p>
+<h3 id="-span-class-colored-endrecording-span-"><span class="colored">endRecording</span></h3>
+<p>将当前时间设置为保存直播录像的终点。仅<a href="#publisher1"><strong>模式一</strong></a>有效</p>
+<p>endRecording(callback(ret, err))</p>
+<p><a name="callbackret-err-17"></a></p>
+<h4 id="-span-class-colored-callback-ret-err-span-"><span class="colored">callback(ret, err)</span></h4>
+<p>ret:</p>
+<ul>
+<li>描述：总是为空</li>
+</ul>
+<p>err:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：成功保存录像时为空，失败时不为空</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误的具体描述   
+}
+</code></pre>
+<p><a name="示例代码-53"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">示例代码</span></h4>
+<pre><code class="lang-js">publisher.endRecording(function(ret, err) {
+    if( err ){
+         alert( JSON.stringify( err ) );
+    }
+});
+</code></pre>
+<p><a name="补充说明-13"></a></p>
+<h4 id="-span-class-colored-span-"><span class="colored">补充说明</span></h4>
+<ul>
+<li>如果时长小于两分钟，保存会失败</li>
+<li>如果没有调用过beginRecording，回调返回成功但是不会做任何操作</li>
+<li>保存成功的录像可以在<a href="https://livevip.com.cn/live/admin/" target="_blank">亲加管理后台</a>中找到</li>
+</ul>
+<p><a name="事件-2"></a></p>
+<h3 id="-a-name-publisherevent-a-span-class-colored-span-"><a name="publisherEvent"></a><span class="colored">事件</span></h3>
+<ul>
+<li><a href="#connected-1">connected</a></li>
+<li><a href="#disconnected-1">disconnected</a></li>
+<li><a href="#reconnecting-2">reconnecting</a></li>
+<li><a href="#statusUpdate-1">statusUpdate</a></li>
+<li><a href="#error-1">error</a></li>
+<li><a href="#forceLogout-1">forceLogout</a></li>
+</ul>
+<p><a name="connected-1"></a></p>
+<h4 id="-span-class-colored-border-connected-span-"><span class="colored border">connected</span></h4>
+<p>推流端连接服务器成功的事件</p>
+<p><a name="callback-12"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-73"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">publisher.addEventListener({
+    name:&#39;connected&#39;
+},function(){
+    //operation
+});
+</code></pre>
+<p><a name="disconnected-1"></a></p>
+<h4 id="-span-class-colored-border-disconnected-span-"><span class="colored border">disconnected</span></h4>
+<p>推流端与服务器断开连接的事件</p>
+<p><a name="callback-13"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-74"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">publisher.addEventListener({
+    name:&#39;disconnected&#39;
+},function(){
+    //operation
+});
+</code></pre>
+<p><a name="reconnecting-2"></a></p>
+<h4 id="-span-class-colored-border-reconnecting-span-"><span class="colored border">reconnecting</span></h4>
+<p>推流端正在尝试重连连接服务器的事件</p>
+<p><a name="callback-14"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-75"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">publisher.addEventListener({
+    name:&#39;reconnecting&#39;
+},function(){
+    //operation
+});
+</code></pre>
+<p><a name="statusUpdate-1"></a></p>
+<h4 id="-span-class-colored-border-statusupdate-span-"><span class="colored border">statusUpdate</span></h4>
+<p>推流端状态信息更新的事件</p>
+<p><a name="callback-15"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-76"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">publisher.addEventListener({
+    name:&#39;statusUpdate&#39;
+},function(){
+    //operation
+});
+</code></pre>
+<p><a name="补充说明-18"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">补充说明</span></h5>
+<p>推流成功成功后，sdk底层每隔1秒会发送此事件，表示<a href="#publisherInfo">状态信息</a>有更新</p>
+<p><a name="error-1"></a></p>
+<h4 id="-span-class-colored-border-error-span-"><span class="colored border">error</span></h4>
+<p>推流端出现错误的事件。详见<a href="#publisherError">错误码说明</a></p>
+<p><a name="callbackret-10"></a></p>
+<h5 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h5>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：错误的具体信息，不为空</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    code:401,               //错误的状态码
+    description:&quot;验证失败&quot;   //错误描述     
+}
+</code></pre>
+<p><a name="示例代码-77"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">//监听与服务器断开连接的事件
+player.addEventListener({
+    name:&#39;error&#39;
+},function(ret,err){
+    //operation
+});
+</code></pre>
+<p><a name="forceLogout-1"></a></p>
+<h4 id="-span-class-colored-border-forcelogout-span-"><span class="colored border">forceLogout</span></h4>
+<p>主播账号被强制踢下线的事件。仅<a href="#publisher1"><strong>模式一</strong></a>有效</p>
+<p><a name="callback-16"></a></p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>不可为空</p>
+<p><a name="示例代码-78"></a></p>
+<h5 id="-span-class-colored-span-"><span class="colored">示例代码</span></h5>
+<pre><code class="lang-js">publisher.addEventListener({
+    name:&#39;forceLogout&#39;
+},function(){
+    //operation
+});
+</code></pre>
+<p><a name="错误码说明-3"></a></p>
+<h3 id="-a-name-publishererror-a-"><a name="publisherError"></a>错误码说明</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>401</td>
+<td>验证失败，或者是没有验证成功的情况下调用了别的接口</td>
+</tr>
+<tr>
+<td>1011</td>
+<td>当前账号已经有人登录了</td>
+</tr>
+<tr>
+<td>-101</td>
+<td>当前已经有人在直播了</td>
+</tr>
+<tr>
+<td>-102</td>
+<td>网络断开</td>
+</tr>
+<tr>
+<td>-103</td>
+<td>获取当前直播状态出错</td>
+</tr>
+<tr>
+<td>-104</td>
+<td>无法获取摄像头，请检查权限</td>
+</tr>
+<tr>
+<td>-105</td>
+<td>获取直播Url出错 </td>
+</tr>
+<tr>
+<td>-106</td>
+<td>当前状态无效</td>
+</tr>
+<tr>
+<td>-107</td>
+<td>用户未登录</td>
+</tr>
+<tr>
+<td>-108</td>
+<td>获取登录url失败</td>
+</tr>
+<tr>
+<td>-109</td>
+<td>录制时长过短（少于两分钟）</td>
+</tr>
+</tbody>
+</table>
+<p><a name="连麦模块gotyelivep2p"></a></p>
+<h2 id="-gotyelivep2p-">连麦模块(gotyeLiveP2P)</h2>
+<p>本模块只实现了连麦的基本功能，包括建立连接以及断开连接。建立连接之前的邀请逻辑以及断开连接之前的挂断逻辑，建议可以通过聊天模块发送自定义消息去实现。</p>
+<ul>
+<li><a href="#joinroom">joinRoom</a></li>
+<li><a href="#leaveroom">leaveRoom</a></li>
+<li><a href="#addeventlistener-3">addEventListener</a></li>
+<li><a href="#removeeventlistener-3">removeEventListener</a></li>
+<li><a href="#removealleventlisteners-3">removeAllEventListeners</a></li>
+<li><a href="#事件-3">事件</a></li>
+</ul>
+<p><a name="joinroom"></a></p>
+<h3 id="-span-class-colored-joinroom-span-"><span class="colored">joinRoom</span></h3>
+<p>加入视频通话房间，加入同一房间的用户可以相互进行通信。</p>
+<p>joinRoom({params})</p>
+<p><a name="params-31"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>roomId:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：视频聊天房间ID，可以为任意字符串。在同一房间的两个用户可以相互通信</li>
+</ul>
+<p>localId:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：本机用户在视频房间中的标识符，需要唯一</li>
+</ul>
+<p>remoteId:</p>
+<ul>
+<li>类型：字符串</li>
+<li>默认值：无</li>
+<li>描述：对端用户在视频房间中的标识符，需要唯一。如果指定了这个参数的值，本地的用户将与remoteId指定的用户进建立视频通话，如果不指定，将会与第一个进入房间的用户建立视频通话</li>
+</ul>
+<p>localView: (ios)</p>
+<ul>
+<li>类型：json对象</li>
+<li>默认值：无</li>
+<li>描述：仅在iOS平台有效，表示本地视频的窗口参数</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    fixedOn:&quot;frame&quot;,  //窗口的名称
+    fixed:true        //是否随窗口一起滚动，默认true     
+}
+</code></pre>
+<p>remoteView: (ios)</p>
+<ul>
+<li>类型：json对象</li>
+<li>默认值：无</li>
+<li>描述：仅在iOS平台中有效，表示远端视频的窗口参数</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    fixedOn:&quot;frame&quot;,  //窗口的名称
+    fixed:true        //是否随窗口一起滚动，默认true     
+}
+</code></pre>
+<p>rendererView: (Android)</p>
+<ul>
+<li>类型：json对象</li>
+<li>默认值：无</li>
+<li>描述：仅在Android平台有效，表示本地合成画面的窗口参数</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    fixedOn:&quot;frame&quot;,  //窗口的名称
+    fixed:true        //是否随窗口一起滚动，默认true     
+}
+</code></pre>
+<p><a name="leaveroom"></a></p>
+<h3 id="-span-class-colored-leaveroom-span-"><span class="colored">leaveRoom</span></h3>
+<p>退出视频通话房间并释放资源</p>
+<p>leaveRoom()</p>
+<p><a name="addeventlistener-3"></a></p>
+<h3 id="-span-class-colored-addeventlistener-span-"><span class="colored">addEventListener</span></h3>
+<p>添加事件监听</p>
+<p>addEventListener({params})</p>
+<p><a name="params-32"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>请参考gotyeLive的其它模块</p>
+<p><a name="removeeventlistener-3"></a></p>
+<h3 id="-span-class-colored-removeeventlistener-span-"><span class="colored">removeEventListener</span></h3>
+<p>移除事件监听</p>
+<p>removeEventListener({params})</p>
+<p><a name="params-33"></a></p>
+<h4 id="-span-class-colored-params-span-"><span class="colored">params</span></h4>
+<p>请参考gotyeLive的其它模块</p>
+<p><a name="removealleventlisteners-3"></a></p>
+<h3 id="-span-class-colored-removealleventlisteners-span-"><span class="colored">removeAllEventListeners</span></h3>
+<p>移除所有的事件监听</p>
+<p>removeAllEventListeners()</p>
+<p><a name="事件-3"></a></p>
+<h3 id="-span-class-colored-span-"><span class="colored">事件</span></h3>
+<ul>
+<li><a href="#joinedroom">joinedRoom</a></li>
+<li><a href="#connected-2">connected</a></li>
+<li><a href="#disconnected-2">disconnected</a></li>
+<li><a href="#error-2">error</a></li>
+</ul>
+<p><a name="joinedroom"></a></p>
+<h4 id="-span-class-colored-joinedroom-span-"><span class="colored">joinedRoom</span></h4>
+<p>成功连接视频房间的事件</p>
+<h5 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h5>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：已连接房间的信息，不为空</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    roomId:&#39;&#39;             //房间ID号
+}
+</code></pre>
+<p><a name="connected-2"></a></p>
+<h4 id="-span-class-colored-connected-span-"><span class="colored">connected</span></h4>
+<p>成功建立视频通话连接的事件</p>
+<h5 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h5>
+<p>ret:</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>描述：当前正在通话的远端用户的信息，不为空</li>
+</ul>
+<p>内部字段：</p>
+<pre><code class="lang-js">{
+    remoteId:&#39;&#39;             //远端用户的ID
+}
+</code></pre>
+<p><a name="disconnected-2"></a></p>
+<h4 id="-span-class-colored-disconnected-span-"><span class="colored">disconnected</span></h4>
+<p>视频通话断开连接的事件</p>
+<h5 id="-span-class-colored-callback-span-"><span class="colored">callback()</span></h5>
+<p>收到此事件后，与视频通话房间的连接也会断开，如需重新建立视频通话，需要重进调用<code>joinRoom</code></p>
+<p><a name="error-2"></a></p>
+<h4 id="-span-class-colored-error-span-"><span class="colored">error</span></h4>
+<p>发生错误的事件</p>
+<h5 id="-span-class-colored-callback-ret-span-"><span class="colored">callback(ret)</span></h5>
+<p>收到此事件后，与视频通话房间的连接也会断开，如需重新建立视频通话，需要重进调用<code>joinRoom</code></p>
+
+
+            <div class="page-meta clearfix">
+                <div class="last-updated pull-right">
+                    <!-- Last updated on 27th May 2017 -->
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <!-- <div class="footer-logo"> -->
+                    <!-- <a href="http://www.apicloud.com" target="_blank" style="width:182px;height:113px;display:inline-block;margin-left: 25px;">
+                        <img src="/img/logo.jpg" alt="">
+                    </a> -->
+                    <!-- <div style="display:inline-block;float:right"> -->
+                        <p class="copyright pull-right" style="margin-top:-70px;">
+                            Copyright &copy; 2017APICloud Docs   &nbsp <a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action">京ICP备14027692号</a>
+                        </p>
+                    <!-- </div> -->
+                <!-- </div> -->
+                
+            </div>
+        </footer>
+        <div id="outlineTip">
+        </div>
+        <a id="backToTop" href="javascript:void(0)">
+        </a>
+        <!-- <iframe id="bbsLogin" style="display:none" src="/bbsLogin.html">
+        </iframe> -->
+        <script src="../../bower_components/jquery/dist/jquery.min.js">
+        </script>
+        <script src="../../scripts/jquery.qrcode.min.js"></script>
+        <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js">
+        </script>
+        <script src="../../bower_components/highlightjs/highlight.pack.js">
+        </script>
+        <script src="../../bower_components/fitvids/jquery.fitvids.js">
+        </script>
+        <script src="../../bower_components/masonry/dist/masonry.pkgd.min.js">
+        </script>
+        <script src="../../scripts/ZeroClipboard.min.js">
+        </script>
+        <script src="../../scripts/raneto.js">
+        </script>
+        <div style="display:none;">
+            <script type="text/javascript">
+                var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253236292'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1253236292%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+                // $('#operatingCloud').mouseenter(function () {
+                //     $('.mouse2').css('display','block');
+                //     $('.mouse1').css('display','none');
+                // }).mouseleave(function(){
+                //     $('.mouse2').css('display','none');
+                // })
+                // $('#operatingApp').mouseenter(function () {
+                //     $('.mouse1').css('display','block');
+                //     $('.mouse2').css('display','none');
+                // }).mouseleave(function(){
+                //     $('.mouse1').css('display','none');
+                // })
+                // $('#nav_point').mouseenter(function () {
+                //   $('.mouse2').css('display','none');
+                //   $('.mouse1').css('display','none');
+                // })
+  
+            </script>
+        </div>
+    </body>
+
+<!-- Mirrored from docs.apicloud.com/Client-API/Open-SDK/gotyeLiveCore by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 May 2017 08:30:08 GMT -->
+</html>

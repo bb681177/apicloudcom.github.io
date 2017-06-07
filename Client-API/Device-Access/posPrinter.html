@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from docs.apicloud.com/Client-API/Device-Access/posPrinter by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 May 2017 08:24:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>
+            
+            posPrinter
+        </title>
+        <!-- <title>
+            posPrinter - APICloud Docs
+        </title> -->
+        <meta name="description" content="posPrinter"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" href="../../favicon.png"/>
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../../bower_components/highlightjs/styles/vs.css"/>
+        <link rel="stylesheet" href="../../styles/font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="../../styles/raneto.css"/>
+        <link rel="stylesheet" href="../../styles/homenewlayout.css"/>
+        <style>
+            header{
+                top:0;
+            }
+            header div.authenticated{
+                display: none;
+            }
+            .authenticated.active{
+                display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+                display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+                display: -ms-flexbox;      /* TWEENER - IE 10 */
+                display: -webkit-flex;     /* NEW - Chrome */
+                display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+            }
+            .link-group.active{
+                display: none;
+            }
+            .copyright a{
+                color: #999 !important;
+                margin-right: 16px !important;
+            }
+            /*红点 start*/
+            /*.item-notice-out,
+            .item-notice-in{
+                position: relative;
+            }
+            .item-notice-out:after,
+            .item-notice-in:after{
+                position: absolute;
+                content: " ";
+                width: 6px;
+                height: 6px;
+                border-radius: 10px;
+                background-color: #ee3131;
+            }
+            .item-notice-out:after{
+                top: 13px;
+                right: 15px;
+            }
+            .item-notice-in:after{
+                top: 10px;
+                right: 14px;
+            }*/
+            /*红点 end*/
+        </style>
+        <link href="../../styles/video-js.css" rel="stylesheet" type="text/css"/>
+        <script src="../../scripts/video.js">
+        </script>
+        <script>
+            videojs.options.flash.swf = "../../video-js.swf";
+        </script>
+        
+    </head>
+    <body class="page-client-a-p-i-device-access-pos-printer">
+        <header class="light">
+            <div class="nav-left">
+                <a href="http://www.apicloud.com/" class="logo" title=''>
+                    <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 19.4" style="enable-background:new 0 0 120 19.4;" xml:space="preserve">
+                          <style type="text/css">
+                            .st0 {
+                              fill: #95BA1F;
+                            }
+                            
+                            .st1 {
+                              fill: #FFFFFF;
+                            }
+                          </style>
+                            <g id="XMLID_34_">
+                            <path id="XMLID_35_" class="st0" d="M23.6,18h-2.6v-3h2.6c1.5,0,2.8-1.3,2.8-2.8c0-1.5-1.3-2.8-2.8-2.8h-0.5
+                        c-0.2,4.7-4.2,8.5-9,8.5H5.7C2.6,18,0,15.4,0,12.2c0-3.2,2.6-5.7,5.7-5.7h13.9c-1-2.1-3.1-3.5-5.5-3.5c-1.9,0-3.6,0.9-4.8,2.3
+                        L8.4,6.5L6.1,4.6L7,3.5C8.7,1.3,11.3,0,14.1,0c4.1,0,7.6,2.7,8.6,6.5h0.8c3.2,0,5.7,2.6,5.7,5.7C29.3,15.4,26.7,18,23.6,18z
+                        M5.7,9.5C4.2,9.5,3,10.7,3,12.2C3,13.8,4.2,15,5.7,15h8.4c3.2,0,5.8-2.5,6-5.6H5.7z" />
+                            </g>
+                            <path id="XMLID_31_" class="st1" d="M46.1,13.9H41l-1.3,4.2h-2.4l4.9-14.8h2.7l4.9,14.8h-2.5L46.1,13.9z M45.6,12.1l-0.6-2
+                        c-0.5-1.6-0.9-3.3-1.4-4.9h-0.1c-0.4,1.7-0.9,3.3-1.4,4.9l-0.6,2H45.6z" />
+                            <path id="XMLID_28_" class="st1" d="M51.8,3.4h4.5c3.3,0,5.6,1.1,5.6,4.5c0,3.2-2.4,4.7-5.6,4.7h-2.2v5.6h-2.3V3.4z M56.1,10.7
+                        c2.4,0,3.5-0.9,3.5-2.9c0-1.9-1.2-2.6-3.6-2.6h-1.9v5.4H56.1z" />
+                            <path id="XMLID_26_" class="st1" d="M64.8,3.4h2.3v14.8h-2.3V3.4z" />
+                            <g id="XMLID_16_">
+                            <path id="XMLID_7_" class="st1" d="M80,15.7c-1.1,1.2-2.2,1.8-3.6,1.8c-3.1,0-5.1-2.6-5.1-6.7c0-4.1,2-6.6,5.2-6.6
+                            C78,4.2,79,5,79.5,5.7l0.1,0.2L80.4,5l-0.1-0.1c-0.5-0.5-1.7-1.8-3.9-1.8c-3.9,0-6.3,3-6.3,7.7c0,4.7,2.5,7.8,6.2,7.8
+                            c1.8,0,3.2-0.7,4.4-2.1l0.1-0.1l-0.7-0.8L80,15.7z" />
+                            <path id="XMLID_6_" class="st1" d="M85.1,17.5c-0.2,0-0.3,0-0.4,0c-0.1,0-0.3,0-0.3-0.5V2h-1.1V17c0,1.4,0.7,1.6,1.3,1.6
+                            c0.3,0,0.4,0,0.6-0.1l0.3-0.1l-0.2-1L85.1,17.5z" />
+                            <path id="XMLID_21_" class="st1" d="M92.5,7.1c-2.9,0-4.9,2.4-4.9,5.8c0,3.4,2,5.7,4.9,5.7c2.9,0,4.9-2.4,4.9-5.7
+                            C97.4,9.5,95.3,7.1,92.5,7.1z M92.5,17.5c-2.2,0-3.7-1.9-3.7-4.7c0-2.7,1.6-4.7,3.7-4.7c2.2,0,3.8,2,3.8,4.7
+                            C96.2,15.6,94.6,17.5,92.5,17.5z" />
+                            <path id="XMLID_3_" class="st1" d="M106.9,15.4c-1.4,1.6-2.3,2.1-3.4,2.1c-1.1,0-2.4-0.4-2.4-3.3V7.5h-0.9v6.9c0,2.9,1,4.2,3.3,4.2
+                            c1.5,0,2.6-0.9,3.4-1.8l0.1,1.5h1V7.5h-1.1V15.4z" />
+                            <path id="XMLID_17_" class="st1" d="M118.9,2v4.6l0,1.6c-1-0.7-1.8-1.1-3.1-1.1c-2.9,0-4.9,2.4-4.9,5.8c0,3.6,1.7,5.7,4.6,5.7
+                            c1.2,0,2.4-0.5,3.4-1.5l0.1,1.1h1V2H118.9z M118.9,9.5v6.3c-1.2,1.2-2.2,1.7-3.3,1.7c-2.1,0-3.5-1.8-3.5-4.7c0-2.7,1.7-4.7,3.8-4.7
+                            C116.9,8.1,117.8,8.5,118.9,9.5z" />
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="nav-right mw-8">
+                <div class="nav-right">
+                    <div class="authenticated" id="ifSigned">
+                    <ul>
+                        <li class="ifSigned-list">
+                            <div  class="profile toConsole">
+                                <img src="../../img/favicon-30.png"  alt="APICloud" />
+                                <span class="login-name">
+                                </span>
+                                <span class="arr-b">
+                                </span>
+                            </div>
+                            <ul class="nav-list single console-list">
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/console" class="nav-link-single">
+                                        <i class="fa icon-tasks">
+                                        </i>
+                                        <span>
+                                            开发控制台
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://app.apicloud.com/demandlist" class="nav-link-single">
+                                        <i class="fa icon-demand">
+                                        </i>
+                                        <span>
+                                            我的定制需求
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/module_pub_history" class="nav-link-single">
+                                        <i class="fa icon-inbox">
+                                        </i>
+                                        <span>
+                                            模块管理
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/myService" class="nav-link-single myBill">
+                                        <i class="fa icon-user">
+                                        </i>
+                                        <span>
+                                            我的账户
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/member" class="nav-link-single">
+                                        <i class="fa icon-group"></i>
+                                        <span>
+                                            团队协作
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/profile" class="nav-link-single">
+                                        <i class="fa icon-cog">
+                                        </i>
+                                        <span>
+                                            设置
+                                        </span>
+                                    </a>
+                                </li>
+                                <!-- <li class="nav-list-item" id="sign_out">
+                                    <a href="javascript:void(0)" class="nav-link-single">
+                                        <i class="fa icon-signout">
+                                        </i>
+                                        <span>
+                                            退出
+                                        </span>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="unauthenticated link-group">
+                        <a href="http://www.apicloud.com/signin">
+                            登录
+                        </a>
+                        <span>
+                        </span>
+                        <a href="http://www.apicloud.com/signup">
+                            注册
+                        </a>
+                    </div>
+                </div>
+                <ul class="nav nav-right">
+                    <li id="nav_point">
+                        <!-- 活动红点 -->
+                        <!-- <a href="http://www.apicloud.com" class="badge-red"> -->
+                        <a href="javascript:void(0)">
+                            APP开发平台
+                        </a>
+                        <ul class="nav-list pointer">
+                            <li class="nav-list-item mousein" id="operatingApp">
+                                <a href="javascript:void(0)" class="nav-link operatingApp_link">
+                                    <span class="APP">APP引擎</span>
+                                    <i class="icon-angle-right"></i>
+                                </a>
+                                <span class="mouse mouse1">
+                                    <ul class="nav-list mouse-ul pointer_right">
+                                        <li class="nav-list-item ">
+                                            <a href="http://apicloud.com/superwebview" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_superwebview"></span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                           SuperWebView
+                                                    </span>
+                                                    <span class="nav-description">
+                                                            帮助原生程序员快速迭代
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-list-item nav-list-item1">
+                                            <a href="http://apicloud.com/deepengine" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_deepengine">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        Deep Engine
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        高效的跨平台APP引擎
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>   
+                                    </ul>
+                                </sapn>
+                            </li>
+                            <li class="nav-list-item mousein" id="operatingCloud">
+                                <a href="javascript:void(0)"  class="nav-link operatingCloud_link">
+                                    <span class="APP">云引擎</span>
+                                    <i class="icon-angle-right"></i>
+                                </a>
+                                <span class="mouse mouse2">
+                                    <ul class="nav-list mouse-ul pointer_right">
+                                        <li class="nav-list-item">
+                                            <a href="http://apicloud.com/cloudservice" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_cloudservice">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        数据云
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        无需编程 自动生成Server端
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-list-item nav-list-item1">
+                                            <a href="http://apicloud.com/cloudmanage" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_cloudoperating">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        运营云
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        提升您的运维效率
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>        
+                                    </ul>
+                                </sapn>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/modulestore"  class="nav-link">
+                                    <span class="APP">模块Store</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="../../APICloud/junior-develop-guide.html"  class="nav-link">
+                                    <span class="APP">新手指南</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/devtools" class="nav-link">
+                                    <span class="APP">开发工具</span>
+                                </a>
+                            </li>
+                            <!-- <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/vipservice/price" class="nav-link">
+                                    <span class="APP badge-red">价格</span>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://app.apicloud.com/" target="_blank">
+                            APP定制服务
+                        </a>
+                        <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/" class="nav-link" target="_blank">
+                                APP定制
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/appCustom" class="nav-link" target="_blank">
+                                模板Store
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://community.apicloud.com/" target="_blank">
+                            开发者社区
+                        </a>
+                        <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://community.apicloud.com/bbs/forum.php" class="nav-link" target="_blank">
+                                    在线社区
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../../index.html" class="nav-link" target="_blank">
+                                    文档
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/video_list" class="nav-link">
+                                    视频教程
+                                </a> 
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/source_code" class="nav-link">
+                                    源码
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://apicloud.com/vipservice/price"  target="_blank">
+                            VIP服务
+                        </a>
+                        <!-- <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/price" class="nav-link">
+                                    VIP服务
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/plan" class="nav-link">
+                                    云服务价格
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/channel" class="nav-link">
+                                    渠道打包
+                                </a> 
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/enterpEdition" class="nav-link">
+                                    优先技术支持
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/course" class="nav-link">
+                                    培训课程
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/attest" class="nav-link">
+                                    认证工程师
+                                </a>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href="http://apicloud.com/cases" target="_blank" class="item-notice-out">
+                            案例
+                        </a>
+                        <ul class="nav-list single">
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/cases" class="nav-link" target="_blank">
+                                    开发案例
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/cases" class="nav-link" target="_blank">
+                                    定制案例
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="row main-container">
+    <div class="col-sm-2 main-menu">
+        <!--search box-->
+        <form class="search-form form-inline" role="form" action="http://docs.apicloud.com/">
+            <div class="form-group">
+                <label class="sr-only" for="search">Search</label>
+                <input type="search" class="form-control" name="search" id="search" size="30" value="" placeholder="Search">
+            </div>
+        </form>
+        <ul class="menu">
+                    <li class="page"><a href="../../index.html">开发文档</a></li>
+            <li class="category">
+                <h5 class="category-title">Apicloud</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../APICloud/platform-intro.html">APP开发平台介绍</a></li>
+                    <li class="page"><a href="../../APICloud/APP-custom-info.html">APP定制平台介绍</a></li>
+                    <li class="page"><a href="../../APICloud/junior-develop-guide.html">新手开发指南</a></li>
+                    <li class="page"><a href="../../APICloud/creating-first-app.html">创建第一个应用</a></li>
+                    <li class="page"><a href="../../APICloud/APP-Template-Guide.html">模板使用流程</a></li>
+                    <li class="page"><a href="../../APICloud/app-guide.html">如何开发出优秀的APICloud应用</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">模块开发</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Module-Dev/module-dev-standard.html">开发模块设计规范</a></li>
+                    <li class="page"><a href="../../Module-Dev/module-dev-guide-for-ios.html">模块开发指南_iOS</a></li>
+                    <li class="page"><a href="../../Module-Dev/module-dev-guide-for-android.html">模块开发指南_Android</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-audit-specification-ios.html">模块审核规范-iOS</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-audit-specification-Android.html">模块审核规范-Android</a></li>
+                    <li class="page"><a href="../../Module-Dev/Upload-custom-module.html">自定义模块使用说明</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-Store-Guide.html">模块Store规范</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-Store-Service-Agreement.html">模块Store服务协议</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">端API</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../api.html">API对象</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">设备访问
+</h5>
+                <ul class="pages">
+                    <li class="page"><a href="3DTouch.html">3DTouch</a></li>
+                    <li class="page"><a href="DVTorch.html">DVTorch</a></li>
+                    <li class="page"><a href="FNSettings.html">FNSettings</a></li>
+                    <li class="page"><a href="accelerometer.html">accelerometer</a></li>
+                    <li class="page"><a href="accelerometerSensor.html">accelerometerSensor</a></li>
+                    <li class="page"><a href="appSettings.html">appSettings</a></li>
+                    <li class="page"><a href="appVersionUpdate.html">appVersionUpdate</a></li>
+                    <li class="page"><a href="ble.html">ble</a></li>
+                    <li class="page"><a href="bluetooth.html">bluetooth</a></li>
+                    <li class="page"><a href="brightness2016.html">brightness2016</a></li>
+                    <li class="page"><a href="btmodule.html">btmodule</a></li>
+                    <li class="page"><a href="btsppiot.html">btsppiot</a></li>
+                    <li class="page"><a href="calendarMemo.html">calendarMemo</a></li>
+                    <li class="page"><a href="callRecord.html">callRecord</a></li>
+                    <li class="page"><a href="cameraTool.html">cameraTool</a></li>
+                    <li class="page"><a href="clipBoard.html">clipBoard</a></li>
+                    <li class="page"><a href="compassLeveler.html">compassLeveler</a></li>
+                    <li class="page"><a href="contact.html">contact</a></li>
+                    <li class="page"><a href="contacts.html">contacts</a></li>
+                    <li class="page"><a href="easyNFC.html">easyNFC</a></li>
+                    <li class="page"><a href="gps.html">gps</a></li>
+                    <li class="page"><a href="gpsState.html">gpsState</a></li>
+                    <li class="page"><a href="gravitySensor.html">gravitySensor</a></li>
+                    <li class="page"><a href="gyro.html">gyro</a></li>
+                    <li class="page"><a href="gyroscopeSensor.html">gyroscopeSensor</a></li>
+                    <li class="page"><a href="hardwareInfo.html">hardwareInfo</a></li>
+                    <li class="page"><a href="ipAddress.html">ipAddress</a></li>
+                    <li class="page"><a href="lightSensor.html">lightSensor</a></li>
+                    <li class="page"><a href="linearAcceleration.html">linearAcceleration</a></li>
+                    <li class="page"><a href="magneticFieldSensor.html">magneticFieldSensor</a></li>
+                    <li class="page"><a href="magnetometer.html">magnetometer</a></li>
+                    <li class="page"><a href="mediaScanner.html">mediaScanner</a></li>
+                    <li class="page"><a href="moduleSMS.html">moduleSMS</a></li>
+                    <li class="page"><a href="multiScreen.html">multiScreen</a></li>
+                    <li class="page"><a href="myAppInfo.html">myAppInfo</a></li>
+                    <li class="page"><a href="myListeningInfo.html">myListeningInfo</a></li>
+                    <li class="page"><a href="mySettingInfo.html">mySettingInfo</a></li>
+                    <li class="page"><a href="orientationSensor.html">orientationSensor</a></li>
+                    <li class="page"><a href="pasteboard.html">pasteboard</a></li>
+                    <li class="page"><a href="pedometer.html">pedometer</a></li>
+                    <li class="page"><a href="phoneInfo.html">phoneInfo</a></li>
+                    <li class="page"><a href="pingModule.html">pingModule</a></li>
+                    <li class="page"><a href="playText.html">playText</a></li>
+                    <li class="page active"><a href="posPrinter.html">posPrinter</a></li>
+                    <li class="page"><a href="posScanner.html">posScanner</a></li>
+                    <li class="page"><a href="proximitySensor.html">proximitySensor</a></li>
+                    <li class="page"><a href="rotationVector.html">rotationVector</a></li>
+                    <li class="page"><a href="seblePrinter.html">seblePrinter</a></li>
+                    <li class="page"><a href="simInfo.html">simInfo</a></li>
+                    <li class="page"><a href="simInfoImp.html">simInfoImp</a></li>
+                    <li class="page"><a href="spModule.html">spModule</a></li>
+                    <li class="page"><a href="statusBar.html">statusBar</a></li>
+                    <li class="page"><a href="sunmiPrinter.html">sunmiPrinter</a></li>
+                    <li class="page"><a href="toBackground.html">toBackground</a></li>
+                    <li class="page"><a href="torch.html">torch</a></li>
+                    <li class="page"><a href="touchID.html">touchID</a></li>
+                    <li class="page"><a href="wifi.html">wifi</a></li>
+                    <li class="page"><a href="wifiMgr.html">wifiMgr</a></li>
+                    <li class="page"><a href="wifiSSID.html">wifiSSID</a></li>
+                    <li class="page"><a href="yunnex.html">yunnex</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">功能扩展</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Func-Ext/FNImageClip.html">FNImageClip</a></li>
+                    <li class="page"><a href="../Func-Ext/FNPhotograph.html">FNPhotograph</a></li>
+                    <li class="page"><a href="../Func-Ext/FNScanner.html">FNScanner</a></li>
+                    <li class="page"><a href="../Func-Ext/aemail.html">aemail</a></li>
+                    <li class="page"><a href="../Func-Ext/alarmNotification.html">alarmNotification</a></li>
+                    <li class="page"><a href="../Func-Ext/appControl.html">appControl</a></li>
+                    <li class="page"><a href="../Func-Ext/appManage.html">appManage</a></li>
+                    <li class="page"><a href="../Func-Ext/arcColorPicker.html">arcColorPicker</a></li>
+                    <li class="page"><a href="../Func-Ext/audio.html">audio</a></li>
+                    <li class="page"><a href="../Func-Ext/audioCover.html">audioCover</a></li>
+                    <li class="page"><a href="../Func-Ext/audioPlayer.html">audioPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/audioRecorder.html">audioRecorder</a></li>
+                    <li class="page"><a href="../Func-Ext/autoStartUp.html">autoStartUp</a></li>
+                    <li class="page"><a href="../Func-Ext/batteryManager.html">batteryManager</a></li>
+                    <li class="page"><a href="../Func-Ext/blurredView.html">blurredView</a></li>
+                    <li class="page"><a href="../Func-Ext/bookReader.html">bookReader</a></li>
+                    <li class="page"><a href="../Func-Ext/brightness.html">brightness</a></li>
+                    <li class="page"><a href="../Func-Ext/cardReader.html">cardReader</a></li>
+                    <li class="page"><a href="../Func-Ext/chromeDebug.html">chromeDebug</a></li>
+                    <li class="page"><a href="../Func-Ext/cnKeyBoard.html">cnKeyBoard</a></li>
+                    <li class="page"><a href="../Func-Ext/cocoVideo.html">cocoVideo</a></li>
+                    <li class="page"><a href="../Func-Ext/codeLog.html">codeLog</a></li>
+                    <li class="page"><a href="../Func-Ext/compactPicture.html">compactPicture</a></li>
+                    <li class="page"><a href="../Func-Ext/db.html">db</a></li>
+                    <li class="page"><a href="../Func-Ext/djyPrinter.html">djyPrinter</a></li>
+                    <li class="page"><a href="../Func-Ext/docInteraction.html">docInteraction</a></li>
+                    <li class="page"><a href="../Func-Ext/docReader.html">docReader</a></li>
+                    <li class="page"><a href="../Func-Ext/downloadManager.html">downloadManager</a></li>
+                    <li class="page"><a href="../Func-Ext/drawingBoard.html">drawingBoard</a></li>
+                    <li class="page"><a href="../Func-Ext/exifInterface.html">exifInterface</a></li>
+                    <li class="page"><a href="../Func-Ext/fileBrowser.html">fileBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/fs.html">fs</a></li>
+                    <li class="page"><a href="../Func-Ext/getWebUrl.html">getWebUrl</a></li>
+                    <li class="page"><a href="../Func-Ext/headphone.html">headphone</a></li>
+                    <li class="page"><a href="../Func-Ext/iap.html">iap</a></li>
+                    <li class="page"><a href="../Func-Ext/imageBrowser.html">imageBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/imageClip.html">imageClip</a></li>
+                    <li class="page"><a href="../Func-Ext/imageCrop.html">imageCrop</a></li>
+                    <li class="page"><a href="../Func-Ext/imageFilter.html">imageFilter</a></li>
+                    <li class="page"><a href="../Func-Ext/imagePalette.html">imagePalette</a></li>
+                    <li class="page"><a href="../Func-Ext/imageSelect.html">imageSelect</a></li>
+                    <li class="page"><a href="../Func-Ext/imageTool.html">imageTool</a></li>
+                    <li class="page"><a href="../Func-Ext/launchImage.html">launchImage</a></li>
+                    <li class="page"><a href="../Func-Ext/liveAudioPlayer.html">liveAudioPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/logger.html">logger</a></li>
+                    <li class="page"><a href="../Func-Ext/marketScore.html">marketScore</a></li>
+                    <li class="page"><a href="../Func-Ext/mdReader.html">mdReader</a></li>
+                    <li class="page"><a href="../Func-Ext/micoMqtt.html">micoMqtt</a></li>
+                    <li class="page"><a href="../Func-Ext/mqtt.html">mqtt</a></li>
+                    <li class="page"><a href="../Func-Ext/myTimer.html">myTimer</a></li>
+                    <li class="page"><a href="../Func-Ext/navigator.html">navigator</a></li>
+                    <li class="page"><a href="../Func-Ext/netAudio.html">netAudio</a></li>
+                    <li class="page"><a href="../Func-Ext/openAppStore.html">openAppStore</a></li>
+                    <li class="page"><a href="../Func-Ext/patternLock.html">patternLock</a></li>
+                    <li class="page"><a href="../Func-Ext/pdfReader.html">pdfReader</a></li>
+                    <li class="page"><a href="../Func-Ext/phoneListener.html">phoneListener</a></li>
+                    <li class="page"><a href="../Func-Ext/photoBrowser.html">photoBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/photoPicker.html">photoPicker</a></li>
+                    <li class="page"><a href="../Func-Ext/photoSelect.html">photoSelect</a></li>
+                    <li class="page"><a href="../Func-Ext/photoStream.html">photoStream</a></li>
+                    <li class="page"><a href="../Func-Ext/playModule.html">playModule</a></li>
+                    <li class="page"><a href="../Func-Ext/playRtsp.html">playRtsp</a></li>
+                    <li class="page"><a href="../Func-Ext/privacy.html">privacy</a></li>
+                    <li class="page"><a href="../Func-Ext/realNetwork.html">realNetwork</a></li>
+                    <li class="page"><a href="../Func-Ext/recentPic.html">recentPic</a></li>
+                    <li class="page"><a href="../Func-Ext/recordVideo.html">recordVideo</a></li>
+                    <li class="page"><a href="../Func-Ext/richText.html">richText</a></li>
+                    <li class="page"><a href="../Func-Ext/runBackground.html">runBackground</a></li>
+                    <li class="page"><a href="../Func-Ext/sangforvpn.html">sangforvpn</a></li>
+                    <li class="page"><a href="../Func-Ext/scanner.html">scanner</a></li>
+                    <li class="page"><a href="../Func-Ext/screenClip.html">screenClip</a></li>
+                    <li class="page"><a href="../Func-Ext/screenLock.html">screenLock</a></li>
+                    <li class="page"><a href="../Func-Ext/shareAction.html">shareAction</a></li>
+                    <li class="page"><a href="../Func-Ext/sharePics.html">sharePics</a></li>
+                    <li class="page"><a href="../Func-Ext/shareTool.html">shareTool</a></li>
+                    <li class="page"><a href="../Func-Ext/shortCut.html">shortCut</a></li>
+                    <li class="page"><a href="../Func-Ext/signature.html">signature</a></li>
+                    <li class="page"><a href="../Func-Ext/socketManager.html">socketManager</a></li>
+                    <li class="page"><a href="../Func-Ext/svideo.html">svideo</a></li>
+                    <li class="page"><a href="../Func-Ext/timer.html">timer</a></li>
+                    <li class="page"><a href="../Func-Ext/touchDebugger.html">touchDebugger</a></li>
+                    <li class="page"><a href="../Func-Ext/trans.html">trans</a></li>
+                    <li class="page"><a href="../Func-Ext/ttsModule.html">ttsModule</a></li>
+                    <li class="page"><a href="../Func-Ext/uimusic.html">uimusic</a></li>
+                    <li class="page"><a href="../Func-Ext/videoKit.html">videoKit</a></li>
+                    <li class="page"><a href="../Func-Ext/videoPlayer.html">videoPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/videoRecorder.html">videoRecorder</a></li>
+                    <li class="page"><a href="../Func-Ext/videoTool.html">videoTool</a></li>
+                    <li class="page"><a href="../Func-Ext/voiceMag.html">voiceMag</a></li>
+                    <li class="page"><a href="../Func-Ext/vpnIOS.html">vpnIOS</a></li>
+                    <li class="page"><a href="../Func-Ext/vrPlayer.html">vrPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/vtingPlayer.html">vtingPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/wallPaper.html">wallPaper</a></li>
+                    <li class="page"><a href="../Func-Ext/webBrowser.html">webBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/webSocket.html">webSocket</a></li>
+                    <li class="page"><a href="../Func-Ext/ytylive.html">ytylive</a></li>
+                    <li class="page"><a href="../Func-Ext/zip.html">zip</a></li>
+                    <li class="page"><a href="../Func-Ext/zxycamera.html">zxycamera</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">界面布局</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../UI-Layout/UIActionProgress.html">UIActionProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/UIActionSelector.html">UIActionSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/UIAlbumBrowser.html">UIAlbumBrowser</a></li>
+                    <li class="page"><a href="../UI-Layout/UIBarChart.html">UIBarChart</a></li>
+                    <li class="page"><a href="../UI-Layout/UIButton.html">UIButton</a></li>
+                    <li class="page"><a href="../UI-Layout/UICalendar.html">UICalendar</a></li>
+                    <li class="page"><a href="../UI-Layout/UIChatBox.html">UIChatBox</a></li>
+                    <li class="page"><a href="../UI-Layout/UIChatTools.html">UIChatTools</a></li>
+                    <li class="page"><a href="../UI-Layout/UICityList.html">UICityList</a></li>
+                    <li class="page"><a href="../UI-Layout/UICoverFlow.html">UICoverFlow</a></li>
+                    <li class="page"><a href="../UI-Layout/UICustomPicker.html">UICustomPicker</a></li>
+                    <li class="page"><a href="../UI-Layout/UIGraph.html">UIGraph</a></li>
+                    <li class="page"><a href="../UI-Layout/UIInput.html">UIInput</a></li>
+                    <li class="page"><a href="../UI-Layout/UILineChart.html">UILineChart</a></li>
+                    <li class="page"><a href="../UI-Layout/UILinkedPicker.html">UILinkedPicker</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListCard.html">UIListCard</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListCheck.html">UIListCheck</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListContacts.html">UIListContacts</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListMeeting.html">UIListMeeting</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListSearch.html">UIListSearch</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListView.html">UIListView</a></li>
+                    <li class="page"><a href="../UI-Layout/UILoading.html">UILoading</a></li>
+                    <li class="page"><a href="../UI-Layout/UIMediaScanner.html">UIMediaScanner</a></li>
+                    <li class="page"><a href="../UI-Layout/UIMultiSelector.html">UIMultiSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefresh.html">UIPullRefresh</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefreshDrop.html">UIPullRefreshDrop</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefreshFlash.html">UIPullRefreshFlash</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefreshMotive.html">UIPullRefreshMotive</a></li>
+                    <li class="page"><a href="../UI-Layout/UIScrollPicture.html">UIScrollPicture</a></li>
+                    <li class="page"><a href="../UI-Layout/UIScrollPromptView.html">UIScrollPromptView</a></li>
+                    <li class="page"><a href="../UI-Layout/UISearchBar.html">UISearchBar</a></li>
+                    <li class="page"><a href="../UI-Layout/UISelector.html">UISelector</a></li>
+                    <li class="page"><a href="../UI-Layout/UISlider.html">UISlider</a></li>
+                    <li class="page"><a href="../UI-Layout/UISwitchButton.html">UISwitchButton</a></li>
+                    <li class="page"><a href="../UI-Layout/UIVividLine.html">UIVividLine</a></li>
+                    <li class="page"><a href="../UI-Layout/UIWebBrowser.html">UIWebBrowser</a></li>
+                    <li class="page"><a href="../UI-Layout/addressView.html">addressView</a></li>
+                    <li class="page"><a href="../UI-Layout/applause.html">applause</a></li>
+                    <li class="page"><a href="../UI-Layout/arcProgress.html">arcProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/barChart.html">barChart</a></li>
+                    <li class="page"><a href="../UI-Layout/brokenLine.html">brokenLine</a></li>
+                    <li class="page"><a href="../UI-Layout/button.html">button</a></li>
+                    <li class="page"><a href="../UI-Layout/calendar.html">calendar</a></li>
+                    <li class="page"><a href="../UI-Layout/chatBox.html">chatBox</a></li>
+                    <li class="page"><a href="../UI-Layout/cityList.html">cityList</a></li>
+                    <li class="page"><a href="../UI-Layout/citySelector.html">citySelector</a></li>
+                    <li class="page"><a href="../UI-Layout/coverFlow.html">coverFlow</a></li>
+                    <li class="page"><a href="../UI-Layout/customSelector.html">customSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/customToast.html">customToast</a></li>
+                    <li class="page"><a href="../UI-Layout/dialogBox.html">dialogBox</a></li>
+                    <li class="page"><a href="../UI-Layout/divisionalLineChart.html">divisionalLineChart</a></li>
+                    <li class="page"><a href="../UI-Layout/doubleBarChart.html">doubleBarChart</a></li>
+                    <li class="page"><a href="../UI-Layout/fluttering.html">fluttering</a></li>
+                    <li class="page"><a href="../UI-Layout/goodsList.html">goodsList</a></li>
+                    <li class="page"><a href="../UI-Layout/graph.html">graph</a></li>
+                    <li class="page"><a href="../UI-Layout/groupList.html">groupList</a></li>
+                    <li class="page"><a href="../UI-Layout/guide.html">guide</a></li>
+                    <li class="page"><a href="../UI-Layout/hintChatBox.html">hintChatBox</a></li>
+                    <li class="page"><a href="../UI-Layout/iOSDialog.html">iOSDialog</a></li>
+                    <li class="page"><a href="../UI-Layout/inputField.html">inputField</a></li>
+                    <li class="page"><a href="../UI-Layout/keyboard.html">keyboard</a></li>
+                    <li class="page"><a href="../UI-Layout/lineChart.html">lineChart</a></li>
+                    <li class="page"><a href="../UI-Layout/listContact.html">listContact</a></li>
+                    <li class="page"><a href="../UI-Layout/listView.html">listView</a></li>
+                    <li class="page"><a href="../UI-Layout/loadingLabel.html">loadingLabel</a></li>
+                    <li class="page"><a href="../UI-Layout/matrixLock.html">matrixLock</a></li>
+                    <li class="page"><a href="../UI-Layout/messageList.html">messageList</a></li>
+                    <li class="page"><a href="../UI-Layout/multiSelector.html">multiSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/orderList.html">orderList</a></li>
+                    <li class="page"><a href="../UI-Layout/overviewList.html">overviewList</a></li>
+                    <li class="page"><a href="../UI-Layout/panorama.html">panorama</a></li>
+                    <li class="page"><a href="../UI-Layout/payPasswordInput.html">payPasswordInput</a></li>
+                    <li class="page"><a href="../UI-Layout/periodSelector.html">periodSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/personalCenter.html">personalCenter</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserQQ.html">photoBrowserQQ</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserTouTiao.html">photoBrowserTouTiao</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserWeiBo.html">photoBrowserWeiBo</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserWeiXin.html">photoBrowserWeiXin</a></li>
+                    <li class="page"><a href="../UI-Layout/pieChart.html">pieChart</a></li>
+                    <li class="page"><a href="../UI-Layout/pullRefreshLoop.html">pullRefreshLoop</a></li>
+                    <li class="page"><a href="../UI-Layout/scrollPicture.html">scrollPicture</a></li>
+                    <li class="page"><a href="../UI-Layout/searchBar.html">searchBar</a></li>
+                    <li class="page"><a href="../UI-Layout/selectList.html">selectList</a></li>
+                    <li class="page"><a href="../UI-Layout/shakeView.html">shakeView</a></li>
+                    <li class="page"><a href="../UI-Layout/slider.html">slider</a></li>
+                    <li class="page"><a href="../UI-Layout/slidingList.html">slidingList</a></li>
+                    <li class="page"><a href="../UI-Layout/slipList.html">slipList</a></li>
+                    <li class="page"><a href="../UI-Layout/suspensionWindow.html">suspensionWindow</a></li>
+                    <li class="page"><a href="../UI-Layout/thwartwiseBarChart.html">thwartwiseBarChart</a></li>
+                    <li class="page"><a href="../UI-Layout/timeSelector.html">timeSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/waterBallProgress.html">waterBallProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/waveProgress.html">waveProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/welcomePage.html">welcomePage</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">导航菜单</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Nav-Menu/MNActionButton.html">MNActionButton</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNNavigationMenu.html">MNNavigationMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNPopups.html">MNPopups</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNRotationMenu.html">MNRotationMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNStack.html">MNStack</a></li>
+                    <li class="page"><a href="../Nav-Menu/NVNavigationBar.html">NVNavigationBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/NVTabBar.html">NVTabBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/actionButton.html">actionButton</a></li>
+                    <li class="page"><a href="../Nav-Menu/arcMenu.html">arcMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/bubbleMenu.html">bubbleMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/circularMenu.html">circularMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/navigationBar.html">navigationBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/navigationMenu.html">navigationMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/pullMenu.html">pullMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/scrollRotation.html">scrollRotation</a></li>
+                    <li class="page"><a href="../Nav-Menu/sideMenu.html">sideMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/stackMenu.html">stackMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/tabBar.html">tabBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/tabBarMenu.html">tabBarMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/tuberBar.html">tuberBar</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开放SDK</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Open-SDK/QQPlus.html">QQPlus</a></li>
+                    <li class="page"><a href="../Open-SDK/aMap.html">aMap</a></li>
+                    <li class="page"><a href="../Open-SDK/aMapLBS.html">aMapLBS</a></li>
+                    <li class="page"><a href="../Open-SDK/aMapLocation.html">aMapLocation</a></li>
+                    <li class="page"><a href="../Open-SDK/aMapNavigation.html">aMapNavigation</a></li>
+                    <li class="page"><a href="../Open-SDK/aMapReportLocation.html">aMapReportLocation</a></li>
+                    <li class="page"><a href="../Open-SDK/admob.html">admob</a></li>
+                    <li class="page"><a href="../Open-SDK/adsDomob.html">adsDomob</a></li>
+                    <li class="page"><a href="../Open-SDK/adsYoumi.html">adsYoumi</a></li>
+                    <li class="page"><a href="../Open-SDK/agoraVideo.html">agoraVideo</a></li>
+                    <li class="page"><a href="../Open-SDK/ajpush.html">ajpush</a></li>
+                    <li class="page"><a href="../Open-SDK/aliOSS.html">aliOSS</a></li>
+                    <li class="page"><a href="../Open-SDK/aliPay.html">aliPay</a></li>
+                    <li class="page"><a href="../Open-SDK/aliPayPlus.html">aliPayPlus</a></li>
+                    <li class="page"><a href="../Open-SDK/aliPayTrade.html">aliPayTrade</a></li>
+                    <li class="page"><a href="../Open-SDK/aliPayTradePlus.html">aliPayTradePlus</a></li>
+                    <li class="page"><a href="../Open-SDK/aliPush.html">aliPush</a></li>
+                    <li class="page"><a href="../Open-SDK/aliPushNoUtdId.html">aliPushNoUtdId</a></li>
+                    <li class="page"><a href="../Open-SDK/aliTrade.html">aliTrade</a></li>
+                    <li class="page"><a href="../Open-SDK/aliTradePlus.html">aliTradePlus</a></li>
+                    <li class="page"><a href="../Open-SDK/alibaichuan.html">alibaichuan</a></li>
+                    <li class="page"><a href="../Open-SDK/aliyunLive.html">aliyunLive</a></li>
+                    <li class="page"><a href="../Open-SDK/anyRTCModule.html">anyRTCModule</a></li>
+                    <li class="page"><a href="../Open-SDK/aplayer.html">aplayer</a></li>
+                    <li class="page"><a href="../Open-SDK/appleUnionPay.html">appleUnionPay</a></li>
+                    <li class="page"><a href="../Open-SDK/bMap.html">bMap</a></li>
+                    <li class="page"><a href="../Open-SDK/baiXing.html">baiXing</a></li>
+                    <li class="page"><a href="../Open-SDK/baiduAd.html">baiduAd</a></li>
+                    <li class="page"><a href="../Open-SDK/baiduAppx.html">baiduAppx</a></li>
+                    <li class="page"><a href="../Open-SDK/baiduLocation.html">baiduLocation</a></li>
+                    <li class="page"><a href="../Open-SDK/baiduMTJ.html">baiduMTJ</a></li>
+                    <li class="page"><a href="../Open-SDK/baiduMap.html">baiduMap</a></li>
+                    <li class="page"><a href="../Open-SDK/baiduNavigation.html">baiduNavigation</a></li>
+                    <li class="page"><a href="../Open-SDK/baiduPanorama.html">baiduPanorama</a></li>
+                    <li class="page"><a href="../Open-SDK/baiduSpeechRecognizer.html">baiduSpeechRecognizer</a></li>
+                    <li class="page"><a href="../Open-SDK/baiduTrace.html">baiduTrace</a></li>
+                    <li class="page"><a href="../Open-SDK/bcapplepay.html">bcapplepay</a></li>
+                    <li class="page"><a href="../Open-SDK/beecloud.html">beecloud</a></li>
+                    <li class="page"><a href="../Open-SDK/bmobPush.html">bmobPush</a></li>
+                    <li class="page"><a href="../Open-SDK/brightBeacon.html">brightBeacon</a></li>
+                    <li class="page"><a href="../Open-SDK/bugTags.html">bugTags</a></li>
+                    <li class="page"><a href="../Open-SDK/camera360.html">camera360</a></li>
+                    <li class="page"><a href="../Open-SDK/cchelperModule.html">cchelperModule</a></li>
+                    <li class="page"><a href="../Open-SDK/chanceAd.html">chanceAd</a></li>
+                    <li class="page"><a href="../Open-SDK/ciaYi.html">ciaYi</a></li>
+                    <li class="page"><a href="../Open-SDK/cloudwise.html">cloudwise</a></li>
+                    <li class="page"><a href="../Open-SDK/cloudwiseMAgent.html">cloudwiseMAgent</a></li>
+                    <li class="page"><a href="../Open-SDK/coinport.html">coinport</a></li>
+                    <li class="page"><a href="../Open-SDK/csOpenApi.html">csOpenApi</a></li>
+                    <li class="page"><a href="../Open-SDK/didi.html">didi</a></li>
+                    <li class="page"><a href="../Open-SDK/discuz.html">discuz</a></li>
+                    <li class="page"><a href="../Open-SDK/dkSDK.html">dkSDK</a></li>
+                    <li class="page"><a href="../Open-SDK/duiBa.html">duiBa</a></li>
+                    <li class="page"><a href="../Open-SDK/duibaSales.html">duibaSales</a></li>
+                    <li class="page"><a href="../Open-SDK/duibaView.html">duibaView</a></li>
+                    <li class="page"><a href="../Open-SDK/easeChat.html">easeChat</a></li>
+                    <li class="page"><a href="../Open-SDK/facebook.html">facebook</a></li>
+                    <li class="page"><a href="../Open-SDK/fog2.html">fog2</a></li>
+                    <li class="page"><a href="../Open-SDK/fuQianLa.html">付钱拉</a></li>
+                    <li class="page"><a href="../Open-SDK/geeTest.html">geeTest</a></li>
+                    <li class="page"><a href="../Open-SDK/gizWifiSDK.html">gizWifiSDK</a></li>
+                    <li class="page"><a href="../Open-SDK/googleAnalytics.html">googleAnalytics</a></li>
+                    <li class="page"><a href="../Open-SDK/googleMap.html">googleMap</a></li>
+                    <li class="page"><a href="../Open-SDK/gotyeLiveCore.html">亲加视频直播</a></li>
+                    <li class="page"><a href="../Open-SDK/hanvonCloudBcardReader.html">hanvonCloudBcardReader</a></li>
+                    <li class="page"><a href="../Open-SDK/hanvonCloudIdCardReader.html">hanvonCloudIdCardReader</a></li>
+                    <li class="page"><a href="../Open-SDK/hanvonCloudNumberReader.html">hanvonCloudNumberReader</a></li>
+                    <li class="page"><a href="../Open-SDK/hanvonCloudOcrFormulaReader.html">hanvonCloudOcrFormulaReader</a></li>
+                    <li class="page"><a href="../Open-SDK/hanvonCloudTableReader.html">hanvonCloudTableReader</a></li>
+                    <li class="page"><a href="../Open-SDK/huanxin.html">huanxin</a></li>
+                    <li class="page"><a href="../Open-SDK/huaweiPush.html">huaweiPush</a></li>
+                    <li class="page"><a href="../Open-SDK/idcard.html">idcard</a></li>
+                    <li class="page"><a href="../Open-SDK/iflytekvoiceads.html">iflytekvoiceads</a></li>
+                    <li class="page"><a href="../Open-SDK/ipaynow.html">ipaynow</a></li>
+                    <li class="page"><a href="../Open-SDK/ipaynowScanner.html">ipaynowScanner</a></li>
+                    <li class="page"><a href="../Open-SDK/jd.html">jd</a></li>
+                    <li class="page"><a href="../Open-SDK/jyVerify.html">jyVerify</a></li>
+                    <li class="page"><a href="../Open-SDK/kf5.html">kf5</a></li>
+                    <li class="page"><a href="../Open-SDK/kf5sdk.html">kf5sdk</a></li>
+                    <li class="page"><a href="../Open-SDK/ksi.html">ksi</a></li>
+                    <li class="page"><a href="../Open-SDK/ksisdk.html">ksisdk</a></li>
+                    <li class="page"><a href="../Open-SDK/leCloudLive.html">leCloudLive</a></li>
+                    <li class="page"><a href="../Open-SDK/leCloudPlay.html">leCloudPlay</a></li>
+                    <li class="page"><a href="../Open-SDK/leShiLive.html">leShiLive</a></li>
+                    <li class="page"><a href="../Open-SDK/line.html">line</a></li>
+                    <li class="page"><a href="../Open-SDK/liuLiangQianBao.html">liuLiangQianBao</a></li>
+                    <li class="page"><a href="../Open-SDK/logCrash.html">logCrash</a></li>
+                    <li class="page"><a href="../Open-SDK/magicWindow.html">magicWindow</a></li>
+                    <li class="page"><a href="../Open-SDK/maketionCardReader.html">maketionCardReader</a></li>
+                    <li class="page"><a href="../Open-SDK/meChat.html">meChat</a></li>
+                    <li class="page"><a href="../Open-SDK/meiQia.html">meiQia</a></li>
+                    <li class="page"><a href="../Open-SDK/mico.html">mico</a></li>
+                    <li class="page"><a href="../Open-SDK/miniQuPai.html">miniQuPai</a></li>
+                    <li class="page"><a href="../Open-SDK/miniQuPaiPlus.html">miniQuPaiPlus</a></li>
+                    <li class="page"><a href="../Open-SDK/miniVideoRecord.html">miniVideoRecord</a></li>
+                    <li class="page"><a href="../Open-SDK/mipush.html">mipush</a></li>
+                    <li class="page"><a href="../Open-SDK/mobShare.html">mobShare</a></li>
+                    <li class="page"><a href="../Open-SDK/mobVerify.html">mobVerify</a></li>
+                    <li class="page"><a href="../Open-SDK/moduleShareSMS.html">moduleShareSMS</a></li>
+                    <li class="page"><a href="../Open-SDK/mogoAds.html">mogoAds</a></li>
+                    <li class="page"><a href="../Open-SDK/mogoAdsBaidu.html">mogoAdsBaidu</a></li>
+                    <li class="page"><a href="../Open-SDK/mogoAdsGDT.html">mogoAdsGDT</a></li>
+                    <li class="page"><a href="../Open-SDK/mogoAdsdomob.html">mogoAdsdomob</a></li>
+                    <li class="page"><a href="../Open-SDK/nuanceSpeechRecognizer.html">nuanceSpeechRecognizer</a></li>
+                    <li class="page"><a href="../Open-SDK/paypal.html">paypal</a></li>
+                    <li class="page"><a href="../Open-SDK/pingpp.html">pingpp</a></li>
+                    <li class="page"><a href="../Open-SDK/polyVideo.html">polyVideo</a></li>
+                    <li class="page"><a href="../Open-SDK/polyvVideo.html">polyvVideo</a></li>
+                    <li class="page"><a href="../Open-SDK/pushGeTui.html">pushGeTui</a></li>
+                    <li class="page"><a href="../Open-SDK/pushRtmpOrVideoPlay.html">pushRtmpOrVideoPlay</a></li>
+                    <li class="page"><a href="../Open-SDK/qCloudVODPlayer.html">qCloudVODPlayer</a></li>
+                    <li class="page"><a href="../Open-SDK/qiniuLive.html">qiniuLive</a></li>
+                    <li class="page"><a href="../Open-SDK/qiniuStorage.html">qiniuStorage</a></li>
+                    <li class="page"><a href="../Open-SDK/qiniuUpfile.html">qiniuUpfile</a></li>
+                    <li class="page"><a href="../Open-SDK/qiyuSdk.html">qiyuSdk</a></li>
+                    <li class="page"><a href="../Open-SDK/qq.html">qq</a></li>
+                    <li class="page"><a href="../Open-SDK/quPaiModule.html">quPaiModule</a></li>
+                    <li class="page"><a href="../Open-SDK/qupai.html">qupai</a></li>
+                    <li class="page"><a href="../Open-SDK/qupaiLive.html">qupaiLive</a></li>
+                    <li class="page"><a href="../Open-SDK/recordVideo.html">recordVideo</a></li>
+                    <li class="page"><a href="../Open-SDK/reportLocation.html">reportLocation</a></li>
+                    <li class="page"><a href="../Open-SDK/rongCloud.html">rongCloud</a></li>
+                    <li class="page"><a href="../Open-SDK/rongCloud2.html">rongCloud2</a></li>
+                    <li class="page"><a href="../Open-SDK/seckenModule.html">seckenModule</a></li>
+                    <li class="page"><a href="../Open-SDK/sendSms.html">sendSms</a></li>
+                    <li class="page"><a href="../Open-SDK/sensorsAnalyticsAPICloudSDK.html">sensorsAnalyticsAPICloudSDK</a></li>
+                    <li class="page"><a href="../Open-SDK/shareMorePic.html">shareMorePic</a></li>
+                    <li class="page"><a href="../Open-SDK/sinaWeiBo.html">sinaWeiBo</a></li>
+                    <li class="page"><a href="../Open-SDK/smsVerification.html">smsVerification</a></li>
+                    <li class="page"><a href="../Open-SDK/smsVerify.html">smsVerify</a></li>
+                    <li class="page"><a href="../Open-SDK/speechRecognizer.html">speechRecognizer</a></li>
+                    <li class="page"><a href="../Open-SDK/superID.html">superID</a></li>
+                    <li class="page"><a href="../Open-SDK/talkingData.html">talkingData</a></li>
+                    <li class="page"><a href="../Open-SDK/taobao.html">taobao</a></li>
+                    <li class="page"><a href="../Open-SDK/tencentAds.html">tencentAds</a></li>
+                    <li class="page"><a href="../Open-SDK/tencentMTA.html">tencentMTA</a></li>
+                    <li class="page"><a href="../Open-SDK/tencentPlayer.html">tencentPlayer</a></li>
+                    <li class="page"><a href="../Open-SDK/tencentPush.html">tencentPush</a></li>
+                    <li class="page"><a href="../Open-SDK/tingyun.html">tingyun</a></li>
+                    <li class="page"><a href="../Open-SDK/tulingapi.html">tulingapi</a></li>
+                    <li class="page"><a href="../Open-SDK/tyRTC.html">tyRTC</a></li>
+                    <li class="page"><a href="../Open-SDK/tyRTCLive.html">tyRTCLive</a></li>
+                    <li class="page"><a href="../Open-SDK/udesk.html">udesk</a></li>
+                    <li class="page"><a href="../Open-SDK/umengAnalytics.html">umengAnalytics</a></li>
+                    <li class="page"><a href="../Open-SDK/umengTJ.html">umengTJ</a></li>
+                    <li class="page"><a href="../Open-SDK/unionPay.html">unionPay</a></li>
+                    <li class="page"><a href="../Open-SDK/updatethis.html">updatethis</a></li>
+                    <li class="page"><a href="../Open-SDK/upyunUpfile.html">upyunUpfile</a></li>
+                    <li class="page"><a href="../Open-SDK/uscSpeechRecognizer.html">uscSpeechRecognizer</a></li>
+                    <li class="page"><a href="../Open-SDK/vcloudLive.html">vcloudLive</a></li>
+                    <li class="page"><a href="../Open-SDK/vcloudPlay.html">vcloudPlay</a></li>
+                    <li class="page"><a href="../Open-SDK/wapsAd.html">wapsAd</a></li>
+                    <li class="page"><a href="../Open-SDK/weiXin.html">weiXin</a></li>
+                    <li class="page"><a href="../Open-SDK/weibo.html">weibo</a></li>
+                    <li class="page"><a href="../Open-SDK/wx.html">wx</a></li>
+                    <li class="page"><a href="../Open-SDK/wxPay.html">wxPay</a></li>
+                    <li class="page"><a href="../Open-SDK/xGprinter.html">xGprinter</a></li>
+                    <li class="page"><a href="../Open-SDK/ximalaya.html">ximalaya</a></li>
+                    <li class="page"><a href="../Open-SDK/youkuPlayer.html">youkuPlayer</a></li>
+                    <li class="page"><a href="../Open-SDK/yzxVerification.html">yzxVerification</a></li>
+                    <li class="page"><a href="../Open-SDK/zhiChiSobot.html">zhiChiSobot</a></li>
+                    <li class="page"><a href="../Open-SDK/zhuge.html">zhuge</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">云服务对接</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Cloud-Service/mam.html">mam</a></li>
+                    <li class="page"><a href="../Cloud-Service/mcm.html">mcm</a></li>
+                    <li class="page"><a href="../Cloud-Service/msm.html">msm</a></li>
+                    <li class="page"><a href="../Cloud-Service/push.html">push</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">前端框架</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Front-end-Framework/framework-dev-guide.html">APICloud前端框架</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">云API</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Cloud-API/data-cloud-api.html">数据云API</a></li>
+                    <li class="page"><a href="../../Cloud-API/stat-cloud-api.html">统计云API</a></li>
+                    <li class="page"><a href="../../Cloud-API/push-cloud-api.html">推送云API</a></li>
+                    <li class="page"><a href="../../Cloud-API/sdk-cloud-api.html">云API SDK</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">技术专题</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Dev-Guide/Android-License-Application-Guidance.html">Android签名证书描述及使用流程</a></li>
+                    <li class="page"><a href="../../Dev-Guide/Git-APICloud-guide.html">Git 代码托管指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/X5-APICloud-guide.html">如何在APICloud平台使用腾讯X5引擎</a></li>
+                    <li class="page"><a href="../../Dev-Guide/screen-adapt-guide.html">屏幕适配原理及实现</a></li>
+                    <li class="page"><a href="../../Dev-Guide/smartUpdate.html">云修复</a></li>
+                    <li class="page"><a href="../../Dev-Guide/start-page-ad-guid.html">启动页闪屏广告</a></li>
+                    <li class="page"><a href="../../Dev-Guide/version_update.html">版本更新</a></li>
+                    <li class="page"><a href="../../Dev-Guide/app-config-manual.html">config.xml应用配置说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/widget-package-structure-manual.html">Widget包结构说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/module-package-structure-manual.html">模块包结构说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/Custom_Loader.html">自定义loader说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/data-cloud-dev-guide.html">数据云服务开发指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/data-storage-dev-guide.html">数据存储开发指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/push-guide.html">推送技术指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/key.html">key.xml文件配置说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/iOS-License-Application-Guidance.html">iOS证书及描述文件制作流程</a></li>
+                    <li class="page"><a href="../../Dev-Guide/SuperWebview-guide-for-android.html">SuperWebview开发指南Android</a></li>
+                    <li class="page"><a href="../../Dev-Guide/SuperWebview-guide-for-ios.html">SuperWebview开发指南iOS</a></li>
+                    <li class="page"><a href="../../Dev-Guide/apple-watch-dev-guide.html">Apple Watch开发指南</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开发工具</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Dev-Tools/studio-dev-guide.html">APICloud Studio 2 快速入门</a></li>
+                    <li class="page"><a href="../../Dev-Tools/sublime-apicloud-plugin.html">工具：Sublime插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/Atom-apicloud-plugin.html">工具：Atom插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/ide-dev-guide.html">工具：Eclipse 插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/webStorm-apicloud-plugin.html">工具：WebStorm插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/sublime-apicloud-snippets.html">Sublime APICloud 语法提示</a></li>
+                    <li class="page"><a href="../../Dev-Tools/Atom-apicloud-snippets.html">Atom APICloud 语法提示</a></li>
+                    <li class="page"><a href="../../Dev-Tools/webStorm-apicloud-snippets.html">webStorm APICloud代码提示插件编写</a></li>
+                    <li class="page"><a href="../../Dev-Tools/eclipse-wifi.html">Eclipse  WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/sublime-wifi-sync.html">Sublime WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/wifi-debug.html">APICloud Studio WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/webStorm-wifi-sync.html">WebStorm WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/apicloud-tools-core.html">APICloud 开发工具核心库</a></li>
+                    <li class="page"><a href="../../Dev-Tools/apicloud-cli.html">apicloud-cli 工具使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/apicloud-polyfill.html">apicloud-polyfill</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">下载</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Download/download.html">Download</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">七天培训课教程</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Seven/Day1.html">Day1</a></li>
+                    <li class="page"><a href="../../Seven/Day2.html">Day2</a></li>
+                    <li class="page"><a href="../../Seven/Day3.html">Day3</a></li>
+                    <li class="page"><a href="../../Seven/Day4.html">Day4</a></li>
+                    <li class="page"><a href="../../Seven/Day5.html">Day5</a></li>
+                    <li class="page"><a href="../../Seven/Day6.html">Day6</a></li>
+                    <li class="page"><a href="../../Seven/Day7.html">Day7</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">其他</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Others/app-custom-faq.html">定制平台常见问题</a></li>
+                    <li class="page"><a href="../../Others/app-customization.html">APICloud需求预评估服务规则</a></li>
+                    <li class="page"><a href="../../Others/privacy-policy.html">隐私条款</a></li>
+                    <li class="page"><a href="../../Others/terms-of-service.html">服务条款</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">Faq</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Others/FAQ/Client-Dev.html">端开发</a></li>
+                    <li class="page"><a href="../../Others/FAQ/Cloud-Dev.html">云开发</a></li>
+                    <li class="page"><a href="../../Others/FAQ/IDE.html">APICloud Studio</a></li>
+                    <li class="page"><a href="../../Others/FAQ/app-service.html">应用服务</a></li>
+                    <li class="page"><a href="../../Others/FAQ/Other.html">其它</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开放平台接入指南</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/adsYoumi.html">有米广告SDK接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/baiXing.html">百姓网SDK接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/baiduMTJ.html">百度移动统计平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/dkSDK.html">点开广告平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/kf5sdk.html">kf5云客服平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/polyvVideo.html">保利威视平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/pushGeTui_manual.html">个推接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/sensorsAnalyticsAPICloudSDK.html">神策数据分析平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/tyRTC.html">天翼RTC平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/umengAnalytics.html">友盟统计平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/H2.html">H2移动广告交易平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/alipay.html">支付宝支付平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/baidu.html">百度开放平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/bmobPush.html">Bmob平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/brightBeacon.html">brightBeacon接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/cchelperModule.html">CChelper移动应用远程协助平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/chanceAd.html">畅思广告平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/domob.html">多盟广告平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/gizWifiSDK.html">gizWifiSDK接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/kuguo.html">酷果广告平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/meiQia.html">美洽客服平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/qiyuSdk.html">网易七鱼云客服平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/qq.html">QQ开放平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/rongCloud2.html">融云IM 平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/sina.html">新浪微博平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/superID.html">一登刷脸登录平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/talkingData.html">talkingData平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/tingyun.html">听云App iOS SDK接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/udsk.html">Udesk客服平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/weChat.html">微信开放平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/youkuPlayer.html">优酷播放器接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/zhiChi.html">智齿客服平台接入</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    <div class="col-sm-10 main-content">
+
+        <section class="content">
+            <h1 class="title">posPrinter</h1>
+
+            <p style="color: #ccc; margin-bottom: 30px;">来自于：开发者<a style="background-color: #95ba20; color:#fff; padding:4px 8px;border-radius:5px;margin-left:30px; margin-bottom:0px; font-size:12px;text-decoration:none;" target="_blank" href="http://www.apicloud.com/mod_detail?mdId=33067">立即使用</a></p>
+
+<div class="outline">
+<a href="#a1">getBluetoothPrinters</a>
+
+<a href="#a2">createBondToPrinter</a>
+
+<a href="#a3">removeBondToPrinter</a>
+
+<a href="#a4">printOnBondedPrinter</a>
+
+<a href="#a5">printOnSpecifiedPrinters</a>
+
+<a href="#a6">sendEscCommandToPrinter</a>
+
+<a href="#a7">getPrinterStatus</a>
+</div>
+
+<h1 id="-"><strong>概述</strong></h1>
+<p>posPrinter 支持各品牌小票（热敏）打印机，可同时连接多台蓝牙、网口打印机，通过向打印机发送esc/pos指令直接打印，无需安装驱动。</p>
+<p>posPrinter 支持多机同时打印，可自定义打印格式，打印联数，非常适用于打印收银小票、堂食/外卖订单、超市结账单等。</p>
+<ul>
+<li><p>使用蓝牙打印机：</p>
+<p>  使用蓝牙打印机前，要把平板（或手机）和蓝牙打印机绑定。
+  手动绑定蓝牙打印机时，在手机或平板的蓝牙管理界面，搜索蓝牙设备，待搜索到蓝牙打印机后，进行绑定。然后调用模块的 printOnBondedPrinter 函数，把打印内容发送到绑定的打印机。</p>
+<p>  如果知道蓝牙打印机的地址（如 98:D3:31:20:23:4A），也可以不进行绑定，直接调用 printOnSpecifiedPrinters，在参数中传入蓝牙打印机地址和打印内容。模块在打印前自动进行绑定，然后进行打印。</p>
+</li>
+<li><p>使用网口打印机：</p>
+<p>  使用网口打印机前，要保证网口打印机的IP地址和平板（手机）在同一个网段，即：IP地址的前三部分相同，建议将网口打印机和和平板（手机）连接到同一个路由器。然后调用 printOnSpecifiedPrinters，在参数中传入网口打印机的IP地址和打印内容，进行打印。</p>
+</li>
+</ul>
+<ul>
+<li><p>多台打印机同时打印：</p>
+<p>  当配置多台打印机进行打印时，调用 printOnSpecifiedPrinters　函数，传入蓝牙打印机的MAC地址或网口打印机的IP地址，以及对应的打印内容，模块根据地址格式自动判断打印机类型，并将打印内容发送至指定打印机。</p>
+</li>
+</ul>
+<ul>
+<li>打印格式标签说明（标签允许嵌套）：</li>
+</ul>
+<pre><code class="lang-xml">&lt;BR&gt;为换行符
+&lt;CUT&gt;为切纸符
+&lt;A&gt;&lt;/A&gt;为放大
+&lt;B&gt;&lt;/B&gt;为加粗
+&lt;L&gt;&lt;/L&gt;字体2倍高度
+&lt;T&gt;&lt;/T&gt;超大字体
+&lt;C&gt;&lt;/C&gt;为居中
+&lt;QR&gt;&lt;/QR&gt;按标签内的内容生成二维码并打印
+&lt;BASE64&gt;&lt;/BASE64&gt;将标签内的base64编码还原为图片并打印
+</code></pre>
+<ul>
+<li>字体相关表情允许混搭</li>
+</ul>
+<pre><code>如：&lt;BA&gt;放大加粗&lt;/BA&gt;
+</code></pre><ul>
+<li>58mm 热敏打印机小票参考格式：</li>
+</ul>
+<pre><code class="lang-xml">&lt;C&gt;&lt;A&gt;测试打印&lt;/A&gt;&lt;/C&gt;&lt;BR&gt;
+名称　　　　　 单价  数量 金额&lt;BR&gt;
+--------------------------------&lt;BR&gt;
+番　　　　　　 1.0    1   1.0&lt;BR&gt;
+番茄　　　　　 10.0   10  10.0&lt;BR&gt;
+番茄炒　　　　 10.0   100 100.0&lt;BR&gt;
+番茄炒粉　　　 100.0  100 100.0&lt;BR&gt;
+番茄炒粉粉　　 1000.0 1   100.0&lt;BR&gt;
+番茄炒粉粉粉粉 100.0  100 100.0&lt;BR&gt;
+番茄炒粉粉粉粉 15.0   1   15.0&lt;BR&gt;
+备注：快点送到&lt;BR&gt;
+--------------------------------&lt;BR&gt;
+合计：xx.0元&lt;BR&gt;
+送货地点：xxxxxxxxxxxxxxxxx&lt;BR&gt;
+联系电话：138000000000&lt;BR&gt;
+订餐时间：2011-01-06 19:30:10&lt;BR&gt;
+--------------------------------&lt;BR&gt;
+&lt;QR&gt;http://www.apicloud.com/&lt;/QR&gt;&lt;BR&gt;
+   &lt;BR&gt;
+----------&lt;CUT&gt;----------&lt;BR&gt;
+   &lt;BR&gt;
+</code></pre>
+<ul>
+<li>80mm 热敏打印机小票参考格式：</li>
+</ul>
+<pre><code class="lang-xml">&lt;AB&gt;桌号:22&lt;/AB&gt;&lt;BR&gt;
+------------------------------------------------&lt;BR&gt;
+&lt;BL&gt;测试餐厅名称(上菜单)&lt;/BL&gt;&lt;BR&gt;
+************************************************&lt;BR&gt;
+&lt;L&gt;订单流水号：T00000000030007（堂食）&lt;/L&gt;&lt;BR&gt;
+------------------------------------------------&lt;BR&gt;
+菜品名称                   单价   数量  金额&lt;BR&gt;
+------------------------------------------------&lt;BR&gt;
+牛肉圆葱(大)                30     1     30&lt;BR&gt;&lt;BR&gt;
+素三鲜(大)                  28     1     28&lt;BR&gt;&lt;BR&gt;
+韭菜鸡蛋(大)                28     1     28&lt;BR&gt;&lt;BR&gt;
+------------------------------------------------&lt;BR&gt;
+&lt;B&gt;                         应收金额：86 元&lt;/B&gt;&lt;BR&gt;
+&lt;B&gt;优惠方式：减5元          优惠金额：5 元&lt;/B&gt;&lt;BR&gt;
+&lt;B&gt;                         实收金额：81 元&lt;/B&gt;&lt;BR&gt;
+------------------------------------------------&lt;BR&gt;
+就餐人数：1      备注： &lt;BR&gt;
+------------------------------------------------&lt;BR&gt;
+收银员：张三   结算方式：现金&lt;BR&gt;
+ Pos机：0003     订餐时间：2016-09-12 14:36:55&lt;BR&gt;
+************************************************&lt;BR&gt;
+分店地址：测试餐厅地址&lt;BR&gt;
+订餐电话：010-12345678&lt;BR&gt;
+  &lt;BR&gt;
+&lt;QR&gt;http://www.apicloud.com/&lt;/QR&gt;&lt;BR&gt;
+---------------------&lt;CUT&gt;--------------------------&lt;BR&gt;
+  &lt;BR&gt;
+</code></pre>
+<ul>
+<li>打印二维码参考格式（1.1.0及以上版本支持）：</li>
+</ul>
+<pre><code class="lang-xml">&lt;QR&gt;http://www.apicloud.com/&lt;/QR&gt;&lt;BR&gt;
+</code></pre>
+<ul>
+<li>打印base64编码图片参考格式（1.1.0及以上版本支持）：<pre><code class="lang-xml">&lt;BR&gt;
+&lt;BASE64&gt;iVBORw0KGgoAAAANSUhEUgAAACoAAAAbCAYAAAAK5R1TAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2tpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0ZjRmYWQ4ZC05YTdkLTQ3ZjEtOTYxMC03YjU2NDk5ZDE1MmQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjhCRTMwNTE5NzcyMTFFNjhBNTFFMjQ2NjNGNTg2RjQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjhCRTMwNTA5NzcyMTFFNjhBNTFFMjQ2NjNGNTg2RjQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Qzc0QjUyNDMzOTIyMTFFNjlEMTVCQThCOTM4Mjc5NjQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Qzc0QjUyNDQzOTIyMTFFNjlEMTVCQThCOTM4Mjc5NjQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz783Hw/AAACWklEQVR42mJgIB8wAbEXEM8E4gtA/BWI/wPxTyB+AsRbgLgEiKUZBggwAnEsED+AOowQ/g3ES4FYkZ6OFAPinUQ6EB2DQjyZHo6UB+I7ZDoSGbfT0pFCQHwDh8Ug8QYg9gRiAyC2BOIEIF4GxD9w6CmjhSNBmWYHFsveAnE0NM3iAqCMtAqL3r9AbEFthzpjseguECuRYEYVFjNOQwOBqsAbiN9DLQDRamSYMQGLY/1pkQRAIXgOiH3J1M+OpUjbREqZiA4UgDgRiN2gOZ0LLb3+o8CzILNYkfggx34C4u9A/AiI9wDxfGjpghOwAXEnEP+iQhFECf4NTSYcuBy5bYAdiI73ocUmGEwcZI6E4dnIaVQDiK8AMTOSw0Hl3EIg3grE76icKdcBsSASvxmIz0IbOElAzIKWhk2gmRij2AClEQ8a1XACWELNHkneAdr6whqqN9EkJtGwKk5EswtUgvCjqWlHU/MEJoFeHzvQyJHM0HYrsl1HsagzxxLqrExoaYIBWqbRAuQBsT6a2AIs6r5hEQO78Qma68tp4MgALOUzqIDnxKI2B03de5jEEjSJ19AaiRqAE5qr/2GJziAcra3naOrWwyRdsRjyDIjjoe1QcnoBZtA26nMc5eM0ND2g4ioKGsp4Gy476ViIrwXiw0SqPYweCpJAfI8OjuyB5v4DRKh9gisJSkOLC1o48DxasUfIoWcI9VpBVWok1KC/FDruMbQadsXSnDyAo3tyBJo3mIhpjyLnWFAo85CYmUBV4AvkYgULUEEz9xs0qr/hDMH///8zDAUAEGAAiGvKl5Gx5PgAAAAASUVORK5CYII=&lt;/BASE64&gt;
+&lt;BR&gt;
+</code></pre>
+</li>
+</ul>
+<p><div id="a1"></div></p>
+<h1 id="-getbluetoothprinters-"><strong>getBluetoothPrinters</strong></h1>
+<p>获取蓝牙打印机列表</p>
+<p>getBluetoothPrinters({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>status：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）表示要获取绑定的设备还是搜索周边所有蓝牙设备</li>
+<li>取值范围：bonded | all 默认值为 all</li>
+<li>示例： 传入 {status: &#39;bonded&#39;} 获取绑定的蓝牙设备，null 
+或  {status: &#39;all&#39;} 搜索周边所有蓝牙设备</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON数组，其中每一个JSON对象代表一个蓝牙设备</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">[
+    {
+        name:     &#39;&#39;   //字符串；蓝牙设备名称
+        address：  &#39;&#39;    // 字符串；蓝牙设备地址
+        isBonded： &#39;yes|no&#39;   // 字符串； 该蓝牙设备是否已绑定  
+    }
+]
+</code></pre>
+<p>err：</p>
+<ul>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+        msg:     &#39;&#39;   //错误信息
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var printModule = api.require(&#39;posPrinter&#39;);
+var param = {
+    &#39;status&#39;: &#39;bonded&#39;
+};
+printModule.getBluetoothPrinters(param, function (ret, err) {
+    alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">补充说明</h2>
+<p>搜索周边所有蓝牙设备时，需要30秒左右才能返回搜索到的设备列表</p>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<p><div id="a2"></div></p>
+<h1 id="-createbondtoprinter-"><strong>createBondToPrinter</strong></h1>
+<p>绑定蓝牙打印机</p>
+<p>createBondToPrinter({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>address：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（必填项）蓝牙打印机 MAC 地址</li>
+</ul>
+<p>pin：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）绑定蓝牙设备时需要输入的pin码</li>
+<li>说明： 一般的pin码为 0000 或 1234，如果不输入，系统尝试使用这两个值进行绑定</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    result:     &#39;ok|fail&#39;   //字符串；ok表示绑定成功，fail表示未能绑定
+    msg：  &#39;&#39;    // 字符串；操作结果说明  
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+        msg:     &#39;&#39;   //错误信息
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var printModule = api.require(&#39;posPrinter&#39;);
+var param = {
+    &#39;address&#39;: &#39;98:D3:31:20:23:4A&#39;
+    &#39;pin&#39;: &#39;0000&#39;
+};
+printModule.createBondToPrinter(param, function (ret, err) {
+    alert(JSON.stringify(ret));
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<p><div id="a3"></div></p>
+<h1 id="-removebondtoprinter-"><strong>removeBondToPrinter</strong></h1>
+<p>将指定的蓝牙打印机解除绑定</p>
+<p>removeBondToPrinter({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>address：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（必填项）要解除绑定的蓝牙打印机 MAC 地址</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    result:     &#39;ok|fail&#39;   //字符串；ok表示解绑成功，fail表示未能解绑
+    msg：  &#39;&#39;    // 字符串；操作结果说明  
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+        msg:     &#39;&#39;   //错误信息
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var printModule = api.require(&#39;posPrinter&#39;);
+var param = {
+    &#39;address&#39;: &#39;98:D3:31:20:23:4A&#39;
+};
+printModule.removeBondToPrinter(param, function (ret, err) {
+    alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<p><div id="a4"></div></p>
+<h1 id="-printonbondedprinter-"><strong>printOnBondedPrinter</strong></h1>
+<p>通过设备绑定的蓝牙打印机进行打印</p>
+<p>printOnBondedPrinter({params})</p>
+<h2 id="params">params</h2>
+<p>content：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（必填项）要打印的内容，内容格式通过标签进行控制</li>
+<li>说明： 每行只能使用一个格式控制标签</li>
+</ul>
+<p>copyNum：</p>
+<ul>
+<li>类型：数字类型</li>
+<li>描述：（可选项）重复打印次数，默认值为1</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>err：</p>
+<ul>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+        msg:     &#39;&#39;   //错误信息
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var orderInfo;
+orderInfo = &quot;&lt;CA&gt;测试打印&lt;/CA&gt;&lt;BR&gt;&quot;;
+orderInfo += &quot;名称　　　　　 单价  数量 金额&lt;BR&gt;&quot;;
+orderInfo += &quot;--------------------------------&lt;BR&gt;&quot;;
+orderInfo += &quot;番　　　　　　 1.0    1   1.0&lt;BR&gt;&quot;;
+orderInfo += &quot;番茄　　　　　 10.0   10  10.0&lt;BR&gt;&quot;;
+orderInfo += &quot;番茄炒　　　　 10.0   100 100.0&lt;BR&gt;&quot;;
+orderInfo += &quot;番茄炒粉　　　 100.0  100 100.0&lt;BR&gt;&quot;;
+orderInfo += &quot;番茄炒粉粉　　 1000.0 1   100.0&lt;BR&gt;&quot;;
+orderInfo += &quot;番茄炒粉粉粉粉 100.0  100 100.0&lt;BR&gt;&quot;;
+orderInfo += &quot;番茄炒粉粉粉粉 15.0   1   15.0&lt;BR&gt;&quot;;
+orderInfo += &quot;备注：快点送到&lt;BR&gt;&quot;;
+orderInfo += &quot;--------------------------------&lt;BR&gt;&quot;;
+orderInfo += &quot;合计：xx.0元&lt;BR&gt;&quot;;
+orderInfo += &quot;送货地点：xxxxxxxxxxxxxxxxx&lt;BR&gt;&quot;;
+orderInfo += &quot;联系电话：138000000000&lt;BR&gt;&quot;;
+orderInfo += &quot;订餐时间：2011-01-06 19:30:10&lt;BR&gt;&quot;;
+orderInfo += &quot; &lt;BR&gt; &lt;BR&gt;&quot;;
+
+var printModule = api.require(&#39;posPrinter&#39;);
+var param = { &#39;content&#39;: orderInfo, &#39;copyNum&#39;: 2 };
+printModule.printOnBondedPrinter(param);
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<p><div id="a5"></div></p>
+<h1 id="-printonspecifiedprinters-"><strong>printOnSpecifiedPrinters</strong></h1>
+<p>将打印内容发送到指定地址的打印机（蓝牙打印机为MAC地址，网口打印机为IP地址），支持多机打印</p>
+<p>printOnSpecifiedPrinters({params})</p>
+<h2 id="params">params</h2>
+<p>taskList：</p>
+<ul>
+<li>类型：JSON数组</li>
+<li>描述：（必填项）打印机、打印内容、重复打印次数组成的JSON对象数组</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">[
+    {
+        printerAddr: &#39;98:D3:31:20:23:4A&#39;,  //字符串；打印机地址
+        content: orderInfo,     //字符串；打印内容
+        copyNum: 2                 //数值类型；重复打印次数，默认值为1 
+    }
+]
+</code></pre>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>err：</p>
+<ul>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+        msg:     &#39;&#39;   //错误信息
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var orderInfo;
+orderInfo = &quot;&lt;CA&gt;测试打印&lt;/CA&gt;&lt;BR&gt;&quot;;
+orderInfo += &quot;名称　　　　　 单价  数量 金额&lt;BR&gt;&quot;;
+orderInfo += &quot;--------------------------------&lt;BR&gt;&quot;;
+orderInfo += &quot;番　　　　　　 1.0    1   1.0&lt;BR&gt;&quot;;
+orderInfo += &quot;番茄　　　　　 10.0   10  10.0&lt;BR&gt;&quot;;
+orderInfo += &quot;番茄炒　　　　 10.0   100 100.0&lt;BR&gt;&quot;;
+orderInfo += &quot;番茄炒粉　　　 100.0  100 100.0&lt;BR&gt;&quot;;
+orderInfo += &quot;番茄炒粉粉　　 1000.0 1   100.0&lt;BR&gt;&quot;;
+orderInfo += &quot;番茄炒粉粉粉粉 100.0  100 100.0&lt;BR&gt;&quot;;
+orderInfo += &quot;番茄炒粉粉粉粉 15.0   1   15.0&lt;BR&gt;&quot;;
+orderInfo += &quot;备注：快点送到&lt;BR&gt;&quot;;
+orderInfo += &quot;--------------------------------&lt;BR&gt;&quot;;
+orderInfo += &quot;合计：xx.0元&lt;BR&gt;&quot;;
+orderInfo += &quot;送货地点：xxxxxxxxxxxxxxxxx&lt;BR&gt;&quot;;
+orderInfo += &quot;联系电话：138000000000&lt;BR&gt;&quot;;
+orderInfo += &quot;订餐时间：2011-01-06 19:30:10&lt;BR&gt;&quot;;
+orderInfo += &quot; &lt;BR&gt; &lt;BR&gt;&quot;;
+
+var printModule = api.require(&#39;posPrinter&#39;);
+var param = 
+{ 
+    taskList: 
+    [
+        { 
+            printerAddr: &#39;98:D3:31:20:23:4A&#39;, 
+            content: orderInfo, 
+            copyNum: 2 
+        },
+        { 
+            printerAddr: &#39;192.168.1.10&#39;, 
+            content: orderInfo, 
+            copyNum: 2 
+        }
+    ] 
+};
+printModule.printOnSpecifiedPrinters(param);
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<p><div id="a6"></div></p>
+<h1 id="-sendesccommandtoprinter-"><strong>sendEscCommandToPrinter</strong></h1>
+<p>向指定打印机发送 ESC/POS 指令（不了解ESC/POS指令慎用）</p>
+<p>sendEscCommandToPrinter({params})</p>
+<h2 id="params">params</h2>
+<p>printerAddr：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（必填项）蓝牙打印机地址（可通过getBluetoothPrinters获取）、IP打印机地址、USB打印机地址（可通过getUsbPrinters获取）</li>
+</ul>
+<p>decCmd:</p>
+<ul>
+<li>类型：JSON数组</li>
+<li>描述：（必填项）以十进制数字组成的 ESC/POS 指令数组</li>
+<li>示例： 传入 [27, 112, 0, 60, 255] 表示打开钱箱指令，传入[29, 86, 66, 0] 表示切纸命令</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    result:     &#39;ok&#39;   //字符串；ok表示调用成功
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">
+        {
+            msg:&#39;&#39;       //错误信息描述
+        }
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var printModule = api.require(&#39;posPrinter&#39;);
+var param = {
+    &#39;printerAddr&#39;: &#39;98:D3:31:20:23:4A&#39;,
+    &#39;decCmd&#39;: [27, 112, 0, 60, 255]    // 向打印机发送打开钱箱指令
+};
+printModule.sendEscCommandToPrinter(param);
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.1.0及更高版本</p>
+<p><div id="a7"></div></p>
+<h1 id="-getprinterstatus-"><strong>getPrinterStatus</strong></h1>
+<p>获取打印机状态</p>
+<p>getPrinterStatus({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>printerAddr：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（必填项）打印机Mac地址或IP地址</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    online ：  &#39;yes|no&#39;,    // 字符串；打印机联机状态，yes表示在线，no表示离线
+    paper ： &#39;yes|no&#39;,   // 字符串； 打印机纸张状态，yes表示有纸，no表示缺纸
+    cashboxOpen :     &#39;yes|no&#39;   //字符串；打印机连接的钱箱是否打开，yes表示开启，no表示关闭
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+        msg:     &#39;&#39;   //错误信息
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var printModule = api.require(&#39;posPrinter&#39;);
+var param = { printerAddr: &#39;192.168.3.243&#39; };
+printModule.getPrinterStatus(param , function(ret , err)
+{
+    alert(&quot;是否联机：&quot; + ret.online + &quot;, 有打印纸：&quot; + ret.paper + &quot;, 钱箱开启：&quot; + ret.cashboxOpen);
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.1.0及更高版本</p>
+
+
+            <div class="page-meta clearfix">
+                <div class="last-updated pull-right">
+                    <!-- Last updated on 18th May 2017 -->
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <!-- <div class="footer-logo"> -->
+                    <!-- <a href="http://www.apicloud.com" target="_blank" style="width:182px;height:113px;display:inline-block;margin-left: 25px;">
+                        <img src="/img/logo.jpg" alt="">
+                    </a> -->
+                    <!-- <div style="display:inline-block;float:right"> -->
+                        <p class="copyright pull-right" style="margin-top:-70px;">
+                            Copyright &copy; 2017APICloud Docs   &nbsp <a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action">京ICP备14027692号</a>
+                        </p>
+                    <!-- </div> -->
+                <!-- </div> -->
+                
+            </div>
+        </footer>
+        <div id="outlineTip">
+        </div>
+        <a id="backToTop" href="javascript:void(0)">
+        </a>
+        <!-- <iframe id="bbsLogin" style="display:none" src="/bbsLogin.html">
+        </iframe> -->
+        <script src="../../bower_components/jquery/dist/jquery.min.js">
+        </script>
+        <script src="../../scripts/jquery.qrcode.min.js"></script>
+        <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js">
+        </script>
+        <script src="../../bower_components/highlightjs/highlight.pack.js">
+        </script>
+        <script src="../../bower_components/fitvids/jquery.fitvids.js">
+        </script>
+        <script src="../../bower_components/masonry/dist/masonry.pkgd.min.js">
+        </script>
+        <script src="../../scripts/ZeroClipboard.min.js">
+        </script>
+        <script src="../../scripts/raneto.js">
+        </script>
+        <div style="display:none;">
+            <script type="text/javascript">
+                var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253236292'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1253236292%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+                // $('#operatingCloud').mouseenter(function () {
+                //     $('.mouse2').css('display','block');
+                //     $('.mouse1').css('display','none');
+                // }).mouseleave(function(){
+                //     $('.mouse2').css('display','none');
+                // })
+                // $('#operatingApp').mouseenter(function () {
+                //     $('.mouse1').css('display','block');
+                //     $('.mouse2').css('display','none');
+                // }).mouseleave(function(){
+                //     $('.mouse1').css('display','none');
+                // })
+                // $('#nav_point').mouseenter(function () {
+                //   $('.mouse2').css('display','none');
+                //   $('.mouse1').css('display','none');
+                // })
+  
+            </script>
+        </div>
+    </body>
+
+<!-- Mirrored from docs.apicloud.com/Client-API/Device-Access/posPrinter by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 May 2017 08:24:18 GMT -->
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>
+            
+        </title>
+        <!-- <title>
+            APICloud Docs
+        </title> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" href="/favicon.png"/>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/bower_components/highlightjs/styles/vs.css"/>
+        <link rel="stylesheet" href="/styles/font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="/styles/raneto.css"/>
+        <link rel="stylesheet" href="/styles/homenewlayout.css"/>
+        <style>
+            header{
+                top:0;
+            }
+            header div.authenticated{
+                display: none;
+            }
+            .authenticated.active{
+                display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+                display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+                display: -ms-flexbox;      /* TWEENER - IE 10 */
+                display: -webkit-flex;     /* NEW - Chrome */
+                display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+            }
+            .link-group.active{
+                display: none;
+            }
+            .copyright a{
+                color: #999 !important;
+                margin-right: 16px !important;
+            }
+            /*红点 start*/
+            /*.item-notice-out,
+            .item-notice-in{
+                position: relative;
+            }
+            .item-notice-out:after,
+            .item-notice-in:after{
+                position: absolute;
+                content: " ";
+                width: 6px;
+                height: 6px;
+                border-radius: 10px;
+                background-color: #ee3131;
+            }
+            .item-notice-out:after{
+                top: 13px;
+                right: 15px;
+            }
+            .item-notice-in:after{
+                top: 10px;
+                right: 14px;
+            }*/
+            /*红点 end*/
+        </style>
+        <link href="/styles/video-js.css" rel="stylesheet" type="text/css"/>
+        <script src="/scripts/video.js">
+        </script>
+        <script>
+            videojs.options.flash.swf = "/video-js.swf";
+        </script>
+        
+    </head>
+    <body class="page-error">
+        <header class="light">
+            <div class="nav-left">
+                <a href="http://www.apicloud.com" class="logo" title=''>
+                    <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 19.4" style="enable-background:new 0 0 120 19.4;" xml:space="preserve">
+                          <style type="text/css">
+                            .st0 {
+                              fill: #95BA1F;
+                            }
+                            
+                            .st1 {
+                              fill: #FFFFFF;
+                            }
+                          </style>
+                            <g id="XMLID_34_">
+                            <path id="XMLID_35_" class="st0" d="M23.6,18h-2.6v-3h2.6c1.5,0,2.8-1.3,2.8-2.8c0-1.5-1.3-2.8-2.8-2.8h-0.5
+                        c-0.2,4.7-4.2,8.5-9,8.5H5.7C2.6,18,0,15.4,0,12.2c0-3.2,2.6-5.7,5.7-5.7h13.9c-1-2.1-3.1-3.5-5.5-3.5c-1.9,0-3.6,0.9-4.8,2.3
+                        L8.4,6.5L6.1,4.6L7,3.5C8.7,1.3,11.3,0,14.1,0c4.1,0,7.6,2.7,8.6,6.5h0.8c3.2,0,5.7,2.6,5.7,5.7C29.3,15.4,26.7,18,23.6,18z
+                        M5.7,9.5C4.2,9.5,3,10.7,3,12.2C3,13.8,4.2,15,5.7,15h8.4c3.2,0,5.8-2.5,6-5.6H5.7z" />
+                            </g>
+                            <path id="XMLID_31_" class="st1" d="M46.1,13.9H41l-1.3,4.2h-2.4l4.9-14.8h2.7l4.9,14.8h-2.5L46.1,13.9z M45.6,12.1l-0.6-2
+                        c-0.5-1.6-0.9-3.3-1.4-4.9h-0.1c-0.4,1.7-0.9,3.3-1.4,4.9l-0.6,2H45.6z" />
+                            <path id="XMLID_28_" class="st1" d="M51.8,3.4h4.5c3.3,0,5.6,1.1,5.6,4.5c0,3.2-2.4,4.7-5.6,4.7h-2.2v5.6h-2.3V3.4z M56.1,10.7
+                        c2.4,0,3.5-0.9,3.5-2.9c0-1.9-1.2-2.6-3.6-2.6h-1.9v5.4H56.1z" />
+                            <path id="XMLID_26_" class="st1" d="M64.8,3.4h2.3v14.8h-2.3V3.4z" />
+                            <g id="XMLID_16_">
+                            <path id="XMLID_7_" class="st1" d="M80,15.7c-1.1,1.2-2.2,1.8-3.6,1.8c-3.1,0-5.1-2.6-5.1-6.7c0-4.1,2-6.6,5.2-6.6
+                            C78,4.2,79,5,79.5,5.7l0.1,0.2L80.4,5l-0.1-0.1c-0.5-0.5-1.7-1.8-3.9-1.8c-3.9,0-6.3,3-6.3,7.7c0,4.7,2.5,7.8,6.2,7.8
+                            c1.8,0,3.2-0.7,4.4-2.1l0.1-0.1l-0.7-0.8L80,15.7z" />
+                            <path id="XMLID_6_" class="st1" d="M85.1,17.5c-0.2,0-0.3,0-0.4,0c-0.1,0-0.3,0-0.3-0.5V2h-1.1V17c0,1.4,0.7,1.6,1.3,1.6
+                            c0.3,0,0.4,0,0.6-0.1l0.3-0.1l-0.2-1L85.1,17.5z" />
+                            <path id="XMLID_21_" class="st1" d="M92.5,7.1c-2.9,0-4.9,2.4-4.9,5.8c0,3.4,2,5.7,4.9,5.7c2.9,0,4.9-2.4,4.9-5.7
+                            C97.4,9.5,95.3,7.1,92.5,7.1z M92.5,17.5c-2.2,0-3.7-1.9-3.7-4.7c0-2.7,1.6-4.7,3.7-4.7c2.2,0,3.8,2,3.8,4.7
+                            C96.2,15.6,94.6,17.5,92.5,17.5z" />
+                            <path id="XMLID_3_" class="st1" d="M106.9,15.4c-1.4,1.6-2.3,2.1-3.4,2.1c-1.1,0-2.4-0.4-2.4-3.3V7.5h-0.9v6.9c0,2.9,1,4.2,3.3,4.2
+                            c1.5,0,2.6-0.9,3.4-1.8l0.1,1.5h1V7.5h-1.1V15.4z" />
+                            <path id="XMLID_17_" class="st1" d="M118.9,2v4.6l0,1.6c-1-0.7-1.8-1.1-3.1-1.1c-2.9,0-4.9,2.4-4.9,5.8c0,3.6,1.7,5.7,4.6,5.7
+                            c1.2,0,2.4-0.5,3.4-1.5l0.1,1.1h1V2H118.9z M118.9,9.5v6.3c-1.2,1.2-2.2,1.7-3.3,1.7c-2.1,0-3.5-1.8-3.5-4.7c0-2.7,1.7-4.7,3.8-4.7
+                            C116.9,8.1,117.8,8.5,118.9,9.5z" />
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="nav-right mw-8">
+                <div class="nav-right">
+                    <div class="authenticated" id="ifSigned">
+                        <div  class="profile toConsole">
+                            <a href="http://www.apicloud.com/console">
+                                <img src="/img/favicon-30.png"  alt="APICloud" />
+                                <span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="unauthenticated link-group">
+                        <a href="http://www.apicloud.com/signin">
+                            登录
+                        </a>
+                        <span>
+                        </span>
+                        <a href="http://www.apicloud.com/signup">
+                            注册
+                        </a>
+                    </div>
+                </div>
+                <ul class="nav nav-right">
+                    <li id="nav_point">
+                        <!-- 活动红点 -->
+                        <!-- <a href="javascript:void(0)" class="badge-red"> -->
+                        <a href="javascript:void(0)">
+                            APP开发平台
+                        </a>
+                        <ul class="nav-list pointer">
+                            <li class="nav-list-item mousein" id="operatingApp">
+                                <a href="javascript:void(0)" class="nav-link operatingApp_link">
+                                    <span class="APP">APP引擎</span>
+                                    <i class="icon-angle-right"></i>
+                                </a>
+                                <span class="mouse mouse1">
+                                    <ul class="nav-list mouse-ul pointer_right">
+                                        <li class="nav-list-item ">
+                                            <a href="http://apicloud.com/superwebview" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_superwebview"></span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                           SuperWebView
+                                                    </span>
+                                                    <span class="nav-description">
+                                                            帮助原生程序员快速迭代
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-list-item nav-list-item1">
+                                            <a href="http://apicloud.com/deepengine" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_deepengine">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        Deep Engine
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        高效的跨平台APP引擎
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>   
+                                    </ul>
+                                </sapn>
+                            </li>
+                            <li class="nav-list-item mousein" id="operatingCloud">
+                                <a href="javascript:void(0)"  class="nav-link operatingCloud_link">
+                                    <span class="APP">云引擎</span>
+                                    <i class="icon-angle-right"></i>
+                                </a>
+                                <span class="mouse mouse2">
+                                    <ul class="nav-list mouse-ul pointer_right">
+                                        <li class="nav-list-item">
+                                            <a href="http://apicloud.com/cloudservice" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_cloudservice">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        数据云
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        无需编程 自动生成Server端
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-list-item nav-list-item1">
+                                            <a href="http://apicloud.com/cloudmanage" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_cloudoperating">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        运营云
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        提升您的运维效率
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>        
+                                    </ul>
+                                </sapn>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/modulestore"  class="nav-link">
+                                    <span class="APP">模块Store</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://docs.apicloud.com/APICloud/junior-develop-guide"  class="nav-link">
+                                    <span class="APP">新手指南</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/devtools" class="nav-link">
+                                    <span class="APP">开发工具</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/vipservice/enterpEdition" class="nav-link">
+                                    <span class="APP">VIP服务</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://app.apicloud.com">
+                            APP定制服务
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            开发者社区
+                        </a>
+                        <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://community.apicloud.com/bbs/forum.php" class="nav-link" target="_blank">
+                                    在线社区
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://docs.apicloud.com/" class="nav-link" target="_blank">
+                                    文档
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/video_list" class="nav-link">
+                                    视频教程
+                                </a> 
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/source_code" class="nav-link">
+                                    源码
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="item-notice-out">
+                            案例
+                        </a>
+                        <ul class="nav-list single">
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/cases" class="nav-link" target="_blank">
+                                    开发案例
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/cases" class="nav-link" target="_blank">
+                                    定制案例
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="error">
+	<h1>404</h1>
+	<p>Whoops. Looks like this page doesn&#39;t exist.</p>
+</div>
+
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="copyright pull-right">
+                    Copyright &copy; 2016APICloud Docs   &nbsp <a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action ">京ICP备14027692号</a>
+                </p>
+            </div>
+        </footer>
+        <div id="outlineTip">
+        </div>
+        <a id="backToTop" href="javascript:void(0)">
+        </a>
+        <script src="/bower_components/jquery/dist/jquery.min.js">
+        </script>
+        <script src="/scripts/jquery.qrcode.min.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js">
+        </script>
+        <script src="/bower_components/highlightjs/highlight.pack.js">
+        </script>
+        <script src="/bower_components/fitvids/jquery.fitvids.js">
+        </script>
+        <script src="/bower_components/masonry/dist/masonry.pkgd.min.js">
+        </script>
+        <script src="/scripts/ZeroClipboard.min.js">
+        </script>
+        <script src="/scripts/raneto.js">
+        </script>
+        <div style="display:none;">
+            <script type="text/javascript">
+                var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253236292'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1253236292%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+                // $('#operatingCloud').mouseenter(function () {
+                //     $('.mouse2').css('display','block');
+                //     $('.mouse1').css('display','none');
+                // }).mouseleave(function(){
+                //     $('.mouse2').css('display','none');
+                // })
+                // $('#operatingApp').mouseenter(function () {
+                //     $('.mouse1').css('display','block');
+                //     $('.mouse2').css('display','none');
+                // }).mouseleave(function(){
+                //     $('.mouse1').css('display','none');
+                // })
+                // $('#nav_point').mouseenter(function () {
+                //   $('.mouse2').css('display','none');
+                //   $('.mouse1').css('display','none');
+                // })
+  
+            </script>
+        </div>
+    </body>
+</html>

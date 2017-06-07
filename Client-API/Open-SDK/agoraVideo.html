@@ -1,0 +1,4008 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from docs.apicloud.com/Client-API/Open-SDK/agoraVideo by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 May 2017 08:29:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>
+            
+            agoraVideo
+        </title>
+        <!-- <title>
+            agoraVideo - APICloud Docs
+        </title> -->
+        <meta name="description" content="agoraVideo"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" href="../../favicon.png"/>
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../../bower_components/highlightjs/styles/vs.css"/>
+        <link rel="stylesheet" href="../../styles/font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="../../styles/raneto.css"/>
+        <link rel="stylesheet" href="../../styles/homenewlayout.css"/>
+        <style>
+            header{
+                top:0;
+            }
+            header div.authenticated{
+                display: none;
+            }
+            .authenticated.active{
+                display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+                display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+                display: -ms-flexbox;      /* TWEENER - IE 10 */
+                display: -webkit-flex;     /* NEW - Chrome */
+                display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+            }
+            .link-group.active{
+                display: none;
+            }
+            .copyright a{
+                color: #999 !important;
+                margin-right: 16px !important;
+            }
+            /*红点 start*/
+            /*.item-notice-out,
+            .item-notice-in{
+                position: relative;
+            }
+            .item-notice-out:after,
+            .item-notice-in:after{
+                position: absolute;
+                content: " ";
+                width: 6px;
+                height: 6px;
+                border-radius: 10px;
+                background-color: #ee3131;
+            }
+            .item-notice-out:after{
+                top: 13px;
+                right: 15px;
+            }
+            .item-notice-in:after{
+                top: 10px;
+                right: 14px;
+            }*/
+            /*红点 end*/
+        </style>
+        <link href="../../styles/video-js.css" rel="stylesheet" type="text/css"/>
+        <script src="../../scripts/video.js">
+        </script>
+        <script>
+            videojs.options.flash.swf = "../../video-js.swf";
+        </script>
+        
+    </head>
+    <body class="page-client-a-p-i-open-s-d-k-agora-video">
+        <header class="light">
+            <div class="nav-left">
+                <a href="http://www.apicloud.com/" class="logo" title=''>
+                    <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 19.4" style="enable-background:new 0 0 120 19.4;" xml:space="preserve">
+                          <style type="text/css">
+                            .st0 {
+                              fill: #95BA1F;
+                            }
+                            
+                            .st1 {
+                              fill: #FFFFFF;
+                            }
+                          </style>
+                            <g id="XMLID_34_">
+                            <path id="XMLID_35_" class="st0" d="M23.6,18h-2.6v-3h2.6c1.5,0,2.8-1.3,2.8-2.8c0-1.5-1.3-2.8-2.8-2.8h-0.5
+                        c-0.2,4.7-4.2,8.5-9,8.5H5.7C2.6,18,0,15.4,0,12.2c0-3.2,2.6-5.7,5.7-5.7h13.9c-1-2.1-3.1-3.5-5.5-3.5c-1.9,0-3.6,0.9-4.8,2.3
+                        L8.4,6.5L6.1,4.6L7,3.5C8.7,1.3,11.3,0,14.1,0c4.1,0,7.6,2.7,8.6,6.5h0.8c3.2,0,5.7,2.6,5.7,5.7C29.3,15.4,26.7,18,23.6,18z
+                        M5.7,9.5C4.2,9.5,3,10.7,3,12.2C3,13.8,4.2,15,5.7,15h8.4c3.2,0,5.8-2.5,6-5.6H5.7z" />
+                            </g>
+                            <path id="XMLID_31_" class="st1" d="M46.1,13.9H41l-1.3,4.2h-2.4l4.9-14.8h2.7l4.9,14.8h-2.5L46.1,13.9z M45.6,12.1l-0.6-2
+                        c-0.5-1.6-0.9-3.3-1.4-4.9h-0.1c-0.4,1.7-0.9,3.3-1.4,4.9l-0.6,2H45.6z" />
+                            <path id="XMLID_28_" class="st1" d="M51.8,3.4h4.5c3.3,0,5.6,1.1,5.6,4.5c0,3.2-2.4,4.7-5.6,4.7h-2.2v5.6h-2.3V3.4z M56.1,10.7
+                        c2.4,0,3.5-0.9,3.5-2.9c0-1.9-1.2-2.6-3.6-2.6h-1.9v5.4H56.1z" />
+                            <path id="XMLID_26_" class="st1" d="M64.8,3.4h2.3v14.8h-2.3V3.4z" />
+                            <g id="XMLID_16_">
+                            <path id="XMLID_7_" class="st1" d="M80,15.7c-1.1,1.2-2.2,1.8-3.6,1.8c-3.1,0-5.1-2.6-5.1-6.7c0-4.1,2-6.6,5.2-6.6
+                            C78,4.2,79,5,79.5,5.7l0.1,0.2L80.4,5l-0.1-0.1c-0.5-0.5-1.7-1.8-3.9-1.8c-3.9,0-6.3,3-6.3,7.7c0,4.7,2.5,7.8,6.2,7.8
+                            c1.8,0,3.2-0.7,4.4-2.1l0.1-0.1l-0.7-0.8L80,15.7z" />
+                            <path id="XMLID_6_" class="st1" d="M85.1,17.5c-0.2,0-0.3,0-0.4,0c-0.1,0-0.3,0-0.3-0.5V2h-1.1V17c0,1.4,0.7,1.6,1.3,1.6
+                            c0.3,0,0.4,0,0.6-0.1l0.3-0.1l-0.2-1L85.1,17.5z" />
+                            <path id="XMLID_21_" class="st1" d="M92.5,7.1c-2.9,0-4.9,2.4-4.9,5.8c0,3.4,2,5.7,4.9,5.7c2.9,0,4.9-2.4,4.9-5.7
+                            C97.4,9.5,95.3,7.1,92.5,7.1z M92.5,17.5c-2.2,0-3.7-1.9-3.7-4.7c0-2.7,1.6-4.7,3.7-4.7c2.2,0,3.8,2,3.8,4.7
+                            C96.2,15.6,94.6,17.5,92.5,17.5z" />
+                            <path id="XMLID_3_" class="st1" d="M106.9,15.4c-1.4,1.6-2.3,2.1-3.4,2.1c-1.1,0-2.4-0.4-2.4-3.3V7.5h-0.9v6.9c0,2.9,1,4.2,3.3,4.2
+                            c1.5,0,2.6-0.9,3.4-1.8l0.1,1.5h1V7.5h-1.1V15.4z" />
+                            <path id="XMLID_17_" class="st1" d="M118.9,2v4.6l0,1.6c-1-0.7-1.8-1.1-3.1-1.1c-2.9,0-4.9,2.4-4.9,5.8c0,3.6,1.7,5.7,4.6,5.7
+                            c1.2,0,2.4-0.5,3.4-1.5l0.1,1.1h1V2H118.9z M118.9,9.5v6.3c-1.2,1.2-2.2,1.7-3.3,1.7c-2.1,0-3.5-1.8-3.5-4.7c0-2.7,1.7-4.7,3.8-4.7
+                            C116.9,8.1,117.8,8.5,118.9,9.5z" />
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="nav-right mw-8">
+                <div class="nav-right">
+                    <div class="authenticated" id="ifSigned">
+                    <ul>
+                        <li class="ifSigned-list">
+                            <div  class="profile toConsole">
+                                <img src="../../img/favicon-30.png"  alt="APICloud" />
+                                <span class="login-name">
+                                </span>
+                                <span class="arr-b">
+                                </span>
+                            </div>
+                            <ul class="nav-list single console-list">
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/console" class="nav-link-single">
+                                        <i class="fa icon-tasks">
+                                        </i>
+                                        <span>
+                                            开发控制台
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://app.apicloud.com/demandlist" class="nav-link-single">
+                                        <i class="fa icon-demand">
+                                        </i>
+                                        <span>
+                                            我的定制需求
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/module_pub_history" class="nav-link-single">
+                                        <i class="fa icon-inbox">
+                                        </i>
+                                        <span>
+                                            模块管理
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/myService" class="nav-link-single myBill">
+                                        <i class="fa icon-user">
+                                        </i>
+                                        <span>
+                                            我的账户
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/member" class="nav-link-single">
+                                        <i class="fa icon-group"></i>
+                                        <span>
+                                            团队协作
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/profile" class="nav-link-single">
+                                        <i class="fa icon-cog">
+                                        </i>
+                                        <span>
+                                            设置
+                                        </span>
+                                    </a>
+                                </li>
+                                <!-- <li class="nav-list-item" id="sign_out">
+                                    <a href="javascript:void(0)" class="nav-link-single">
+                                        <i class="fa icon-signout">
+                                        </i>
+                                        <span>
+                                            退出
+                                        </span>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="unauthenticated link-group">
+                        <a href="http://www.apicloud.com/signin">
+                            登录
+                        </a>
+                        <span>
+                        </span>
+                        <a href="http://www.apicloud.com/signup">
+                            注册
+                        </a>
+                    </div>
+                </div>
+                <ul class="nav nav-right">
+                    <li id="nav_point">
+                        <!-- 活动红点 -->
+                        <!-- <a href="http://www.apicloud.com" class="badge-red"> -->
+                        <a href="javascript:void(0)">
+                            APP开发平台
+                        </a>
+                        <ul class="nav-list pointer">
+                            <li class="nav-list-item mousein" id="operatingApp">
+                                <a href="javascript:void(0)" class="nav-link operatingApp_link">
+                                    <span class="APP">APP引擎</span>
+                                    <i class="icon-angle-right"></i>
+                                </a>
+                                <span class="mouse mouse1">
+                                    <ul class="nav-list mouse-ul pointer_right">
+                                        <li class="nav-list-item ">
+                                            <a href="http://apicloud.com/superwebview" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_superwebview"></span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                           SuperWebView
+                                                    </span>
+                                                    <span class="nav-description">
+                                                            帮助原生程序员快速迭代
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-list-item nav-list-item1">
+                                            <a href="http://apicloud.com/deepengine" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_deepengine">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        Deep Engine
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        高效的跨平台APP引擎
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>   
+                                    </ul>
+                                </sapn>
+                            </li>
+                            <li class="nav-list-item mousein" id="operatingCloud">
+                                <a href="javascript:void(0)"  class="nav-link operatingCloud_link">
+                                    <span class="APP">云引擎</span>
+                                    <i class="icon-angle-right"></i>
+                                </a>
+                                <span class="mouse mouse2">
+                                    <ul class="nav-list mouse-ul pointer_right">
+                                        <li class="nav-list-item">
+                                            <a href="http://apicloud.com/cloudservice" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_cloudservice">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        数据云
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        无需编程 自动生成Server端
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-list-item nav-list-item1">
+                                            <a href="http://apicloud.com/cloudmanage" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_cloudoperating">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        运营云
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        提升您的运维效率
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>        
+                                    </ul>
+                                </sapn>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/modulestore"  class="nav-link">
+                                    <span class="APP">模块Store</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="../../APICloud/junior-develop-guide.html"  class="nav-link">
+                                    <span class="APP">新手指南</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/devtools" class="nav-link">
+                                    <span class="APP">开发工具</span>
+                                </a>
+                            </li>
+                            <!-- <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/vipservice/price" class="nav-link">
+                                    <span class="APP badge-red">价格</span>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://app.apicloud.com/" target="_blank">
+                            APP定制服务
+                        </a>
+                        <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/" class="nav-link" target="_blank">
+                                APP定制
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/appCustom" class="nav-link" target="_blank">
+                                模板Store
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://community.apicloud.com/" target="_blank">
+                            开发者社区
+                        </a>
+                        <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://community.apicloud.com/bbs/forum.php" class="nav-link" target="_blank">
+                                    在线社区
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../../index.html" class="nav-link" target="_blank">
+                                    文档
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/video_list" class="nav-link">
+                                    视频教程
+                                </a> 
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/source_code" class="nav-link">
+                                    源码
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://apicloud.com/vipservice/price"  target="_blank">
+                            VIP服务
+                        </a>
+                        <!-- <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/price" class="nav-link">
+                                    VIP服务
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/plan" class="nav-link">
+                                    云服务价格
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/channel" class="nav-link">
+                                    渠道打包
+                                </a> 
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/enterpEdition" class="nav-link">
+                                    优先技术支持
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/course" class="nav-link">
+                                    培训课程
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/attest" class="nav-link">
+                                    认证工程师
+                                </a>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href="http://apicloud.com/cases" target="_blank" class="item-notice-out">
+                            案例
+                        </a>
+                        <ul class="nav-list single">
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/cases" class="nav-link" target="_blank">
+                                    开发案例
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/cases" class="nav-link" target="_blank">
+                                    定制案例
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="row main-container">
+    <div class="col-sm-2 main-menu">
+        <!--search box-->
+        <form class="search-form form-inline" role="form" action="http://docs.apicloud.com/">
+            <div class="form-group">
+                <label class="sr-only" for="search">Search</label>
+                <input type="search" class="form-control" name="search" id="search" size="30" value="" placeholder="Search">
+            </div>
+        </form>
+        <ul class="menu">
+                    <li class="page"><a href="../../index.html">开发文档</a></li>
+            <li class="category">
+                <h5 class="category-title">Apicloud</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../APICloud/platform-intro.html">APP开发平台介绍</a></li>
+                    <li class="page"><a href="../../APICloud/APP-custom-info.html">APP定制平台介绍</a></li>
+                    <li class="page"><a href="../../APICloud/junior-develop-guide.html">新手开发指南</a></li>
+                    <li class="page"><a href="../../APICloud/creating-first-app.html">创建第一个应用</a></li>
+                    <li class="page"><a href="../../APICloud/APP-Template-Guide.html">模板使用流程</a></li>
+                    <li class="page"><a href="../../APICloud/app-guide.html">如何开发出优秀的APICloud应用</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">模块开发</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Module-Dev/module-dev-standard.html">开发模块设计规范</a></li>
+                    <li class="page"><a href="../../Module-Dev/module-dev-guide-for-ios.html">模块开发指南_iOS</a></li>
+                    <li class="page"><a href="../../Module-Dev/module-dev-guide-for-android.html">模块开发指南_Android</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-audit-specification-ios.html">模块审核规范-iOS</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-audit-specification-Android.html">模块审核规范-Android</a></li>
+                    <li class="page"><a href="../../Module-Dev/Upload-custom-module.html">自定义模块使用说明</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-Store-Guide.html">模块Store规范</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-Store-Service-Agreement.html">模块Store服务协议</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">端API</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../api.html">API对象</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">设备访问
+</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Device-Access/3DTouch.html">3DTouch</a></li>
+                    <li class="page"><a href="../Device-Access/DVTorch.html">DVTorch</a></li>
+                    <li class="page"><a href="../Device-Access/FNSettings.html">FNSettings</a></li>
+                    <li class="page"><a href="../Device-Access/accelerometer.html">accelerometer</a></li>
+                    <li class="page"><a href="../Device-Access/accelerometerSensor.html">accelerometerSensor</a></li>
+                    <li class="page"><a href="../Device-Access/appSettings.html">appSettings</a></li>
+                    <li class="page"><a href="../Device-Access/appVersionUpdate.html">appVersionUpdate</a></li>
+                    <li class="page"><a href="../Device-Access/ble.html">ble</a></li>
+                    <li class="page"><a href="../Device-Access/bluetooth.html">bluetooth</a></li>
+                    <li class="page"><a href="../Device-Access/brightness2016.html">brightness2016</a></li>
+                    <li class="page"><a href="../Device-Access/btmodule.html">btmodule</a></li>
+                    <li class="page"><a href="../Device-Access/btsppiot.html">btsppiot</a></li>
+                    <li class="page"><a href="../Device-Access/calendarMemo.html">calendarMemo</a></li>
+                    <li class="page"><a href="../Device-Access/callRecord.html">callRecord</a></li>
+                    <li class="page"><a href="../Device-Access/cameraTool.html">cameraTool</a></li>
+                    <li class="page"><a href="../Device-Access/clipBoard.html">clipBoard</a></li>
+                    <li class="page"><a href="../Device-Access/compassLeveler.html">compassLeveler</a></li>
+                    <li class="page"><a href="../Device-Access/contact.html">contact</a></li>
+                    <li class="page"><a href="../Device-Access/contacts.html">contacts</a></li>
+                    <li class="page"><a href="../Device-Access/easyNFC.html">easyNFC</a></li>
+                    <li class="page"><a href="../Device-Access/gps.html">gps</a></li>
+                    <li class="page"><a href="../Device-Access/gpsState.html">gpsState</a></li>
+                    <li class="page"><a href="../Device-Access/gravitySensor.html">gravitySensor</a></li>
+                    <li class="page"><a href="../Device-Access/gyro.html">gyro</a></li>
+                    <li class="page"><a href="../Device-Access/gyroscopeSensor.html">gyroscopeSensor</a></li>
+                    <li class="page"><a href="../Device-Access/hardwareInfo.html">hardwareInfo</a></li>
+                    <li class="page"><a href="../Device-Access/ipAddress.html">ipAddress</a></li>
+                    <li class="page"><a href="../Device-Access/lightSensor.html">lightSensor</a></li>
+                    <li class="page"><a href="../Device-Access/linearAcceleration.html">linearAcceleration</a></li>
+                    <li class="page"><a href="../Device-Access/magneticFieldSensor.html">magneticFieldSensor</a></li>
+                    <li class="page"><a href="../Device-Access/magnetometer.html">magnetometer</a></li>
+                    <li class="page"><a href="../Device-Access/mediaScanner.html">mediaScanner</a></li>
+                    <li class="page"><a href="../Device-Access/moduleSMS.html">moduleSMS</a></li>
+                    <li class="page"><a href="../Device-Access/multiScreen.html">multiScreen</a></li>
+                    <li class="page"><a href="../Device-Access/myAppInfo.html">myAppInfo</a></li>
+                    <li class="page"><a href="../Device-Access/myListeningInfo.html">myListeningInfo</a></li>
+                    <li class="page"><a href="../Device-Access/mySettingInfo.html">mySettingInfo</a></li>
+                    <li class="page"><a href="../Device-Access/orientationSensor.html">orientationSensor</a></li>
+                    <li class="page"><a href="../Device-Access/pasteboard.html">pasteboard</a></li>
+                    <li class="page"><a href="../Device-Access/pedometer.html">pedometer</a></li>
+                    <li class="page"><a href="../Device-Access/phoneInfo.html">phoneInfo</a></li>
+                    <li class="page"><a href="../Device-Access/pingModule.html">pingModule</a></li>
+                    <li class="page"><a href="../Device-Access/playText.html">playText</a></li>
+                    <li class="page"><a href="../Device-Access/posPrinter.html">posPrinter</a></li>
+                    <li class="page"><a href="../Device-Access/posScanner.html">posScanner</a></li>
+                    <li class="page"><a href="../Device-Access/proximitySensor.html">proximitySensor</a></li>
+                    <li class="page"><a href="../Device-Access/rotationVector.html">rotationVector</a></li>
+                    <li class="page"><a href="../Device-Access/seblePrinter.html">seblePrinter</a></li>
+                    <li class="page"><a href="../Device-Access/simInfo.html">simInfo</a></li>
+                    <li class="page"><a href="../Device-Access/simInfoImp.html">simInfoImp</a></li>
+                    <li class="page"><a href="../Device-Access/spModule.html">spModule</a></li>
+                    <li class="page"><a href="../Device-Access/statusBar.html">statusBar</a></li>
+                    <li class="page"><a href="../Device-Access/sunmiPrinter.html">sunmiPrinter</a></li>
+                    <li class="page"><a href="../Device-Access/toBackground.html">toBackground</a></li>
+                    <li class="page"><a href="../Device-Access/torch.html">torch</a></li>
+                    <li class="page"><a href="../Device-Access/touchID.html">touchID</a></li>
+                    <li class="page"><a href="../Device-Access/wifi.html">wifi</a></li>
+                    <li class="page"><a href="../Device-Access/wifiMgr.html">wifiMgr</a></li>
+                    <li class="page"><a href="../Device-Access/wifiSSID.html">wifiSSID</a></li>
+                    <li class="page"><a href="../Device-Access/yunnex.html">yunnex</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">功能扩展</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Func-Ext/FNImageClip.html">FNImageClip</a></li>
+                    <li class="page"><a href="../Func-Ext/FNPhotograph.html">FNPhotograph</a></li>
+                    <li class="page"><a href="../Func-Ext/FNScanner.html">FNScanner</a></li>
+                    <li class="page"><a href="../Func-Ext/aemail.html">aemail</a></li>
+                    <li class="page"><a href="../Func-Ext/alarmNotification.html">alarmNotification</a></li>
+                    <li class="page"><a href="../Func-Ext/appControl.html">appControl</a></li>
+                    <li class="page"><a href="../Func-Ext/appManage.html">appManage</a></li>
+                    <li class="page"><a href="../Func-Ext/arcColorPicker.html">arcColorPicker</a></li>
+                    <li class="page"><a href="../Func-Ext/audio.html">audio</a></li>
+                    <li class="page"><a href="../Func-Ext/audioCover.html">audioCover</a></li>
+                    <li class="page"><a href="../Func-Ext/audioPlayer.html">audioPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/audioRecorder.html">audioRecorder</a></li>
+                    <li class="page"><a href="../Func-Ext/autoStartUp.html">autoStartUp</a></li>
+                    <li class="page"><a href="../Func-Ext/batteryManager.html">batteryManager</a></li>
+                    <li class="page"><a href="../Func-Ext/blurredView.html">blurredView</a></li>
+                    <li class="page"><a href="../Func-Ext/bookReader.html">bookReader</a></li>
+                    <li class="page"><a href="../Func-Ext/brightness.html">brightness</a></li>
+                    <li class="page"><a href="../Func-Ext/cardReader.html">cardReader</a></li>
+                    <li class="page"><a href="../Func-Ext/chromeDebug.html">chromeDebug</a></li>
+                    <li class="page"><a href="../Func-Ext/cnKeyBoard.html">cnKeyBoard</a></li>
+                    <li class="page"><a href="../Func-Ext/cocoVideo.html">cocoVideo</a></li>
+                    <li class="page"><a href="../Func-Ext/codeLog.html">codeLog</a></li>
+                    <li class="page"><a href="../Func-Ext/compactPicture.html">compactPicture</a></li>
+                    <li class="page"><a href="../Func-Ext/db.html">db</a></li>
+                    <li class="page"><a href="../Func-Ext/djyPrinter.html">djyPrinter</a></li>
+                    <li class="page"><a href="../Func-Ext/docInteraction.html">docInteraction</a></li>
+                    <li class="page"><a href="../Func-Ext/docReader.html">docReader</a></li>
+                    <li class="page"><a href="../Func-Ext/downloadManager.html">downloadManager</a></li>
+                    <li class="page"><a href="../Func-Ext/drawingBoard.html">drawingBoard</a></li>
+                    <li class="page"><a href="../Func-Ext/exifInterface.html">exifInterface</a></li>
+                    <li class="page"><a href="../Func-Ext/fileBrowser.html">fileBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/fs.html">fs</a></li>
+                    <li class="page"><a href="../Func-Ext/getWebUrl.html">getWebUrl</a></li>
+                    <li class="page"><a href="../Func-Ext/headphone.html">headphone</a></li>
+                    <li class="page"><a href="../Func-Ext/iap.html">iap</a></li>
+                    <li class="page"><a href="../Func-Ext/imageBrowser.html">imageBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/imageClip.html">imageClip</a></li>
+                    <li class="page"><a href="../Func-Ext/imageCrop.html">imageCrop</a></li>
+                    <li class="page"><a href="../Func-Ext/imageFilter.html">imageFilter</a></li>
+                    <li class="page"><a href="../Func-Ext/imagePalette.html">imagePalette</a></li>
+                    <li class="page"><a href="../Func-Ext/imageSelect.html">imageSelect</a></li>
+                    <li class="page"><a href="../Func-Ext/imageTool.html">imageTool</a></li>
+                    <li class="page"><a href="../Func-Ext/launchImage.html">launchImage</a></li>
+                    <li class="page"><a href="../Func-Ext/liveAudioPlayer.html">liveAudioPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/logger.html">logger</a></li>
+                    <li class="page"><a href="../Func-Ext/marketScore.html">marketScore</a></li>
+                    <li class="page"><a href="../Func-Ext/mdReader.html">mdReader</a></li>
+                    <li class="page"><a href="../Func-Ext/micoMqtt.html">micoMqtt</a></li>
+                    <li class="page"><a href="../Func-Ext/mqtt.html">mqtt</a></li>
+                    <li class="page"><a href="../Func-Ext/myTimer.html">myTimer</a></li>
+                    <li class="page"><a href="../Func-Ext/navigator.html">navigator</a></li>
+                    <li class="page"><a href="../Func-Ext/netAudio.html">netAudio</a></li>
+                    <li class="page"><a href="../Func-Ext/openAppStore.html">openAppStore</a></li>
+                    <li class="page"><a href="../Func-Ext/patternLock.html">patternLock</a></li>
+                    <li class="page"><a href="../Func-Ext/pdfReader.html">pdfReader</a></li>
+                    <li class="page"><a href="../Func-Ext/phoneListener.html">phoneListener</a></li>
+                    <li class="page"><a href="../Func-Ext/photoBrowser.html">photoBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/photoPicker.html">photoPicker</a></li>
+                    <li class="page"><a href="../Func-Ext/photoSelect.html">photoSelect</a></li>
+                    <li class="page"><a href="../Func-Ext/photoStream.html">photoStream</a></li>
+                    <li class="page"><a href="../Func-Ext/playModule.html">playModule</a></li>
+                    <li class="page"><a href="../Func-Ext/playRtsp.html">playRtsp</a></li>
+                    <li class="page"><a href="../Func-Ext/privacy.html">privacy</a></li>
+                    <li class="page"><a href="../Func-Ext/realNetwork.html">realNetwork</a></li>
+                    <li class="page"><a href="../Func-Ext/recentPic.html">recentPic</a></li>
+                    <li class="page"><a href="../Func-Ext/recordVideo.html">recordVideo</a></li>
+                    <li class="page"><a href="../Func-Ext/richText.html">richText</a></li>
+                    <li class="page"><a href="../Func-Ext/runBackground.html">runBackground</a></li>
+                    <li class="page"><a href="../Func-Ext/sangforvpn.html">sangforvpn</a></li>
+                    <li class="page"><a href="../Func-Ext/scanner.html">scanner</a></li>
+                    <li class="page"><a href="../Func-Ext/screenClip.html">screenClip</a></li>
+                    <li class="page"><a href="../Func-Ext/screenLock.html">screenLock</a></li>
+                    <li class="page"><a href="../Func-Ext/shareAction.html">shareAction</a></li>
+                    <li class="page"><a href="../Func-Ext/sharePics.html">sharePics</a></li>
+                    <li class="page"><a href="../Func-Ext/shareTool.html">shareTool</a></li>
+                    <li class="page"><a href="../Func-Ext/shortCut.html">shortCut</a></li>
+                    <li class="page"><a href="../Func-Ext/signature.html">signature</a></li>
+                    <li class="page"><a href="../Func-Ext/socketManager.html">socketManager</a></li>
+                    <li class="page"><a href="../Func-Ext/svideo.html">svideo</a></li>
+                    <li class="page"><a href="../Func-Ext/timer.html">timer</a></li>
+                    <li class="page"><a href="../Func-Ext/touchDebugger.html">touchDebugger</a></li>
+                    <li class="page"><a href="../Func-Ext/trans.html">trans</a></li>
+                    <li class="page"><a href="../Func-Ext/ttsModule.html">ttsModule</a></li>
+                    <li class="page"><a href="../Func-Ext/uimusic.html">uimusic</a></li>
+                    <li class="page"><a href="../Func-Ext/videoKit.html">videoKit</a></li>
+                    <li class="page"><a href="../Func-Ext/videoPlayer.html">videoPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/videoRecorder.html">videoRecorder</a></li>
+                    <li class="page"><a href="../Func-Ext/videoTool.html">videoTool</a></li>
+                    <li class="page"><a href="../Func-Ext/voiceMag.html">voiceMag</a></li>
+                    <li class="page"><a href="../Func-Ext/vpnIOS.html">vpnIOS</a></li>
+                    <li class="page"><a href="../Func-Ext/vrPlayer.html">vrPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/vtingPlayer.html">vtingPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/wallPaper.html">wallPaper</a></li>
+                    <li class="page"><a href="../Func-Ext/webBrowser.html">webBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/webSocket.html">webSocket</a></li>
+                    <li class="page"><a href="../Func-Ext/ytylive.html">ytylive</a></li>
+                    <li class="page"><a href="../Func-Ext/zip.html">zip</a></li>
+                    <li class="page"><a href="../Func-Ext/zxycamera.html">zxycamera</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">界面布局</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../UI-Layout/UIActionProgress.html">UIActionProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/UIActionSelector.html">UIActionSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/UIAlbumBrowser.html">UIAlbumBrowser</a></li>
+                    <li class="page"><a href="../UI-Layout/UIBarChart.html">UIBarChart</a></li>
+                    <li class="page"><a href="../UI-Layout/UIButton.html">UIButton</a></li>
+                    <li class="page"><a href="../UI-Layout/UICalendar.html">UICalendar</a></li>
+                    <li class="page"><a href="../UI-Layout/UIChatBox.html">UIChatBox</a></li>
+                    <li class="page"><a href="../UI-Layout/UIChatTools.html">UIChatTools</a></li>
+                    <li class="page"><a href="../UI-Layout/UICityList.html">UICityList</a></li>
+                    <li class="page"><a href="../UI-Layout/UICoverFlow.html">UICoverFlow</a></li>
+                    <li class="page"><a href="../UI-Layout/UICustomPicker.html">UICustomPicker</a></li>
+                    <li class="page"><a href="../UI-Layout/UIGraph.html">UIGraph</a></li>
+                    <li class="page"><a href="../UI-Layout/UIInput.html">UIInput</a></li>
+                    <li class="page"><a href="../UI-Layout/UILineChart.html">UILineChart</a></li>
+                    <li class="page"><a href="../UI-Layout/UILinkedPicker.html">UILinkedPicker</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListCard.html">UIListCard</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListCheck.html">UIListCheck</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListContacts.html">UIListContacts</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListMeeting.html">UIListMeeting</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListSearch.html">UIListSearch</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListView.html">UIListView</a></li>
+                    <li class="page"><a href="../UI-Layout/UILoading.html">UILoading</a></li>
+                    <li class="page"><a href="../UI-Layout/UIMediaScanner.html">UIMediaScanner</a></li>
+                    <li class="page"><a href="../UI-Layout/UIMultiSelector.html">UIMultiSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefresh.html">UIPullRefresh</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefreshDrop.html">UIPullRefreshDrop</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefreshFlash.html">UIPullRefreshFlash</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefreshMotive.html">UIPullRefreshMotive</a></li>
+                    <li class="page"><a href="../UI-Layout/UIScrollPicture.html">UIScrollPicture</a></li>
+                    <li class="page"><a href="../UI-Layout/UIScrollPromptView.html">UIScrollPromptView</a></li>
+                    <li class="page"><a href="../UI-Layout/UISearchBar.html">UISearchBar</a></li>
+                    <li class="page"><a href="../UI-Layout/UISelector.html">UISelector</a></li>
+                    <li class="page"><a href="../UI-Layout/UISlider.html">UISlider</a></li>
+                    <li class="page"><a href="../UI-Layout/UISwitchButton.html">UISwitchButton</a></li>
+                    <li class="page"><a href="../UI-Layout/UIVividLine.html">UIVividLine</a></li>
+                    <li class="page"><a href="../UI-Layout/UIWebBrowser.html">UIWebBrowser</a></li>
+                    <li class="page"><a href="../UI-Layout/addressView.html">addressView</a></li>
+                    <li class="page"><a href="../UI-Layout/applause.html">applause</a></li>
+                    <li class="page"><a href="../UI-Layout/arcProgress.html">arcProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/barChart.html">barChart</a></li>
+                    <li class="page"><a href="../UI-Layout/brokenLine.html">brokenLine</a></li>
+                    <li class="page"><a href="../UI-Layout/button.html">button</a></li>
+                    <li class="page"><a href="../UI-Layout/calendar.html">calendar</a></li>
+                    <li class="page"><a href="../UI-Layout/chatBox.html">chatBox</a></li>
+                    <li class="page"><a href="../UI-Layout/cityList.html">cityList</a></li>
+                    <li class="page"><a href="../UI-Layout/citySelector.html">citySelector</a></li>
+                    <li class="page"><a href="../UI-Layout/coverFlow.html">coverFlow</a></li>
+                    <li class="page"><a href="../UI-Layout/customSelector.html">customSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/customToast.html">customToast</a></li>
+                    <li class="page"><a href="../UI-Layout/dialogBox.html">dialogBox</a></li>
+                    <li class="page"><a href="../UI-Layout/divisionalLineChart.html">divisionalLineChart</a></li>
+                    <li class="page"><a href="../UI-Layout/doubleBarChart.html">doubleBarChart</a></li>
+                    <li class="page"><a href="../UI-Layout/fluttering.html">fluttering</a></li>
+                    <li class="page"><a href="../UI-Layout/goodsList.html">goodsList</a></li>
+                    <li class="page"><a href="../UI-Layout/graph.html">graph</a></li>
+                    <li class="page"><a href="../UI-Layout/groupList.html">groupList</a></li>
+                    <li class="page"><a href="../UI-Layout/guide.html">guide</a></li>
+                    <li class="page"><a href="../UI-Layout/hintChatBox.html">hintChatBox</a></li>
+                    <li class="page"><a href="../UI-Layout/iOSDialog.html">iOSDialog</a></li>
+                    <li class="page"><a href="../UI-Layout/inputField.html">inputField</a></li>
+                    <li class="page"><a href="../UI-Layout/keyboard.html">keyboard</a></li>
+                    <li class="page"><a href="../UI-Layout/lineChart.html">lineChart</a></li>
+                    <li class="page"><a href="../UI-Layout/listContact.html">listContact</a></li>
+                    <li class="page"><a href="../UI-Layout/listView.html">listView</a></li>
+                    <li class="page"><a href="../UI-Layout/loadingLabel.html">loadingLabel</a></li>
+                    <li class="page"><a href="../UI-Layout/matrixLock.html">matrixLock</a></li>
+                    <li class="page"><a href="../UI-Layout/messageList.html">messageList</a></li>
+                    <li class="page"><a href="../UI-Layout/multiSelector.html">multiSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/orderList.html">orderList</a></li>
+                    <li class="page"><a href="../UI-Layout/overviewList.html">overviewList</a></li>
+                    <li class="page"><a href="../UI-Layout/panorama.html">panorama</a></li>
+                    <li class="page"><a href="../UI-Layout/payPasswordInput.html">payPasswordInput</a></li>
+                    <li class="page"><a href="../UI-Layout/periodSelector.html">periodSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/personalCenter.html">personalCenter</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserQQ.html">photoBrowserQQ</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserTouTiao.html">photoBrowserTouTiao</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserWeiBo.html">photoBrowserWeiBo</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserWeiXin.html">photoBrowserWeiXin</a></li>
+                    <li class="page"><a href="../UI-Layout/pieChart.html">pieChart</a></li>
+                    <li class="page"><a href="../UI-Layout/pullRefreshLoop.html">pullRefreshLoop</a></li>
+                    <li class="page"><a href="../UI-Layout/scrollPicture.html">scrollPicture</a></li>
+                    <li class="page"><a href="../UI-Layout/searchBar.html">searchBar</a></li>
+                    <li class="page"><a href="../UI-Layout/selectList.html">selectList</a></li>
+                    <li class="page"><a href="../UI-Layout/shakeView.html">shakeView</a></li>
+                    <li class="page"><a href="../UI-Layout/slider.html">slider</a></li>
+                    <li class="page"><a href="../UI-Layout/slidingList.html">slidingList</a></li>
+                    <li class="page"><a href="../UI-Layout/slipList.html">slipList</a></li>
+                    <li class="page"><a href="../UI-Layout/suspensionWindow.html">suspensionWindow</a></li>
+                    <li class="page"><a href="../UI-Layout/thwartwiseBarChart.html">thwartwiseBarChart</a></li>
+                    <li class="page"><a href="../UI-Layout/timeSelector.html">timeSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/waterBallProgress.html">waterBallProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/waveProgress.html">waveProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/welcomePage.html">welcomePage</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">导航菜单</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Nav-Menu/MNActionButton.html">MNActionButton</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNNavigationMenu.html">MNNavigationMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNPopups.html">MNPopups</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNRotationMenu.html">MNRotationMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNStack.html">MNStack</a></li>
+                    <li class="page"><a href="../Nav-Menu/NVNavigationBar.html">NVNavigationBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/NVTabBar.html">NVTabBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/actionButton.html">actionButton</a></li>
+                    <li class="page"><a href="../Nav-Menu/arcMenu.html">arcMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/bubbleMenu.html">bubbleMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/circularMenu.html">circularMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/navigationBar.html">navigationBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/navigationMenu.html">navigationMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/pullMenu.html">pullMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/scrollRotation.html">scrollRotation</a></li>
+                    <li class="page"><a href="../Nav-Menu/sideMenu.html">sideMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/stackMenu.html">stackMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/tabBar.html">tabBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/tabBarMenu.html">tabBarMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/tuberBar.html">tuberBar</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开放SDK</h5>
+                <ul class="pages">
+                    <li class="page"><a href="QQPlus.html">QQPlus</a></li>
+                    <li class="page"><a href="aMap.html">aMap</a></li>
+                    <li class="page"><a href="aMapLBS.html">aMapLBS</a></li>
+                    <li class="page"><a href="aMapLocation.html">aMapLocation</a></li>
+                    <li class="page"><a href="aMapNavigation.html">aMapNavigation</a></li>
+                    <li class="page"><a href="aMapReportLocation.html">aMapReportLocation</a></li>
+                    <li class="page"><a href="admob.html">admob</a></li>
+                    <li class="page"><a href="adsDomob.html">adsDomob</a></li>
+                    <li class="page"><a href="adsYoumi.html">adsYoumi</a></li>
+                    <li class="page active"><a href="agoraVideo.html">agoraVideo</a></li>
+                    <li class="page"><a href="ajpush.html">ajpush</a></li>
+                    <li class="page"><a href="aliOSS.html">aliOSS</a></li>
+                    <li class="page"><a href="aliPay.html">aliPay</a></li>
+                    <li class="page"><a href="aliPayPlus.html">aliPayPlus</a></li>
+                    <li class="page"><a href="aliPayTrade.html">aliPayTrade</a></li>
+                    <li class="page"><a href="aliPayTradePlus.html">aliPayTradePlus</a></li>
+                    <li class="page"><a href="aliPush.html">aliPush</a></li>
+                    <li class="page"><a href="aliPushNoUtdId.html">aliPushNoUtdId</a></li>
+                    <li class="page"><a href="aliTrade.html">aliTrade</a></li>
+                    <li class="page"><a href="aliTradePlus.html">aliTradePlus</a></li>
+                    <li class="page"><a href="alibaichuan.html">alibaichuan</a></li>
+                    <li class="page"><a href="aliyunLive.html">aliyunLive</a></li>
+                    <li class="page"><a href="anyRTCModule.html">anyRTCModule</a></li>
+                    <li class="page"><a href="aplayer.html">aplayer</a></li>
+                    <li class="page"><a href="appleUnionPay.html">appleUnionPay</a></li>
+                    <li class="page"><a href="bMap.html">bMap</a></li>
+                    <li class="page"><a href="baiXing.html">baiXing</a></li>
+                    <li class="page"><a href="baiduAd.html">baiduAd</a></li>
+                    <li class="page"><a href="baiduAppx.html">baiduAppx</a></li>
+                    <li class="page"><a href="baiduLocation.html">baiduLocation</a></li>
+                    <li class="page"><a href="baiduMTJ.html">baiduMTJ</a></li>
+                    <li class="page"><a href="baiduMap.html">baiduMap</a></li>
+                    <li class="page"><a href="baiduNavigation.html">baiduNavigation</a></li>
+                    <li class="page"><a href="baiduPanorama.html">baiduPanorama</a></li>
+                    <li class="page"><a href="baiduSpeechRecognizer.html">baiduSpeechRecognizer</a></li>
+                    <li class="page"><a href="baiduTrace.html">baiduTrace</a></li>
+                    <li class="page"><a href="bcapplepay.html">bcapplepay</a></li>
+                    <li class="page"><a href="beecloud.html">beecloud</a></li>
+                    <li class="page"><a href="bmobPush.html">bmobPush</a></li>
+                    <li class="page"><a href="brightBeacon.html">brightBeacon</a></li>
+                    <li class="page"><a href="bugTags.html">bugTags</a></li>
+                    <li class="page"><a href="camera360.html">camera360</a></li>
+                    <li class="page"><a href="cchelperModule.html">cchelperModule</a></li>
+                    <li class="page"><a href="chanceAd.html">chanceAd</a></li>
+                    <li class="page"><a href="ciaYi.html">ciaYi</a></li>
+                    <li class="page"><a href="cloudwise.html">cloudwise</a></li>
+                    <li class="page"><a href="cloudwiseMAgent.html">cloudwiseMAgent</a></li>
+                    <li class="page"><a href="coinport.html">coinport</a></li>
+                    <li class="page"><a href="csOpenApi.html">csOpenApi</a></li>
+                    <li class="page"><a href="didi.html">didi</a></li>
+                    <li class="page"><a href="discuz.html">discuz</a></li>
+                    <li class="page"><a href="dkSDK.html">dkSDK</a></li>
+                    <li class="page"><a href="duiBa.html">duiBa</a></li>
+                    <li class="page"><a href="duibaSales.html">duibaSales</a></li>
+                    <li class="page"><a href="duibaView.html">duibaView</a></li>
+                    <li class="page"><a href="easeChat.html">easeChat</a></li>
+                    <li class="page"><a href="facebook.html">facebook</a></li>
+                    <li class="page"><a href="fog2.html">fog2</a></li>
+                    <li class="page"><a href="fuQianLa.html">付钱拉</a></li>
+                    <li class="page"><a href="geeTest.html">geeTest</a></li>
+                    <li class="page"><a href="gizWifiSDK.html">gizWifiSDK</a></li>
+                    <li class="page"><a href="googleAnalytics.html">googleAnalytics</a></li>
+                    <li class="page"><a href="googleMap.html">googleMap</a></li>
+                    <li class="page"><a href="gotyeLiveCore.html">亲加视频直播</a></li>
+                    <li class="page"><a href="hanvonCloudBcardReader.html">hanvonCloudBcardReader</a></li>
+                    <li class="page"><a href="hanvonCloudIdCardReader.html">hanvonCloudIdCardReader</a></li>
+                    <li class="page"><a href="hanvonCloudNumberReader.html">hanvonCloudNumberReader</a></li>
+                    <li class="page"><a href="hanvonCloudOcrFormulaReader.html">hanvonCloudOcrFormulaReader</a></li>
+                    <li class="page"><a href="hanvonCloudTableReader.html">hanvonCloudTableReader</a></li>
+                    <li class="page"><a href="huanxin.html">huanxin</a></li>
+                    <li class="page"><a href="huaweiPush.html">huaweiPush</a></li>
+                    <li class="page"><a href="idcard.html">idcard</a></li>
+                    <li class="page"><a href="iflytekvoiceads.html">iflytekvoiceads</a></li>
+                    <li class="page"><a href="ipaynow.html">ipaynow</a></li>
+                    <li class="page"><a href="ipaynowScanner.html">ipaynowScanner</a></li>
+                    <li class="page"><a href="jd.html">jd</a></li>
+                    <li class="page"><a href="jyVerify.html">jyVerify</a></li>
+                    <li class="page"><a href="kf5.html">kf5</a></li>
+                    <li class="page"><a href="kf5sdk.html">kf5sdk</a></li>
+                    <li class="page"><a href="ksi.html">ksi</a></li>
+                    <li class="page"><a href="ksisdk.html">ksisdk</a></li>
+                    <li class="page"><a href="leCloudLive.html">leCloudLive</a></li>
+                    <li class="page"><a href="leCloudPlay.html">leCloudPlay</a></li>
+                    <li class="page"><a href="leShiLive.html">leShiLive</a></li>
+                    <li class="page"><a href="line.html">line</a></li>
+                    <li class="page"><a href="liuLiangQianBao.html">liuLiangQianBao</a></li>
+                    <li class="page"><a href="logCrash.html">logCrash</a></li>
+                    <li class="page"><a href="magicWindow.html">magicWindow</a></li>
+                    <li class="page"><a href="maketionCardReader.html">maketionCardReader</a></li>
+                    <li class="page"><a href="meChat.html">meChat</a></li>
+                    <li class="page"><a href="meiQia.html">meiQia</a></li>
+                    <li class="page"><a href="mico.html">mico</a></li>
+                    <li class="page"><a href="miniQuPai.html">miniQuPai</a></li>
+                    <li class="page"><a href="miniQuPaiPlus.html">miniQuPaiPlus</a></li>
+                    <li class="page"><a href="miniVideoRecord.html">miniVideoRecord</a></li>
+                    <li class="page"><a href="mipush.html">mipush</a></li>
+                    <li class="page"><a href="mobShare.html">mobShare</a></li>
+                    <li class="page"><a href="mobVerify.html">mobVerify</a></li>
+                    <li class="page"><a href="moduleShareSMS.html">moduleShareSMS</a></li>
+                    <li class="page"><a href="mogoAds.html">mogoAds</a></li>
+                    <li class="page"><a href="mogoAdsBaidu.html">mogoAdsBaidu</a></li>
+                    <li class="page"><a href="mogoAdsGDT.html">mogoAdsGDT</a></li>
+                    <li class="page"><a href="mogoAdsdomob.html">mogoAdsdomob</a></li>
+                    <li class="page"><a href="nuanceSpeechRecognizer.html">nuanceSpeechRecognizer</a></li>
+                    <li class="page"><a href="paypal.html">paypal</a></li>
+                    <li class="page"><a href="pingpp.html">pingpp</a></li>
+                    <li class="page"><a href="polyVideo.html">polyVideo</a></li>
+                    <li class="page"><a href="polyvVideo.html">polyvVideo</a></li>
+                    <li class="page"><a href="pushGeTui.html">pushGeTui</a></li>
+                    <li class="page"><a href="pushRtmpOrVideoPlay.html">pushRtmpOrVideoPlay</a></li>
+                    <li class="page"><a href="qCloudVODPlayer.html">qCloudVODPlayer</a></li>
+                    <li class="page"><a href="qiniuLive.html">qiniuLive</a></li>
+                    <li class="page"><a href="qiniuStorage.html">qiniuStorage</a></li>
+                    <li class="page"><a href="qiniuUpfile.html">qiniuUpfile</a></li>
+                    <li class="page"><a href="qiyuSdk.html">qiyuSdk</a></li>
+                    <li class="page"><a href="qq.html">qq</a></li>
+                    <li class="page"><a href="quPaiModule.html">quPaiModule</a></li>
+                    <li class="page"><a href="qupai.html">qupai</a></li>
+                    <li class="page"><a href="qupaiLive.html">qupaiLive</a></li>
+                    <li class="page"><a href="recordVideo.html">recordVideo</a></li>
+                    <li class="page"><a href="reportLocation.html">reportLocation</a></li>
+                    <li class="page"><a href="rongCloud.html">rongCloud</a></li>
+                    <li class="page"><a href="rongCloud2.html">rongCloud2</a></li>
+                    <li class="page"><a href="seckenModule.html">seckenModule</a></li>
+                    <li class="page"><a href="sendSms.html">sendSms</a></li>
+                    <li class="page"><a href="sensorsAnalyticsAPICloudSDK.html">sensorsAnalyticsAPICloudSDK</a></li>
+                    <li class="page"><a href="shareMorePic.html">shareMorePic</a></li>
+                    <li class="page"><a href="sinaWeiBo.html">sinaWeiBo</a></li>
+                    <li class="page"><a href="smsVerification.html">smsVerification</a></li>
+                    <li class="page"><a href="smsVerify.html">smsVerify</a></li>
+                    <li class="page"><a href="speechRecognizer.html">speechRecognizer</a></li>
+                    <li class="page"><a href="superID.html">superID</a></li>
+                    <li class="page"><a href="talkingData.html">talkingData</a></li>
+                    <li class="page"><a href="taobao.html">taobao</a></li>
+                    <li class="page"><a href="tencentAds.html">tencentAds</a></li>
+                    <li class="page"><a href="tencentMTA.html">tencentMTA</a></li>
+                    <li class="page"><a href="tencentPlayer.html">tencentPlayer</a></li>
+                    <li class="page"><a href="tencentPush.html">tencentPush</a></li>
+                    <li class="page"><a href="tingyun.html">tingyun</a></li>
+                    <li class="page"><a href="tulingapi.html">tulingapi</a></li>
+                    <li class="page"><a href="tyRTC.html">tyRTC</a></li>
+                    <li class="page"><a href="tyRTCLive.html">tyRTCLive</a></li>
+                    <li class="page"><a href="udesk.html">udesk</a></li>
+                    <li class="page"><a href="umengAnalytics.html">umengAnalytics</a></li>
+                    <li class="page"><a href="umengTJ.html">umengTJ</a></li>
+                    <li class="page"><a href="unionPay.html">unionPay</a></li>
+                    <li class="page"><a href="updatethis.html">updatethis</a></li>
+                    <li class="page"><a href="upyunUpfile.html">upyunUpfile</a></li>
+                    <li class="page"><a href="uscSpeechRecognizer.html">uscSpeechRecognizer</a></li>
+                    <li class="page"><a href="vcloudLive.html">vcloudLive</a></li>
+                    <li class="page"><a href="vcloudPlay.html">vcloudPlay</a></li>
+                    <li class="page"><a href="wapsAd.html">wapsAd</a></li>
+                    <li class="page"><a href="weiXin.html">weiXin</a></li>
+                    <li class="page"><a href="weibo.html">weibo</a></li>
+                    <li class="page"><a href="wx.html">wx</a></li>
+                    <li class="page"><a href="wxPay.html">wxPay</a></li>
+                    <li class="page"><a href="xGprinter.html">xGprinter</a></li>
+                    <li class="page"><a href="ximalaya.html">ximalaya</a></li>
+                    <li class="page"><a href="youkuPlayer.html">youkuPlayer</a></li>
+                    <li class="page"><a href="yzxVerification.html">yzxVerification</a></li>
+                    <li class="page"><a href="zhiChiSobot.html">zhiChiSobot</a></li>
+                    <li class="page"><a href="zhuge.html">zhuge</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">云服务对接</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Cloud-Service/mam.html">mam</a></li>
+                    <li class="page"><a href="../Cloud-Service/mcm.html">mcm</a></li>
+                    <li class="page"><a href="../Cloud-Service/msm.html">msm</a></li>
+                    <li class="page"><a href="../Cloud-Service/push.html">push</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">前端框架</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Front-end-Framework/framework-dev-guide.html">APICloud前端框架</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">云API</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Cloud-API/data-cloud-api.html">数据云API</a></li>
+                    <li class="page"><a href="../../Cloud-API/stat-cloud-api.html">统计云API</a></li>
+                    <li class="page"><a href="../../Cloud-API/push-cloud-api.html">推送云API</a></li>
+                    <li class="page"><a href="../../Cloud-API/sdk-cloud-api.html">云API SDK</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">技术专题</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Dev-Guide/Android-License-Application-Guidance.html">Android签名证书描述及使用流程</a></li>
+                    <li class="page"><a href="../../Dev-Guide/Git-APICloud-guide.html">Git 代码托管指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/X5-APICloud-guide.html">如何在APICloud平台使用腾讯X5引擎</a></li>
+                    <li class="page"><a href="../../Dev-Guide/screen-adapt-guide.html">屏幕适配原理及实现</a></li>
+                    <li class="page"><a href="../../Dev-Guide/smartUpdate.html">云修复</a></li>
+                    <li class="page"><a href="../../Dev-Guide/start-page-ad-guid.html">启动页闪屏广告</a></li>
+                    <li class="page"><a href="../../Dev-Guide/version_update.html">版本更新</a></li>
+                    <li class="page"><a href="../../Dev-Guide/app-config-manual.html">config.xml应用配置说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/widget-package-structure-manual.html">Widget包结构说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/module-package-structure-manual.html">模块包结构说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/Custom_Loader.html">自定义loader说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/data-cloud-dev-guide.html">数据云服务开发指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/data-storage-dev-guide.html">数据存储开发指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/push-guide.html">推送技术指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/key.html">key.xml文件配置说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/iOS-License-Application-Guidance.html">iOS证书及描述文件制作流程</a></li>
+                    <li class="page"><a href="../../Dev-Guide/SuperWebview-guide-for-android.html">SuperWebview开发指南Android</a></li>
+                    <li class="page"><a href="../../Dev-Guide/SuperWebview-guide-for-ios.html">SuperWebview开发指南iOS</a></li>
+                    <li class="page"><a href="../../Dev-Guide/apple-watch-dev-guide.html">Apple Watch开发指南</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开发工具</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Dev-Tools/studio-dev-guide.html">APICloud Studio 2 快速入门</a></li>
+                    <li class="page"><a href="../../Dev-Tools/sublime-apicloud-plugin.html">工具：Sublime插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/Atom-apicloud-plugin.html">工具：Atom插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/ide-dev-guide.html">工具：Eclipse 插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/webStorm-apicloud-plugin.html">工具：WebStorm插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/sublime-apicloud-snippets.html">Sublime APICloud 语法提示</a></li>
+                    <li class="page"><a href="../../Dev-Tools/Atom-apicloud-snippets.html">Atom APICloud 语法提示</a></li>
+                    <li class="page"><a href="../../Dev-Tools/webStorm-apicloud-snippets.html">webStorm APICloud代码提示插件编写</a></li>
+                    <li class="page"><a href="../../Dev-Tools/eclipse-wifi.html">Eclipse  WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/sublime-wifi-sync.html">Sublime WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/wifi-debug.html">APICloud Studio WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/webStorm-wifi-sync.html">WebStorm WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/apicloud-tools-core.html">APICloud 开发工具核心库</a></li>
+                    <li class="page"><a href="../../Dev-Tools/apicloud-cli.html">apicloud-cli 工具使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/apicloud-polyfill.html">apicloud-polyfill</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">下载</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Download/download.html">Download</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">七天培训课教程</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Seven/Day1.html">Day1</a></li>
+                    <li class="page"><a href="../../Seven/Day2.html">Day2</a></li>
+                    <li class="page"><a href="../../Seven/Day3.html">Day3</a></li>
+                    <li class="page"><a href="../../Seven/Day4.html">Day4</a></li>
+                    <li class="page"><a href="../../Seven/Day5.html">Day5</a></li>
+                    <li class="page"><a href="../../Seven/Day6.html">Day6</a></li>
+                    <li class="page"><a href="../../Seven/Day7.html">Day7</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">其他</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Others/app-custom-faq.html">定制平台常见问题</a></li>
+                    <li class="page"><a href="../../Others/app-customization.html">APICloud需求预评估服务规则</a></li>
+                    <li class="page"><a href="../../Others/privacy-policy.html">隐私条款</a></li>
+                    <li class="page"><a href="../../Others/terms-of-service.html">服务条款</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">Faq</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Others/FAQ/Client-Dev.html">端开发</a></li>
+                    <li class="page"><a href="../../Others/FAQ/Cloud-Dev.html">云开发</a></li>
+                    <li class="page"><a href="../../Others/FAQ/IDE.html">APICloud Studio</a></li>
+                    <li class="page"><a href="../../Others/FAQ/app-service.html">应用服务</a></li>
+                    <li class="page"><a href="../../Others/FAQ/Other.html">其它</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开放平台接入指南</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/adsYoumi.html">有米广告SDK接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/baiXing.html">百姓网SDK接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/baiduMTJ.html">百度移动统计平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/dkSDK.html">点开广告平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/kf5sdk.html">kf5云客服平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/polyvVideo.html">保利威视平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/pushGeTui_manual.html">个推接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/sensorsAnalyticsAPICloudSDK.html">神策数据分析平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/tyRTC.html">天翼RTC平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/umengAnalytics.html">友盟统计平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/H2.html">H2移动广告交易平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/alipay.html">支付宝支付平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/baidu.html">百度开放平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/bmobPush.html">Bmob平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/brightBeacon.html">brightBeacon接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/cchelperModule.html">CChelper移动应用远程协助平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/chanceAd.html">畅思广告平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/domob.html">多盟广告平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/gizWifiSDK.html">gizWifiSDK接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/kuguo.html">酷果广告平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/meiQia.html">美洽客服平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/qiyuSdk.html">网易七鱼云客服平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/qq.html">QQ开放平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/rongCloud2.html">融云IM 平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/sina.html">新浪微博平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/superID.html">一登刷脸登录平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/talkingData.html">talkingData平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/tingyun.html">听云App iOS SDK接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/udsk.html">Udesk客服平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/weChat.html">微信开放平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/youkuPlayer.html">优酷播放器接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/zhiChi.html">智齿客服平台接入</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    <div class="col-sm-10 main-content">
+
+        <section class="content">
+            <h1 class="title">agoraVideo</h1>
+
+            <p style="color: #ccc; margin-bottom: 30px;">来自于：开发者<a style="background-color: #95ba20; color:#fff; padding:4px 8px;border-radius:5px;margin-left:30px; margin-bottom:0px; font-size:12px;text-decoration:none;" target="_blank" href="http://www.apicloud.com/mod_detail?mdId=25948">立即使用</a></p>
+
+
+<ul id="tab" class="clearfix">
+    <li class="active"><a href="#method-content">Method</a></li>
+</ul>
+
+<div id="method-content"></div>
+
+<h2 id="-">音频、基础类</h2>
+<div class="outline">
+<a href="#1">init</a>
+
+<a href="#2">joinChannel</a>
+
+<a href="#3">leaveChannel</a>
+
+<a href="#4">renewChannelKey</a>
+
+<a href="#5">muteLocalAudioStream</a>
+
+<a href="#6">muteAllRemoteAudioStreams</a>
+
+<a href="#7">muteRemoteAudioStream</a>
+
+<a href="#8">setEnableSpeakerphone</a>
+
+<a href="#9">isSpeakerphoneEnabled</a>
+
+<a href="#10">setSpeakerphoneVolume</a>
+
+<a href="#11">startAudioRecording</a>
+
+<a href="#12">stopAudioRecording</a>
+
+<a href="#13">getCallId</a>
+
+<a href="#14">rate</a>
+
+<a href="#15">complain</a>
+
+<a href="#16">monitorHeadsetEvent</a>
+
+<a href="#17">monitorBluetoothHeadsetEvent</a>
+
+<a href="#18">setPreferHeadset</a>
+
+<a href="#19">enableAudioVolumeIndication</a>
+
+<a href="#20">setEncryptionSecret</a>
+
+<a href="#21">setEncryptionMode</a>
+
+<a href="#22">startRecordingService</a>
+
+<a href="#23">stopRecordingService</a>
+
+<a href="#24">setChannelProfile</a>
+
+<a href="#25">startAudioMixing</a>
+
+<a href="#26">stopAudioMixing</a>
+
+<a href="#27">setParameters</a>
+
+<a href="#28">getParameters</a>
+
+<a href="#29">warningListener</a>
+
+<a href="#30">errorListener</a>
+
+<a href="#31">audioQualityListener</a>
+
+<a href="#32">audioVolumeListener</a>
+
+<a href="#33">userJoinedListener</a>
+
+<a href="#34">rejoinChannelListener</a>
+
+<a href="#35">userOfflineListener</a>
+
+<a href="#36">userMuteAudioListener</a>
+
+<a href="#37">rtcStatsListener</a>
+
+<a href="#38">lastmileQualityListener</a>
+
+<a href="#39">connectionInterruptedListener</a>
+
+<a href="#40">connectionLostListener</a>
+
+<a href="#41">networkQualityListener</a>
+
+<a href="#42">setLogFile</a>
+
+</div>
+
+<h2 id="-">视频类</h2>
+<div class="outline">
+
+<a href="#43">initVideoRect</a>
+
+<a href="#44">enableVideo</a>
+
+<a href="#45">disableVideo</a>
+
+<a href="#46">startPreview</a>
+
+<a href="#47">stopPreview</a>
+
+<a href="#48">setVideoProfile</a>
+
+<a href="#49">setupLocalVideo</a>
+
+<a href="#50">setupRemoteVideo</a>
+
+<a href="#51">switchCamera</a>
+
+<a href="#52">enableLocalVideo</a>
+
+<a href="#53">muteLocalVideoStream</a>
+
+<a href="#54">muteAllRemoteVideoStreams</a>
+
+<a href="#55">muteRemoteVideoStream</a>
+
+<a href="#56">firstLocalVideoFrameListener</a>
+
+<a href="#57">firstRemoteVideoFrameListener</a>
+
+<a href="#58">firstRemoteVideoDecodedListener</a>
+
+<a href="#59">userMuteVideoListener</a>
+
+<a href="#60">userEnableVideoListener</a>
+
+<a href="#61">localVideoStatListener</a>
+
+<a href="#62">remoteVideoStatListener</a>
+
+<a href="#63">cameraReadyListener</a>
+
+<a href="#64">videoStoppedListener</a>
+
+<a href="#65">streamMessageListener</a>
+
+<a href="#66">streamMessageErrorListener</a>
+
+<a href="#67">audioMixingFinishedListener</a>
+
+<a href="#68">setClientRole</a>
+
+<a href="#69">closePreview</a>
+
+<a href="#70">resetVideoRect</a>
+
+<a href="#71">setRemoteVideoStream</a>
+</div>
+
+
+<h1 id="-"><strong>概述</strong></h1>
+<p>声网， Agora。一个专注移动端的高清实时通话云服务解决方案的服务商。</p>
+<h3 id="-"><strong>团队</strong></h3>
+<p>声网团队90%都是技术人员。除了赵斌，联合创始人还包括YY前技术委员会执行主席；团队中还有由IEEE DSP 特邀编辑领衔的音视频算法团队。整个团队拥有超过 20 年的 VoIP 技术积累，有年服务 4000 亿分钟语音通话的经验。</p>
+<h3 id="-"><strong>服务</strong></h3>
+<p>声网在全球部署了近百个数据中心和近千台服务器，能够保障跨大洲、跨国家、跨运营商网络的实时数据传输质量。团队很有自信地宣称，在语音通话的质量上，他们有信心打败最有竞争力的技术对手，哪怕在硅谷。
+由于是 To B 的云服务，声网的盈利模式也相对简单。声网面向企业收费，标准是每 1000分钟0.99美元，国内海外统一。这个基于规模效益的定价贴近于目前产品的成本价格，远低于客户自己运营维护这类服务的成本。
+目前声网已经和国内许多产品在接洽合作，但团队没有透露具体已达成的合作。在国外，由于声网的海外版上线更早，已经有合作一段时间的产品了，比如针对“语言技能交换”的语音社交应用 HelloTalk。</p>
+<h3 id="-"><strong>优势</strong></h3>
+<p>超便宜，每分钟0.00099 美元起。</p>
+<p>超简单接入，30 分钟出 Demo。</p>
+<p>多平台，Native 和 Web 互通。</p>
+<p>1，实时通信 API 7x24 质量保证，新型实时传输网 SD-RTN，连接全球 200 多个国家和地区，无论何地，都能享受高质量的实时通话。为开发者提供保障 7x24 高质量的跨国跨网通话服务，无论你的用户身处何时何地，都能享受高质量的实时通话</p>
+<p>2，整套 API 灵活调用。一个 SDK 一套 API ，实现音视频通话、多人连麦全互动直播。创建频道、录制、白板、屏幕共享等均有独立接口</p>
+<p>3，通话质量数据实时监控。
+·通话质量数据
+·终端用户分布地区
+·通话设备平台分布
+·网络状况分布</p>
+<p>4，全网 256 加密，美国 HIPAA 安全认证。
+·全网采用 256 加密，数据传输绝对安全
+·符合美国最严格 HIPAA 加密安全认证，医疗和多行业适用
+·提供加密 API，可行业定制加密</p>
+<h3 id="-"><strong>用户</strong></h3>
+<p>小米，陌陌，talkSpace，TAL好未来，途牛，春雨国际，海尔，LeVR</p>
+<h3 id="-"><strong>模块简述</strong></h3>
+<p>agoraVideo 封装了声网直播的开放 SDK。<a href="http://docs.agora.io/cn/user_guide/live_broadcast/Agora_Live_Broadcast_Function_Overview.html" target="_blank">声网直播功能强大</a>。使用本模块前，需先到声网官方网站注册申请开发者账号，然后创建 app 获取 app id 等相关信息。本模块为收费模块，模块是对声网直播 SDK 的一层封装，以方便 APICloud 平台上的开发者，能迅速的集成声网直播功能。模块内涉及到的功能，以及产生的费用都是与声网之间的行为，与本模块及其开发者无关。模块开发者会定期维护更新优化升级该模块。</p>
+<p>本模块分为两部分：</p>
+<p>1，音频直播类：使用此类接口无需关心 UI 界面层，只需按照声网的规范要求设计自己的代码逻辑即可。</p>
+<p>2，视频直播类：该类接口的 initVideoRect 相当于 open 了一个 frame。开发者可将直播视频区域当成一个 frame 层添加到 windows 上。然后自己再按照 UI 设计需求结合其它功能接口自定义一个功能 frame 层添加到视频层（模块层）上，以实现直播的功能。</p>
+<p><strong>注意：</strong></p>
+<p>在 iOS 平台上最低适配版本为 iOS8.0，云编译时需在右上角高级设置里将固件要求自定义最低适配版本号为8.0；</p>
+<div id="1"></div>
+
+<h1 id="-init-"><strong>init</strong></h1>
+<p>初始化引擎</p>
+<p>init({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>appId：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：在声网注册账号创建app后获取的id</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status:        //布尔类型；true||false，是否初始化成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.init({
+    appId:&#39;&#39;
+}, function(ret) {
+    if (ret.status) {
+        alert(&#39;初始化成功&#39;);
+    } 
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="2"></div>
+
+<h1 id="-joinchannel-"><strong>joinChannel</strong></h1>
+<p>加入通话频道</p>
+<p>joinChannel({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>channelKey：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）本参数为可选项，可不传。Agora 为应用程序开发者额外签发一个AppCertificate，开发者结合 Agora 提供的算法生成此ChannelKey，用于服务器端用户验证。一般来说使用AppID即可，对于安全有极高要求的使用者需要使用ChannelKey。</li>
+</ul>
+<p>channelName：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：标识通话的频道名称，长度在64字节以内的字符串，以下为支持的字符集范围（共89个字     符）：a-z A-Z 0-9 空格 ! #$%&amp; ()+, - :;&lt;=. &gt;? @[] ^_` {|} ~</li>
+</ul>
+<p>uid：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：(可选项) 用户ID，32位无符号整数。建议设置范围：1到(2^32-1)，并保证唯一性。如果不指定（即设为 0），SDK会自动分配一个，并在 onJoinChannelSuccess 回调方法中返
+回，App层必须记住该返回值并维护，SDK不对该返回值进行维护。uid在SDK内部用32位无符号整数表示，由于Java不支持无符号整数，uid被当成32位有符号整数处理，对于过
+大的整数， Java 会表示为负数，如有需要可以用(uid&amp;0xffffffffL)转换成64位整数。</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+      status: true,       //布尔类型；true||false，是否成功进入通话频道
+      channel: &#39;123abc&#39;,  //字符串类型；频道名
+      uid: 1234,          //数字类型；用户id
+      elapsed: 100        //数字类型；从 joinChannel 开始到该事件产生的延迟（毫秒）
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code:       //数字类型；错误码，取值范围如下：
+                //-2 ：传递参数无效
+                //-3 ：初始化失败，或未初始化
+                //-5 ：SDK不能发起通话，可能是因为处于另一个通话中，或者创建频道失败
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.joinChannel({
+    channelKey: &#39;&#39;,
+    channelName: &#39;**************&#39;,
+    uid: 
+}, function(ret, err) {
+    if (ret.status) {
+        api.alert({msg:JSON.stringify(ret)});
+    } else {
+        api.alert({msg:JSON.stringify(err)});
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="3"></div>
+
+<h1 id="-leavechannel-"><strong>leaveChannel</strong></h1>
+<p>离开通话频道</p>
+<p>leaveChannel(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,        //布尔类型；true||false，是否成功离开频道
+    totalDuration: 1000, //数字类型；通话时长（s）
+    txBytes: 12342546,   //数字类型；发送字节数（ bytes）
+    rxBytes: 12343545,   //数字类型；接收字节数（ bytes）
+    txKBitRate: 100,     //数字类型；发送码率（ kbps），iOS 不支持此参数
+    rxKBitRate: 123,     //数字类型；接收码率（ kbps），iOS 不支持此参数
+    cpuTotalUsage: 23,   //数字类型；当前系统的 CPU 使用率（ %），iOS 不支持此参数
+    cpuAPPUsage:25       //数字类型；当前应用程序的 CPU 使用率（ %），iOS 不支持此参数
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.leaveChannel(function(ret) {
+    if (ret.status) {
+           api.alert({msg:JSON.stringify(ret)});
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="4"></div>
+
+<h1 id="-renewchannelkey-"><strong>renewChannelKey</strong></h1>
+<p>更新 ChannelKey。若已启用 ChannelKey 机制，一段时间后 ChannelKey 会失效。当 errorListener 回调 109 时，重新获取 ChannelKey，需调用本接口更新 ChannelKey，否则无法和服务器建立连接。</p>
+<p>renewChannelKey({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>channelKey：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：要更新的 ChannelKey</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，是否更新成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.renewChannelKey({
+    channelKey:&#39;*********&#39;
+}, function(ret) {
+    if (ret.status) {
+        api.alert({msg:&#39;更新成功！&#39;});
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="5"></div>
+
+<h1 id="-mutelocalaudiostream-"><strong>muteLocalAudioStream</strong></h1>
+<p>静音/取消静音，该方法可用于允许/禁止往网络发送本地音频流</p>
+<p>muteLocalAudioStream({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>muted：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否静音</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，操作是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.muteLocalAudioStream({
+    muted: true
+}, function(ret) {
+    if (ret.status) {
+        api.alert({msg:&#39;操作成功！&#39;});
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="6"></div>
+
+<h1 id="-muteallremoteaudiostreams-"><strong>muteAllRemoteAudioStreams</strong></h1>
+<p>静音所有远端用户/对所有远端用户取消静音，本方法用于允许/禁止播放远端用户的音频流。</p>
+<p>muteAllRemoteAudioStreams({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>muted：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否静音</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true        //布尔类型；true||false，操作是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.muteAllRemoteAudioStreams({
+    muted: true
+}, function(ret) {
+    if (ret.status) {
+        api.alert({msg:});
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="7"></div>
+
+<h1 id="-muteremoteaudiostream-"><strong>muteRemoteAudioStream</strong></h1>
+<p>静音指定远端用户/对指定远端用户取消静音，本方法用于允许/禁止播放远端用户的音频流。</p>
+<p>muteRemoteAudioStream({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>uid：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定用户id</li>
+</ul>
+<p>muted：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否静音</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，操作是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.muteRemoteAudioStream({
+     uid: &#39;*************&#39;,
+    muted: true
+}, function(ret) {
+    if (ret.status) {
+        alert(&#39;操作成功！&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="8"></div>
+
+<h1 id="-setenablespeakerphone-"><strong>setEnableSpeakerphone</strong></h1>
+<p>切换音频输出方式（扬声器、听筒）</p>
+<p>setEnableSpeakerphone({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enabled：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否为扬声器</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true        //布尔类型；true||false，是否切换成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setEnableSpeakerphone({
+    enabled: true
+}, function(ret) {
+    if (ret.status) {
+        alert(&#39;切换成功！&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="9"></div>
+
+<h1 id="-isspeakerphoneenabled-"><strong>isSpeakerphoneEnabled</strong></h1>
+<p>判断当前设备是否是扬声器状态</p>
+<p>isSpeakerphoneEnabled(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，是否为扬声器状态
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.isSpeakerphoneEnabled(function(ret) {
+    if (ret.status) {
+        alert(&#39;扬声器&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="10"></div>
+
+<h1 id="-setspeakerphonevolume-"><strong>setSpeakerphoneVolume</strong></h1>
+<p>设定扬声器音量</p>
+<p>setSpeakerphoneVolume({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>volume：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：音量，最小为 0，最大为 255</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status:        //布尔类型；true||false，是否设置成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setSpeakerphoneVolume({
+     volume : &#39;10&#39;
+},function(ret) {
+    if (ret.status) {
+        alert(&#39;设置成功&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="11"></div>
+
+<h1 id="-startaudiorecording-"><strong>startAudioRecording</strong></h1>
+<p>在通话中进行录音，该接口需要在 joinChannel 之后调用。leaveChannel 时会自动停止录音</p>
+<p>startAudioRecording({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>filePath：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：录音文件的路径（包含后缀，如：fs://agoraVideo/audio.wav），要求本地路径协议：fs://</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,   //布尔类型；true||false，录音是否成功
+    realPath: &#39;&#39;    //字符串类型；录制音频文件绝对路径
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.startAudioRecording({
+    filePath: &#39;fs://agoraVideo/audio.wav&#39;
+}, function(ret) {
+    if (ret.status) {
+        api.alert({msg:JSON.stringify(ret)});
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="12"></div>
+
+<h1 id="-stopaudiorecording-"><strong>stopAudioRecording</strong></h1>
+<p>停止录音</p>
+<p>stopAudioRecording({params}, callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，录音是否成功停止
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.stopAudioRecording(function(ret) {
+    if (ret.status) {
+        alert(&#39;停止录音&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="13"></div>
+
+<h1 id="-getcallid-"><strong>getCallId</strong></h1>
+<p>获取当前的通话 ID</p>
+<p>getCallId({params}, callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,      //布尔类型；true||false，是否获取成功
+    callId: 124325     //字符串类型；本次通话 ID
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.getCallId(function(ret) {
+    if (ret.status) {
+        api.alert({msg:JSON.stringify(ret)});
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="14"></div>
+
+<h1 id="-rate-"><strong>rate</strong></h1>
+<p>通话结束后为本次通话评分</p>
+<p>rate({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>callId：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：通过 getCallId 函数获取的通话 ID</li>
+</ul>
+<p>rating：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：给通话的评分，取值范围：1-10</li>
+</ul>
+<p>description：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）评分本次通话的描述，小于 800 字节</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status:true       //布尔类型；true||false，是否评分成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.rate({
+        callId: &#39;4624625624&#39;,
+        rating: 5,
+        description : &#39;很好很强大&#39;
+}, function(ret) {
+    if (ret.status) {
+        alert(&#39;评分成功&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="15"></div>
+
+<h1 id="-complain-"><strong>complain</strong></h1>
+<p>通话结束后对本次通话质量的投诉</p>
+<p>complain({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>callId：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：通过 getCallId 函数获取的通话 ID</li>
+</ul>
+<p>description：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）本次通话投诉的描述，小于 800 字节</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，是否投诉成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.complain({
+        callId: &#39;24523452345&#39;,
+        description : &#39;有杂音&#39;
+},function(ret) {
+    if (ret.status) {
+        alert(&#39;投诉成功！&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="16"></div>
+
+<h1 id="-monitorheadsetevent-"><strong>monitorHeadsetEvent</strong></h1>
+<p>监听耳机插拔事件，在加入通话前调用。若不监听，则拔掉耳机时不会自动停止播放声音。<strong>iOS 不支持本接口，拔掉耳机即自动停止声音外放</strong></p>
+<p>monitorHeadsetEvent({params})</p>
+<h2 id="params">params</h2>
+<p>monitor：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：是否开启/关闭监听耳机插拔事件</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.monitorHeadsetEvent({
+        monitor: true
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="17"></div>
+
+<h1 id="-monitorbluetoothheadsetevent-"><strong>monitorBluetoothHeadsetEvent</strong></h1>
+<p>监听蓝牙耳机事件，在加入通话前调用。<strong>iOS 不支持本接口，拔掉耳机即自动停止声音外放</strong></p>
+<p>monitorBluetoothHeadsetEvent({params})</p>
+<h2 id="params">params</h2>
+<p>monitor：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：是否开启/关闭监听蓝牙耳机插拔事件</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.monitorBluetoothHeadsetEvent({
+        monitor: true
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="18"></div>
+
+<h1 id="-setpreferheadset-"><strong>setPreferHeadset</strong></h1>
+<p>设置插入耳机时的音频输出设备优先级，需在通话前调用，<strong>iOS 不支持本接口</strong></p>
+<p>setPreferHeadset({params})</p>
+<h2 id="params">params</h2>
+<p>enabled：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：当本参数为 true 时表示耳机优先：插入耳机时，无论当前设置为耳机还是扬声器输出，都切换到耳机输出；当本参数为 false 时表示外放优先：插入耳机时，如果当前设置为耳机输出，则切换到耳机，如果当前设置为外放输出，则保留外放输出</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setPreferHeadset({
+        monitor: true
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="19"></div>
+
+<h1 id="-enableaudiovolumeindication-"><strong>enableAudioVolumeIndication</strong></h1>
+<p>启用说话者音量提示</p>
+<p>enableAudioVolumeIndication({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>interval：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定音量提示的时间间隔，建议设置大于 200 毫秒。小于等于零时表示禁用音量提示功能，大于零时表示设置的提示间隔，单位为毫秒</li>
+</ul>
+<p>smooth：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）平滑系数</li>
+<li>默认：3</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，是否设置成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.enableAudioVolumeIndication({
+        interval: &#39;200&#39;,
+        smooth: 3
+}, function(ret) {
+    if (ret.status) {
+        alert(&#39;设置成功&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="20"></div>
+
+<h1 id="-setencryptionsecret-"><strong>setEncryptionSecret</strong></h1>
+<p>启用内置的加密功能。</p>
+<p>在加入频道之前，应用程序需调用本接口指定 secret 来启用内置的加密功能。</p>
+<p>同一频道内的所有用户应设置相同的 secret。 </p>
+<p>当用户离开频道时，该频道的 secret 会自动清除。</p>
+<p>如果未指定 secret 或将 secret 设置为空，则无法激活加密功能。</p>
+<p>默认 AES-128-XTS 加密方式，若修改加密方式请调用 setEncryptionMode 接口。</p>
+<p>setEncryptionSecret({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>secret：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：加密密码</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，是否设置成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setEncryptionSecret({
+    secret : &#39;123456789&#39;
+}, function(ret) {
+    if (ret.status) {
+        alert(&#39;设置成功&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="21"></div>
+
+<h1 id="-setencryptionmode-"><strong>setEncryptionMode</strong></h1>
+<p>设置内置的加密方案。</p>
+<p>Agora 支持内置加密功能，默认使用 AES-128-XTS 加密方式。</p>
+<p>通过本接口可设置使用其他加密方式。</p>
+<p>同一频道内的所有用户必须设置相同的加密方式和 secret 才能进行通话。</p>
+<p>setEncryptionMode({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>encryptionMode：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：加密方式</li>
+<li>默认：aes-128-xts</li>
+<li>取值范围：<ul>
+<li>aes-128-xts： 128 位 AES 加密， XTS 模式</li>
+<li>aes-256-xts： 256 位 AES 加密， XTS 模式</li>
+</ul>
+</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，是否设置成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setEncryptionMode({
+    encryptionMode: &#39;aes-256-xts&#39;
+}, function(ret) {
+    if (ret.status) {
+        alert(&#39;设置成功&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="22"></div>
+
+<h1 id="-startrecordingservice-"><strong>startRecordingService</strong></h1>
+<p>启动服务端录音功能</p>
+<p>startRecordingService({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>recordingKey：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：录音KEY</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，是否启动成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.startRecordingService({
+        recordingKey : &#39;123456&#39;
+},function(ret) {
+    if (ret.status) {
+        alert(&#39;启动成功&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="23"></div>
+
+<h1 id="-stoprecordingservice-"><strong>stopRecordingService</strong></h1>
+<p>停止服务端录音功能</p>
+<p>stopRecordingService({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>recordingKey：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：录音KEY</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true        //布尔类型；true||false，是否停止成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.stopRecordingService({
+        recordingKey : &#39;123456&#39;
+},function(ret) {
+    if (ret.status) {
+        alert(&#39;停止成功&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="24"></div>
+
+<h1 id="-setchannelprofile-"><strong>setChannelProfile</strong></h1>
+<p>设置频道通话模式。 Agora 引擎需知道应用程序的使用场景(例如群聊模式或主播模式)，从而使用不同的优化手段。</p>
+<p>setChannelProfile({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>profile：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：指定频道的通话模式</li>
+<li>取值范围：<ul>
+<li>communication(通信模式：默认)</li>
+<li>liveBroadcasting (直播模式)</li>
+</ul>
+</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，是否设置成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setChannelProfile({
+        profile : &#39;communication&#39;
+}, function(ret) {
+    if (ret.status) {
+        alert(&#39;设置成功&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="25"></div>
+
+<h1 id="-startaudiomixing-"><strong>startAudioMixing</strong></h1>
+<p>开启客户端本地混音。指定本地音频文件来和麦克风采集的音频流进行混音和替换(用音频文件替换麦克风采集的音频流)，可以通过参数选择是否让对方听到本地播放的音频和指定循环播放的次数。
+注：如需使用 startAudioMixing API，要求 Android 4.2 或以上设备，且 API Level&gt;=16</p>
+<p>startAudioMixing({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>filePath：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：需要混音的本地音频文件名和文件路径，支持格式：mp3，aac，m4a，3gp，wav，flac</li>
+</ul>
+<p>loopback：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否只有本地可以听到混音或替换后的音频流</li>
+<li>默认：true</li>
+</ul>
+<p>replace：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否将音频文件内容替换本地录音的音频流</li>
+<li>默认：true</li>
+</ul>
+<p>cycle：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）指定音频文件循环播放的次数，为-1时表示无限循环</li>
+<li>默认：0</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true      //布尔类型；true||false，是否设置成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.startAudioMixing({
+    filePath: &#39;fs://test.mp3&#39;,
+    loopback: false,
+    replace: false,
+    cycle: -1
+}, function(ret) {
+    if (ret.status) {
+        alert(&#39;设置成功&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="26"></div>
+
+<h1 id="-stopaudiomixing-"><strong>stopAudioMixing</strong></h1>
+<p>停止客户端本地混音</p>
+<p>stopAudioMixing(callback(ret))</p>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，是否停止成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.stopAudioMixing(function(ret) {
+    if (ret.status) {
+        alert(&#39;操作成功&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="27"></div>
+
+<h1 id="-setparameters-"><strong>setParameters</strong></h1>
+<p>特有属性设置</p>
+<p>setParameters({params},callback(ret))</p>
+<h2 id="params">params</h2>
+<p>options:</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：将特有参数组装为 json 字符串设置给 Agroa 引擎 </li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true       //布尔类型；true||false，是否设置成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setParameters({
+  options: &#39;&#39;
+}, function(ret) {
+    if (ret.status) {
+        alert(&#39;设置成功&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="28"></div>
+
+<h1 id="-getparameters-"><strong>getParameters</strong></h1>
+<p>获取 Agora 引擎特有属性值</p>
+<p>getParameters({params},callback(ret))</p>
+<h2 id="params">params</h2>
+<p>parameter:</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：sdk options in json format</li>
+</ul>
+<p>args:</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：sdk options in json format</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,  //布尔类型；true||false，是否获取成功
+    result: &#39;&#39;     //字符串类型；获取的参数
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.getParameters(function(ret) {
+    if (ret.status) {
+        api.alert({msg:JSON.stringify(ret)});
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="29"></div>
+
+<h1 id="-warninglistener-"><strong>warningListener</strong></h1>
+<p>监听警告信息</p>
+<p>warningListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启动警告监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    errCode: 20     //数字类型；错误码，取值范围如下：
+                    //20：AgoraRtc_Warn_Pending
+                    //103：AgoraRtc_Warn_NoAvailableChannel
+                    //104：AgoraRtc_Warn_LookupChannelTimeout
+                    //105：AgoraRtc_Warn_LookupChannelRejected
+                    //106：AgoraRtc_Warn_OpenChannelTimeout
+                    //107：AgoraRtc_Warn_OpenChannelRejected
+                    //1014：AgoraRtc_Warn_Adm_RuntimePlayoutWarning
+                    //1016：AgoraRtc_Warn_Adm_RuntimeRecordingWarning
+                    //1019：AgoraRtc_Warn_Adm_RecordAudioSilence
+                    //1020：AgoraRtc_Warn_Adm_PlaybackMalfunction
+                    //1021：AgoraRtc_Warn_Adm_RecordMalfunction
+                    //1025：AgoraRtc_Warn_Adm_Interruption
+                    //1026：AgoraRtc_Warn_Adm_RouteChange
+                    //1051：AgoraRtc_Warn_Apm_Howling
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.warningListener({
+     enable:true
+},function(ret) {
+    api.alert({msg:JSON.stringify(ret)});
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="30"></div>
+
+<h1 id="-errorlistener-"><strong>errorListener</strong></h1>
+<p>监听错误信息</p>
+<p>errorListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启动错误监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    errCode: 101    //数字类型；取值范围如下：
+                    // 101：无效的 App ID
+                    // 102：无效的频道名
+                    // 105：查找频道失败，意味着服务器主动拒绝了请求
+                    // 107：加入频道失败，意味着媒体服务器主动拒绝了请求
+                    // 1001：加载媒体引擎失败
+                    // 1002：打开本地音视频设备、启动通话失败
+                    // 1003：打开本地摄像头失败
+                    //以下是 iOS 平台上错误码
+                    //0：AgoraRtc_Error_NoError
+                    //1：AgoraRtc_Error_Failed
+                    //2：AgoraRtc_Error_InvalidArgument
+                    //3：AgoraRtc_Error_NotReady
+                    //4：AgoraRtc_Error_NotSupported
+                    //5：AgoraRtc_Error_Refused
+                    //6：AgoraRtc_Error_BufferTooSmall
+                    //7：AgoraRtc_Error_NotInitialized
+                    //8：AgoraRtc_Error_InvalidView
+                    //9：AgoraRtc_Error_NoPermission
+                    //10：AgoraRtc_Error_TimedOut
+                    //11：AgoraRtc_Error_Canceled
+                    //12：AgoraRtc_Error_TooOften
+                    //13：AgoraRtc_Error_BindSocket
+                    //14：AgoraRtc_Error_NetDown
+                    //15：AgoraRtc_Error_NoBufs
+                    //16：AgoraRtc_Error_InitVideo
+                    //17：AgoraRtc_Error_JoinChannelRejected
+                    //18：AgoraRtc_Error_LeaveChannelRejected
+                    //19：AgoraRtc_Error_AlreadyInUse
+                    //101：AgoraRtc_Error_InvalidAppId
+                    //102：AgoraRtc_Error_InvalidChannelName
+                    //109：AgoraRtc_Error_ChannelKeyExpired
+                    //110：AgoraRtc_Error_InvalidChannelKey
+                    //111：AgoraRtc_Error_ConnectionInterrupted
+                    //112：AgoraRtc_Error_ConnectionLost
+                    //113：AgoraRtc_Error_NotInChannel
+                    //114：AgoraRtc_Error_SizeTooLarge
+                    //115：AgoraRtc_Error_BitrateLimit
+                    //116：AgoraRtc_Error_TooManyDataStreams
+                    //120：AgoraRtc_Error_DecryptionFailed
+                    //1001：AgoraRtc_Error_LoadMediaEngine
+                    //1002：AgoraRtc_Error_StartCall
+                    //1003：AgoraRtc_Error_StartCamera
+                    //1004：AgoraRtc_Error_StartVideoRender
+                    //1005：AgoraRtc_Error_Adm_GeneralError
+                    //1006：AgoraRtc_Error_Adm_JavaResource
+                    //1007：AgoraRtc_Error_Adm_SampleRate
+                    //1008：AgoraRtc_Error_Adm_InitPlayout
+                    //1009：AgoraRtc_Error_Adm_StartPlayout
+                    //1010：AgoraRtc_Error_Adm_StopPlayout
+                    //1011：AgoraRtc_Error_Adm_InitRecording
+                    //1012：AgoraRtc_Error_Adm_StartRecording
+                    //1013：AgoraRtc_Error_Adm_StopRecording
+                    //1015：AgoraRtc_Error_Adm_RuntimePlayoutError
+                    //1017：AgoraRtc_Error_Adm_RuntimeRecordingError
+                    //1018：AgoraRtc_Error_Adm_RecordAudioFailed
+                    //1020：AgoraRtc_Error_Adm_Play_Abnormal_Frequency
+                    //1021：AgoraRtc_Error_Adm_Record_Abnormal_Frequency
+                    //1022：AgoraRtc_Error_Adm_Init_Loopback
+                    //1023：AgoraRtc_Error_Adm_Start_Loopback
+                    //1501：AgoraRtc_Error_Vdm_Camera_Not_Authorized
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.errorListener({
+    enable:true
+}, function(ret) {
+    api.alert({msg:JSON.stringify(ret)});
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="31"></div>
+
+<h1 id="-audioqualitylistener-"><strong>audioQualityListener</strong></h1>
+<p>声音质量监听</p>
+<p>audioQualityListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启动声音质量监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    uid: 123,  //数字类型；说话方的用户 ID
+    quality:0, //数字类型；语音质量评分,取值范围如下：
+               //0：AgoraRtc_Quality_Unknown
+                  //1：QUALITY_EXCELLENT
+                   //2：QUALITY_GOOD
+                   //3：QUALITY_POOR
+                   //4：QUALITY_BAD
+                   //5：QUALITY_VBAD
+                   //6：QUALITY_DOWN
+    delay:25,  //数字类型；延迟（毫秒）
+    lost:10     //数字类型；丢包率（百分比）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.audioQualityListener({
+    enable: true
+},function(ret) {
+    api.alert({msg:JSON.stringify(ret)});
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="32"></div>
+
+<h1 id="-audiovolumelistener-"><strong>audioVolumeListener</strong></h1>
+<p>声音音量监听</p>
+<p>audioVolumeListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启动声音音量监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    speakers:[{          //JSON 对象；说话的用户数组
+        uid: 123,       //数字类型；说话者的用户 ID
+        volume: 100     //数字类型；说话者的音量（ 0~255）
+    }],    
+    totalVolume:44     //数字类型；（混音后的）总音量（ 0~255）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.audioVolumeListener({
+     enable: true
+}, function(ret) {
+     api.alert({msg:JSON.stringify(ret)});
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="33"></div>
+
+<h1 id="-userjoinedlistener-"><strong>userJoinedListener</strong></h1>
+<p>用户加入频道监听</p>
+<p>userJoinedListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启动用户加入频道监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    uid: 1234,    //数字类型；用户 ID
+    elapsed: 23   //数字类型；joinChannel 开始到该回调触发的延迟（毫秒）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.userJoinedListener({
+        enable: true
+},function(ret) {
+       api.alert({msg:JSON.stringify(ret)});
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="34"></div>
+
+<h1 id="-rejoinchannellistener-"><strong>rejoinChannelListener</strong></h1>
+<p>再次进入频道监听。</p>
+<p>有时候由于网络原因，客户端可能会和服务器失去连接， SDK 会进行自动重连，自动重连成功后触发此监听</p>
+<p>rejoinChannelListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用再次进入频道监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,       //布尔类型；是否网络链接中断
+    channel: &#39;apicloud&#39;,//字符串类型；频道名
+    uid: 1233444,       //数字类型；用户id
+    elapsed:100         //数字类型；从 joinChannel 开始到该事件产生的延迟（毫秒）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.rejoinChannelListener({
+     enable: true
+}, function(ret) {
+     api.alert({msg:JSON.stringify(ret)});
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="35"></div>
+
+<h1 id="-userofflinelistener-"><strong>userOfflineListener</strong></h1>
+<p>用户离开频道监听</p>
+<p>userOfflineListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用户离开频道监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    uid: 1234,    //数字类型；用户 ID
+    reason: 0,    //数字类型；离线原因，取值范围如下：
+                 //0：用户主动离开
+                 //1：因过长时间收不到对方数据包，超时掉线。注意：由于 SDK 使用的是不可靠通道，也有可能对方主动离开本方没收到对方离开消息而误判为超时掉线
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.userOfflineListener({
+     enable: true
+}, function(ret) {
+     api.alert({msg:JSON.stringify(ret)});
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="36"></div>
+
+<h1 id="-usermuteaudiolistener-"><strong>userMuteAudioListener</strong></h1>
+<p>用户静音监听</p>
+<p>userMuteAudioListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用户静音监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    uid:1234,    //数字类型；用户 ID
+    muted: true  //布尔类型；为 true 表示该用户将音频静音，反之则该用户取消了音            频静音
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.userMuteAudioListener({
+      enable: true
+}, function(ret) {
+      api.alert({msg:JSON.stringify(ret)});
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="37"></div>
+
+<h1 id="-rtcstatslistener-"><strong>rtcStatsListener</strong></h1>
+<p>统计数据监听，每两秒触发一次</p>
+<p>rtcStatsListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启统计数据监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    totalDuration: 34, //数字类型；通话时长（秒）
+    txBytes: 900,      //数字类型；发送字节数（ bytes）
+    rxBytes: 900,      //数字类型；接收字节数（ bytes）
+    txKBitRate: 78,    //数字类型；发送码率（ kbps），iOS 平台不支持
+    rxKBitRate: 56,    //数字类型；接收码率（ kbps），iOS 平台不支持
+    cpuTotalUsage: 23, //数字类型；当前系统的 CPU 使用率（ %），iOS 平台不支持
+    cpuAPPUsage: 34,   //数字类型；当前应用程序的 CPU 使用率（ %），iOS 平台不支持
+    users: 134         //数字类型；当前频道内人数
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.rtcStatsListener({
+    enable: true
+}, function(ret) {
+    api.alert({msg:JSON.stringify(ret)});
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="38"></div>
+
+<h1 id="-lastmilequalitylistener-"><strong>lastmileQualityListener</strong></h1>
+<p>报告网络质量监听。不在通话中时，不定期触发，向应用程序上报当前网络连接质量</p>
+<p>lastmileQualityListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用报告网络质量监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    quality:1 //数字类型；语音质量评分,取值范围如下：
+                  //1：QUALITY_EXCELLENT
+                   //2：QUALITY_GOOD
+                   //3：QUALITY_POOR
+                   //4：QUALITY_BAD
+                   //5：QUALITY_VBAD
+                   //6：QUALITY_DOWN
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.lastmileQualityListener({
+    enable: true
+},function(ret) {
+    api.alert({msg:JSON.stringify(ret)});
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="39"></div>
+
+<h1 id="-connectioninterruptedlistener-"><strong>connectionInterruptedListener</strong></h1>
+<p>网络连接中断监听。<strong>iOS 平台不支持本接口</strong></p>
+<p>connectionInterruptedListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用网络连接中断监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true        //布尔类型；是否网络链接中断
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.connectionInterruptedListener({
+     enable: true
+},function(ret) {
+     alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="40"></div>
+
+<h1 id="-connectionlostlistener-"><strong>connectionLostListener</strong></h1>
+<p>网络连接丢失监听。客户端和服务器失去了网络连接，并且尝试自动重连一段时间（默认 10 秒）
+后仍未连上。<strong>iOS 平台不支持本接口</strong></p>
+<p>connectionLostListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用网络连接丢失监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status:true        //布尔类型；是否网络链接中断
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.connectionLostListener({
+    enable : true
+}, function(ret) {
+    alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="41"></div>
+
+<h1 id="-networkqualitylistener-"><strong>networkQualityListener</strong></h1>
+<p>网络质量监听</p>
+<p>networkQualityListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用报告网络质量监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    uid: 123,      //数字类型；网络质量监听用户id：
+    txQuality: 0,  //数字类型；发送网络质量,取值范围如下：
+                        //0：AgoraRtc_Quality_Unknown
+                        //1：QUALITY_EXCELLENT
+                        //2：QUALITY_GOOD
+                        //3：QUALITY_POOR
+                        //4：QUALITY_BAD
+                        //5：QUALITY_VBAD
+                        //6：QUALITY_DOWN
+    rxQuality: 0  //数字类型；接受网络质量,取值范围如下：
+                        //0：AgoraRtc_Quality_Unknown
+                        //1：QUALITY_EXCELLENT
+                        //2：QUALITY_GOOD
+                        //3：QUALITY_POOR
+                        //4：QUALITY_BAD
+                        //5：QUALITY_VBAD
+                        //6：QUALITY_DOWN
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.lastmileQualityListener({
+    enable: true
+}, function(ret) {
+    api.alert({msg:JSON.stringify(ret)});
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="42"></div>
+
+<h1 id="-setlogfile-"><strong>setLogFile</strong></h1>
+<p>设置 agora 引擎的输出 log 文件。 </p>
+<p>引擎运行时产生的所有 log 将写入该文件。</p>
+<p>应用程序必须保证指定的目录存在而且可写。</p>
+<p>setLogFile({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>filePath：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：日志文件的全路径（包含后缀，如：fs://agoraVideo/log.txt），要求本地路径协议：fs://</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,   //布尔类型；true||false，是否设置成功
+    realPath: &#39;&#39;    //字符串类型；日志文件绝对路径
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setLogFile({
+    filePath: &#39;fs://log.txt&#39;
+}, function(ret) {
+    if (ret.status) {
+        api.alert({msg:JSON.stringify(ret)});
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="43"></div>
+
+<h1 id="-initvideorect-"><strong>initVideoRect</strong></h1>
+<p>初始化视频（本地、远程）区域</p>
+<p>initVideoRect({params})</p>
+<h2 id="params">params</h2>
+<p>uid：</p>
+<ul>
+<li>类型：数字类型</li>
+<li>描述：用户id，当为 0 时表示打开本地视频播放区域</li>
+</ul>
+<p>rect：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：（可选项）视频区域的位置及尺寸</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    x: 0,   //（可选项）数字类型；视频区域左上角的 x 坐标（相对于所属的 Window 或 Frame）；默认：0
+    y: 0,   //（可选项）数字类型；视频区域左上角的 y 坐标（相对于所属的 Window 或 Frame）；默认：0
+    w: 320, //（可选项）数字类型；视频区域的宽度；默认：屏幕的宽
+    h: 480  //（可选项）数字类型；视频区域的高度；默认：屏幕的高
+}
+</code></pre>
+<p>fixedOn：</p>
+<ul>
+<li>类型：字符串类型</li>
+<li>描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）</li>
+<li>默认：模块依附于当前 window</li>
+</ul>
+<p>fixed:</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）模块是否随所属 window 或 frame 滚动</li>
+<li>默认值：true（不随之滚动）</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.initVideoRect({
+    uid:123456,
+       rect: {
+        x: 0,
+        y: 0,
+        w: 320,
+        h: 300
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="44"></div>
+
+<h1 id="-enablevideo-"><strong>enableVideo</strong></h1>
+<p>该方法用于开启视频模式。可以在加入频道前或者通话中调用，在加入频道前调用，则自动开
+启视频模式，在通话中调用则由音频模式切换为视频模式。调用 disablevideo 方法可关闭视
+频模式</p>
+<p>enableVideo(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.enableVideo( function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="45"></div>
+
+<h1 id="-disablevideo-"><strong>disableVideo</strong></h1>
+<p>该方法用于关闭视频，开启纯音频模式。可以在加入频道前或者通话中调用，在加入频道前调
+用，则自动开启纯音频模式，在通话中调用则由视频模式切换为纯音频频模式。调用enablevideo 方法可开启视频模式</p>
+<p>disableVideo(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.disableVideo(function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="46"></div>
+
+<h1 id="-startpreview-"><strong>startPreview</strong></h1>
+<p>该方法用于启动本地视频预览。在开启预览前，必须先调用 setupLocalVideo 设置预览窗口及
+属性，且必须调用 enableVideo 开启视频功能。如果在调用 joinChannel 进入频道之前调用了
+startPreview 启动本地视频预览，在调用 leaveChannel 退出频道之后本地预览仍然处于启动
+状态，如需要关闭本地预览，需要调用 stopPreview</p>
+<p>startPreview(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.startPreview(function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="47"></div>
+
+<h1 id="-stoppreview-"><strong>stopPreview</strong></h1>
+<p>该方法用于停止本地视频预览</p>
+<p>stopPreview(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.stopPreview(function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="48"></div>
+
+<h1 id="-setvideoprofile-"><strong>setVideoProfile</strong></h1>
+<p>该方法设置视频编码属性(Profile)。每个属性对应一套视频参数，如分辨率、帧率、码率等。
+当设备的摄像头不支持指定的分辨率时， SDK 会自动选择一个合适的摄像头分辨率，但是编
+码分辨率仍然用 setVideoProfile 指定的</p>
+<p>setVideoProfile({params},callback(ret))</p>
+<h2 id="params">params</h2>
+<p>profile：</p>
+<ul>
+<li>类型：字符串类型</li>
+<li>描述：视频属性</li>
+<li>取值范围：    <ul>
+<li>120P：         分辨率(宽 x 高) 160x120      帧率(fps) 15</li>
+<li>120P_3：     分辨率(宽 x 高) 120x120      帧率(fps) 15</li>
+<li>180P：         分辨率(宽 x 高) 320x180      帧率(fps) 15</li>
+<li>180P_3：     分辨率(宽 x 高) 180x180      帧率(fps) 15</li>
+<li>180P_4：     分辨率(宽 x 高) 240x180   帧率(fps)15  比特率(kbps)120；暂仅支持iOS平台</li>
+<li>240P：         分辨率(宽 x 高) 320x240      帧率(fps) 15</li>
+<li>240P_3：     分辨率(宽 x 高) 240x240      帧率(fps) 15</li>
+<li>240P_4：     分辨率(宽 x 高) 424x240      帧率(fps) 15</li>
+<li>360P：         分辨率(宽 x 高) 640x360      帧率(fps) 15</li>
+<li>360P_3：     分辨率(宽 x 高) 360x360      帧率(fps) 15</li>
+<li>360P_4：     分辨率(宽 x 高) 640x360      帧率(fps) 30</li>
+<li>360P_6：     分辨率(宽 x 高) 360x360      帧率(fps) 30</li>
+<li>360P_7：     分辨率(宽 x 高) 480x360      帧率(fps) 15</li>
+<li>360P_8：     分辨率(宽 x 高) 480x360      帧率(fps) 30</li>
+<li>360P_9：     分辨率(宽 x 高) 480x360      帧率(fps) 15 比特率(kbps)800；暂仅支持iOS平台</li>
+<li>480P：         分辨率(宽 x 高) 640x480      帧率(fps) 15</li>
+<li>480P_3：     分辨率(宽 x 高) 480x480      帧率(fps) 15</li>
+<li>480P_4：     分辨率(宽 x 高) 640x480      帧率(fps) 30</li>
+<li>480P_6：     分辨率(宽 x 高) 480x480      帧率(fps) 30</li>
+<li>480P_8：     分辨率(宽 x 高) 848x480   帧率(fps) 15</li>
+<li>480P_9：     分辨率(宽 x 高) 848x480      帧率(fps) 30</li>
+<li>720P：         分辨率(宽 x 高) 1280x720  帧率(fps) 15</li>
+<li>720P_3：     分辨率(宽 x 高) 1280x720  帧率(fps) 30</li>
+<li>720P_5：     分辨率(宽 x 高) 960x720   帧率(fps) 15</li>
+<li>720P_6：     分辨率(宽 x 高) 960x720   帧率(fps) 30</li>
+<li>1080P：        分辨率(宽 x 高) 1920x1080   帧率(fps) 15 比特率(kbps)2080；暂仅支持iOS平台</li>
+<li>1080P_3：     分辨率(宽 x 高) 1920x1080   帧率(fps) 30 比特率(kbps)3150；暂仅支持iOS平台</li>
+<li>1080P_5：     分辨率(宽 x 高) 1920x1080   帧率(fps) 15 比特率(kbps)4780；暂仅支持iOS平台</li>
+<li>1440P：        分辨率(宽 x 高) 2560x1440   帧率(fps) 30 比特率(kbps)4850；暂仅支持iOS平台</li>
+<li>1440P_2：     分辨率(宽 x 高) 2560x1440   帧率(fps) 60 比特率(kbps)7350；暂仅支持iOS平台</li>
+<li>4K：         分辨率(宽 x 高) 3840x2160   帧率(fps) 30 比特率(kbps)8190；暂仅支持iOS平台</li>
+<li>4K_3：         分辨率(宽 x 高) 3840x2160   帧率(fps) 60 比特率(kbps)13500；暂仅支持iOS平台</li>
+</ul>
+</li>
+</ul>
+<p>swapWidthAndHeight：</p>
+<ul>
+<li>类型：数字类型</li>
+<li>描述：是否交换宽和高</li>
+<li>默认值：false</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setVideoProfile( {
+        profile:&#39;120P&#39;,
+        swapWidthAndHeight:true
+},function(ret) {
+        if (ret.status) {
+            alert(JSON.stringify(ret));
+        }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="49"></div>
+
+<h1 id="-setuplocalvideo-"><strong>setupLocalVideo</strong></h1>
+<p>该方法设置本地视频显示信息,通常在初始化后调用该方法进行本地视频设置，然后再加入频道。</p>
+<p>setupLocalVideo({params},callback(ret))</p>
+<h2 id="params">params</h2>
+<p>renderMode：</p>
+<ul>
+<li>类型：字符串类型</li>
+<li>描述：视频显示模式</li>
+<li>取值范围：    <ul>
+<li>RENDER_MODE_HIDDEN : 如果视频尺寸与显示视窗尺寸不一致，则视频流会按照显示视窗比
+例进行周边裁剪或图像拉伸后填满视窗。</li>
+<li>RENDER_MODE_FIT: 如果视频尺寸与显示视窗尺寸不一致，在保持长宽比的前提下,将视频
+进行缩放后填满视窗</li>
+<li>RENDER_MODE_ADAPTIVE：如果自己和对方都是竖屏，或者如果自己和对方都是横屏使用
+RENDER_MODE_HIDDEN；如果对方和自己一个竖屏一个横屏，则使用 RENDER_MODE_FIT</li>
+</ul>
+</li>
+</ul>
+<p>uid：</p>
+<ul>
+<li>类型：数字类型</li>
+<li>描述：本地用户id，与 joinchannel 方法中的 uid 保持一致</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setupLocalVideo( {
+        renderMode:&#39;RENDER_MODE_HIDDEN&#39;
+},function(ret) {
+        if (ret.status) {
+            alert(JSON.stringify(ret));
+        }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="50"></div>
+
+<h1 id="-setupremotevideo-"><strong>setupRemoteVideo</strong></h1>
+<p>该方法绑定远程用户和显示视图，即设定 uid 指定的用户用哪个视图显示。调用该接口时需要
+指定远程视频的 uid</p>
+<p>setupRemoteVideo({params},callback(ret))</p>
+<h2 id="params">params</h2>
+<p>renderMode：</p>
+<ul>
+<li>类型：字符串类型</li>
+<li>描述：视频显示模式</li>
+<li>取值范围：    <ul>
+<li>RENDER_MODE_HIDDEN : 如果视频尺寸与显示视窗尺寸不一致，则视频流会按照显示视窗比
+例进行周边裁剪或图像拉伸后填满视窗。</li>
+<li>RENDER_MODE_FIT: 如果视频尺寸与显示视窗尺寸不一致，在保持长宽比的前提下,将视频
+进行缩放后填满视窗</li>
+<li>RENDER_MODE_ADAPTIVE：如果自己和对方都是竖屏，或者如果自己和对方都是横屏使用
+RENDER_MODE_HIDDEN；如果对方和自己一个竖屏一个横屏，则使用 RENDER_MODE_FIT</li>
+</ul>
+</li>
+</ul>
+<p>uid：</p>
+<ul>
+<li>类型：数字类型</li>
+<li>描述：远端用户id</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setupRemoteVideo( {
+        renderMode:&#39;RENDER_MODE_HIDDEN&#39;,
+        uid:1
+},function(ret) {
+        if (ret.status) {
+            alert(JSON.stringify(ret));
+        }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="51"></div>
+
+<h1 id="-switchcamera-"><strong>switchCamera</strong></h1>
+<p>该方法用于在前置/后置摄像头间切换</p>
+<p>switchCamera({params},callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.switchCamera(function(ret) {
+        if (ret.status) {
+            alert(JSON.stringify(ret));
+        }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="52"></div>
+
+<h1 id="-enablelocalvideo-"><strong>enableLocalVideo</strong></h1>
+<p>禁用/启用本地视频功能。该方法用于只看不发的视频场景。该方法不需要本地有摄像头</p>
+<p>enableLocalVideo({params},callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enabled：</p>
+<ul>
+<li>类型：布尔类型</li>
+<li>描述：是否启用本地视频</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.enableLocalVideo( {
+        enabled:true
+},function(ret) {
+        if (ret.status) {
+            alert(JSON.stringify(ret));
+        }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="53"></div>
+
+<h1 id="-mutelocalvideostream-"><strong>muteLocalVideoStream</strong></h1>
+<p>暂停/恢复发送本地视频流。该方法用于允许/禁止往网络发送本地视频流</p>
+<p>muteLocalVideoStream({params},callback(ret))</p>
+<h2 id="params">params</h2>
+<p>muted：</p>
+<ul>
+<li>类型：布尔类型</li>
+<li>描述：是否禁止发送本地视频流</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.muteLocalVideoStream( {
+        muted:true
+},function(ret) {
+        if (ret.status) {
+            alert(JSON.stringify(ret));
+        }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="54"></div>
+
+<h1 id="-muteallremotevideostreams-"><strong>muteAllRemoteVideoStreams</strong></h1>
+<p>暂停/恢复所有人视频流。本方法用于允许/禁止播放所有人的视频流</p>
+<p>muteAllRemoteVideoStreams({params},callback(ret))</p>
+<h2 id="params">params</h2>
+<p>muted：</p>
+<ul>
+<li>类型：布尔类型</li>
+<li>描述：是否停止播放接收到的所有视频流</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.muteAllRemoteVideoStreams( {
+        muted:true
+},function(ret) {
+        if (ret.status) {
+            alert(JSON.stringify(ret));
+        }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="55"></div>
+
+<h1 id="-muteremotevideostream-"><strong>muteRemoteVideoStream</strong></h1>
+<p>暂停/恢复指定远端视频流。本方法用于允许/禁止播放指定远端视频流。</p>
+<p>muteRemoteVideoStream({params},callback(ret))</p>
+<h2 id="params">params</h2>
+<p>uid：</p>
+<ul>
+<li>类型：数字类型</li>
+<li>描述：用户id</li>
+</ul>
+<p>muted：</p>
+<ul>
+<li>类型：布尔类型</li>
+<li>描述：是否停止播放接收到的视频流</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.muteRemoteVideoStream( {
+        uid:&#39;1,
+        muted:true
+},function(ret) {
+        if (ret.status) {
+            alert(JSON.stringify(ret));
+        }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="56"></div>
+
+<h1 id="-firstlocalvideoframelistener-"><strong>firstLocalVideoFrameListener</strong></h1>
+<p>提示第一帧本地视频画面已经显示在屏幕上</p>
+<p>firstLocalVideoFrameListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用第一帧本地视频画面已经显示在屏幕上的回调监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    width:        //数字类型；视频流宽(像素)
+    height:       //数字类型；视频流高(像素)
+    elapsed:      //数字类型；加入频道开始到该回调触发的延迟（毫秒）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.firstLocalVideoFrameListener({
+        enable : true
+},function(ret) {
+       alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="57"></div>
+
+<h1 id="-firstremotevideoframelistener-"><strong>firstRemoteVideoFrameListener</strong></h1>
+<p>第一帧远程视频显示在视图回调监听</p>
+<p>firstRemoteVideoFrameListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用第一帧远程视频显示在视图回调监听</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    uid:         //数字类型；用户id
+    width:       //数字类型；视频流宽(像素)
+    height:      //数字类型；视频流高(像素)
+    elapsed:     //数字类型；加入频道开始到该回调触发的延迟（毫秒）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.firstRemoteVideoFrameListener({
+        enable : true
+},function(ret) {
+       alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="58"></div>
+
+<h1 id="-firstremotevideodecodedlistener-"><strong>firstRemoteVideoDecodedListener</strong></h1>
+<p>远端视频接收解码回调，收到第一帧远程视频流并解码成功时，触发此调用</p>
+<p>firstRemoteVideoDecodedListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用远端视频接收解码回调</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    uid:             //数字类型；用户id
+    width:          //数字类型；视频流宽(像素)
+    height:           //数字类型；视频流高(像素)
+    elapsed:        //数字类型；加入频道开始到该回调触发的延迟（毫秒）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.firstRemoteVideoDecodedListener({
+        enable : true
+},function(ret) {
+       alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="59"></div>
+
+<h1 id="-usermutevideolistener-"><strong>userMuteVideoListener</strong></h1>
+<p>其他用户停止/重启视频回调，<strong>iOS 暂不支持本接口</strong></p>
+<p>userMuteVideoListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用其他用户停止/重启视频回调</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    uid:        //数字类型；用户id
+    muted:      //数字类型；True：该用户暂停了视频发送，False：该用户恢复了视频发送
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.userMuteVideoListener({
+        enable : true
+},function(ret) {
+       alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="60"></div>
+
+<h1 id="-userenablevideolistener-"><strong>userEnableVideoListener</strong></h1>
+<p>其他用户启用/关闭视频回调，<strong>iOS 暂不支持本接口</strong></p>
+<p>userEnableVideoListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用其他用户启用/关闭视频回调</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    uid:        //数字类型；用户id
+    muted:      //数字类型；True：该用户启用了视频功能，False：该用户关闭了视频功能
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.userEnableVideoListener({
+        enable : true
+},function(ret) {
+       alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="61"></div>
+
+<h1 id="-localvideostatlistener-"><strong>localVideoStatListener</strong></h1>
+<p>本地视频统计回调，报告更新本地视频统计信息，该回调函数每两秒触发一次</p>
+<p>localVideoStatListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用本地视频统计回调</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    sentBitrate:             //数字类型；（上次统计后）发送的码率(kbps)
+    sentFrameRate:           //数字类型；（上次统计后）发送的帧率(fps)
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.localVideoStatListener({
+        enable : true
+},function(ret) {
+       alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="62"></div>
+
+<h1 id="-remotevideostatlistener-"><strong>remoteVideoStatListener</strong></h1>
+<p>远端视频统计回调，报告更新远端视频统计信息，该回调函数每两秒触发一次。 </p>
+<p>remoteVideoStatListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用远端视频统计回调</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    uid:                //数字类型；用户id
+    width:              //数字类型；视频流宽(像素)
+    height:               //数字类型；视频流高(像素)
+    receivedBitrate:    //数字类型；接收码率(kbps)
+    receivedFrameRate:  //数字类型；接收帧率(fps)
+    delay:              //数字类型；延时(毫秒)
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.remoteVideoStatListener({
+        enable : true
+},function(ret) {
+       alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="63"></div>
+
+<h1 id="-camerareadylistener-"><strong>cameraReadyListener</strong></h1>
+<p>摄像头启用回调，提示已成功打开摄像头，可以开始捕获视频。如果摄像头打开失败，可在 onError()中处理相应错误。 <strong>iOS 平台暂不支持本接口</strong></p>
+<p>cameraReadyListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用摄像头启用回调 </li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status:             //布尔类型；是否启用摄像头
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.cameraReadyListener({
+        enable : true
+},function(ret) {
+       alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="64"></div>
+
+<h1 id="-videostoppedlistener-"><strong>videoStoppedListener</strong></h1>
+<p>视频功能停止回调。 <strong>iOS 平台暂不支持本接口</strong></p>
+<p>videoStoppedListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用视频功能停止回调</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status:             //布尔类型；是否停止摄像头
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.videoStoppedListener({
+        enable : true
+},function(ret) {
+       alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="65"></div>
+
+<h1 id="-streammessagelistener-"><strong>streamMessageListener</strong></h1>
+<p>接收到对方数据流消息的回调</p>
+<p>streamMessageListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用接收到对方数据流消息的回调</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    uid:         //数字类型；用户id
+    streamId:    //数字类型；数据流 ID
+    data:        //字符串类型；接收到的数据
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.streamMessageListener({
+        enable : true
+},function(ret) {
+       alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="66"></div>
+
+<h1 id="-streammessageerrorlistener-"><strong>streamMessageErrorListener</strong></h1>
+<p>接收对方数据流消息错误的回调</p>
+<p>streamMessageErrorListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用接收对方数据流消息错误的回调</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    uid:         //数字类型；用户id
+    streamId:    //数字类型；数据流 ID
+    errMsg:      //字符串类型；错误信息
+    missed:      //数字类型；丢失的消息数量
+    cached:      //数字类型；数据流中断时，后面缓存的消息数量
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.streamMessageErrorListener({
+        enable : true
+},function(ret) {
+       alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="67"></div>
+
+<h1 id="-audiomixingfinishedlistener-"><strong>audioMixingFinishedListener</strong></h1>
+<p>伴奏已播放结束的回调，<strong>iOS 平台暂不支持本接口</strong></p>
+<p>audioMixingFinishedListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>enable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否启用伴奏已播放结束的回调</li>
+<li>默认：true</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status:             //数字类型；是否结束
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.audioMixingFinishedListener({
+        enable : true
+},function(ret) {
+       alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="68"></div>
+
+<h1 id="-setclientrole-"><strong>setClientRole</strong></h1>
+<p>在加入频道前， 用户需要通过本方法设置观众或主播模式（默认）。
+在加入频道后，用户可以通过本方法切换用户模式。
+该方法仅在直播模式有效</p>
+<p>setClientRole({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>role：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：直播的用户角色</li>
+<li>默认：BROADCASTER</li>
+<li>取值范围：<ul>
+<li>BROADCASTER：主播用户</li>
+<li>AUDIENCE：观众用户</li>
+</ul>
+</li>
+</ul>
+<p>permissionKey：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）permission key of role change</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVoice = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setClientRole({
+    role: &#39;AUDIENCE&#39;
+}, function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="69"></div>
+
+<h1 id="-closepreview-"><strong>closePreview</strong></h1>
+<p>关闭视频预览区域</p>
+<p>closePreview({params})</p>
+<h2 id="params">params</h2>
+<p>uid：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定用户id</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVoice = api.require(&#39;agoraVideo&#39;);
+agoraVideo.closePreview({uid:0});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="70"></div>
+
+<h1 id="-resetvideorect-"><strong>resetVideoRect</strong></h1>
+<p>重设视频预览区域</p>
+<p>resetVideoRect({params})</p>
+<h2 id="params">params</h2>
+<p>rect：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：（可选项）视频区域的位置及尺寸</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    x: 0,   //（可选项）数字类型；视频区域左上角的 x 坐标（相对于所属的 Window 或 Frame）；默认：原值
+    y: 0,   //（可选项）数字类型；视频区域左上角的 y 坐标（相对于所属的 Window 或 Frame）；默认：原值
+    w: 320, //（可选项）数字类型；视频区域的宽度；默认：原值
+    h: 480  //（可选项）数字类型；视频区域的高度；默认：原值
+}
+</code></pre>
+<p>animation：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：重设过程中是否带0.3秒的动画</li>
+<li>默认：false</li>
+</ul>
+<p>uid：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定用户id</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVoice = api.require(&#39;agoraVideo&#39;);
+agoraVideo.resetVideoRect({
+    rect:{
+        x:10,
+        y:10,
+        w:300,
+        h:280
+    },
+    animation: true
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="71"></div>
+
+<h1 id="-setremotevideostream-"><strong>setRemoteVideoStream</strong></h1>
+<p>设置远程视频流质量</p>
+<p>setRemoteVideoStream({params},callback(ret))</p>
+<h2 id="params">params</h2>
+<p>uid：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定用户id</li>
+</ul>
+<p>type：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：视频质量</li>
+<li>默认：medium</li>
+<li>取值范围：<ul>
+<li>medium：普通</li>
+<li>high：高质量</li>
+<li>low：低质量</li>
+</ul>
+</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: ,      //布尔类型；true||false，是否成功
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var agoraVideo = api.require(&#39;agoraVideo&#39;);
+agoraVideo.setRemoteVideoStream( {
+        type:low,
+        uid:0
+},function(ret) {
+        if (ret.status) {
+            alert(JSON.stringify(ret));
+        }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+
+
+            <div class="page-meta clearfix">
+                <div class="last-updated pull-right">
+                    <!-- Last updated on 11th May 2017 -->
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <!-- <div class="footer-logo"> -->
+                    <!-- <a href="http://www.apicloud.com" target="_blank" style="width:182px;height:113px;display:inline-block;margin-left: 25px;">
+                        <img src="/img/logo.jpg" alt="">
+                    </a> -->
+                    <!-- <div style="display:inline-block;float:right"> -->
+                        <p class="copyright pull-right" style="margin-top:-70px;">
+                            Copyright &copy; 2017APICloud Docs   &nbsp <a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action">京ICP备14027692号</a>
+                        </p>
+                    <!-- </div> -->
+                <!-- </div> -->
+                
+            </div>
+        </footer>
+        <div id="outlineTip">
+        </div>
+        <a id="backToTop" href="javascript:void(0)">
+        </a>
+        <!-- <iframe id="bbsLogin" style="display:none" src="/bbsLogin.html">
+        </iframe> -->
+        <script src="../../bower_components/jquery/dist/jquery.min.js">
+        </script>
+        <script src="../../scripts/jquery.qrcode.min.js"></script>
+        <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js">
+        </script>
+        <script src="../../bower_components/highlightjs/highlight.pack.js">
+        </script>
+        <script src="../../bower_components/fitvids/jquery.fitvids.js">
+        </script>
+        <script src="../../bower_components/masonry/dist/masonry.pkgd.min.js">
+        </script>
+        <script src="../../scripts/ZeroClipboard.min.js">
+        </script>
+        <script src="../../scripts/raneto.js">
+        </script>
+        <div style="display:none;">
+            <script type="text/javascript">
+                var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253236292'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1253236292%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+                // $('#operatingCloud').mouseenter(function () {
+                //     $('.mouse2').css('display','block');
+                //     $('.mouse1').css('display','none');
+                // }).mouseleave(function(){
+                //     $('.mouse2').css('display','none');
+                // })
+                // $('#operatingApp').mouseenter(function () {
+                //     $('.mouse1').css('display','block');
+                //     $('.mouse2').css('display','none');
+                // }).mouseleave(function(){
+                //     $('.mouse1').css('display','none');
+                // })
+                // $('#nav_point').mouseenter(function () {
+                //   $('.mouse2').css('display','none');
+                //   $('.mouse1').css('display','none');
+                // })
+  
+            </script>
+        </div>
+    </body>
+
+<!-- Mirrored from docs.apicloud.com/Client-API/Open-SDK/agoraVideo by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 May 2017 08:29:50 GMT -->
+</html>

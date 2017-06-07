@@ -1,0 +1,4665 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from docs.apicloud.com/Client-API/Open-SDK/bMap by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 May 2017 08:29:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>
+            
+            bMap
+        </title>
+        <!-- <title>
+            bMap - APICloud Docs
+        </title> -->
+        <meta name="description" content="bMap"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" href="../../favicon.png"/>
+        <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../../bower_components/highlightjs/styles/vs.css"/>
+        <link rel="stylesheet" href="../../styles/font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="../../styles/raneto.css"/>
+        <link rel="stylesheet" href="../../styles/homenewlayout.css"/>
+        <style>
+            header{
+                top:0;
+            }
+            header div.authenticated{
+                display: none;
+            }
+            .authenticated.active{
+                display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+                display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+                display: -ms-flexbox;      /* TWEENER - IE 10 */
+                display: -webkit-flex;     /* NEW - Chrome */
+                display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+            }
+            .link-group.active{
+                display: none;
+            }
+            .copyright a{
+                color: #999 !important;
+                margin-right: 16px !important;
+            }
+            /*红点 start*/
+            /*.item-notice-out,
+            .item-notice-in{
+                position: relative;
+            }
+            .item-notice-out:after,
+            .item-notice-in:after{
+                position: absolute;
+                content: " ";
+                width: 6px;
+                height: 6px;
+                border-radius: 10px;
+                background-color: #ee3131;
+            }
+            .item-notice-out:after{
+                top: 13px;
+                right: 15px;
+            }
+            .item-notice-in:after{
+                top: 10px;
+                right: 14px;
+            }*/
+            /*红点 end*/
+        </style>
+        <link href="../../styles/video-js.css" rel="stylesheet" type="text/css"/>
+        <script src="../../scripts/video.js">
+        </script>
+        <script>
+            videojs.options.flash.swf = "../../video-js.swf";
+        </script>
+        
+    </head>
+    <body class="page-client-a-p-i-open-s-d-k-b-map">
+        <header class="light">
+            <div class="nav-left">
+                <a href="http://www.apicloud.com/" class="logo" title=''>
+                    <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 19.4" style="enable-background:new 0 0 120 19.4;" xml:space="preserve">
+                          <style type="text/css">
+                            .st0 {
+                              fill: #95BA1F;
+                            }
+                            
+                            .st1 {
+                              fill: #FFFFFF;
+                            }
+                          </style>
+                            <g id="XMLID_34_">
+                            <path id="XMLID_35_" class="st0" d="M23.6,18h-2.6v-3h2.6c1.5,0,2.8-1.3,2.8-2.8c0-1.5-1.3-2.8-2.8-2.8h-0.5
+                        c-0.2,4.7-4.2,8.5-9,8.5H5.7C2.6,18,0,15.4,0,12.2c0-3.2,2.6-5.7,5.7-5.7h13.9c-1-2.1-3.1-3.5-5.5-3.5c-1.9,0-3.6,0.9-4.8,2.3
+                        L8.4,6.5L6.1,4.6L7,3.5C8.7,1.3,11.3,0,14.1,0c4.1,0,7.6,2.7,8.6,6.5h0.8c3.2,0,5.7,2.6,5.7,5.7C29.3,15.4,26.7,18,23.6,18z
+                        M5.7,9.5C4.2,9.5,3,10.7,3,12.2C3,13.8,4.2,15,5.7,15h8.4c3.2,0,5.8-2.5,6-5.6H5.7z" />
+                            </g>
+                            <path id="XMLID_31_" class="st1" d="M46.1,13.9H41l-1.3,4.2h-2.4l4.9-14.8h2.7l4.9,14.8h-2.5L46.1,13.9z M45.6,12.1l-0.6-2
+                        c-0.5-1.6-0.9-3.3-1.4-4.9h-0.1c-0.4,1.7-0.9,3.3-1.4,4.9l-0.6,2H45.6z" />
+                            <path id="XMLID_28_" class="st1" d="M51.8,3.4h4.5c3.3,0,5.6,1.1,5.6,4.5c0,3.2-2.4,4.7-5.6,4.7h-2.2v5.6h-2.3V3.4z M56.1,10.7
+                        c2.4,0,3.5-0.9,3.5-2.9c0-1.9-1.2-2.6-3.6-2.6h-1.9v5.4H56.1z" />
+                            <path id="XMLID_26_" class="st1" d="M64.8,3.4h2.3v14.8h-2.3V3.4z" />
+                            <g id="XMLID_16_">
+                            <path id="XMLID_7_" class="st1" d="M80,15.7c-1.1,1.2-2.2,1.8-3.6,1.8c-3.1,0-5.1-2.6-5.1-6.7c0-4.1,2-6.6,5.2-6.6
+                            C78,4.2,79,5,79.5,5.7l0.1,0.2L80.4,5l-0.1-0.1c-0.5-0.5-1.7-1.8-3.9-1.8c-3.9,0-6.3,3-6.3,7.7c0,4.7,2.5,7.8,6.2,7.8
+                            c1.8,0,3.2-0.7,4.4-2.1l0.1-0.1l-0.7-0.8L80,15.7z" />
+                            <path id="XMLID_6_" class="st1" d="M85.1,17.5c-0.2,0-0.3,0-0.4,0c-0.1,0-0.3,0-0.3-0.5V2h-1.1V17c0,1.4,0.7,1.6,1.3,1.6
+                            c0.3,0,0.4,0,0.6-0.1l0.3-0.1l-0.2-1L85.1,17.5z" />
+                            <path id="XMLID_21_" class="st1" d="M92.5,7.1c-2.9,0-4.9,2.4-4.9,5.8c0,3.4,2,5.7,4.9,5.7c2.9,0,4.9-2.4,4.9-5.7
+                            C97.4,9.5,95.3,7.1,92.5,7.1z M92.5,17.5c-2.2,0-3.7-1.9-3.7-4.7c0-2.7,1.6-4.7,3.7-4.7c2.2,0,3.8,2,3.8,4.7
+                            C96.2,15.6,94.6,17.5,92.5,17.5z" />
+                            <path id="XMLID_3_" class="st1" d="M106.9,15.4c-1.4,1.6-2.3,2.1-3.4,2.1c-1.1,0-2.4-0.4-2.4-3.3V7.5h-0.9v6.9c0,2.9,1,4.2,3.3,4.2
+                            c1.5,0,2.6-0.9,3.4-1.8l0.1,1.5h1V7.5h-1.1V15.4z" />
+                            <path id="XMLID_17_" class="st1" d="M118.9,2v4.6l0,1.6c-1-0.7-1.8-1.1-3.1-1.1c-2.9,0-4.9,2.4-4.9,5.8c0,3.6,1.7,5.7,4.6,5.7
+                            c1.2,0,2.4-0.5,3.4-1.5l0.1,1.1h1V2H118.9z M118.9,9.5v6.3c-1.2,1.2-2.2,1.7-3.3,1.7c-2.1,0-3.5-1.8-3.5-4.7c0-2.7,1.7-4.7,3.8-4.7
+                            C116.9,8.1,117.8,8.5,118.9,9.5z" />
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="nav-right mw-8">
+                <div class="nav-right">
+                    <div class="authenticated" id="ifSigned">
+                    <ul>
+                        <li class="ifSigned-list">
+                            <div  class="profile toConsole">
+                                <img src="../../img/favicon-30.png"  alt="APICloud" />
+                                <span class="login-name">
+                                </span>
+                                <span class="arr-b">
+                                </span>
+                            </div>
+                            <ul class="nav-list single console-list">
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/console" class="nav-link-single">
+                                        <i class="fa icon-tasks">
+                                        </i>
+                                        <span>
+                                            开发控制台
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://app.apicloud.com/demandlist" class="nav-link-single">
+                                        <i class="fa icon-demand">
+                                        </i>
+                                        <span>
+                                            我的定制需求
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/module_pub_history" class="nav-link-single">
+                                        <i class="fa icon-inbox">
+                                        </i>
+                                        <span>
+                                            模块管理
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/myService" class="nav-link-single myBill">
+                                        <i class="fa icon-user">
+                                        </i>
+                                        <span>
+                                            我的账户
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/member" class="nav-link-single">
+                                        <i class="fa icon-group"></i>
+                                        <span>
+                                            团队协作
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/profile" class="nav-link-single">
+                                        <i class="fa icon-cog">
+                                        </i>
+                                        <span>
+                                            设置
+                                        </span>
+                                    </a>
+                                </li>
+                                <!-- <li class="nav-list-item" id="sign_out">
+                                    <a href="javascript:void(0)" class="nav-link-single">
+                                        <i class="fa icon-signout">
+                                        </i>
+                                        <span>
+                                            退出
+                                        </span>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="unauthenticated link-group">
+                        <a href="http://www.apicloud.com/signin">
+                            登录
+                        </a>
+                        <span>
+                        </span>
+                        <a href="http://www.apicloud.com/signup">
+                            注册
+                        </a>
+                    </div>
+                </div>
+                <ul class="nav nav-right">
+                    <li id="nav_point">
+                        <!-- 活动红点 -->
+                        <!-- <a href="http://www.apicloud.com" class="badge-red"> -->
+                        <a href="javascript:void(0)">
+                            APP开发平台
+                        </a>
+                        <ul class="nav-list pointer">
+                            <li class="nav-list-item mousein" id="operatingApp">
+                                <a href="javascript:void(0)" class="nav-link operatingApp_link">
+                                    <span class="APP">APP引擎</span>
+                                    <i class="icon-angle-right"></i>
+                                </a>
+                                <span class="mouse mouse1">
+                                    <ul class="nav-list mouse-ul pointer_right">
+                                        <li class="nav-list-item ">
+                                            <a href="http://apicloud.com/superwebview" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_superwebview"></span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                           SuperWebView
+                                                    </span>
+                                                    <span class="nav-description">
+                                                            帮助原生程序员快速迭代
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-list-item nav-list-item1">
+                                            <a href="http://apicloud.com/deepengine" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_deepengine">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        Deep Engine
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        高效的跨平台APP引擎
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>   
+                                    </ul>
+                                </sapn>
+                            </li>
+                            <li class="nav-list-item mousein" id="operatingCloud">
+                                <a href="javascript:void(0)"  class="nav-link operatingCloud_link">
+                                    <span class="APP">云引擎</span>
+                                    <i class="icon-angle-right"></i>
+                                </a>
+                                <span class="mouse mouse2">
+                                    <ul class="nav-list mouse-ul pointer_right">
+                                        <li class="nav-list-item">
+                                            <a href="http://apicloud.com/cloudservice" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_cloudservice">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        数据云
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        无需编程 自动生成Server端
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-list-item nav-list-item1">
+                                            <a href="http://apicloud.com/cloudmanage" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_cloudoperating">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        运营云
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        提升您的运维效率
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>        
+                                    </ul>
+                                </sapn>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/modulestore"  class="nav-link">
+                                    <span class="APP">模块Store</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="../../APICloud/junior-develop-guide.html"  class="nav-link">
+                                    <span class="APP">新手指南</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/devtools" class="nav-link">
+                                    <span class="APP">开发工具</span>
+                                </a>
+                            </li>
+                            <!-- <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/vipservice/price" class="nav-link">
+                                    <span class="APP badge-red">价格</span>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://app.apicloud.com/" target="_blank">
+                            APP定制服务
+                        </a>
+                        <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/" class="nav-link" target="_blank">
+                                APP定制
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/appCustom" class="nav-link" target="_blank">
+                                模板Store
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://community.apicloud.com/" target="_blank">
+                            开发者社区
+                        </a>
+                        <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://community.apicloud.com/bbs/forum.php" class="nav-link" target="_blank">
+                                    在线社区
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../../index.html" class="nav-link" target="_blank">
+                                    文档
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/video_list" class="nav-link">
+                                    视频教程
+                                </a> 
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/source_code" class="nav-link">
+                                    源码
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://apicloud.com/vipservice/price"  target="_blank">
+                            VIP服务
+                        </a>
+                        <!-- <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/price" class="nav-link">
+                                    VIP服务
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/plan" class="nav-link">
+                                    云服务价格
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/channel" class="nav-link">
+                                    渠道打包
+                                </a> 
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/enterpEdition" class="nav-link">
+                                    优先技术支持
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/course" class="nav-link">
+                                    培训课程
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/attest" class="nav-link">
+                                    认证工程师
+                                </a>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href="http://apicloud.com/cases" target="_blank" class="item-notice-out">
+                            案例
+                        </a>
+                        <ul class="nav-list single">
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/cases" class="nav-link" target="_blank">
+                                    开发案例
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/cases" class="nav-link" target="_blank">
+                                    定制案例
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="row main-container">
+    <div class="col-sm-2 main-menu">
+        <!--search box-->
+        <form class="search-form form-inline" role="form" action="http://docs.apicloud.com/">
+            <div class="form-group">
+                <label class="sr-only" for="search">Search</label>
+                <input type="search" class="form-control" name="search" id="search" size="30" value="" placeholder="Search">
+            </div>
+        </form>
+        <ul class="menu">
+                    <li class="page"><a href="../../index.html">开发文档</a></li>
+            <li class="category">
+                <h5 class="category-title">Apicloud</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../APICloud/platform-intro.html">APP开发平台介绍</a></li>
+                    <li class="page"><a href="../../APICloud/APP-custom-info.html">APP定制平台介绍</a></li>
+                    <li class="page"><a href="../../APICloud/junior-develop-guide.html">新手开发指南</a></li>
+                    <li class="page"><a href="../../APICloud/creating-first-app.html">创建第一个应用</a></li>
+                    <li class="page"><a href="../../APICloud/APP-Template-Guide.html">模板使用流程</a></li>
+                    <li class="page"><a href="../../APICloud/app-guide.html">如何开发出优秀的APICloud应用</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">模块开发</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Module-Dev/module-dev-standard.html">开发模块设计规范</a></li>
+                    <li class="page"><a href="../../Module-Dev/module-dev-guide-for-ios.html">模块开发指南_iOS</a></li>
+                    <li class="page"><a href="../../Module-Dev/module-dev-guide-for-android.html">模块开发指南_Android</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-audit-specification-ios.html">模块审核规范-iOS</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-audit-specification-Android.html">模块审核规范-Android</a></li>
+                    <li class="page"><a href="../../Module-Dev/Upload-custom-module.html">自定义模块使用说明</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-Store-Guide.html">模块Store规范</a></li>
+                    <li class="page"><a href="../../Module-Dev/Module-Store-Service-Agreement.html">模块Store服务协议</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">端API</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../api.html">API对象</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">设备访问
+</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Device-Access/3DTouch.html">3DTouch</a></li>
+                    <li class="page"><a href="../Device-Access/DVTorch.html">DVTorch</a></li>
+                    <li class="page"><a href="../Device-Access/FNSettings.html">FNSettings</a></li>
+                    <li class="page"><a href="../Device-Access/accelerometer.html">accelerometer</a></li>
+                    <li class="page"><a href="../Device-Access/accelerometerSensor.html">accelerometerSensor</a></li>
+                    <li class="page"><a href="../Device-Access/appSettings.html">appSettings</a></li>
+                    <li class="page"><a href="../Device-Access/appVersionUpdate.html">appVersionUpdate</a></li>
+                    <li class="page"><a href="../Device-Access/ble.html">ble</a></li>
+                    <li class="page"><a href="../Device-Access/bluetooth.html">bluetooth</a></li>
+                    <li class="page"><a href="../Device-Access/brightness2016.html">brightness2016</a></li>
+                    <li class="page"><a href="../Device-Access/btmodule.html">btmodule</a></li>
+                    <li class="page"><a href="../Device-Access/btsppiot.html">btsppiot</a></li>
+                    <li class="page"><a href="../Device-Access/calendarMemo.html">calendarMemo</a></li>
+                    <li class="page"><a href="../Device-Access/callRecord.html">callRecord</a></li>
+                    <li class="page"><a href="../Device-Access/cameraTool.html">cameraTool</a></li>
+                    <li class="page"><a href="../Device-Access/clipBoard.html">clipBoard</a></li>
+                    <li class="page"><a href="../Device-Access/compassLeveler.html">compassLeveler</a></li>
+                    <li class="page"><a href="../Device-Access/contact.html">contact</a></li>
+                    <li class="page"><a href="../Device-Access/contacts.html">contacts</a></li>
+                    <li class="page"><a href="../Device-Access/easyNFC.html">easyNFC</a></li>
+                    <li class="page"><a href="../Device-Access/gps.html">gps</a></li>
+                    <li class="page"><a href="../Device-Access/gpsState.html">gpsState</a></li>
+                    <li class="page"><a href="../Device-Access/gravitySensor.html">gravitySensor</a></li>
+                    <li class="page"><a href="../Device-Access/gyro.html">gyro</a></li>
+                    <li class="page"><a href="../Device-Access/gyroscopeSensor.html">gyroscopeSensor</a></li>
+                    <li class="page"><a href="../Device-Access/hardwareInfo.html">hardwareInfo</a></li>
+                    <li class="page"><a href="../Device-Access/ipAddress.html">ipAddress</a></li>
+                    <li class="page"><a href="../Device-Access/lightSensor.html">lightSensor</a></li>
+                    <li class="page"><a href="../Device-Access/linearAcceleration.html">linearAcceleration</a></li>
+                    <li class="page"><a href="../Device-Access/magneticFieldSensor.html">magneticFieldSensor</a></li>
+                    <li class="page"><a href="../Device-Access/magnetometer.html">magnetometer</a></li>
+                    <li class="page"><a href="../Device-Access/mediaScanner.html">mediaScanner</a></li>
+                    <li class="page"><a href="../Device-Access/moduleSMS.html">moduleSMS</a></li>
+                    <li class="page"><a href="../Device-Access/multiScreen.html">multiScreen</a></li>
+                    <li class="page"><a href="../Device-Access/myAppInfo.html">myAppInfo</a></li>
+                    <li class="page"><a href="../Device-Access/myListeningInfo.html">myListeningInfo</a></li>
+                    <li class="page"><a href="../Device-Access/mySettingInfo.html">mySettingInfo</a></li>
+                    <li class="page"><a href="../Device-Access/orientationSensor.html">orientationSensor</a></li>
+                    <li class="page"><a href="../Device-Access/pasteboard.html">pasteboard</a></li>
+                    <li class="page"><a href="../Device-Access/pedometer.html">pedometer</a></li>
+                    <li class="page"><a href="../Device-Access/phoneInfo.html">phoneInfo</a></li>
+                    <li class="page"><a href="../Device-Access/pingModule.html">pingModule</a></li>
+                    <li class="page"><a href="../Device-Access/playText.html">playText</a></li>
+                    <li class="page"><a href="../Device-Access/posPrinter.html">posPrinter</a></li>
+                    <li class="page"><a href="../Device-Access/posScanner.html">posScanner</a></li>
+                    <li class="page"><a href="../Device-Access/proximitySensor.html">proximitySensor</a></li>
+                    <li class="page"><a href="../Device-Access/rotationVector.html">rotationVector</a></li>
+                    <li class="page"><a href="../Device-Access/seblePrinter.html">seblePrinter</a></li>
+                    <li class="page"><a href="../Device-Access/simInfo.html">simInfo</a></li>
+                    <li class="page"><a href="../Device-Access/simInfoImp.html">simInfoImp</a></li>
+                    <li class="page"><a href="../Device-Access/spModule.html">spModule</a></li>
+                    <li class="page"><a href="../Device-Access/statusBar.html">statusBar</a></li>
+                    <li class="page"><a href="../Device-Access/sunmiPrinter.html">sunmiPrinter</a></li>
+                    <li class="page"><a href="../Device-Access/toBackground.html">toBackground</a></li>
+                    <li class="page"><a href="../Device-Access/torch.html">torch</a></li>
+                    <li class="page"><a href="../Device-Access/touchID.html">touchID</a></li>
+                    <li class="page"><a href="../Device-Access/wifi.html">wifi</a></li>
+                    <li class="page"><a href="../Device-Access/wifiMgr.html">wifiMgr</a></li>
+                    <li class="page"><a href="../Device-Access/wifiSSID.html">wifiSSID</a></li>
+                    <li class="page"><a href="../Device-Access/yunnex.html">yunnex</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">功能扩展</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Func-Ext/FNImageClip.html">FNImageClip</a></li>
+                    <li class="page"><a href="../Func-Ext/FNPhotograph.html">FNPhotograph</a></li>
+                    <li class="page"><a href="../Func-Ext/FNScanner.html">FNScanner</a></li>
+                    <li class="page"><a href="../Func-Ext/aemail.html">aemail</a></li>
+                    <li class="page"><a href="../Func-Ext/alarmNotification.html">alarmNotification</a></li>
+                    <li class="page"><a href="../Func-Ext/appControl.html">appControl</a></li>
+                    <li class="page"><a href="../Func-Ext/appManage.html">appManage</a></li>
+                    <li class="page"><a href="../Func-Ext/arcColorPicker.html">arcColorPicker</a></li>
+                    <li class="page"><a href="../Func-Ext/audio.html">audio</a></li>
+                    <li class="page"><a href="../Func-Ext/audioCover.html">audioCover</a></li>
+                    <li class="page"><a href="../Func-Ext/audioPlayer.html">audioPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/audioRecorder.html">audioRecorder</a></li>
+                    <li class="page"><a href="../Func-Ext/autoStartUp.html">autoStartUp</a></li>
+                    <li class="page"><a href="../Func-Ext/batteryManager.html">batteryManager</a></li>
+                    <li class="page"><a href="../Func-Ext/blurredView.html">blurredView</a></li>
+                    <li class="page"><a href="../Func-Ext/bookReader.html">bookReader</a></li>
+                    <li class="page"><a href="../Func-Ext/brightness.html">brightness</a></li>
+                    <li class="page"><a href="../Func-Ext/cardReader.html">cardReader</a></li>
+                    <li class="page"><a href="../Func-Ext/chromeDebug.html">chromeDebug</a></li>
+                    <li class="page"><a href="../Func-Ext/cnKeyBoard.html">cnKeyBoard</a></li>
+                    <li class="page"><a href="../Func-Ext/cocoVideo.html">cocoVideo</a></li>
+                    <li class="page"><a href="../Func-Ext/codeLog.html">codeLog</a></li>
+                    <li class="page"><a href="../Func-Ext/compactPicture.html">compactPicture</a></li>
+                    <li class="page"><a href="../Func-Ext/db.html">db</a></li>
+                    <li class="page"><a href="../Func-Ext/djyPrinter.html">djyPrinter</a></li>
+                    <li class="page"><a href="../Func-Ext/docInteraction.html">docInteraction</a></li>
+                    <li class="page"><a href="../Func-Ext/docReader.html">docReader</a></li>
+                    <li class="page"><a href="../Func-Ext/downloadManager.html">downloadManager</a></li>
+                    <li class="page"><a href="../Func-Ext/drawingBoard.html">drawingBoard</a></li>
+                    <li class="page"><a href="../Func-Ext/exifInterface.html">exifInterface</a></li>
+                    <li class="page"><a href="../Func-Ext/fileBrowser.html">fileBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/fs.html">fs</a></li>
+                    <li class="page"><a href="../Func-Ext/getWebUrl.html">getWebUrl</a></li>
+                    <li class="page"><a href="../Func-Ext/headphone.html">headphone</a></li>
+                    <li class="page"><a href="../Func-Ext/iap.html">iap</a></li>
+                    <li class="page"><a href="../Func-Ext/imageBrowser.html">imageBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/imageClip.html">imageClip</a></li>
+                    <li class="page"><a href="../Func-Ext/imageCrop.html">imageCrop</a></li>
+                    <li class="page"><a href="../Func-Ext/imageFilter.html">imageFilter</a></li>
+                    <li class="page"><a href="../Func-Ext/imagePalette.html">imagePalette</a></li>
+                    <li class="page"><a href="../Func-Ext/imageSelect.html">imageSelect</a></li>
+                    <li class="page"><a href="../Func-Ext/imageTool.html">imageTool</a></li>
+                    <li class="page"><a href="../Func-Ext/launchImage.html">launchImage</a></li>
+                    <li class="page"><a href="../Func-Ext/liveAudioPlayer.html">liveAudioPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/logger.html">logger</a></li>
+                    <li class="page"><a href="../Func-Ext/marketScore.html">marketScore</a></li>
+                    <li class="page"><a href="../Func-Ext/mdReader.html">mdReader</a></li>
+                    <li class="page"><a href="../Func-Ext/micoMqtt.html">micoMqtt</a></li>
+                    <li class="page"><a href="../Func-Ext/mqtt.html">mqtt</a></li>
+                    <li class="page"><a href="../Func-Ext/myTimer.html">myTimer</a></li>
+                    <li class="page"><a href="../Func-Ext/navigator.html">navigator</a></li>
+                    <li class="page"><a href="../Func-Ext/netAudio.html">netAudio</a></li>
+                    <li class="page"><a href="../Func-Ext/openAppStore.html">openAppStore</a></li>
+                    <li class="page"><a href="../Func-Ext/patternLock.html">patternLock</a></li>
+                    <li class="page"><a href="../Func-Ext/pdfReader.html">pdfReader</a></li>
+                    <li class="page"><a href="../Func-Ext/phoneListener.html">phoneListener</a></li>
+                    <li class="page"><a href="../Func-Ext/photoBrowser.html">photoBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/photoPicker.html">photoPicker</a></li>
+                    <li class="page"><a href="../Func-Ext/photoSelect.html">photoSelect</a></li>
+                    <li class="page"><a href="../Func-Ext/photoStream.html">photoStream</a></li>
+                    <li class="page"><a href="../Func-Ext/playModule.html">playModule</a></li>
+                    <li class="page"><a href="../Func-Ext/playRtsp.html">playRtsp</a></li>
+                    <li class="page"><a href="../Func-Ext/privacy.html">privacy</a></li>
+                    <li class="page"><a href="../Func-Ext/realNetwork.html">realNetwork</a></li>
+                    <li class="page"><a href="../Func-Ext/recentPic.html">recentPic</a></li>
+                    <li class="page"><a href="../Func-Ext/recordVideo.html">recordVideo</a></li>
+                    <li class="page"><a href="../Func-Ext/richText.html">richText</a></li>
+                    <li class="page"><a href="../Func-Ext/runBackground.html">runBackground</a></li>
+                    <li class="page"><a href="../Func-Ext/sangforvpn.html">sangforvpn</a></li>
+                    <li class="page"><a href="../Func-Ext/scanner.html">scanner</a></li>
+                    <li class="page"><a href="../Func-Ext/screenClip.html">screenClip</a></li>
+                    <li class="page"><a href="../Func-Ext/screenLock.html">screenLock</a></li>
+                    <li class="page"><a href="../Func-Ext/shareAction.html">shareAction</a></li>
+                    <li class="page"><a href="../Func-Ext/sharePics.html">sharePics</a></li>
+                    <li class="page"><a href="../Func-Ext/shareTool.html">shareTool</a></li>
+                    <li class="page"><a href="../Func-Ext/shortCut.html">shortCut</a></li>
+                    <li class="page"><a href="../Func-Ext/signature.html">signature</a></li>
+                    <li class="page"><a href="../Func-Ext/socketManager.html">socketManager</a></li>
+                    <li class="page"><a href="../Func-Ext/svideo.html">svideo</a></li>
+                    <li class="page"><a href="../Func-Ext/timer.html">timer</a></li>
+                    <li class="page"><a href="../Func-Ext/touchDebugger.html">touchDebugger</a></li>
+                    <li class="page"><a href="../Func-Ext/trans.html">trans</a></li>
+                    <li class="page"><a href="../Func-Ext/ttsModule.html">ttsModule</a></li>
+                    <li class="page"><a href="../Func-Ext/uimusic.html">uimusic</a></li>
+                    <li class="page"><a href="../Func-Ext/videoKit.html">videoKit</a></li>
+                    <li class="page"><a href="../Func-Ext/videoPlayer.html">videoPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/videoRecorder.html">videoRecorder</a></li>
+                    <li class="page"><a href="../Func-Ext/videoTool.html">videoTool</a></li>
+                    <li class="page"><a href="../Func-Ext/voiceMag.html">voiceMag</a></li>
+                    <li class="page"><a href="../Func-Ext/vpnIOS.html">vpnIOS</a></li>
+                    <li class="page"><a href="../Func-Ext/vrPlayer.html">vrPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/vtingPlayer.html">vtingPlayer</a></li>
+                    <li class="page"><a href="../Func-Ext/wallPaper.html">wallPaper</a></li>
+                    <li class="page"><a href="../Func-Ext/webBrowser.html">webBrowser</a></li>
+                    <li class="page"><a href="../Func-Ext/webSocket.html">webSocket</a></li>
+                    <li class="page"><a href="../Func-Ext/ytylive.html">ytylive</a></li>
+                    <li class="page"><a href="../Func-Ext/zip.html">zip</a></li>
+                    <li class="page"><a href="../Func-Ext/zxycamera.html">zxycamera</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">界面布局</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../UI-Layout/UIActionProgress.html">UIActionProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/UIActionSelector.html">UIActionSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/UIAlbumBrowser.html">UIAlbumBrowser</a></li>
+                    <li class="page"><a href="../UI-Layout/UIBarChart.html">UIBarChart</a></li>
+                    <li class="page"><a href="../UI-Layout/UIButton.html">UIButton</a></li>
+                    <li class="page"><a href="../UI-Layout/UICalendar.html">UICalendar</a></li>
+                    <li class="page"><a href="../UI-Layout/UIChatBox.html">UIChatBox</a></li>
+                    <li class="page"><a href="../UI-Layout/UIChatTools.html">UIChatTools</a></li>
+                    <li class="page"><a href="../UI-Layout/UICityList.html">UICityList</a></li>
+                    <li class="page"><a href="../UI-Layout/UICoverFlow.html">UICoverFlow</a></li>
+                    <li class="page"><a href="../UI-Layout/UICustomPicker.html">UICustomPicker</a></li>
+                    <li class="page"><a href="../UI-Layout/UIGraph.html">UIGraph</a></li>
+                    <li class="page"><a href="../UI-Layout/UIInput.html">UIInput</a></li>
+                    <li class="page"><a href="../UI-Layout/UILineChart.html">UILineChart</a></li>
+                    <li class="page"><a href="../UI-Layout/UILinkedPicker.html">UILinkedPicker</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListCard.html">UIListCard</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListCheck.html">UIListCheck</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListContacts.html">UIListContacts</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListMeeting.html">UIListMeeting</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListSearch.html">UIListSearch</a></li>
+                    <li class="page"><a href="../UI-Layout/UIListView.html">UIListView</a></li>
+                    <li class="page"><a href="../UI-Layout/UILoading.html">UILoading</a></li>
+                    <li class="page"><a href="../UI-Layout/UIMediaScanner.html">UIMediaScanner</a></li>
+                    <li class="page"><a href="../UI-Layout/UIMultiSelector.html">UIMultiSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefresh.html">UIPullRefresh</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefreshDrop.html">UIPullRefreshDrop</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefreshFlash.html">UIPullRefreshFlash</a></li>
+                    <li class="page"><a href="../UI-Layout/UIPullRefreshMotive.html">UIPullRefreshMotive</a></li>
+                    <li class="page"><a href="../UI-Layout/UIScrollPicture.html">UIScrollPicture</a></li>
+                    <li class="page"><a href="../UI-Layout/UIScrollPromptView.html">UIScrollPromptView</a></li>
+                    <li class="page"><a href="../UI-Layout/UISearchBar.html">UISearchBar</a></li>
+                    <li class="page"><a href="../UI-Layout/UISelector.html">UISelector</a></li>
+                    <li class="page"><a href="../UI-Layout/UISlider.html">UISlider</a></li>
+                    <li class="page"><a href="../UI-Layout/UISwitchButton.html">UISwitchButton</a></li>
+                    <li class="page"><a href="../UI-Layout/UIVividLine.html">UIVividLine</a></li>
+                    <li class="page"><a href="../UI-Layout/UIWebBrowser.html">UIWebBrowser</a></li>
+                    <li class="page"><a href="../UI-Layout/addressView.html">addressView</a></li>
+                    <li class="page"><a href="../UI-Layout/applause.html">applause</a></li>
+                    <li class="page"><a href="../UI-Layout/arcProgress.html">arcProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/barChart.html">barChart</a></li>
+                    <li class="page"><a href="../UI-Layout/brokenLine.html">brokenLine</a></li>
+                    <li class="page"><a href="../UI-Layout/button.html">button</a></li>
+                    <li class="page"><a href="../UI-Layout/calendar.html">calendar</a></li>
+                    <li class="page"><a href="../UI-Layout/chatBox.html">chatBox</a></li>
+                    <li class="page"><a href="../UI-Layout/cityList.html">cityList</a></li>
+                    <li class="page"><a href="../UI-Layout/citySelector.html">citySelector</a></li>
+                    <li class="page"><a href="../UI-Layout/coverFlow.html">coverFlow</a></li>
+                    <li class="page"><a href="../UI-Layout/customSelector.html">customSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/customToast.html">customToast</a></li>
+                    <li class="page"><a href="../UI-Layout/dialogBox.html">dialogBox</a></li>
+                    <li class="page"><a href="../UI-Layout/divisionalLineChart.html">divisionalLineChart</a></li>
+                    <li class="page"><a href="../UI-Layout/doubleBarChart.html">doubleBarChart</a></li>
+                    <li class="page"><a href="../UI-Layout/fluttering.html">fluttering</a></li>
+                    <li class="page"><a href="../UI-Layout/goodsList.html">goodsList</a></li>
+                    <li class="page"><a href="../UI-Layout/graph.html">graph</a></li>
+                    <li class="page"><a href="../UI-Layout/groupList.html">groupList</a></li>
+                    <li class="page"><a href="../UI-Layout/guide.html">guide</a></li>
+                    <li class="page"><a href="../UI-Layout/hintChatBox.html">hintChatBox</a></li>
+                    <li class="page"><a href="../UI-Layout/iOSDialog.html">iOSDialog</a></li>
+                    <li class="page"><a href="../UI-Layout/inputField.html">inputField</a></li>
+                    <li class="page"><a href="../UI-Layout/keyboard.html">keyboard</a></li>
+                    <li class="page"><a href="../UI-Layout/lineChart.html">lineChart</a></li>
+                    <li class="page"><a href="../UI-Layout/listContact.html">listContact</a></li>
+                    <li class="page"><a href="../UI-Layout/listView.html">listView</a></li>
+                    <li class="page"><a href="../UI-Layout/loadingLabel.html">loadingLabel</a></li>
+                    <li class="page"><a href="../UI-Layout/matrixLock.html">matrixLock</a></li>
+                    <li class="page"><a href="../UI-Layout/messageList.html">messageList</a></li>
+                    <li class="page"><a href="../UI-Layout/multiSelector.html">multiSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/orderList.html">orderList</a></li>
+                    <li class="page"><a href="../UI-Layout/overviewList.html">overviewList</a></li>
+                    <li class="page"><a href="../UI-Layout/panorama.html">panorama</a></li>
+                    <li class="page"><a href="../UI-Layout/payPasswordInput.html">payPasswordInput</a></li>
+                    <li class="page"><a href="../UI-Layout/periodSelector.html">periodSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/personalCenter.html">personalCenter</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserQQ.html">photoBrowserQQ</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserTouTiao.html">photoBrowserTouTiao</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserWeiBo.html">photoBrowserWeiBo</a></li>
+                    <li class="page"><a href="../UI-Layout/photoBrowserWeiXin.html">photoBrowserWeiXin</a></li>
+                    <li class="page"><a href="../UI-Layout/pieChart.html">pieChart</a></li>
+                    <li class="page"><a href="../UI-Layout/pullRefreshLoop.html">pullRefreshLoop</a></li>
+                    <li class="page"><a href="../UI-Layout/scrollPicture.html">scrollPicture</a></li>
+                    <li class="page"><a href="../UI-Layout/searchBar.html">searchBar</a></li>
+                    <li class="page"><a href="../UI-Layout/selectList.html">selectList</a></li>
+                    <li class="page"><a href="../UI-Layout/shakeView.html">shakeView</a></li>
+                    <li class="page"><a href="../UI-Layout/slider.html">slider</a></li>
+                    <li class="page"><a href="../UI-Layout/slidingList.html">slidingList</a></li>
+                    <li class="page"><a href="../UI-Layout/slipList.html">slipList</a></li>
+                    <li class="page"><a href="../UI-Layout/suspensionWindow.html">suspensionWindow</a></li>
+                    <li class="page"><a href="../UI-Layout/thwartwiseBarChart.html">thwartwiseBarChart</a></li>
+                    <li class="page"><a href="../UI-Layout/timeSelector.html">timeSelector</a></li>
+                    <li class="page"><a href="../UI-Layout/waterBallProgress.html">waterBallProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/waveProgress.html">waveProgress</a></li>
+                    <li class="page"><a href="../UI-Layout/welcomePage.html">welcomePage</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">导航菜单</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Nav-Menu/MNActionButton.html">MNActionButton</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNNavigationMenu.html">MNNavigationMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNPopups.html">MNPopups</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNRotationMenu.html">MNRotationMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/MNStack.html">MNStack</a></li>
+                    <li class="page"><a href="../Nav-Menu/NVNavigationBar.html">NVNavigationBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/NVTabBar.html">NVTabBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/actionButton.html">actionButton</a></li>
+                    <li class="page"><a href="../Nav-Menu/arcMenu.html">arcMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/bubbleMenu.html">bubbleMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/circularMenu.html">circularMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/navigationBar.html">navigationBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/navigationMenu.html">navigationMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/pullMenu.html">pullMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/scrollRotation.html">scrollRotation</a></li>
+                    <li class="page"><a href="../Nav-Menu/sideMenu.html">sideMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/stackMenu.html">stackMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/tabBar.html">tabBar</a></li>
+                    <li class="page"><a href="../Nav-Menu/tabBarMenu.html">tabBarMenu</a></li>
+                    <li class="page"><a href="../Nav-Menu/tuberBar.html">tuberBar</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开放SDK</h5>
+                <ul class="pages">
+                    <li class="page"><a href="QQPlus.html">QQPlus</a></li>
+                    <li class="page"><a href="aMap.html">aMap</a></li>
+                    <li class="page"><a href="aMapLBS.html">aMapLBS</a></li>
+                    <li class="page"><a href="aMapLocation.html">aMapLocation</a></li>
+                    <li class="page"><a href="aMapNavigation.html">aMapNavigation</a></li>
+                    <li class="page"><a href="aMapReportLocation.html">aMapReportLocation</a></li>
+                    <li class="page"><a href="admob.html">admob</a></li>
+                    <li class="page"><a href="adsDomob.html">adsDomob</a></li>
+                    <li class="page"><a href="adsYoumi.html">adsYoumi</a></li>
+                    <li class="page"><a href="agoraVideo.html">agoraVideo</a></li>
+                    <li class="page"><a href="ajpush.html">ajpush</a></li>
+                    <li class="page"><a href="aliOSS.html">aliOSS</a></li>
+                    <li class="page"><a href="aliPay.html">aliPay</a></li>
+                    <li class="page"><a href="aliPayPlus.html">aliPayPlus</a></li>
+                    <li class="page"><a href="aliPayTrade.html">aliPayTrade</a></li>
+                    <li class="page"><a href="aliPayTradePlus.html">aliPayTradePlus</a></li>
+                    <li class="page"><a href="aliPush.html">aliPush</a></li>
+                    <li class="page"><a href="aliPushNoUtdId.html">aliPushNoUtdId</a></li>
+                    <li class="page"><a href="aliTrade.html">aliTrade</a></li>
+                    <li class="page"><a href="aliTradePlus.html">aliTradePlus</a></li>
+                    <li class="page"><a href="alibaichuan.html">alibaichuan</a></li>
+                    <li class="page"><a href="aliyunLive.html">aliyunLive</a></li>
+                    <li class="page"><a href="anyRTCModule.html">anyRTCModule</a></li>
+                    <li class="page"><a href="aplayer.html">aplayer</a></li>
+                    <li class="page"><a href="appleUnionPay.html">appleUnionPay</a></li>
+                    <li class="page active"><a href="bMap.html">bMap</a></li>
+                    <li class="page"><a href="baiXing.html">baiXing</a></li>
+                    <li class="page"><a href="baiduAd.html">baiduAd</a></li>
+                    <li class="page"><a href="baiduAppx.html">baiduAppx</a></li>
+                    <li class="page"><a href="baiduLocation.html">baiduLocation</a></li>
+                    <li class="page"><a href="baiduMTJ.html">baiduMTJ</a></li>
+                    <li class="page"><a href="baiduMap.html">baiduMap</a></li>
+                    <li class="page"><a href="baiduNavigation.html">baiduNavigation</a></li>
+                    <li class="page"><a href="baiduPanorama.html">baiduPanorama</a></li>
+                    <li class="page"><a href="baiduSpeechRecognizer.html">baiduSpeechRecognizer</a></li>
+                    <li class="page"><a href="baiduTrace.html">baiduTrace</a></li>
+                    <li class="page"><a href="bcapplepay.html">bcapplepay</a></li>
+                    <li class="page"><a href="beecloud.html">beecloud</a></li>
+                    <li class="page"><a href="bmobPush.html">bmobPush</a></li>
+                    <li class="page"><a href="brightBeacon.html">brightBeacon</a></li>
+                    <li class="page"><a href="bugTags.html">bugTags</a></li>
+                    <li class="page"><a href="camera360.html">camera360</a></li>
+                    <li class="page"><a href="cchelperModule.html">cchelperModule</a></li>
+                    <li class="page"><a href="chanceAd.html">chanceAd</a></li>
+                    <li class="page"><a href="ciaYi.html">ciaYi</a></li>
+                    <li class="page"><a href="cloudwise.html">cloudwise</a></li>
+                    <li class="page"><a href="cloudwiseMAgent.html">cloudwiseMAgent</a></li>
+                    <li class="page"><a href="coinport.html">coinport</a></li>
+                    <li class="page"><a href="csOpenApi.html">csOpenApi</a></li>
+                    <li class="page"><a href="didi.html">didi</a></li>
+                    <li class="page"><a href="discuz.html">discuz</a></li>
+                    <li class="page"><a href="dkSDK.html">dkSDK</a></li>
+                    <li class="page"><a href="duiBa.html">duiBa</a></li>
+                    <li class="page"><a href="duibaSales.html">duibaSales</a></li>
+                    <li class="page"><a href="duibaView.html">duibaView</a></li>
+                    <li class="page"><a href="easeChat.html">easeChat</a></li>
+                    <li class="page"><a href="facebook.html">facebook</a></li>
+                    <li class="page"><a href="fog2.html">fog2</a></li>
+                    <li class="page"><a href="fuQianLa.html">付钱拉</a></li>
+                    <li class="page"><a href="geeTest.html">geeTest</a></li>
+                    <li class="page"><a href="gizWifiSDK.html">gizWifiSDK</a></li>
+                    <li class="page"><a href="googleAnalytics.html">googleAnalytics</a></li>
+                    <li class="page"><a href="googleMap.html">googleMap</a></li>
+                    <li class="page"><a href="gotyeLiveCore.html">亲加视频直播</a></li>
+                    <li class="page"><a href="hanvonCloudBcardReader.html">hanvonCloudBcardReader</a></li>
+                    <li class="page"><a href="hanvonCloudIdCardReader.html">hanvonCloudIdCardReader</a></li>
+                    <li class="page"><a href="hanvonCloudNumberReader.html">hanvonCloudNumberReader</a></li>
+                    <li class="page"><a href="hanvonCloudOcrFormulaReader.html">hanvonCloudOcrFormulaReader</a></li>
+                    <li class="page"><a href="hanvonCloudTableReader.html">hanvonCloudTableReader</a></li>
+                    <li class="page"><a href="huanxin.html">huanxin</a></li>
+                    <li class="page"><a href="huaweiPush.html">huaweiPush</a></li>
+                    <li class="page"><a href="idcard.html">idcard</a></li>
+                    <li class="page"><a href="iflytekvoiceads.html">iflytekvoiceads</a></li>
+                    <li class="page"><a href="ipaynow.html">ipaynow</a></li>
+                    <li class="page"><a href="ipaynowScanner.html">ipaynowScanner</a></li>
+                    <li class="page"><a href="jd.html">jd</a></li>
+                    <li class="page"><a href="jyVerify.html">jyVerify</a></li>
+                    <li class="page"><a href="kf5.html">kf5</a></li>
+                    <li class="page"><a href="kf5sdk.html">kf5sdk</a></li>
+                    <li class="page"><a href="ksi.html">ksi</a></li>
+                    <li class="page"><a href="ksisdk.html">ksisdk</a></li>
+                    <li class="page"><a href="leCloudLive.html">leCloudLive</a></li>
+                    <li class="page"><a href="leCloudPlay.html">leCloudPlay</a></li>
+                    <li class="page"><a href="leShiLive.html">leShiLive</a></li>
+                    <li class="page"><a href="line.html">line</a></li>
+                    <li class="page"><a href="liuLiangQianBao.html">liuLiangQianBao</a></li>
+                    <li class="page"><a href="logCrash.html">logCrash</a></li>
+                    <li class="page"><a href="magicWindow.html">magicWindow</a></li>
+                    <li class="page"><a href="maketionCardReader.html">maketionCardReader</a></li>
+                    <li class="page"><a href="meChat.html">meChat</a></li>
+                    <li class="page"><a href="meiQia.html">meiQia</a></li>
+                    <li class="page"><a href="mico.html">mico</a></li>
+                    <li class="page"><a href="miniQuPai.html">miniQuPai</a></li>
+                    <li class="page"><a href="miniQuPaiPlus.html">miniQuPaiPlus</a></li>
+                    <li class="page"><a href="miniVideoRecord.html">miniVideoRecord</a></li>
+                    <li class="page"><a href="mipush.html">mipush</a></li>
+                    <li class="page"><a href="mobShare.html">mobShare</a></li>
+                    <li class="page"><a href="mobVerify.html">mobVerify</a></li>
+                    <li class="page"><a href="moduleShareSMS.html">moduleShareSMS</a></li>
+                    <li class="page"><a href="mogoAds.html">mogoAds</a></li>
+                    <li class="page"><a href="mogoAdsBaidu.html">mogoAdsBaidu</a></li>
+                    <li class="page"><a href="mogoAdsGDT.html">mogoAdsGDT</a></li>
+                    <li class="page"><a href="mogoAdsdomob.html">mogoAdsdomob</a></li>
+                    <li class="page"><a href="nuanceSpeechRecognizer.html">nuanceSpeechRecognizer</a></li>
+                    <li class="page"><a href="paypal.html">paypal</a></li>
+                    <li class="page"><a href="pingpp.html">pingpp</a></li>
+                    <li class="page"><a href="polyVideo.html">polyVideo</a></li>
+                    <li class="page"><a href="polyvVideo.html">polyvVideo</a></li>
+                    <li class="page"><a href="pushGeTui.html">pushGeTui</a></li>
+                    <li class="page"><a href="pushRtmpOrVideoPlay.html">pushRtmpOrVideoPlay</a></li>
+                    <li class="page"><a href="qCloudVODPlayer.html">qCloudVODPlayer</a></li>
+                    <li class="page"><a href="qiniuLive.html">qiniuLive</a></li>
+                    <li class="page"><a href="qiniuStorage.html">qiniuStorage</a></li>
+                    <li class="page"><a href="qiniuUpfile.html">qiniuUpfile</a></li>
+                    <li class="page"><a href="qiyuSdk.html">qiyuSdk</a></li>
+                    <li class="page"><a href="qq.html">qq</a></li>
+                    <li class="page"><a href="quPaiModule.html">quPaiModule</a></li>
+                    <li class="page"><a href="qupai.html">qupai</a></li>
+                    <li class="page"><a href="qupaiLive.html">qupaiLive</a></li>
+                    <li class="page"><a href="recordVideo.html">recordVideo</a></li>
+                    <li class="page"><a href="reportLocation.html">reportLocation</a></li>
+                    <li class="page"><a href="rongCloud.html">rongCloud</a></li>
+                    <li class="page"><a href="rongCloud2.html">rongCloud2</a></li>
+                    <li class="page"><a href="seckenModule.html">seckenModule</a></li>
+                    <li class="page"><a href="sendSms.html">sendSms</a></li>
+                    <li class="page"><a href="sensorsAnalyticsAPICloudSDK.html">sensorsAnalyticsAPICloudSDK</a></li>
+                    <li class="page"><a href="shareMorePic.html">shareMorePic</a></li>
+                    <li class="page"><a href="sinaWeiBo.html">sinaWeiBo</a></li>
+                    <li class="page"><a href="smsVerification.html">smsVerification</a></li>
+                    <li class="page"><a href="smsVerify.html">smsVerify</a></li>
+                    <li class="page"><a href="speechRecognizer.html">speechRecognizer</a></li>
+                    <li class="page"><a href="superID.html">superID</a></li>
+                    <li class="page"><a href="talkingData.html">talkingData</a></li>
+                    <li class="page"><a href="taobao.html">taobao</a></li>
+                    <li class="page"><a href="tencentAds.html">tencentAds</a></li>
+                    <li class="page"><a href="tencentMTA.html">tencentMTA</a></li>
+                    <li class="page"><a href="tencentPlayer.html">tencentPlayer</a></li>
+                    <li class="page"><a href="tencentPush.html">tencentPush</a></li>
+                    <li class="page"><a href="tingyun.html">tingyun</a></li>
+                    <li class="page"><a href="tulingapi.html">tulingapi</a></li>
+                    <li class="page"><a href="tyRTC.html">tyRTC</a></li>
+                    <li class="page"><a href="tyRTCLive.html">tyRTCLive</a></li>
+                    <li class="page"><a href="udesk.html">udesk</a></li>
+                    <li class="page"><a href="umengAnalytics.html">umengAnalytics</a></li>
+                    <li class="page"><a href="umengTJ.html">umengTJ</a></li>
+                    <li class="page"><a href="unionPay.html">unionPay</a></li>
+                    <li class="page"><a href="updatethis.html">updatethis</a></li>
+                    <li class="page"><a href="upyunUpfile.html">upyunUpfile</a></li>
+                    <li class="page"><a href="uscSpeechRecognizer.html">uscSpeechRecognizer</a></li>
+                    <li class="page"><a href="vcloudLive.html">vcloudLive</a></li>
+                    <li class="page"><a href="vcloudPlay.html">vcloudPlay</a></li>
+                    <li class="page"><a href="wapsAd.html">wapsAd</a></li>
+                    <li class="page"><a href="weiXin.html">weiXin</a></li>
+                    <li class="page"><a href="weibo.html">weibo</a></li>
+                    <li class="page"><a href="wx.html">wx</a></li>
+                    <li class="page"><a href="wxPay.html">wxPay</a></li>
+                    <li class="page"><a href="xGprinter.html">xGprinter</a></li>
+                    <li class="page"><a href="ximalaya.html">ximalaya</a></li>
+                    <li class="page"><a href="youkuPlayer.html">youkuPlayer</a></li>
+                    <li class="page"><a href="yzxVerification.html">yzxVerification</a></li>
+                    <li class="page"><a href="zhiChiSobot.html">zhiChiSobot</a></li>
+                    <li class="page"><a href="zhuge.html">zhuge</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">云服务对接</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Cloud-Service/mam.html">mam</a></li>
+                    <li class="page"><a href="../Cloud-Service/mcm.html">mcm</a></li>
+                    <li class="page"><a href="../Cloud-Service/msm.html">msm</a></li>
+                    <li class="page"><a href="../Cloud-Service/push.html">push</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">前端框架</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Front-end-Framework/framework-dev-guide.html">APICloud前端框架</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">云API</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Cloud-API/data-cloud-api.html">数据云API</a></li>
+                    <li class="page"><a href="../../Cloud-API/stat-cloud-api.html">统计云API</a></li>
+                    <li class="page"><a href="../../Cloud-API/push-cloud-api.html">推送云API</a></li>
+                    <li class="page"><a href="../../Cloud-API/sdk-cloud-api.html">云API SDK</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">技术专题</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Dev-Guide/Android-License-Application-Guidance.html">Android签名证书描述及使用流程</a></li>
+                    <li class="page"><a href="../../Dev-Guide/Git-APICloud-guide.html">Git 代码托管指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/X5-APICloud-guide.html">如何在APICloud平台使用腾讯X5引擎</a></li>
+                    <li class="page"><a href="../../Dev-Guide/screen-adapt-guide.html">屏幕适配原理及实现</a></li>
+                    <li class="page"><a href="../../Dev-Guide/smartUpdate.html">云修复</a></li>
+                    <li class="page"><a href="../../Dev-Guide/start-page-ad-guid.html">启动页闪屏广告</a></li>
+                    <li class="page"><a href="../../Dev-Guide/version_update.html">版本更新</a></li>
+                    <li class="page"><a href="../../Dev-Guide/app-config-manual.html">config.xml应用配置说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/widget-package-structure-manual.html">Widget包结构说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/module-package-structure-manual.html">模块包结构说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/Custom_Loader.html">自定义loader说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/data-cloud-dev-guide.html">数据云服务开发指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/data-storage-dev-guide.html">数据存储开发指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/push-guide.html">推送技术指南</a></li>
+                    <li class="page"><a href="../../Dev-Guide/key.html">key.xml文件配置说明</a></li>
+                    <li class="page"><a href="../../Dev-Guide/iOS-License-Application-Guidance.html">iOS证书及描述文件制作流程</a></li>
+                    <li class="page"><a href="../../Dev-Guide/SuperWebview-guide-for-android.html">SuperWebview开发指南Android</a></li>
+                    <li class="page"><a href="../../Dev-Guide/SuperWebview-guide-for-ios.html">SuperWebview开发指南iOS</a></li>
+                    <li class="page"><a href="../../Dev-Guide/apple-watch-dev-guide.html">Apple Watch开发指南</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开发工具</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Dev-Tools/studio-dev-guide.html">APICloud Studio 2 快速入门</a></li>
+                    <li class="page"><a href="../../Dev-Tools/sublime-apicloud-plugin.html">工具：Sublime插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/Atom-apicloud-plugin.html">工具：Atom插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/ide-dev-guide.html">工具：Eclipse 插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/webStorm-apicloud-plugin.html">工具：WebStorm插件</a></li>
+                    <li class="page"><a href="../../Dev-Tools/sublime-apicloud-snippets.html">Sublime APICloud 语法提示</a></li>
+                    <li class="page"><a href="../../Dev-Tools/Atom-apicloud-snippets.html">Atom APICloud 语法提示</a></li>
+                    <li class="page"><a href="../../Dev-Tools/webStorm-apicloud-snippets.html">webStorm APICloud代码提示插件编写</a></li>
+                    <li class="page"><a href="../../Dev-Tools/eclipse-wifi.html">Eclipse  WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/sublime-wifi-sync.html">Sublime WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/wifi-debug.html">APICloud Studio WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/webStorm-wifi-sync.html">WebStorm WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/apicloud-tools-core.html">APICloud 开发工具核心库</a></li>
+                    <li class="page"><a href="../../Dev-Tools/apicloud-cli.html">apicloud-cli 工具使用说明</a></li>
+                    <li class="page"><a href="../../Dev-Tools/apicloud-polyfill.html">apicloud-polyfill</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">下载</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Download/download.html">Download</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">七天培训课教程</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Seven/Day1.html">Day1</a></li>
+                    <li class="page"><a href="../../Seven/Day2.html">Day2</a></li>
+                    <li class="page"><a href="../../Seven/Day3.html">Day3</a></li>
+                    <li class="page"><a href="../../Seven/Day4.html">Day4</a></li>
+                    <li class="page"><a href="../../Seven/Day5.html">Day5</a></li>
+                    <li class="page"><a href="../../Seven/Day6.html">Day6</a></li>
+                    <li class="page"><a href="../../Seven/Day7.html">Day7</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">其他</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Others/app-custom-faq.html">定制平台常见问题</a></li>
+                    <li class="page"><a href="../../Others/app-customization.html">APICloud需求预评估服务规则</a></li>
+                    <li class="page"><a href="../../Others/privacy-policy.html">隐私条款</a></li>
+                    <li class="page"><a href="../../Others/terms-of-service.html">服务条款</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">Faq</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Others/FAQ/Client-Dev.html">端开发</a></li>
+                    <li class="page"><a href="../../Others/FAQ/Cloud-Dev.html">云开发</a></li>
+                    <li class="page"><a href="../../Others/FAQ/IDE.html">APICloud Studio</a></li>
+                    <li class="page"><a href="../../Others/FAQ/app-service.html">应用服务</a></li>
+                    <li class="page"><a href="../../Others/FAQ/Other.html">其它</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开放平台接入指南</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/adsYoumi.html">有米广告SDK接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/baiXing.html">百姓网SDK接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/baiduMTJ.html">百度移动统计平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/dkSDK.html">点开广告平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/kf5sdk.html">kf5云客服平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/polyvVideo.html">保利威视平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/pushGeTui_manual.html">个推接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/sensorsAnalyticsAPICloudSDK.html">神策数据分析平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/tyRTC.html">天翼RTC平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/umengAnalytics.html">友盟统计平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/H2.html">H2移动广告交易平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/alipay.html">支付宝支付平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/baidu.html">百度开放平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/bmobPush.html">Bmob平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/brightBeacon.html">brightBeacon接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/cchelperModule.html">CChelper移动应用远程协助平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/chanceAd.html">畅思广告平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/domob.html">多盟广告平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/gizWifiSDK.html">gizWifiSDK接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/kuguo.html">酷果广告平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/meiQia.html">美洽客服平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/qiyuSdk.html">网易七鱼云客服平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/qq.html">QQ开放平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/rongCloud2.html">融云IM 平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/sina.html">新浪微博平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/superID.html">一登刷脸登录平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/talkingData.html">talkingData平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/tingyun.html">听云App iOS SDK接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/udsk.html">Udesk客服平台接入指南</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/weChat.html">微信开放平台接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/youkuPlayer.html">优酷播放器接入</a></li>
+                    <li class="page"><a href="../../Others/Open-SDK-Integration-Guide/zhiChi.html">智齿客服平台接入</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    <div class="col-sm-10 main-content">
+
+        <section class="content">
+            <h1 class="title">bMap</h1>
+
+            <p style="color: #ccc; margin-bottom: 30px;">来自于：APICloud 官方<a style="background-color: #95ba20; color:#fff; padding:4px 8px;border-radius:5px;margin-left:30px; margin-bottom:0px; font-size:12px;text-decoration:none;" target="_blank" href="http://www.apicloud.com/mod_detail?mdId=24184">立即使用</a></p>
+
+<h2 id="-">基础类</h2>
+<div class="outline">
+
+<a href="#initMapSDK">initMapSDK</a>
+<a href="#open">open</a>
+<a href="#close">close</a>
+<a href="#show">show</a>
+<a href="#hide">hide</a>
+<a href="#setRect">setRect</a>
+<a href="#getLocation">getLocation</a>
+<a href="#stopLocation">stopLocation</a>
+<a href="#getLocationServices">getLocationServices</a>
+<a href="#getCoordsFromName">getCoordsFromName</a>
+<a href="#getNameFromCoords">getNameFromCoords</a>
+<a href="#getDistance">getDistance</a>
+<a href="#showUserLocation">showUserLocation</a>
+<a href="#setCenter">setCenter</a>
+<a href="#getCenter">getCenter</a>
+<a href="#setZoomLevel">setZoomLevel</a>
+<a href="#getZoomLevel">getZoomLevel</a>
+<a href="#setMapAttr">setMapAttr</a>
+<a href="#setRotation">setRotation</a>
+<a href="#setOverlook">setOverlook</a>
+<a href="#setScaleBar">setScaleBar</a>
+<a href="#setCompass">setCompass</a>
+<a href="#setCompass">setCompass</a>
+<a href="#setHeatMap">setHeatMap</a>
+<a href="#setBuilding">setBuilding</a>
+<a href="#setRegion">setRegion</a>
+<a href="#getRegion">getRegion</a>
+<a href="#transCoords">transCoords</a>
+<a href="#zoomIn">zoomIn</a>
+<a href="#zoomOut">zoomOut</a>
+<a href="#isPolygonContantsPoint">isPolygonContantsPoint</a>
+<a href="#addEventListener">addEventListener</a>
+<a href="#removeEventListener">removeEventListener</a>
+<a href="#startSearchGPS">startSearchGPS</a>
+<a href="#stopSearchGPS">stopSearchGPS</a>
+<a href="#getCurrentLocation">getCurrentLocation</a>
+
+</div>
+
+<h2 id="-">标注、气泡类</h2>
+<div class="outline">
+
+<a href="#addAnnotations">addAnnotations</a>
+<a href="#getAnnotationCoords">getAnnotationCoords</a>
+<a href="#setAnnotationCoords">setAnnotationCoords</a>
+<a href="#annotationExist">annotationExist</a>
+<a href="#setBubble">setBubble</a>
+<a href="#popupBubble">popupBubble</a>
+<a href="#closeBubble">closeBubble</a>
+<a href="#addBillboard">addBillboard</a>
+<a href="#addMobileAnnotations">addMobileAnnotations</a>
+<a href="#moveAnnotation">moveAnnotation</a>
+<a href="#removeAnnotations">removeAnnotations</a>
+
+</div>
+
+<h2 id="-">覆盖物类</h2>
+<div class="outline">
+
+<a href="#addLine">addLine</a>
+<a href="#addPolygon">addPolygon</a>
+<a href="#addArc">addArc</a>
+<a href="#addCircle">addCircle</a>
+<a href="#addImg">addImg</a>
+<a href="#removeOverlay">removeOverlay</a>
+
+</div>
+
+<h2 id="-">搜索类</h2>
+<div class="outline">
+
+<a href="#searchRoute">searchRoute</a>
+<a href="#drawRoute">drawRoute</a>
+<a href="#removeRoute">removeRoute</a>
+<a href="#searchBusRoute">searchBusRoute</a>
+<a href="#drawBusRoute">drawBusRoute</a>
+<a href="#removeBusRoute">removeBusRoute</a>
+<a href="#searchInCity">searchInCity</a>
+<a href="#searchNearby">searchNearby</a>
+<a href="#searchInBounds">searchInBounds</a><br><a href="#autocomplete">autocomplete</a>
+
+</div>
+
+<h2 id="-">离线地图类</h2>
+<div class="outline">
+
+<a href="#getHotCityList">getHotCityList</a>
+<a href="#getOfflineCityList">getOfflineCityList</a>
+<a href="#searchCityByName">searchCityByName</a>
+<a href="#getAllUpdateInfo">getAllUpdateInfo</a>
+<a href="#getUpdateInfoByID">getUpdateInfoByID</a>
+<a href="#start">start</a>
+<a href="#update">update</a>
+<a href="#pause">pause</a>
+<a href="#remove">remove</a><br><a href="#addOfflineListener">addOfflineListener</a>
+<a href="#removeOfflineListener">removeOfflineListener</a>
+
+</div>
+
+<h1 id="-"><strong>概述</strong></h1>
+<p><strong>百度地图简介</strong></p>
+<p>百度地图是百度提供的一项网络地图搜索服务，覆盖了国内近400个城市、数千个区县。在百度地图里，用户可以查询街道、商场、楼盘的地理位置，也可以找到离您最近的所有餐馆、学校、银行、公园等等。2010年8月26日，在使用百度地图服务时，除普通的电子地图功能之外，新增加了三维地图按钮。</p>
+<p><strong>百度地图特色功能</strong></p>
+<ul>
+<li><p>智能查询，出行无忧：
+拥有强大的路线查询及规划能力，告别迷路可能。从A到B，总能给出最佳线路及打车费用，还有N条备选方案。支持公交、驾车、步行、地铁四种出行方式；随时随地查看实时路况，街道真实全景图和室内图。</p>
+</li>
+<li><p>导航精准，零罚单：
+语音搜索功能，帮助告别繁琐的手动输入，让您开车更安全。
+路况播报，实时播报您周围路况动态，随时清晰掌握每一条道路的路况及电子眼预报，不再为罚单发愁。
+步行也能导航！结合街道全景，精彩一步到位。</p>
+</li>
+<li><p>权威数据，免费下载：
+覆盖行业最全、最准的地点信息，提供海量资源免费下载。离线也能看地图，离线包瘦身90%，支持在线更新，更快捷更省流量！导航资源数据包，免费下载路口3D+卫星版实景图。</p>
+</li>
+<li><p>附近吃喝玩乐，商务预订，一网打尽：
+提供附近美食、酒店、电影、购物、打车、外卖、景点、银行等海量商户信息，包括商户电话、地址、地图、点评，一键规划路线，在线预订；免费下载优惠券，还可享受最新鲜的团购折扣信息。</p>
+</li>
+</ul>
+<p><strong>模块概述</strong></p>
+<p>bMap 模块封装了百度地图的原生 SDK，集成了百度地图常用基本接口；手机版原生地图，不同于 js 地图，相对于js地图而言，本模块封装的原生手机地图更加流畅迅速、动画效果更加逼真。使用此模块可轻松把百度地图集成到自己的app内，实现百度地图常用的定位、关键字搜索、周边搜索、自定义标注及气泡、查公交路线等各种功能；另外本模块已支持百度地图离线版本。</p>
+<p>若某些带UI的接口不能满足开发设计需求，开发者（借助于原生开发者）可在本模块基础上修改少量原生代码，随心所欲的自定义百度地图所具有的原生功能，简单、轻松、快捷、高效、迅速集成百度地图，将自己的 app 和百度地图实现无缝链接。模块原生代码开源地址为：<a href="https://github.com/apicloudcom/bMap" target="_blank">https://github.com/apicloudcom/bMap</a></p>
+<p><strong>模块使用攻略</strong></p>
+<p><strong><em>注意事项</em></strong></p>
+<ul>
+<li>本模块内带动画效果的接口不可同时调用（两个以上），需要设置延迟（<code>setTimeout</code>）处理。</li>
+<li>bMap 模块是 baiduMap 模块的优化版。不可与baiduMap、baiduLocation、baiduPanorama模块同时使用</li>
+<li><strong>需要在APICloud 网站控制台编译界面选择定位权限。</strong></li>
+<li>使用本模块需云编译安装包，或以自定义 loader 的形式使用</li>
+<li>离线地图功能属于“基础地图”这个功能模块，开发者使用时请注意选择</li>
+</ul>
+<p><strong><em>使用此模块之前必须先配置  config 文件，配置方法如下：</em></strong></p>
+<ul>
+<li>名称：bMap</li>
+<li>参数：android_api_key、ios_api_key</li>
+<li>备注：同一个 App 需要同时支持 iOS 和 Android 平台，必须单独申请各自的 apiKey，并同时配置在 config 文件中</li>
+<li>配置示例:</li>
+</ul>
+<pre><code class="lang-xml">  &lt;feature name=&quot;bMap&quot;&gt;
+    &lt;param name=&quot;android_api_key&quot; value=&quot;f7Is0dWLom2q6rV3ZfFPZ1aa&quot; /&gt;
+    &lt;param name=&quot;ios_api_key&quot; value=&quot;81qz3dBYB5q2nGji4IYrawr1&quot; /&gt;
+  &lt;/feature&gt;
+</code></pre>
+<ul>
+<li><p>字段描述:</p>
+<p>  <strong>android_api_key</strong>：在百度地图开放平台申请的 Android 端 AK</p>
+<p>  <strong>ios_api_key</strong>：在百度地图开放平台申请的 iOS 端 AK</p>
+<p><strong><em>百度ak申请方法见<a href="../../APICloud/%e5%bc%80%e6%94%be%e5%b9%b3%e5%8f%b0%e6%8e%a5%e5%85%a5%e6%8c%87%e5%8d%97/baidu" target="_blank">百度地图接入指南</a></em></strong></p>
+<p><strong><em>注意：在使用搜索类接口时，请确保您的 ak 是通过百度认证的状态，否则会报异常</em></strong></p>
+</li>
+</ul>
+<h2 id="-"><strong>模块接口</strong></h2>
+<div id="initMapSDK"></div>
+
+<h1 id="-initmapsdk-"><strong>initMapSDK</strong></h1>
+<p>初始化百度地图引擎，<strong>本接口仅支持 iOS 平台，android平台不需要初始化</strong></p>
+<p>使用场景：</p>
+<p>当开发者尚未调用 open 接口，直接调用 getLocation、getCoordsFromName、getNameFromCoords、getDistance 以及搜索类接口时，需要首先调用此接口初始化地图引擎，然后在本接口的回调内调用检索相关接口（getLocation、getCoordsFromName、getNameFromCoords、getDistance 以及搜索类），以提高检索成功率。</p>
+<p>initMapSDK(callback(ret, err))</p>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true          //布尔类型；是否初始化成功，true||false
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 0          //数字类型；错误码，取值范围如下：
+                   //-300：链接服务器错误
+                   //-200：服务返回数据异常
+                   //0：授权验证通过
+                   //101：ak不存在
+                   //102：mcode签名值不正确
+                   //200:APP不存在，AK有误请检查再重试
+                   //201:APP被用户自己禁用，请在控制台解禁
+                   //更多错误码参考：http://lbsyun.baidu.com/index.php?title=lbscloud/api/appendix
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.initMapSDK(function(ret) {
+    if (ret.status) {
+        alert(&#39;地图初始化成功，可以从百度地图服务器检索信息了！&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统</p>
+<p>可提供的1.0.4及更高版本</p>
+<div id="open"></div>
+
+<h1 id="-open-"><strong>open</strong></h1>
+<p>打开百度地图</p>
+<p>open({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>rect：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：（可选项）模块的位置及尺寸</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    x: 0,   //（可选项）数字类型；地图左上角的 x 坐标（相对于所属的 Window 或 Frame）；默认：0
+    y: 0,   //（可选项）数字类型；地图左上角的 y 坐标（相对于所属的 Window 或 Frame）；默认：0
+    w: 320, //（可选项）数字类型；地图的宽度；默认：所属的 Window 或 Frame 的宽度
+    h: 480  //（可选项）数字类型；地图的高度；默认：所属的 Window 或 Frame 的高度
+}
+</code></pre>
+<p>center：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）打开地图时设置的中心点经纬度，若不传则默认打开北京市为中心的地图</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    lon: 116.213,       //数字类型；打开地图时设置的中心点经度
+    lat: 39.213         //数字类型；打开地图时设置的中心点纬度
+}
+</code></pre>
+<p>zoomLevel：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）设置百度地图缩放等级，取值范围：3-18级</li>
+<li>默认值：10</li>
+</ul>
+<p>showUserLocation：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否在地图上显示用户位置</li>
+<li>默认值：true</li>
+</ul>
+<p>fixedOn：</p>
+<ul>
+<li>类型：字符串类型</li>
+<li>描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）</li>
+<li>默认：模块依附于当前 window</li>
+</ul>
+<p>fixed:</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）模块是否随所属 window 或 frame 滚动</li>
+<li>默认值：true（不随之滚动）</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true     //布尔型；true||false
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.open({
+    rect: {
+        x: 0,
+        y: 0,
+        w: 320,
+        h: 300
+    },
+    center: {
+        lon: 116.4021310000,
+        lat: 39.9994480000
+    },
+    zoomLevel: 10,
+    showUserLocation: true,
+    fixedOn: api.frameName,
+    fixed: true
+}, function(ret) {
+    if (ret.status) {
+        alert(&#39;地图打开成功&#39;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="close"></div>
+
+<h1 id="-close-"><strong>close</strong></h1>
+<p>关闭百度地图</p>
+<p>close()</p>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.close();
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="show"></div>
+
+<h1 id="-show-"><strong>show</strong></h1>
+<p>显示百度地图</p>
+<p>show()</p>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.show();
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="hide"></div>
+
+<h1 id="-hide-"><strong>hide</strong></h1>
+<p>隐藏百度地图</p>
+<p>hide()</p>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.hide();
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setRect"></div>
+
+<h1 id="-setrect-"><strong>setRect</strong></h1>
+<p>重设地图的显示区域</p>
+<p>setRect({params})</p>
+<h2 id="params">params</h2>
+<p>rect：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：（可选项）模块的位置及尺寸</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    x: 0,   //（可选项）数字类型；地图左上角的 x 坐标（相对于所属的 Window 或 Frame）；默认：原值
+    y: 0,   //（可选项）数字类型；地图左上角的 y 坐标（相对于所属的 Window 或 Frame）；默认：原值
+    w: 320, //（可选项）数字类型；地图的宽度；默认：原值
+    h: 480  //（可选项）数字类型；地图的高度；默认：原值
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setRect({
+    rect: {
+        x: 0,
+        y: 0,
+        w: 320,
+        h: 300
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getLocation"></div>
+
+<h1 id="-getlocation-"><strong>getLocation</strong></h1>
+<p>开始定位，若要支持后台定位需配置 <a href="../../APICloud/%e6%8a%80%e6%9c%af%e4%b8%93%e9%a2%98/app-config-manual">config.xml</a> 文件 location 字段，<strong>无需调用 open 接口即可定位。在 android 平台上，离线定位功能需要手动打开GPS，并在无遮挡物的室外</strong></p>
+<p>getLocation({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>accuracy：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）定位精度</li>
+<li>默认值：&#39;100m&#39;</li>
+<li>取值范围：<ul>
+<li>10m</li>
+<li>100m</li>
+<li>1km</li>
+<li>3km</li>
+</ul>
+</li>
+</ul>
+<p>autoStop：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）获取到位置信息后是否自动停止定位</li>
+<li>默认值：true</li>
+</ul>
+<p>filter：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）位置更新所需的最小距离（单位米），autoStop 为 true 时，此参数有效</li>
+<li>默认值：1.0</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,               //布尔型；true||false
+    lon: 116.213,               //数字类型；经度
+    lat: 39.213,                //数字类型；纬度
+    accuracy: 65,               //数字类型；本次定位的精度，仅支持 iOS 平台
+    timestamp: 1396068155591,    //数字类型；时间戳
+    locationType:netWork        //字符串；定位类型；GPS||NetWork||OffLine(仅限Android)
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 0,         //数字类型；错误码
+    msg: &#39;&#39;          //字符串类型；错误信息说明
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var bMap = api.require(&#39;bMap&#39;);
+bMap.getLocation({
+    accuracy: &#39;100m&#39;,
+    autoStop: true,
+    filter: 1
+}, function(ret, err) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    } else {
+        alert(err.code);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="stopLocation"></div>
+
+<h1 id="-stoplocation-"><strong>stopLocation</strong></h1>
+<p>停止定位</p>
+<p>stopLocation()</p>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var bMap = api.require(&#39;bMap&#39;);
+bMap.stopLocation();
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getLocationServices"></div>
+
+<h1 id="-getlocationservices-"><strong>getLocationServices</strong></h1>
+<p>获取定位是否开启，及当前 app 获取的定位权限</p>
+<p>getLocationServices(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    enable: true,               //布尔型；当前设备定位功能是否开启，true|false；在Android 平台上本参数表示当前app定位功能是否可用；在iOS 平台上本参数表示当前设备定位功能是否可用，若判断当前app的定位功能，可用authorizationStatus识别。
+    authorizationStatus:        //字符串；当前 App 获取的定位权限，Android 平台无此参数。取值范围如下：
+                                //notDetermined：用户从未选择过权限
+                                //restricted：未授权，且用户无法更新，如家长控制情况下
+                                //denied：用户拒绝该应用使用定位服务
+                                //always：总是使用
+                                //whenInUse：按需使用
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var bMap = api.require(&#39;bMap&#39;);
+bMap.getLocationServices(function(ret, err) {
+    if (ret.enable) {
+        alert(JSON.stringify(ret));
+    } else {
+        alert(&quot;未开启定位功能！&quot;);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getCoordsFromName"></div>
+
+<h1 id="-getcoordsfromname-"><strong>getCoordsFromName</strong></h1>
+<p>根据地址查找经纬度，<strong>无需调用 open 接口即可使用</strong></p>
+<p>getCoordsFromName({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>city：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）地址所在城市</li>
+</ul>
+<p>address：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：地址信息</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,        //布尔型；true||false
+    lon: 116.351,        //数字类型；地址所在经度
+    lat: 39.283          //数字类型；地址所在纬度
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 1           //数字类型；错误码
+                      //1（检索词有岐义）
+                      //2（检索地址有岐义）
+                      //3（没有找到检索结果）
+                      //4（key错误）
+                      //5（网络连接错误）
+                      //6（网络连接超时）
+                      //7（还未完成鉴权，请在鉴权通过后重试）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.getCoordsFromName({
+    city: &#39;北京&#39;,
+    address: &#39;天安门&#39;
+}, function(ret, err) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getNameFromCoords"></div>
+
+<h1 id="-getnamefromcoords-"><strong>getNameFromCoords</strong></h1>
+<p>根据经纬度查找地址信息，<strong>无需调用 open 接口即可使用</strong></p>
+<p>getNameFromCoords({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>lon：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：经度</li>
+</ul>
+<p>lat：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：纬度</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,              //布尔型；true||false
+    lon: 116.351,              //数字类型；经度
+    lat: 39.283,               //数字类型；纬度
+    address: &#39;&#39;,               //字符串类型；地址信息
+    province: &#39;&#39;,              //字符串类型；省份
+    city: &#39;&#39;,                  //字符串类型；城市
+    district: &#39;&#39;,              //字符串类型；县区
+    streetName: &#39;&#39;,            //字符串类型；街道名
+    streetNumber: &#39;&#39;,          //字符串类型；街道号
+    poiList:[{                 //数组类型；经纬度点热点列表
+       name: &#39;&#39;,               //字符串类型；热点名称
+       uid: &#39;&#39;,                //字符串类型；热点id
+       address: &#39;&#39;,            //字符串类型；热点地址
+       city: &#39;&#39;,               //字符串类型；热点所在城市
+       phone: &#39;&#39;,              //字符串类型；热点电话
+       postcode: &#39;&#39;,           //字符串类型；热点邮编
+       epoitype: &#39;&#39;,           //字符串类型；热点类型，0:普通点 1:公交站 2:公交线路 3:地铁站 4:地铁线路
+       coord: {                //JSON对象；热点坐标信息
+          lat: ,               //数字类型；热点纬度
+          lon:                 //数字类型；热点经度
+       }
+    }]
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 1           //数字类型；错误码
+                      //1（检索词有岐义）
+                      //2（检索地址有岐义）
+                      //3（没有找到检索结果）
+                      //4（key错误）
+                      //5（网络连接错误）
+                      //6（网络连接超时）
+                      //7（还未完成鉴权，请在鉴权通过后重试）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.getNameFromCoords({
+    lon: 116.384767,
+    lat: 39.989539
+}, function(ret, err) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getDistance"></div>
+
+<h1 id="-getdistance-"><strong>getDistance</strong></h1>
+<p>获取地图两点之间的距离，<strong>无需调用 open 接口即可使用</strong></p>
+<p>getDistance({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>start：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：起点经纬度</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    lon: 106.486654,    //数字类型；起点的经度
+    lat: 29.490295      //数字类型；起点的纬度
+}
+</code></pre>
+<p>end：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：终点经纬度</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    lon: 106.581515,    //数字类型；终点的经度
+    lat: 29.615467      //数字类型；终点的纬度
+}
+</code></pre>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,              //布尔型；true||false
+    distance: 16670.90         //数字类型；两点之间的距离，单位：米
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.getDistance({
+    start: {
+        lon: 106.486654,
+        lat: 29.490295
+    },
+    end: {
+        lon: 106.581515,
+        lat: 29.615467
+    }
+}, function(ret) {
+    if (ret.status) {
+        alert(ret.distance);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="showUserLocation"></div>
+
+<h1 id="-showuserlocation-"><strong>showUserLocation</strong></h1>
+<p>是否在地图上显示用户位置，<strong>会自动移动地图可视区域中心点到用户当前坐标位置，自带地图移动动画效果</strong></p>
+<p>showUserLocation({params})</p>
+<h2 id="params">params</h2>
+<p>isShow：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否显示用户位置</li>
+<li>默认值：true</li>
+</ul>
+<p>trackingMode：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）用户当前位置显示形式</li>
+<li>默认值：none</li>
+<li>取值范围：<ul>
+<li>none（标准模式）注：Android平台为指向箭头，iOS平台为圆点</li>
+<li>follow（跟踪模式）</li>
+<li>compass（罗盘模式）</li>
+</ul>
+</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.showUserLocation({
+    isShow: true,
+    trackingMode: &#39;none&#39;
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setCenter"></div>
+
+<h1 id="-setcenter-"><strong>setCenter</strong></h1>
+<p>根据经纬度设置百度地图中心点，<strong>此接口可带动画效果</strong></p>
+<p>setCenter({params})</p>
+<h2 id="params">params</h2>
+<p>coords：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：中心点的经纬度</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    lon: 116.404,       //数字类型；设置中心点的经度
+    lat: 39.915         //数字类型；设置中心点的纬度
+}
+</code></pre>
+<p>animation：</p>
+<ul>
+<li>类型：布尔类型</li>
+<li>描述：（可选项）设置地图的中心点时，是否带动画效果</li>
+<li>默认：true</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setCenter({
+    coords: {
+        lon: 116.404,
+        lat: 39.915
+    },
+    animation: false
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getCenter"></div>
+
+<h1 id="-getcenter-"><strong>getCenter</strong></h1>
+<p>获取百度地图中心点坐标</p>
+<p>getCenter(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    lon: 116.404,       //数字类型；地图中心点的经度
+    lat: 39.915         //数字类型；地图中心点的纬度
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.getCenter(function(ret) {
+    alert(ret.lon + &#39;*&#39; + ret.lat);
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setZoomLevel"></div>
+
+<h1 id="-setzoomlevel-"><strong>setZoomLevel</strong></h1>
+<p>设置百度地图缩放等级，<strong>此接口自带动画效果</strong></p>
+<p>setZoomLevel({params})</p>
+<h2 id="params">params</h2>
+<p>level：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）地图比例尺级别，取值范围：3-18级</li>
+<li>默认值：10</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setZoomLevel({
+    level: 10
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getZoomLevel"></div>
+
+<h1 id="-getzoomlevel-"><strong>getZoomLevel</strong></h1>
+<p>获取百度地图比例尺级别，取值范围：3-18级</p>
+<p>getZoomLevel(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    level: 10,       //数字类型；地图比例尺级别，取值范围：3-18级
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.getZoomLevel(function(ret) {
+    alert(ret.level);
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setMapAttr"></div>
+
+<h1 id="-setmapattr-"><strong>setMapAttr</strong></h1>
+<p>设置百度地图相关属性</p>
+<p>setMapAttr({params})</p>
+<h2 id="params">params</h2>
+<p>type:</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）设置地图类型</li>
+<li>默认值：&#39;standard&#39;</li>
+<li>取值范围：<ul>
+<li>standard（标准地图）</li>
+<li>trafficOn（打开实时路况）</li>
+<li>trafAndsate（实时路况和卫星地图）</li>
+<li>satellite（卫星地图）</li>
+</ul>
+</li>
+</ul>
+<p>zoomEnable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）捏合手势是否可以缩放地图</li>
+<li>默认值：true</li>
+</ul>
+<p>scrollEnable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）拖动手势是否可以移动地图</li>
+<li>默认值：ture</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setMapAttr({
+    type: &#39;standard&#39;
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setRotation"></div>
+
+<h1 id="-setrotation-"><strong>setRotation</strong></h1>
+<p>设置百度地图旋转角度，<strong>此接口自带动画效果</strong></p>
+<p>setRotation({params})</p>
+<h2 id="params">params</h2>
+<p>degree：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）地图旋转角度，取值范围：-180° - 180°</li>
+<li>默认值：0</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setRotation({
+    degree: 30
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setOverlook"></div>
+
+<h1 id="-setoverlook-"><strong>setOverlook</strong></h1>
+<p>设置百度地图俯视角度，<strong>此接口自带动画效果</strong></p>
+<p>setOverlook({params})</p>
+<h2 id="params">params</h2>
+<p>degree：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）地图俯视角度，取值范围：-45° - 0°</li>
+<li>默认值：0</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setOverlook({
+    degree: -30
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setScaleBar"></div>
+
+<h1 id="-setscalebar-"><strong>setScaleBar</strong></h1>
+<p>设置百度地图比例尺</p>
+<p>setScaleBar({params})</p>
+<h2 id="params">params</h2>
+<p>show：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否显示比例尺</li>
+<li>默认值：false</li>
+</ul>
+<p>position：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：（可选项）比例尺的位置，设定坐标以地图左上角为原点</li>
+<li>内部字段：<pre><code class="lang-js">{ 
+  x: 0,   //（可选项）数字类型；比例尺左上角的 x 坐标（相对于地图）；默认：0
+  y: 0    //（可选项）数字类型；比例尺左上角的 y 坐标（相对于地图）；默认：0
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setScaleBar({
+    show: true,
+    position: {
+        x: 100,
+        y: 100
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setCompass"></div>
+
+<h1 id="-setcompass-"><strong>setCompass</strong></h1>
+<p>设置百度地图指南针位置，<strong>只有地图旋转或视角变化时才显示指南针</strong></p>
+<p>setCompass({params})</p>
+<h2 id="params">params</h2>
+<p>position：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：（可选项）指南针的位置，设定坐标以地图左上角为原点</li>
+<li>内部字段：<pre><code class="lang-js">{ 
+  x: 0,   //（可选项）数字类型；指南针中心点的 x 坐标（相对于地图）；默认：指南针宽度/2.0
+  y: 0    //（可选项）数字类型；指南针中心点的 y 坐标（相对于地图）；默认：指南针高度/2.0
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setCompass({
+    position: {
+        x: 100,
+        y: 100
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setTraffic"></div>
+
+<h1 id="-settraffic-"><strong>setTraffic</strong></h1>
+<p>设置百度地图交通路况</p>
+<p>setTraffic({params})</p>
+<h2 id="params">params</h2>
+<p>traffic：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否显示交通路况</li>
+<li>默认值：true</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setTraffic({
+    traffic: true
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setHeatMap"></div>
+
+<h1 id="-setheatmap-"><strong>setHeatMap</strong></h1>
+<p>设置百度地图城市热力图</p>
+<p>setHeatMap({params})</p>
+<h2 id="params">params</h2>
+<p>heatMap：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否显示城市热力图</li>
+<li>默认值：true</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setHeatMap({
+    heatMap: true
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setBuilding"></div>
+
+<h1 id="-setbuilding-"><strong>setBuilding</strong></h1>
+<p>设定地图是否现实 3D 楼块效果，<strong>地图放大，才会有 3D 楼快效果，倾斜视角 3D 效果会更明显</strong></p>
+<p>setBuilding({params})</p>
+<h2 id="params">params</h2>
+<p>building：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）是否现实3D楼块效果</li>
+<li>默认值：true</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setBuilding({
+    building: true
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setRegion"></div>
+
+<h1 id="-setregion-"><strong>setRegion</strong></h1>
+<p>设置地图显示范围（矩形区域），<strong>此接口可带动画效果</strong></p>
+<p>setRegion({params})</p>
+<h2 id="params">params</h2>
+<p>lbLon：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：矩形区域左下角的经度</li>
+</ul>
+<p>lbLat：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：矩形区域左下角的纬度</li>
+</ul>
+<p>rtLon：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：矩形区域右上角的经度</li>
+</ul>
+<p>rtLat：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：矩形区域右上角的纬度</li>
+</ul>
+<p>animation：</p>
+<ul>
+<li>类型：布尔类型</li>
+<li>描述：（可选项）设置地图的区域时，是否带动画效果</li>
+<li>默认：true</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setRegion({
+    lbLon: 116.027143, 
+    lbLat: 39.772348, 
+    rtLon: 116.832025, 
+    rtLat: 40.126349,
+    animation: true
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getRegion"></div>
+
+<h1 id="-getregion-"><strong>getRegion</strong></h1>
+<p>获取地图显示范围（矩形区域）</p>
+<p>getRegion(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,                //布尔型；true||false
+    lbLon: 116.027143,           //数字类型；矩形区域左下角的经度
+    lbLat: 39.772348,            //数字类型；矩形区域左下角的纬度
+    rtLon: 116.832025,           //数字类型；矩形区域右上角的经度
+    rtLat: 40.126349             //数字类型；矩形区域右上角的纬度    
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.getRegion(function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="transCoords"></div>
+
+<h1 id="-transcoords-"><strong>transCoords</strong></h1>
+<p>将其它类型的地理坐标转换为百度坐标。<strong>无需调用 open 接口即可使用</strong></p>
+<p>transCoords({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>type：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：原始地理坐标类型</li>
+<li>默认值：common</li>
+<li>取值范围：<ul>
+<li>gps（GPS设备采集的原始GPS坐标）</li>
+<li>common（google、soso、aliyun、mapabc、amap和高德地图所用坐标）</li>
+</ul>
+</li>
+</ul>
+<p>lon：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：原始地理坐标经度</li>
+</ul>
+<p>lat：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：原始地理坐标纬度</li>
+</ul>
+<p>mcode：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：到<a href="http://lbsyun.baidu.com/apiconsole/key" target="_blank">百度地图开放平台</a>获取的安全码（Android端），点击应用的设置按钮 -&gt; 设置界面 -&gt; 安全码（数字签名+;+包名）</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,  //布尔型；true||false
+    lon: 116.213,  //数字类型；转换后的百度地理坐标经度
+    lat: 39.213    //数字类型；转换后的百度地理坐标纬度
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 1         //数字类型；错误码
+                    //1：（参数非法）
+                    //2：（转换失败）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.transCoords({
+    type: &quot;common&quot;,
+    lon: 116.351,
+    lat: 39.283,
+    mcode: &#39;0B:13:25:D7:85:46:0A:67:12:F3:29:88:64:56:63:10:7A:9C:C4:59;com.apicloud.A6985734480360&#39;
+}, function(ret, err) {
+    alert(JSON.stringify(ret));
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="zoomIn"></div>
+
+<h1 id="-zoomin-"><strong>zoomIn</strong></h1>
+<p>缩小地图，放大视角，放大一级比例尺，<strong>此接口自带动画效果</strong></p>
+<p>zoomIn()</p>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.zoomIn();
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="zoomOut"></div>
+
+<h1 id="-zoomout-"><strong>zoomOut</strong></h1>
+<p>放大地图，缩小视角，缩小一级比例尺，<strong>此接口自带动画效果</strong></p>
+<p>zoomOut()</p>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.zoomOut();
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="addEventListener"></div>
+
+<h1 id="-addeventlistener-"><strong>addEventListener</strong></h1>
+<p>监听地图相关事件</p>
+<p>addEventListener({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>name:</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：地图相关事件名称</li>
+<li>取值范围：<ul>
+<li>longPress（长按事件）</li>
+<li>viewChange（地图视角范围改变事件）</li>
+<li>click（单击事件）</li>
+<li>dbclick（双击事件）</li>
+<li>zoom（放大缩小事件）iOS 平台暂不支持此监听</li>
+</ul>
+</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false
+    lon: 116.351,           //数字类型；触发事件的地点的经度（longPress，click，dbclick），地图中心的经度（viewChange，zoom）
+    lat: 39.283,            //数字类型；触发事件的地点的纬度（longPress，click，dbclick），地图中心的经度（viewChange，zoom）
+    zoom: 15,               //数字类型；地图缩放角度
+    rotate: 30,             //数字类型；地图旋转角度
+    overlook: 30            //数字类型；视角倾斜度
+    zoomType: &#39;zoomIn&#39;      //字符串类型；zoomIn 放大，zoomOut缩小；name为zoom时有值
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.addEventListener({
+    name: &#39;longPress&#39;
+}, function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="isPolygonContantsPoint"></div>
+
+<h1 id="-ispolygoncontantspoint-"><strong>isPolygonContantsPoint</strong></h1>
+<p>判断已知点是否在指定的多边形区域内</p>
+<p>isPolygonContantsPoint({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>point：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：已知点的地理坐标</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    lon: 116.297,      //数字类型；经度
+    lat: 40.109        //数字类型；纬度
+}
+</code></pre>
+<p>points：</p>
+<ul>
+<li>类型：数组</li>
+<li>描述：多边形的各个点组成的数组</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">[{
+    lon: 116.297,      //数字类型；经度
+    lat: 40.109        //数字类型；纬度
+}]
+</code></pre>
+<h2 id="callback-ret-">callBack(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true      //布尔类型；目标点是否在指定区域内，true || false      
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.isPolygonContantsPoint({
+    point: {
+        lon: 116.39432327,
+        lat: 39.98963192
+    },
+    points: [{
+        lon: 116.39432327,
+        lat: 39.98963192
+    }, {
+        lon: 116.49432328,
+        lat: 39.98963192
+    }, {
+        lon: 116.39432327,
+        lat: 39.88933191
+    }]
+}, function(ret) {
+    alert(ret.status);
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="removeEventListener"></div>
+
+<h1 id="-removeeventlistener-"><strong>removeEventListener</strong></h1>
+<p>停止监听地图相关事件</p>
+<p>removeEventListener({params})</p>
+<h2 id="params">params</h2>
+<p>name:</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：地图相关事件名称</li>
+<li>取值范围：<ul>
+<li>longPress（长按事件）</li>
+<li>viewChange（地图视角范围改变事件）</li>
+<li>click（单击事件）</li>
+<li>dbclick（双击事件）</li>
+<li>zoom（放大缩小事件）</li>
+</ul>
+</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.removeEventListener({
+    name: &#39;longPress&#39;
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="startSearchGPS"></div>
+
+<h1 id="-startsearchgps-"><strong>startSearchGPS</strong></h1>
+<p>开始搜索GPS信息（卫星个数，以及每个卫星的信噪比数组），本接口仅支持 android 平台</p>
+<p>startSearchGPS(callback(ret, err))</p>
+<h2 id="callback">callBack</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,         //布尔类型；true || false，为false时可能是未开启GPS
+    satelliteCount: 3,    //数字类型； 当前能搜索到的卫星数
+    snrArray: [20,30,23]  //数组类型；各个卫星的信噪比 
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.startSearchGPS(
+    function(ret) {
+        if (ret.status) {
+            alert(ret.satelliteCount);
+        }
+    }
+);
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="stopSearchGPS"></div>
+
+<h1 id="-stopsearchgps-"><strong>stopSearchGPS</strong></h1>
+<p>停止搜索GPS信息，本接口仅支持 android 平台</p>
+<p>stopSearchGPS()</p>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.stopSearchGPS();
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getCurrentLocation"></div>
+
+<h1 id="-getcurrentlocation-"><strong>getCurrentLocation</strong></h1>
+<p>获取当前定位，<strong>需调用 open 接口，且showUserLocation为true时，才可定位。</strong></p>
+<p>getCurrentLocation(callback(ret))</p>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,               //布尔类型；是否获取成功，true|false
+    lon: 116.213,               //数字类型；经度
+    lat: 39.213,                //数字类型；纬度
+    updating: false,            //布尔类型；是否正在更新位置信息，暂仅支持 iOS 平台
+    title: &#39;&#39;,                  //字符串类型；当前位置的标题信息，暂仅支持 iOS 平台
+    subtitle: &#39;&#39;,               //字符串类型；当前位置的子标题信息，暂仅支持 iOS 平台
+    headInfo: {                 //JSON 对象；当前位置方向信息，暂仅支持 iOS 平台
+         magnetic: 20,          //数字类型；地磁方向角度，范围：0.0 - 359.9，0表示正北
+         trueHeading: 10,       //数字类型；地理方向角度，范围：0.0 - 359.9，0表示正北
+         accuracy: 10           //数字类型；方向精度，Represents the maximum deviation of where the magnetic heading may differ from the actual geomagnetic heading in degrees. A negative value indicates an invalid heading
+    }
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 1               //数字类型；错误码，取值如下：
+                          // 1：尚未定位成功
+                          //-1：未知错误
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code>var bMap = api.require(&#39;bMap&#39;);
+bMap.getCurrentLocation(
+function(ret, err) {
+    if (ret.status){
+      alert(JSON.stringify(ret));
+    }else {
+      alert(JSON.stringify(err));
+    }
+});
+</code></pre><h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="addAnnotations"></div>
+
+<h1 id="-addannotations-"><strong>addAnnotations</strong></h1>
+<p>在地图上添加标注信息</p>
+<p>addAnnotations({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>annotations：</p>
+<ul>
+<li>类型：数组</li>
+<li>描述：图标标注信息组成的数组</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">[{
+    id: 1,                     //数字类型；图标标注的唯一标识
+    lon: 116.233,              //数字类型；图标标注所在位置的经度
+    lat: 39.134,               //数字类型；图标标注所在位置的纬度
+    icon: &#39;widget://&#39;,         //（可选项）字符串类型；指定的标注图标，要求本地路径（fs://、widget://），若不传则显示公用的 icon 图标
+    draggable: true            //（可选项）布尔类型；所添加的标注是否可被拖动，若不传则以公用的 draggable 为准
+}]
+</code></pre>
+<p>icon：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）公用的标注图标，要求本地路径（fs://、widget://）</li>
+<li>默认值：红色大头针</li>
+</ul>
+<p>draggable：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：（可选项）所添加的标注是否可被拖动</li>
+<li>默认值：false</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    id: 10      //数字类型；相应事件的标注的
+    eventType: &#39;clickContent&#39;,   //字符串类型；交互事件类型
+                                //取值范围：
+                                //click（用户点击标注事件）
+                                //drag（用户拖动标注事件）
+    dragState: &#39;starting&#39;       //字符串类型；标注被拖动的状态，当 eventType 为 drag 时本字段有值，
+                                //取值范围：
+                                //starting（开始拖动）
+                                //dragging （拖动中）
+                                //ending （拖动结束）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.addAnnotations({
+    annotations: [{
+        id: 1,
+        lon: 116.297,
+        lat: 40.109
+    }, {
+        id: 2,
+        lon: 116.29,
+        lat: 40.109
+    }, {
+        id: 3,
+        lon: 116.298,
+        lat: 40.11
+    }],
+    icon: &#39;widget://&#39;,
+    draggable: true
+}, function(ret) {
+    if (ret) {
+        alert(ret.id);
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getAnnotationCoords"></div>
+
+<h1 id="-getannotationcoords-"><strong>getAnnotationCoords</strong></h1>
+<p>获取指定标注的经纬度</p>
+<p>getAnnotationCoords({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定的标注 id</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    lon: 116.213,      //数字类型；标注的经度
+    lat: 39.213        //数字类型；标注的纬度
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.getAnnotationCoords({
+    id: 2
+}, function(ret) {
+    if (ret) {
+        api.alert({ msg: JSON.stringify(ret) });
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setAnnotationCoords"></div>
+
+<h1 id="-setannotationcoords-"><strong>setAnnotationCoords</strong></h1>
+<p>设置某个已添加标注的经纬度</p>
+<p>setAnnotationCoords(callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定的标注 id</li>
+</ul>
+<p>lon：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：设置的经度</li>
+</ul>
+<p>lat：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：设置的纬度</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setAnnotationCoords({
+    id: 2,
+    lon: 116.39,
+    lat: 40.209
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="annotationExist"></div>
+
+<h1 id="-annotationexist-"><strong>annotationExist</strong></h1>
+<p>判断标注是否存在</p>
+<p>annotationExist({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定的标注 id</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true      //布尔类型；标注是否存在，true || false
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.annotationExist({
+    id: 2
+}, function(ret) {
+    if (ret.status) {
+        api.alert({ msg: &#39;存在&#39; });
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="setBubble"></div>
+
+<h1 id="-setbubble-"><strong>setBubble</strong></h1>
+<p>设置点击标注时弹出的气泡信息</p>
+<p>setBubble({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：要设置气泡的标注 id</li>
+</ul>
+<p>bgImg：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）弹出气泡的背景图片（160*90规格），要求本地路径（fs://、widget://）</li>
+<li>默认值：默认气泡样式</li>
+</ul>
+<p>content：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：弹出气泡的内容</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    title: &#39;&#39;,             //字符串类型；弹出气泡的标题
+    subTitle: &#39;&#39;,          //（可选项）字符串类型；弹出气泡的概述内容，若不传则 title 在上下位置居中显示
+    illus: &#39;&#39;              //（可选项）字符串类型；弹出气泡的配图（30*40规格），支持http://、https://、widget://、fs://等协议
+}
+</code></pre>
+<p>styles：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：弹出气泡的样式</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    titleColor: &#39;#000&#39;,             //（可选项）字符串类型；气泡标题的文字颜色，支持rgb、rgba、#；默认：&#39;#000&#39;
+    titleSize: 16,                  //（可选项）数字类型；气泡标题的文字大小；默认：16
+    subTitleColor: &#39;#000&#39;,          //（可选项）字符串类型；气泡概述内容的文字颜色，支持rgb、rgba、#；默认：&#39;#000&#39;
+    subTitleSize: 14,               //（可选项）数字类型；气泡概述内容的文字大小；默认：14
+    illusAlign: &#39;left&#39;              //（可选项）字符串类型；气泡配图的显示位置；默认：&#39;left&#39;
+                                    //取值范围：
+                                    //left（图片居左）
+                                    //right（图片居右）
+}
+</code></pre>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    id: 10,                     //数字类型；用户点击气泡返回的id
+    eventType: &#39;clickContent&#39;,   //字符串类型；交互事件类型
+                                //取值范围：
+                                //clickContent（点击气泡文本内容）
+                                //clickIllus（点击配图）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.setBubble({
+    id: 2,
+    bgImg: &#39;widget://res/bubble_bg.png&#39;,
+    content: {
+        title: &#39;大标题&#39;,
+        subTitle: &#39;概述内容&#39;,
+        illus: &#39;http://ico.ooopic.com/ajax/iconpng/?id=145044.png&#39;
+    },
+    styles: {
+        titleColor: &#39;#000&#39;,
+        titleSize: 16,
+        subTitleColor: &#39;#999&#39;,
+        subTitleSize: 12,
+        illusAlign: &#39;left&#39;
+    }
+}, function(ret) {
+    if (ret) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="popupBubble"></div>
+
+<h1 id="-popupbubble-"><strong>popupBubble</strong></h1>
+<p>弹出指定标注的气泡</p>
+<p>popupBubble({params})</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：气泡的 id</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.popupBubble({
+    id: 2
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="closeBubble"></div>
+
+<h1 id="-closebubble-"><strong>closeBubble</strong></h1>
+<p>关闭已弹出的气泡</p>
+<p>closeBubble({params})</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：气泡的 id</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.closeBubble({
+    id: 2
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="addBillboard"></div>
+
+<h1 id="-addbillboard-"><strong>addBillboard</strong></h1>
+<p>在地图上添加布告牌</p>
+<p>addBillboard({params})</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：布告牌的 id，<strong>注意：本 id 不可与 addAnnotations 接口内的 id 相同</strong></li>
+</ul>
+<p>coords：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：布告牌所在位置的坐标</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    lon: 116.233,            //数字类型；布告牌所在位置的经度
+    lat: 39.134              //数字类型；布告牌所在位置的纬度
+}
+</code></pre>
+<p>bgImg：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：布告牌的背景图片（160*75规格），要求本地路径（fs://、widget://）</li>
+</ul>
+<p>content：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：布告牌的内容</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    title: &#39;&#39;,             //（可选项）字符串类型；布告牌的标题
+    subTitle: &#39;&#39;,          //（可选项）字符串类型；布告牌的概述内容 
+    illus: &#39;&#39;              //（可选项）字符串类型；布告牌的配图（35*50规格），支持http://、https://、widget://、fs://等协议
+}
+</code></pre>
+<p>styles：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：布告牌的样式</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    titleColor: &#39;#000&#39;,             //（可选项）字符串类型；布告牌标题的文字颜色，支持rgb、rgba、#；默认：&#39;#000&#39;
+    titleSize: 14,                  //（可选项）数字类型；布告牌标题的文字大小；默认：16
+    subTitleColor: &#39;#000&#39;,          //（可选项）字符串类型；布告牌概述内容的文字颜色，支持rgb、rgba、#；默认：&#39;#000&#39;
+    subTitleSize: 12,               //（可选项）数字类型；布告牌概述内容的文字大小；默认：16
+    illusAlign: &#39;left&#39;              //（可选项）字符串类型；布告牌配图的显示位置；默认：&#39;left&#39;
+                                    //取值范围：
+                                    //left（图片居左）
+                                    //right（图片居右）
+}
+</code></pre>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    id: 4,                     //数字类型；用户点击布告牌返回的id
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.addBillboard({
+    id: 4,
+    coords: {
+        lon: 116.233,
+        lat: 39.134
+    },
+    bgImg: &#39;widget://image/bMapTest.png&#39;,
+    content: {
+        title: &#39;大标题大标题大标题大标题&#39;,
+        subTitle: &#39;概述内容概述内容概述内容&#39;,
+        illus: &#39;http://ico.ooopic.com/ajax/iconpng/?id=145044.png&#39;
+    },
+    styles: {
+        titleColor: &#39;#000&#39;,
+        titleSize: 16,
+        subTitleColor: &#39;#999&#39;,
+        subTitleSize: 12,
+        illusAlign: &#39;left&#39;
+    }
+}, function(ret) {
+    if (ret) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="addMobileAnnotations"></div>
+
+<h1 id="-addmobileannotations-"><strong>addMobileAnnotations</strong></h1>
+<p>在地图上添加可移动、旋转的标注图标，<strong>注意：本 id 不可与 addAnnotations、addBillboard 接口内的 id 相同</strong></p>
+<p>addMobileAnnotations({params})</p>
+<h2 id="params">params</h2>
+<p>annotations：</p>
+<ul>
+<li>类型：数组</li>
+<li>描述：图标标注信息组成的数组</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">[{
+    id: 10,                    //数字类型；图标标注的唯一标识
+    lon: 116.233,              //数字类型；图标标注所在位置的经度
+    lat: 39.134,               //数字类型；图标标注所在位置的纬度
+    icon: &#39;widget://&#39;          //字符串类型；指定的标注图标，要求本地路径（fs://、widget://）
+}]
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.addMobileAnnotations({
+    annotations: [{
+        id: 10,
+        lon: 116.297,
+        lat: 40.109,
+        icon: &#39;widget://image/bMap_car1.png&#39;
+    }, {
+        id: 11,
+        lon: 116.98,
+        lat: 40.109,
+        icon: &#39;widget://image/bMap_car2.png&#39;
+    }, {
+        id: 12,
+        lon: 115.30,
+        lat: 40.109,
+        icon: &#39;widget://image/bMap_car3.png&#39;
+    }, {
+        id: 13,
+        lon: 116.297,
+        lat: 39.109,
+        icon: &#39;widget://image/bMap_car1.png&#39;
+    }, {
+        id: 14,
+        lon: 116.98,
+        lat: 39.109,
+        icon: &#39;widget://image/bMap_car2.png&#39;
+    }, {
+        id: 15,
+        lon: 115.30,
+        lat: 39.109,
+        icon: &#39;widget://image/bMap_car3.png&#39;
+    }]
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="moveAnnotation"></div>
+
+<h1 id="-moveannotation-"><strong>moveAnnotation</strong></h1>
+<p>移动地图上已添加的可移动、旋转的标注图标，<strong>在移动动画开始前，会先做 0.3 秒的旋转动画，使所移动的图标中间轴线顶端对准终点坐标点。由于百度官方 SDK 的 bug 限制，在 Android 平台上，如果标注添加到地图当前可视区域以外的区域，则不可以移动该标注</strong></p>
+<p>moveAnnotation({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：要移动的标注的 id </li>
+</ul>
+<p>duration：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）标注图标移动动画的时间，单位为秒（s），<strong>不包括旋转动画时间</strong></li>
+<li>默认值：1.0（s）</li>
+</ul>
+<p>end：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：终点经纬度</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    lon: 116.581515,    //数字类型；终点的经度
+    lat: 29.615467      //数字类型；终点的纬度
+}
+</code></pre>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    id:         //数字类型；移动动画结束的标注的 id
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+for (var i = 0; i &lt; 6; i++) {
+    map.moveAnnotation({
+        id: 10 + i,
+        duration: 6,
+        end: {
+            lon: 116.3843839609304,
+            lat: 39.98964439091298
+        }
+    }, function(ret, err) {
+        alert(ret.id + &#39;移动结束&#39;)
+    });
+}
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="removeAnnotations"></div>
+
+<h1 id="-removeannotations-"><strong>removeAnnotations</strong></h1>
+<p>移除指定 id 的标注（可移动、不可移动）或布告牌</p>
+<p>removeAnnotations({params})</p>
+<h2 id="params">params</h2>
+<p>ids：</p>
+<ul>
+<li>类型：数组</li>
+<li>描述：要移除的标注或布告牌id（数字）</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.removeAnnotations({
+    ids: [1,3,5,7]
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="addLine"></div>
+
+<h1 id="-addline-"><strong>addLine</strong></h1>
+<p>在地图上添加折线</p>
+<p>addLine({params})</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：折线的 id</li>
+</ul>
+<p>styles：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：（可选项）折线的样式</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    borderColor: &#39;#000&#39;,                //（可选项）字符串类型；折线的颜色，支持rgb、rgba、#；默认值：&#39;#000&#39;
+    borderWidth: 3                      //（可选项）数字类型；折线的宽度，默认：1
+}
+</code></pre>
+<p>points：</p>
+<ul>
+<li>类型：数组</li>
+<li>描述：折线的多个点组成的数组</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">[{
+    lon: 116.297,     //数字类型；经度
+    lat: 40.109       //数字类型；纬度
+}]
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.addLine({
+    id: 1,
+    styles: {
+        borderColor: &#39;#FF0000&#39;,
+        borderWidth: 3
+     },
+     points: [{
+         lon:116.39432327,
+         lat:39.98963192
+     },{
+         lon: 116.49432328,
+         lat: 39.98963192
+     },{
+         lon: 116.39432327,
+         lat: 39.88933191
+     }]
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="addPolygon"></div>
+
+<h1 id="-addpolygon-"><strong>addPolygon</strong></h1>
+<p>在地图上添加多边形</p>
+<p>addPolygon({params})</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：多边形的 id，<strong>不可与 addLine 接口内的 id 相同</strong></li>
+</ul>
+<p>styles：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：（可选项）多边形的样式</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    borderColor: &#39;#000&#39;,    //（可选项）字符串类型；多边形的边框颜色，支持rgb、rgba、#；默认：&#39;#000&#39;
+    fillColor: &#39;#000&#39;,      //（可选项）字符串类型；多边形的填充色，支持rgb、rgba、#；默认：&#39;#000&#39;
+    borderWidth: 3          //（可选项）数字类型；多边形的边框宽度，默认：1
+}
+</code></pre>
+<p>points：</p>
+<ul>
+<li>类型：数组</li>
+<li>描述：多边形的各个点组成的数组</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">[{
+    lon: 116.297,      //数字类型；经度
+    lat: 40.109        //数字类型；纬度
+}]
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.addPolygon({
+    id: 2,
+    styles: {
+        borderColor: &#39;#FF0000&#39;,
+        borderWidth: 3,
+        fillColor: &#39;#0000ff&#39;
+    },
+    points: [{
+        lon: 116.39432327,
+        lat: 39.98963192
+    }, {
+        lon: 116.49432328,
+        lat: 39.98963192
+    }, {
+        lon: 116.39432327,
+        lat: 39.88933191
+    }]
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="addArc"></div>
+
+<h1 id="-addarc-"><strong>addArc</strong></h1>
+<p>在地图上添加弧形</p>
+<p>addArc({params})</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：多边形的 id，<strong>不可与 addLine、addPolygon 接口内的 id 相同</strong></li>
+</ul>
+<p>styles：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：（可选项）弧形的样式</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    borderColor: &#39;#000&#39;,    //（可选项）字符串类型；弧形的边框颜色，支持rgb、rgba、#；默认：&#39;#000&#39;
+    borderWidth: 3          //（可选项）数字类型；弧形的边框宽度，默认：1
+}
+</code></pre>
+<p>points：</p>
+<ul>
+<li>类型：数组</li>
+<li>描述：弧形的各个点（弧形两端点和弧形中间点）组成的数组</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">[{
+    lon: 116.297,      //数字类型；经度
+    lat: 40.109        //数字类型；纬度
+}]
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.addArc({
+    id: 3,
+    styles: {
+        borderColor: &#39;#FF0000&#39;,
+        borderWidth: 3
+    },
+    points: [{
+        lon: 116.39432327,
+        lat: 39.98963192
+    }, {
+        lon: 116.49432328,
+        lat: 39.98963192
+    }, {
+        lon: 116.39432327,
+        lat: 39.88933191
+    }]
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="addCircle"></div>
+
+<h1 id="-addcircle-"><strong>addCircle</strong></h1>
+<p>在地图上添加圆形</p>
+<p>addCircle({params})</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：圆形的 id,<strong>不可与 addLine、addPolygon、addArc 接口的 id 相同</strong></li>
+</ul>
+<p>center：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：圆形中心点的经纬度</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    lon: 116.297,       //数字类型；圆形中心点的经度
+    lat: 40.109         //数字类型；圆形中心点的纬度
+}
+</code></pre>
+<p>radius：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：圆形的半径</li>
+</ul>
+<p>styles：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：（可选项）圆形的样式</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    borderColor: &#39;#000&#39;,    //（可选项）字符串类型；圆形的边框颜色，支持rgb、rgba、#；默认：&#39;#000&#39;
+    fillColor: &#39;#000&#39;,      //（可选项）字符串类型；圆形的填充色，支持rgb、rgba、#；默认：&#39;#000&#39;
+    borderWidth: 3          //（可选项）数字类型；圆形的边框宽度，默认：1
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.addCircle({
+    id: 4,
+    center: {
+        lon: 116.39432327,
+        lat: 39.98963192
+    },
+    radius: 500,
+    styles: {
+        borderColor: &#39;#FF0000&#39;,
+        borderWidth: 3,
+        fillColor: &#39;#0000ff&#39;
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="addImg"></div>
+
+<h1 id="-addimg-"><strong>addImg</strong></h1>
+<p>在地图上添加图片</p>
+<p>addImg({params})</p>
+<h1 id="-params-"><strong>params</strong></h1>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：图片 id，<strong>不可与 addLine、addPolygon、addArc、addCircle 接口的 id 相同</strong></li>
+</ul>
+<p>imgPath：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：图片的路径，要求本地路径（fs://、widget://）</li>
+</ul>
+<p>lbLon：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：左下角点的经度</li>
+</ul>
+<p>lbLat：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：左下角点的纬度</li>
+</ul>
+<p>rtLon：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：右上角点的经度</li>
+</ul>
+<p>rtLat：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：右上角点的纬度</li>
+</ul>
+<p>opacity：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：图片透明度，取值范围：0-1</li>
+<li>默认：1</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.addImg({
+    id: 5,
+    imgPath: &#39;widget://res/over_img.png&#39;,
+    lbLon: 116.39432327,
+    lbLat: 39.88933191,
+    rtLon: 116.49432328,
+    rtLat: 39.98963192,
+    opacity: 0.8
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="removeOverlay"></div>
+
+<h1 id="-removeoverlay-"><strong>removeOverlay</strong></h1>
+<p>移除指定 id 的覆盖物（addLine、addPolygon、addArc、addCircle、addImg添加的覆盖物）</p>
+<p>removeOverlay({params})</p>
+<h2 id="params">params</h2>
+<p>ids：</p>
+<ul>
+<li>类型：数组</li>
+<li>描述：要移除的 id（数字）组成的数组</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.removeOverlay({
+    ids: [1, 2, 3, 4, 5]
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="searchRoute"></div>
+
+<h1 id="-searchroute-"><strong>searchRoute</strong></h1>
+<p>搜索路线方案，<strong>无需调用 open 接口即可使用</strong></p>
+<p>searchRoute({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：搜索的路线 id ，drawRoute 时使用</li>
+</ul>
+<p>type：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）路线类型</li>
+<li>默认值：transit</li>
+<li>取值范围：<ul>
+<li>drive（开车）</li>
+<li>transit（公交）</li>
+<li>walk（步行）</li>
+</ul>
+</li>
+</ul>
+<p>policy：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）路线策略，<strong>type 为 walk（步行）时，此参数可不传</strong></li>
+<li>默认值：&#39;ebus_time_first/ecar_time_first&#39;</li>
+<li>取值范围：<ul>
+<li>ecar_fee_first（驾乘检索策略常量：较少费用）</li>
+<li>ecar_dis_first（驾乘检索策略常量：最短距离）</li>
+<li>ecar_time_first（驾乘检索策略常量：时间优先）</li>
+<li>ecar_avoid_jam（驾乘检索策略常量：躲避拥堵）</li>
+<li>ebus_no_subway（公交检索策略常量：不含地铁）</li>
+<li>ebus_time_first（公交检索策略常量：时间优先）</li>
+<li>ebus_transfer_first（公交检索策略常量：最少换乘）</li>
+<li>ebus_walk_first（公交检索策略常量：最少步行距离）</li>
+</ul>
+</li>
+</ul>
+<p>start：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：起点信息</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    lon: 116.403838,    //（可选项）数字类型；起点经度
+    lat: 39.914437      //（可选项）数字类型；起点纬度
+}
+</code></pre>
+<p>end：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：终点信息</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    lon: 116.384852,    //（可选项）数字类型；终点经度
+    lat: 39.989576      //（可选项）数字类型；终点纬度
+}
+</code></pre>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,                   //布尔型；true||false
+    plans: [{                       //数组类型；路线方案描述
+        start:{                     //JSON对象；起点信息
+           lon: 116.384852,         //数字类型；起点经度
+           lat: 39.989576,          //数字类型；起点纬度
+           description: &#39;&#39;          //字符串类型；起点说明文字
+        },
+        end:{                       //JSON对象；终点信息
+           lon: 116.384852,         //数字类型；终点经度
+           lat: 39.989576,          //数字类型；终点纬度
+           description: &#39;&#39;          //字符串类型；终点说明文字
+        },
+        nodes:[{                    //数组类型；路线经过的结点信息组成的数组
+            lon: 116.384852,        //数字类型；结点经度
+            lat: 39.989576,         //数字类型；结点纬度
+            degree: 30,             //数字类型；结点转弯角度
+            description: &#39;&#39;         //字符串类型；结点说明文字
+        }],
+        distance: 1000,             //数字类型；路线长度，单位：米
+        duration: 10                //数字类型；路线耗时，单位：秒
+    }]
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 1,            //数字类型；
+                        //错误码：
+                        //-1（未知错误）
+                        //1（检索词有歧义）
+                        //2（检索地址有歧义）
+                        //3（该城市不支持公交搜索）
+                        //4（不支持跨城市公交）
+                        //5（没有找到检索结果）
+                        //6（起终点太近）
+                        //7（key错误）
+                        //8（网络连接错误）
+                        //9（网络连接超时）
+                        //10（还未完成鉴权，请在鉴权通过后重试）
+    //数组类型；建议起点信息，若传入的起点信息不明确，则返回该字段
+    suggestStarts: [{   
+        name: &#39;&#39;,       //字符串类型；地点名
+        city: &#39;&#39;,       //字符串类型；地点所在城市
+        lon: 116.213,   //数字类型；地点经度
+        lat: 39.213     //数字类型；地点纬度
+    }],
+    //数组类型；建议终点信息，若传入的终点信息不明确，则返回该字段
+    suggestEnds: [{     
+        name: &#39;&#39;,       //字符串类型；地点名
+        city: &#39;&#39;,       //字符串类型；地点所在城市
+        lon: 116.213,   //数字类型；地点经度  
+        lat: 39.213     //数字类型；地点纬度
+    }]
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.searchRoute({
+    id: 1,
+    type: &#39;drive&#39;,
+    policy: &#39;ecar_fee_first&#39;,
+    start: {
+        lon: 116.403838,
+        lat: 39.914437
+    },
+    end: {
+        lon: 116.384852,
+        lat: 39.989576
+    }
+}, function(ret, err) {
+    if (ret.status) {
+        api.alert({ msg: JSON.stringify(ret) });
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="drawRoute"></div>
+
+<h1 id="-drawroute-"><strong>drawRoute</strong></h1>
+<p>在地图上显示指定路线，<strong>调用本接口前，必须保证已经调用过接口 open 和 searchRoute</strong></p>
+<p>drawRoute({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：路线 id （searchRoute 时传的 id），removeRoute 时使用此 id 移除路线</li>
+</ul>
+<p>autoresizing：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：路线渲染结束是否自动调整地图可视区域</li>
+<li>默认值：true</li>
+</ul>
+<p>index：</p>
+<ul>
+<li>类型：数字类型</li>
+<li>描述：路线方案的索引，在 searchRoute 时返回的多个路线方案组成的数组中的索引</li>
+<li>默认值：0</li>
+</ul>
+<p>styles：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>描述：路线样式设置</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    start: {         
+       icon: &#39;&#39;      //（可选项）字符串类型；起点图标，有默认图标
+    },
+    end: {           
+       icon: &#39;&#39;      //（可选项）字符串类型；终点图标，有默认图标
+    }
+}
+</code></pre>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    nodeIndex: 0,    //数字类型；点击路线上结点的索引（该路线在所属方案 nodes 数组内的索引）
+    routeId: 1       //数字类型；点击的结点所在的路线的 id
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.searchRoute({
+    type: &#39;drive&#39;,
+    policy: &#39;ecar_fee_first&#39;,
+    start: {
+        lon: 116.403838,
+        lat: 39.914437
+    },
+    end: {
+        lon: 116.384852,
+        lat: 39.989576
+    }
+}, function(ret, err) {
+    if (ret.status) {
+        map.drawRoute({
+            id: 1,
+            autoresizing: false,
+            index: 0,
+            styles: {
+                start: {
+                    icon: &#39;widget://image/bmap_start.png&#39;
+                },
+                end: {
+                    icon: &#39;widget://image/bmap_end.png&#39;
+                }
+            }
+        }, function(ret) {
+            api.alert({ msg: JSON.stringify(ret) });
+        });
+    } else {
+        api.alert({ msg: JSON.stringify(err) });
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="removeRoute"></div>
+
+<h1 id="-removeroute-"><strong>removeRoute</strong></h1>
+<p>移除指定 id 的路线</p>
+<p>removeRoute({params})</p>
+<h2 id="params">params</h2>
+<p>ids：</p>
+<ul>
+<li>类型：数组</li>
+<li>描述：所要移除的 id（数字）组成的数组</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.removeRoute({
+    ids: [1, 2, 3]
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="searchBusRoute"></div>
+
+<h1 id="-searchbusroute-"><strong>searchBusRoute</strong></h1>
+<p>根据关键字搜索公交、地铁线路，<strong>无需调用 open 接口即可搜索</strong></p>
+<p>searchBusRoute({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>city：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：城市</li>
+</ul>
+<p>line：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：公交、地铁线路号（例如：1路，1号线）</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret，err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+      status: true,     //布尔型；true||false
+      results: [{           //数组类型；返回搜索结果列表
+        name: &#39;&#39;,           //字符串类型；名称
+        uid: &#39;&#39;,            //字符串类型；兴趣点 uid
+        city: &#39;&#39;,           //字符串类型；所在城市
+        poiType: 0          //数字类型；POI 类型
+                            //取值类型：
+                            //2（公交线路）
+                            //4（地铁线路）
+      }] 
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 1           //数字类型；错误码
+                      //1（检索词有岐义）
+                      //2（检索地址有岐义）
+                      //3（没有找到检索结果）
+                      //4（key错误）
+                      //5（网络连接错误）
+                      //6（网络连接超时）
+                      //7（还未完成鉴权，请在鉴权通过后重试）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.searchBusRoute({
+    city: &#39;北京&#39;,
+    line: &#39;110&#39;
+}, function(ret, err) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    } else {
+        alert(JSON.stringify(err));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="drawBusRoute"></div>
+
+<h1 id="-drawbusroute-"><strong>drawBusRoute</strong></h1>
+<p>根据 searchBusRoute 搜索返回的 uid 查询线路详情并绘制在地图上</p>
+<p>drawBusRoute({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>id：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：地图上显示的公交、地铁路线的 id，<strong>removeBusRoute 时使用此 id</strong></li>
+</ul>
+<p>autoresizing：</p>
+<ul>
+<li>类型：布尔</li>
+<li>描述：路线渲染结束是否自动调整地图可视区域</li>
+<li>默认值：true</li>
+</ul>
+<p>city：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：城市</li>
+</ul>
+<p>uid：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：searchBusRoute 接口获取到的目标兴趣点的 uid</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,              //布尔型；true||false
+    eventType: &#39;draw&#39;,         //字符串类型；回调事件类型
+                               //取值范围：
+                               //draw（添加路线）
+                               //click（用户点击路线上的结点）
+    name: &#39;&#39;,                  //字符串类型；公交线路名称
+    company: &#39;&#39;,               //字符串类型；公交公司名称
+    startTime: &#39;&#39;,             //字符串类型；公交路线首班车时间，格式为：hh:ss
+    endTime: &#39;&#39;,               //字符串类型；公交路线末班车时间，格式为：hh:ss
+    isMonTicket: &#39;&#39;,           //布尔类型；公交是线是否有月票
+    stations: [{               //数组类型；所有站点信息
+       lon: 116.404,           //数字类型；公交站经度
+       lat: 39.915,            //数字类型；公交站纬度
+       description: &#39;&#39;         //字符串类型；公交站描述
+    }],
+    nodeIndex: 0,              //数字类型；点击路线上结点的索引（在 stations 数组内的索引）
+    routeId: 1                 //数字类型；点击的结点所在的路线的 id
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 1           //数字类型；错误码
+                      //1（检索词有岐义）
+                      //2（检索地址有岐义）
+                      //3（没有找到检索结果）
+                      //4（key错误）
+                      //5（网络连接错误）
+                      //6（网络连接超时）
+                      //7（还未完成鉴权，请在鉴权通过后重试）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.searchBusRoute({
+    city: &#39;北京&#39;,
+    line: &#39;110&#39;
+},function(ret, err){
+    if(ret.status){
+       var results = ret.results;
+       for(var i=0, len=results.length; i&lt;len; i++){
+            var res = results[i];
+            map.drawBusRoute({
+                id: i+1,
+                autoresizing:false,
+                city: res.city,
+                uid: res.uid,
+                nodeShow: false
+            },function(ret){
+                if(ret.status){
+                    alert(JSON.stringify(ret));
+                }else{
+                    alert(JSON.stringify(err));
+                }
+            });     
+       }
+    }else{
+        alert(JSON.stringify(err));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="removeBusRoute"></div>
+
+<h1 id="-removebusroute-"><strong>removeBusRoute</strong></h1>
+<p>移除地图上显示的公交、地铁线路</p>
+<p>removeBusRoute({params})</p>
+<h2 id="params">params</h2>
+<p>ids：</p>
+<ul>
+<li>类型：数组</li>
+<li>描述：所要移除的公交、地铁线路的 id（数字）组成的数组</li>
+</ul>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.removeBusRoute({
+   ids:[1]
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="searchInCity"></div>
+
+<h1 id="-searchincity-"><strong>searchInCity</strong></h1>
+<p>根据单个关键字搜索兴趣点，<strong>无需调用 open 接口即可搜索</strong></p>
+<p>searchInCity({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>city：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：要搜索的城市</li>
+</ul>
+<p>keyword：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：搜索的关键字</li>
+</ul>
+<p>pageIndex：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）分页索引</li>
+<li>默认：0</li>
+</ul>
+<p>pageCapacity：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）每页包含数据条数，最多为50</li>
+<li>默认：10</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false
+    totalNum: 10,           //数字类型；本次搜索的总结果数
+    currentNum: 5,          //数字类型；当前页的结果数
+    totalPage: 10,          //数字类型；本次搜索的总页数
+    pageIndex: 1,           //数字类型；当前页的索引
+    results: [{             //数组类型；返回搜索结果列表
+        lon: 116.213,       //数字类型；当前内容的经度
+        lat: 39.213,        //数字类型；当前内容的纬度
+        name: &#39;&#39;,           //字符串类型；名称
+        uid: 123            //数字类型；兴趣点的id
+        address: &#39;&#39;,        //字符串类型；地址
+        city: &#39;&#39;,           //字符串类型；所在城市
+        phone: &#39;&#39;,          //字符串类型；电话号码
+        poiType: 0          //数字类型；POI 类型
+                            //取值类型：
+                            //0（普通点）
+                            //1（公交站）
+                            //2（公交线路）
+                            //3（地铁站）
+                            //4（地铁线路）
+    }]             
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 1           //数字类型；错误码
+                      //1（检索词有岐义）
+                      //2（检索地址有岐义）
+                      //3（没有找到检索结果）
+                      //4（key错误）
+                      //5（网络连接错误）
+                      //6（网络连接超时）
+                      //7（还未完成鉴权，请在鉴权通过后重试）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.searchInCity({
+    city: &#39;北京&#39;,
+    keyword: &#39;学校&#39;,
+    pageIndex: 0,
+    pageCapacity: 20
+}, function(ret, err) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    } else {
+        alert(JSON.stringify(err));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="searchNearby"></div>
+
+<h1 id="-searchnearby-"><strong>searchNearby</strong></h1>
+<p>根据单个关键字在圆形区域内搜索兴趣点，<strong>无需调用 open 接口即可搜索</strong></p>
+<p>searchNearby({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>keyword：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：搜索关键字</li>
+</ul>
+<p>lon：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定区域中心点的经度</li>
+</ul>
+<p>lat：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定区域中心点的纬度</li>
+</ul>
+<p>radius：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定区域的半径，单位为 m（米）</li>
+</ul>
+<p>pageIndex：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）分页索引</li>
+<li>默认：0</li>
+</ul>
+<p>pageCapacity：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）每页包含数据条数，最多为50</li>
+<li>默认：10</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false
+    totalNum: 20,           //数字类型；本次搜索的总结果数
+    currentNum: 5,          //数字类型；当前页的结果数
+    totalPage: 3,           //数字类型；本次搜索的总页数
+    pageIndex: 1,           //数字类型；当前页的索引
+    results: [{             //数组类型；返回搜索结果列表
+        lon: 116.213,       //数字类型；当前内容的经度
+        lat: 39.213,        //数字类型；当前内容的纬度
+        name: &#39;&#39;,           //字符串类型；名称
+        uid: 123            //数字类型；兴趣点id
+        address: &#39;&#39;,        //字符串类型；地址
+        city: &#39;&#39;,           //字符串类型；所在城市
+        phone: &#39;&#39;,          //字符串类型；电话号码
+        poiType: 0          //数字类型；POI 类型
+                            //取值类型：
+                            //0（普通点）
+                            //1（公交站）
+                            //2（公交线路）
+                            //3（地铁站）
+                            //4（地铁线路）
+    }]  
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 1           //数字类型；错误码
+                      //1（检索词有岐义）
+                      //2（检索地址有岐义）
+                      //3（没有找到检索结果）
+                      //4（key错误）
+                      //5（网络连接错误）
+                      //6（网络连接超时）
+                      //7（还未完成鉴权，请在鉴权通过后重试）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.searchNearby({
+    keyword: &#39;KTV&#39;,
+    lon: 116.384767,
+    lat: 39.989539,
+    radius: 2000
+}, function(ret, err) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    } else {
+        alert(JSON.stringify(err));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="searchInBounds"></div>
+
+<h1 id="-searchinbounds-"><strong>searchInBounds</strong></h1>
+<p>根据单个关键字在方形区域内搜索兴趣点，<strong>无需调用 open 接口即可搜索</strong></p>
+<p>searchInBounds({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>keyword：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：搜索关键字</li>
+</ul>
+<p>lbLon：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：矩形左下角的经度</li>
+</ul>
+<p>lbLat：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：矩形左下角的纬度</li>
+</ul>
+<p>rtLon：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：矩形右上角的经度</li>
+</ul>
+<p>rtLat：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：矩形右上角的纬度</li>
+</ul>
+<p>pageIndex：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）分页索引</li>
+<li>默认：0</li>
+</ul>
+<p>pageCapacity：</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：（可选项）每页包含数据条数，最多为50</li>
+<li>默认：10</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false
+    totalNum: 20,           //数字类型；本次搜索的总结果数
+    currentNum: 5,          //数字类型；当前页的结果数
+    totalPage: 3,           //数字类型；本次搜索的总页数
+    pageIndex: 1,           //数字类型；当前页的索引
+    results: [{             //数组类型；返回搜索结果列表
+        lon: 116.213,       //数字类型；当前内容的经度
+        lat: 39.213,        //数字类型；当前内容的纬度
+        name: &#39;&#39;,           //字符串类型；名称
+        uid: 123            //数字类型；兴趣点id
+        address: &#39;&#39;,        //字符串类型；地址
+        city: &#39;&#39;,           //字符串类型；所在城市
+        phone: &#39;&#39;,          //字符串类型；电话号码
+        poiType: 0          //数字类型；POI 类型
+                            //取值类型：
+                            //0（普通点）
+                            //1（公交站）
+                            //2（公交线路）
+                            //3（地铁站）
+                            //4（地铁线路）
+    }]
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 1           //数字类型；错误码
+                      //1（检索词有岐义）
+                      //2（检索地址有岐义）
+                      //3（没有找到检索结果）
+                      //4（key错误）
+                      //5（网络连接错误）
+                      //6（网络连接超时）
+                      //7（还未完成鉴权，请在鉴权通过后重试）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.searchInBounds({
+    keyword: &#39;图书馆&#39;,
+    lbLon: 112.47723797622677,
+    lbLat: 34.556480000000015,
+    rtLon: 109.77539000000002,
+    rtLat: 33.43144
+}, function(ret, err) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    } else {
+        alert(JSON.stringify(err));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="autocomplete"></div>
+
+<h1 id="-autocomplete-"><strong>autocomplete</strong></h1>
+<p>根据关键字返回建议搜索关键字，<strong>无需调用 open 接口即可搜索</strong></p>
+<p>autocomplete({params}, callback(ret, err))</p>
+<h2 id="params">params</h2>
+<p>keyword：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：关键字</li>
+</ul>
+<p>city：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：（可选项）要搜索的城市</li>
+</ul>
+<h2 id="callback-ret-err-">callback(ret, err)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false
+    results: []             //数组类型；返回建议搜索关键字组成的数组          
+}
+</code></pre>
+<p>err：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    code: 1           //数字类型；错误码
+                      //1（检索词有岐义）
+                      //2（检索地址有岐义）
+                      //3（没有找到检索结果）
+                      //4（key错误）
+                      //5（网络连接错误）
+                      //6（网络连接超时）
+                      //7（还未完成鉴权，请在鉴权通过后重试）
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.autocomplete({
+    keyword: &#39;北京西站&#39;,
+    city: &#39;北京&#39;
+}, function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret.results));
+    } else {
+        alert(JSON.stringify(err));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getHotCityList"></div>
+
+<h1 id="-gethotcitylist-"><strong>getHotCityList</strong></h1>
+<p>获取热门城市列表，<strong>无需调用 open 接口</strong></p>
+<p>getHotCityList(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false
+    records : [{            //数组类型；返回热门城市的信息 
+        name: &#39;&#39;,           //字符串类型；城市名称
+        size:  ,            //数字类型；数据包总大小
+        cityID: ,           //数字类型；城市ID
+        cityType: ,         //数字类型；城市类型，0：全国；1：省份；2：城市；如果是省份，可以通过childCities得到子城市列表
+        childCities:[{     //数组类型；子城市列表
+           name: &#39;&#39;,       //字符串类型；城市名称
+           cityID:         //数字类型；城市ID
+        }]      
+    }]                      
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.getHotCityList(function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getOfflineCityList"></div>
+
+<h1 id="-getofflinecitylist-"><strong>getOfflineCityList</strong></h1>
+<p>获取支持离线下载城市列表，<strong>无需调用 open 接口</strong></p>
+<p>getOfflineCityList(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false
+    records : [{            //数组类型；返回支持离线下载城市的信息 
+        name: &#39;&#39;,           //字符串类型；城市名称
+        size:  ,            //数字类型；数据包总大小
+        cityID: ,           //数字类型；城市ID
+        cityType: ,         //数字类型；城市类型，0：全国；1：省份；2：城市；如果是省份，可以通过childCities得到子城市列表
+        childCities:[{     //数组类型；子城市列表
+           name: &#39;&#39;,       //字符串类型；城市名称
+           cityID:         //数字类型；城市ID
+        }]    
+    }]                      
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.getOfflineCityList(function(ret){
+    if(ret.status){
+        alert(JSON.stringify(ret)); 
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="searchCityByName"></div>
+
+<h1 id="-searchcitybyname-"><strong>searchCityByName</strong></h1>
+<p>根据城市名搜索该城市离线地图记录，<strong>无需调用 open 接口</strong></p>
+<p>searchCityByName({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>name：</p>
+<ul>
+<li>类型：字符串</li>
+<li>描述：指定搜索的城市名</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false
+    records : [{            //数组类型；返回支持离线下载城市的信息 
+        name: &#39;&#39;,           //字符串类型；城市名称
+        size:  ,            //数字类型；数据包总大小
+        cityID: ,           //数字类型；城市ID
+        cityType: ,         //数字类型；城市类型，0：全国；1：省份；2：城市；如果是省份，可以通过childCities得到子城市列表
+        childCities:[{     //数组类型；子城市列表
+           name: &#39;&#39;,       //字符串类型；城市名称
+           cityID:         //数字类型；城市ID
+        }]    
+    }]                      
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.searchCityByName({
+    name: &quot;北京&quot;
+}, function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getAllUpdateInfo"></div>
+
+<h1 id="-getallupdateinfo-"><strong>getAllUpdateInfo</strong></h1>
+<p>获取各城市离线地图更新信息，<strong>无需调用 open 接口</strong></p>
+<p>getAllUpdateInfo(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false
+    records : [{            //数组类型；返回支持离线下载城市的信息 
+        name: &#39;&#39;,           //字符串类型；城市名称
+        size:  ,            //数字类型；数据包总大小
+        cityID: ,           //数字类型；城市ID
+        serversize: ,       //数字类型；服务端数据大小，当update为YES时有效，单位：字节
+        ratio: ,            //数字类型；下载比率，100为下载完成，下载完成后会自动导入，status为4时离线包导入完成
+        update: ,            //布尔类型；更新状态，离线包是否有更新（有更新需重新下载）
+        lat: ,              //数字类型；城市中心点纬度坐标
+        lon: ,              //数字类型；城市中心点纬度坐标
+        status:             //数字类型；下载状态, 
+                            //-1:未定义 
+                            //1:正在下载　
+                            //2:等待下载　
+                            //3:已暂停　
+                            //4:完成 
+                            //5:校验失败 
+                            //6:网络异常 
+                            //7:读写异常 
+                            //8:Wifi网络异常 
+                            //9:离线包数据格式异常，需重新下载离线包 
+                            //10:离线包导入中
+    }]                      
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.getAllUpdateInfo(function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="getUpdateInfoByID"></div>
+
+<h1 id="-getupdateinfobyid-"><strong>getUpdateInfoByID</strong></h1>
+<p>获取指定城市id离线地图更新信息，<strong>无需调用 open 接口</strong></p>
+<p>getUpdateInfoByID({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>cityID:</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定的城市id</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false
+    cityInfo : {            //JSON对象；返回指定城市的离线地图更新信息 
+        name: &#39;&#39;,           //字符串类型；城市名称
+        size:  ,            //数字类型；数据包总大小
+        cityID: ,           //数字类型；城市ID
+        serversize: ,       //数字类型；服务端数据大小，当update为YES时有效，单位：字节
+        ratio: ,            //数字类型；下载比率，100为下载完成，下载完成后会自动导入，status为4时离线包导入完成
+        update: ,            //布尔类型；更新状态，离线包是否有更新（有更新需重新下载）
+        lat: ,              //数字类型；城市中心点纬度坐标
+        lon: ,              //数字类型；城市中心点纬度坐标
+        status:             //数字类型；下载状态, 
+                            //-1:未定义 
+                            //1:正在下载　
+                            //2:等待下载　
+                            //3:已暂停　
+                            //4:完成 
+                            //5:校验失败 
+                            //6:网络异常 
+                            //7:读写异常 
+                            //8:Wifi网络异常 
+                            //9:离线包数据格式异常，需重新下载离线包 
+                            //10:离线包导入中
+    }                      
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.getUpdateInfoByID({
+    cityID: 1
+}, function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="start"></div>
+
+<h1 id="-start-"><strong>start</strong></h1>
+<p>启动下载指定城市 id 的离线地图，<strong>无需调用 open 接口</strong></p>
+<p>start({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>cityID:</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定的城市id</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false                  
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.start({
+    cityID: 1
+}, function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="update"></div>
+
+<h1 id="-update-"><strong>update</strong></h1>
+<p>启动更新指定城市 id 的离线地图，<strong>无需调用 open 接口</strong></p>
+<p>update({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>cityID:</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定的城市id</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false                  
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.update({
+    cityID: 1
+}, function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="pause"></div>
+
+<h1 id="-pause-"><strong>pause</strong></h1>
+<p>暂停下载指定城市 id 的离线地图，<strong>无需调用 open 接口</strong></p>
+<p>pause({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>cityID:</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定的城市id</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false                  
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.pause({
+    cityID: 1
+}, function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="remove"></div>
+
+<h1 id="-remove-"><strong>remove</strong></h1>
+<p>删除下载指定城市 id 的离线地图，<strong>无需调用 open 接口</strong></p>
+<p>remove({params}, callback(ret))</p>
+<h2 id="params">params</h2>
+<p>cityID:</p>
+<ul>
+<li>类型：数字</li>
+<li>描述：指定的城市id</li>
+</ul>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    status: true,           //布尔型；true||false                  
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.remove({
+    cityID: 1
+}, function(ret) {
+    if (ret.status) {
+        alert(JSON.stringify(ret));
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="addOfflineListener"></div>
+
+<h1 id="-addofflinelistener-"><strong>addOfflineListener</strong></h1>
+<p>监听离线地图相关事件</p>
+<p>addOfflineListener(callback(ret))</p>
+<h2 id="callback-ret-">callback(ret)</h2>
+<p>ret：</p>
+<ul>
+<li>类型：JSON 对象</li>
+<li>内部字段：</li>
+</ul>
+<pre><code class="lang-js">{
+    type: 0,                //数字类型；事件类型，取值范围如下：
+                            //0：下载或更新
+                            //1：检测到的压缩包个数
+                            //2：当前解压的离线包
+                            //3：错误的离线包
+                            //4：有新版本
+                            //5：扫描完毕
+                            //6：新增离线包
+    state:                  //数字类型；事件状态，
+                            //当 type为 0 时，表示正在下载或更新城市id为state的离线包
+                            //当 type 为1时，表示检测到state个离线压缩包
+                            //当 type 为2时，表示正在解压第state个离线包
+                            //当 type 为3时，表示有state个错误包
+                            //当 type 为4时，表示id为state的城市离线包有更新
+                            //当 type 为5时，表示扫瞄完成，成功导入state个离线包
+                            //当 type 为6时，表示新安装的离线地图数目
+}
+</code></pre>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.addOfflineListener(function(ret) {
+    switch (ret.type) {
+        case 0:
+            {
+                map.getUpdateInfoByID({
+                    cityID: 1
+                }, function(ret) {
+                    api.alert({ msg: ret.cityInfo.name + &quot;下载进度：&quot; + ret.cityInfo.ratio });
+                });
+            }
+            break;
+        case 1:
+            {
+                alert(&#39;检测到离线包个数是：&#39; + ret.state);
+            }
+            break;
+        case 2:
+            {
+                alert(&#39;正在解压第state个离线包，导入时会回调此类型&#39;);
+            }
+            break;
+        case 3:
+            {
+                alert(&#39;有state个错误包，导入完成后会回调此类型&#39;);
+            }
+            break;
+        case 4:
+            {
+                alert(&#39;id为state的state城市有新版本,可调用update接口进行更新&#39;);
+            }
+            break;
+        case 5:
+            {
+                alert(&#39;导入成功state个离线包，导入成功后会回调此类型&#39;);
+            }
+            break;
+        case 6:
+            {
+                alert(&#39;新增离线包&#39;);
+            }
+            break;
+        default:
+            break;
+    }
+});
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+<div id="removeOfflineListener"></div>
+
+<h1 id="-removeofflinelistener-"><strong>removeOfflineListener</strong></h1>
+<p>移除监听离线地图事件</p>
+<p>removeOfflineListener()</p>
+<h2 id="-">示例代码</h2>
+<pre><code class="lang-js">var map = api.require(&#39;bMap&#39;);
+map.removeOfflineListener();
+</code></pre>
+<h2 id="-">可用性</h2>
+<p>iOS系统，Android系统</p>
+<p>可提供的1.0.0及更高版本</p>
+
+
+            <div class="page-meta clearfix">
+                <div class="last-updated pull-right">
+                    <!-- Last updated on 15th May 2017 -->
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <!-- <div class="footer-logo"> -->
+                    <!-- <a href="http://www.apicloud.com" target="_blank" style="width:182px;height:113px;display:inline-block;margin-left: 25px;">
+                        <img src="/img/logo.jpg" alt="">
+                    </a> -->
+                    <!-- <div style="display:inline-block;float:right"> -->
+                        <p class="copyright pull-right" style="margin-top:-70px;">
+                            Copyright &copy; 2017APICloud Docs   &nbsp <a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action">京ICP备14027692号</a>
+                        </p>
+                    <!-- </div> -->
+                <!-- </div> -->
+                
+            </div>
+        </footer>
+        <div id="outlineTip">
+        </div>
+        <a id="backToTop" href="javascript:void(0)">
+        </a>
+        <!-- <iframe id="bbsLogin" style="display:none" src="/bbsLogin.html">
+        </iframe> -->
+        <script src="../../bower_components/jquery/dist/jquery.min.js">
+        </script>
+        <script src="../../scripts/jquery.qrcode.min.js"></script>
+        <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js">
+        </script>
+        <script src="../../bower_components/highlightjs/highlight.pack.js">
+        </script>
+        <script src="../../bower_components/fitvids/jquery.fitvids.js">
+        </script>
+        <script src="../../bower_components/masonry/dist/masonry.pkgd.min.js">
+        </script>
+        <script src="../../scripts/ZeroClipboard.min.js">
+        </script>
+        <script src="../../scripts/raneto.js">
+        </script>
+        <div style="display:none;">
+            <script type="text/javascript">
+                var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253236292'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1253236292%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+                // $('#operatingCloud').mouseenter(function () {
+                //     $('.mouse2').css('display','block');
+                //     $('.mouse1').css('display','none');
+                // }).mouseleave(function(){
+                //     $('.mouse2').css('display','none');
+                // })
+                // $('#operatingApp').mouseenter(function () {
+                //     $('.mouse1').css('display','block');
+                //     $('.mouse2').css('display','none');
+                // }).mouseleave(function(){
+                //     $('.mouse1').css('display','none');
+                // })
+                // $('#nav_point').mouseenter(function () {
+                //   $('.mouse2').css('display','none');
+                //   $('.mouse1').css('display','none');
+                // })
+  
+            </script>
+        </div>
+    </body>
+
+<!-- Mirrored from docs.apicloud.com/Client-API/Open-SDK/bMap by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 May 2017 08:29:56 GMT -->
+</html>

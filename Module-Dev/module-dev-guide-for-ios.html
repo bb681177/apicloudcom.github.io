@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from docs.apicloud.com/Module-Dev/module-dev-guide-for-ios by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 May 2017 08:19:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>
+            
+            模块开发指南_iOS
+        </title>
+        <!-- <title>
+            模块开发指南_iOS - APICloud Docs
+        </title> -->
+        <meta name="description" content="模块开发指南_iOS"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" href="../favicon.png"/>
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../bower_components/highlightjs/styles/vs.css"/>
+        <link rel="stylesheet" href="../styles/font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="../styles/raneto.css"/>
+        <link rel="stylesheet" href="../styles/homenewlayout.css"/>
+        <style>
+            header{
+                top:0;
+            }
+            header div.authenticated{
+                display: none;
+            }
+            .authenticated.active{
+                display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+                display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+                display: -ms-flexbox;      /* TWEENER - IE 10 */
+                display: -webkit-flex;     /* NEW - Chrome */
+                display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+            }
+            .link-group.active{
+                display: none;
+            }
+            .copyright a{
+                color: #999 !important;
+                margin-right: 16px !important;
+            }
+            /*红点 start*/
+            /*.item-notice-out,
+            .item-notice-in{
+                position: relative;
+            }
+            .item-notice-out:after,
+            .item-notice-in:after{
+                position: absolute;
+                content: " ";
+                width: 6px;
+                height: 6px;
+                border-radius: 10px;
+                background-color: #ee3131;
+            }
+            .item-notice-out:after{
+                top: 13px;
+                right: 15px;
+            }
+            .item-notice-in:after{
+                top: 10px;
+                right: 14px;
+            }*/
+            /*红点 end*/
+        </style>
+        <link href="../styles/video-js.css" rel="stylesheet" type="text/css"/>
+        <script src="../scripts/video.js">
+        </script>
+        <script>
+            videojs.options.flash.swf = "../video-js.swf";
+        </script>
+        
+    </head>
+    <body class="page-module-dev-module-dev-guide-for-ios">
+        <header class="light">
+            <div class="nav-left">
+                <a href="http://www.apicloud.com/" class="logo" title=''>
+                    <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 19.4" style="enable-background:new 0 0 120 19.4;" xml:space="preserve">
+                          <style type="text/css">
+                            .st0 {
+                              fill: #95BA1F;
+                            }
+                            
+                            .st1 {
+                              fill: #FFFFFF;
+                            }
+                          </style>
+                            <g id="XMLID_34_">
+                            <path id="XMLID_35_" class="st0" d="M23.6,18h-2.6v-3h2.6c1.5,0,2.8-1.3,2.8-2.8c0-1.5-1.3-2.8-2.8-2.8h-0.5
+                        c-0.2,4.7-4.2,8.5-9,8.5H5.7C2.6,18,0,15.4,0,12.2c0-3.2,2.6-5.7,5.7-5.7h13.9c-1-2.1-3.1-3.5-5.5-3.5c-1.9,0-3.6,0.9-4.8,2.3
+                        L8.4,6.5L6.1,4.6L7,3.5C8.7,1.3,11.3,0,14.1,0c4.1,0,7.6,2.7,8.6,6.5h0.8c3.2,0,5.7,2.6,5.7,5.7C29.3,15.4,26.7,18,23.6,18z
+                        M5.7,9.5C4.2,9.5,3,10.7,3,12.2C3,13.8,4.2,15,5.7,15h8.4c3.2,0,5.8-2.5,6-5.6H5.7z" />
+                            </g>
+                            <path id="XMLID_31_" class="st1" d="M46.1,13.9H41l-1.3,4.2h-2.4l4.9-14.8h2.7l4.9,14.8h-2.5L46.1,13.9z M45.6,12.1l-0.6-2
+                        c-0.5-1.6-0.9-3.3-1.4-4.9h-0.1c-0.4,1.7-0.9,3.3-1.4,4.9l-0.6,2H45.6z" />
+                            <path id="XMLID_28_" class="st1" d="M51.8,3.4h4.5c3.3,0,5.6,1.1,5.6,4.5c0,3.2-2.4,4.7-5.6,4.7h-2.2v5.6h-2.3V3.4z M56.1,10.7
+                        c2.4,0,3.5-0.9,3.5-2.9c0-1.9-1.2-2.6-3.6-2.6h-1.9v5.4H56.1z" />
+                            <path id="XMLID_26_" class="st1" d="M64.8,3.4h2.3v14.8h-2.3V3.4z" />
+                            <g id="XMLID_16_">
+                            <path id="XMLID_7_" class="st1" d="M80,15.7c-1.1,1.2-2.2,1.8-3.6,1.8c-3.1,0-5.1-2.6-5.1-6.7c0-4.1,2-6.6,5.2-6.6
+                            C78,4.2,79,5,79.5,5.7l0.1,0.2L80.4,5l-0.1-0.1c-0.5-0.5-1.7-1.8-3.9-1.8c-3.9,0-6.3,3-6.3,7.7c0,4.7,2.5,7.8,6.2,7.8
+                            c1.8,0,3.2-0.7,4.4-2.1l0.1-0.1l-0.7-0.8L80,15.7z" />
+                            <path id="XMLID_6_" class="st1" d="M85.1,17.5c-0.2,0-0.3,0-0.4,0c-0.1,0-0.3,0-0.3-0.5V2h-1.1V17c0,1.4,0.7,1.6,1.3,1.6
+                            c0.3,0,0.4,0,0.6-0.1l0.3-0.1l-0.2-1L85.1,17.5z" />
+                            <path id="XMLID_21_" class="st1" d="M92.5,7.1c-2.9,0-4.9,2.4-4.9,5.8c0,3.4,2,5.7,4.9,5.7c2.9,0,4.9-2.4,4.9-5.7
+                            C97.4,9.5,95.3,7.1,92.5,7.1z M92.5,17.5c-2.2,0-3.7-1.9-3.7-4.7c0-2.7,1.6-4.7,3.7-4.7c2.2,0,3.8,2,3.8,4.7
+                            C96.2,15.6,94.6,17.5,92.5,17.5z" />
+                            <path id="XMLID_3_" class="st1" d="M106.9,15.4c-1.4,1.6-2.3,2.1-3.4,2.1c-1.1,0-2.4-0.4-2.4-3.3V7.5h-0.9v6.9c0,2.9,1,4.2,3.3,4.2
+                            c1.5,0,2.6-0.9,3.4-1.8l0.1,1.5h1V7.5h-1.1V15.4z" />
+                            <path id="XMLID_17_" class="st1" d="M118.9,2v4.6l0,1.6c-1-0.7-1.8-1.1-3.1-1.1c-2.9,0-4.9,2.4-4.9,5.8c0,3.6,1.7,5.7,4.6,5.7
+                            c1.2,0,2.4-0.5,3.4-1.5l0.1,1.1h1V2H118.9z M118.9,9.5v6.3c-1.2,1.2-2.2,1.7-3.3,1.7c-2.1,0-3.5-1.8-3.5-4.7c0-2.7,1.7-4.7,3.8-4.7
+                            C116.9,8.1,117.8,8.5,118.9,9.5z" />
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="nav-right mw-8">
+                <div class="nav-right">
+                    <div class="authenticated" id="ifSigned">
+                    <ul>
+                        <li class="ifSigned-list">
+                            <div  class="profile toConsole">
+                                <img src="../img/favicon-30.png"  alt="APICloud" />
+                                <span class="login-name">
+                                </span>
+                                <span class="arr-b">
+                                </span>
+                            </div>
+                            <ul class="nav-list single console-list">
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/console" class="nav-link-single">
+                                        <i class="fa icon-tasks">
+                                        </i>
+                                        <span>
+                                            开发控制台
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://app.apicloud.com/demandlist" class="nav-link-single">
+                                        <i class="fa icon-demand">
+                                        </i>
+                                        <span>
+                                            我的定制需求
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/module_pub_history" class="nav-link-single">
+                                        <i class="fa icon-inbox">
+                                        </i>
+                                        <span>
+                                            模块管理
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/myService" class="nav-link-single myBill">
+                                        <i class="fa icon-user">
+                                        </i>
+                                        <span>
+                                            我的账户
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/member" class="nav-link-single">
+                                        <i class="fa icon-group"></i>
+                                        <span>
+                                            团队协作
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-list-item">
+                                    <a href="http://www.apicloud.com/profile" class="nav-link-single">
+                                        <i class="fa icon-cog">
+                                        </i>
+                                        <span>
+                                            设置
+                                        </span>
+                                    </a>
+                                </li>
+                                <!-- <li class="nav-list-item" id="sign_out">
+                                    <a href="javascript:void(0)" class="nav-link-single">
+                                        <i class="fa icon-signout">
+                                        </i>
+                                        <span>
+                                            退出
+                                        </span>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="unauthenticated link-group">
+                        <a href="http://www.apicloud.com/signin">
+                            登录
+                        </a>
+                        <span>
+                        </span>
+                        <a href="http://www.apicloud.com/signup">
+                            注册
+                        </a>
+                    </div>
+                </div>
+                <ul class="nav nav-right">
+                    <li id="nav_point">
+                        <!-- 活动红点 -->
+                        <!-- <a href="http://www.apicloud.com" class="badge-red"> -->
+                        <a href="javascript:void(0)">
+                            APP开发平台
+                        </a>
+                        <ul class="nav-list pointer">
+                            <li class="nav-list-item mousein" id="operatingApp">
+                                <a href="javascript:void(0)" class="nav-link operatingApp_link">
+                                    <span class="APP">APP引擎</span>
+                                    <i class="icon-angle-right"></i>
+                                </a>
+                                <span class="mouse mouse1">
+                                    <ul class="nav-list mouse-ul pointer_right">
+                                        <li class="nav-list-item ">
+                                            <a href="http://apicloud.com/superwebview" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_superwebview"></span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                           SuperWebView
+                                                    </span>
+                                                    <span class="nav-description">
+                                                            帮助原生程序员快速迭代
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-list-item nav-list-item1">
+                                            <a href="http://apicloud.com/deepengine" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_deepengine">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        Deep Engine
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        高效的跨平台APP引擎
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>   
+                                    </ul>
+                                </sapn>
+                            </li>
+                            <li class="nav-list-item mousein" id="operatingCloud">
+                                <a href="javascript:void(0)"  class="nav-link operatingCloud_link">
+                                    <span class="APP">云引擎</span>
+                                    <i class="icon-angle-right"></i>
+                                </a>
+                                <span class="mouse mouse2">
+                                    <ul class="nav-list mouse-ul pointer_right">
+                                        <li class="nav-list-item">
+                                            <a href="http://apicloud.com/cloudservice" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_cloudservice">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        数据云
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        无需编程 自动生成Server端
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-list-item nav-list-item1">
+                                            <a href="http://apicloud.com/cloudmanage" class="nav-link">
+                                                <div class="nav-left icon">
+                                                    <span class="i_cloudoperating">
+                                                    </span>
+                                                </div>
+                                                <div class="nav-left">
+                                                    <span class="nav-title">
+                                                        运营云
+                                                    </span>
+                                                    <span class="nav-description">
+                                                        提升您的运维效率
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>        
+                                    </ul>
+                                </sapn>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/modulestore"  class="nav-link">
+                                    <span class="APP">模块Store</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="../APICloud/junior-develop-guide.html"  class="nav-link">
+                                    <span class="APP">新手指南</span>
+                                </a>
+                            </li>
+                            <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/devtools" class="nav-link">
+                                    <span class="APP">开发工具</span>
+                                </a>
+                            </li>
+                            <!-- <li class="nav-list-item mouseout">
+                                <a href="http://apicloud.com/vipservice/price" class="nav-link">
+                                    <span class="APP badge-red">价格</span>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://app.apicloud.com/" target="_blank">
+                            APP定制服务
+                        </a>
+                        <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/" class="nav-link" target="_blank">
+                                APP定制
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/appCustom" class="nav-link" target="_blank">
+                                模板Store
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://community.apicloud.com/" target="_blank">
+                            开发者社区
+                        </a>
+                        <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://community.apicloud.com/bbs/forum.php" class="nav-link" target="_blank">
+                                    在线社区
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="../index.html" class="nav-link" target="_blank">
+                                    文档
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/video_list" class="nav-link">
+                                    视频教程
+                                </a> 
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/source_code" class="nav-link">
+                                    源码
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="http://apicloud.com/vipservice/price"  target="_blank">
+                            VIP服务
+                        </a>
+                        <!-- <ul class="nav-list single">  
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/price" class="nav-link">
+                                    VIP服务
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/plan" class="nav-link">
+                                    云服务价格
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/channel" class="nav-link">
+                                    渠道打包
+                                </a> 
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/enterpEdition" class="nav-link">
+                                    优先技术支持
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/course" class="nav-link">
+                                    培训课程
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/vipservice/attest" class="nav-link">
+                                    认证工程师
+                                </a>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href="http://apicloud.com/cases" target="_blank" class="item-notice-out">
+                            案例
+                        </a>
+                        <ul class="nav-list single">
+                            <li class="nav-list-item">
+                                <a href="http://apicloud.com/cases" class="nav-link" target="_blank">
+                                    开发案例
+                                </a>
+                            </li>
+                            <li class="nav-list-item">
+                                <a href="http://app.apicloud.com/cases" class="nav-link" target="_blank">
+                                    定制案例
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="row main-container">
+    <div class="col-sm-2 main-menu">
+        <!--search box-->
+        <form class="search-form form-inline" role="form" action="http://docs.apicloud.com/">
+            <div class="form-group">
+                <label class="sr-only" for="search">Search</label>
+                <input type="search" class="form-control" name="search" id="search" size="30" value="" placeholder="Search">
+            </div>
+        </form>
+        <ul class="menu">
+                    <li class="page"><a href="../index.html">开发文档</a></li>
+            <li class="category">
+                <h5 class="category-title">Apicloud</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../APICloud/platform-intro.html">APP开发平台介绍</a></li>
+                    <li class="page"><a href="../APICloud/APP-custom-info.html">APP定制平台介绍</a></li>
+                    <li class="page"><a href="../APICloud/junior-develop-guide.html">新手开发指南</a></li>
+                    <li class="page"><a href="../APICloud/creating-first-app.html">创建第一个应用</a></li>
+                    <li class="page"><a href="../APICloud/APP-Template-Guide.html">模板使用流程</a></li>
+                    <li class="page"><a href="../APICloud/app-guide.html">如何开发出优秀的APICloud应用</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">模块开发</h5>
+                <ul class="pages">
+                    <li class="page"><a href="module-dev-standard.html">开发模块设计规范</a></li>
+                    <li class="page active"><a href="module-dev-guide-for-ios.html">模块开发指南_iOS</a></li>
+                    <li class="page"><a href="module-dev-guide-for-android.html">模块开发指南_Android</a></li>
+                    <li class="page"><a href="Module-audit-specification-ios.html">模块审核规范-iOS</a></li>
+                    <li class="page"><a href="Module-audit-specification-Android.html">模块审核规范-Android</a></li>
+                    <li class="page"><a href="Upload-custom-module.html">自定义模块使用说明</a></li>
+                    <li class="page"><a href="Module-Store-Guide.html">模块Store规范</a></li>
+                    <li class="page"><a href="Module-Store-Service-Agreement.html">模块Store服务协议</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">端API</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Client-API/api.html">API对象</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">设备访问
+</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Client-API/Device-Access/3DTouch.html">3DTouch</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/DVTorch.html">DVTorch</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/FNSettings.html">FNSettings</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/accelerometer.html">accelerometer</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/accelerometerSensor.html">accelerometerSensor</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/appSettings.html">appSettings</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/appVersionUpdate.html">appVersionUpdate</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/ble.html">ble</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/bluetooth.html">bluetooth</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/brightness2016.html">brightness2016</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/btmodule.html">btmodule</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/btsppiot.html">btsppiot</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/calendarMemo.html">calendarMemo</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/callRecord.html">callRecord</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/cameraTool.html">cameraTool</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/clipBoard.html">clipBoard</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/compassLeveler.html">compassLeveler</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/contact.html">contact</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/contacts.html">contacts</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/easyNFC.html">easyNFC</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/gps.html">gps</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/gpsState.html">gpsState</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/gravitySensor.html">gravitySensor</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/gyro.html">gyro</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/gyroscopeSensor.html">gyroscopeSensor</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/hardwareInfo.html">hardwareInfo</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/ipAddress.html">ipAddress</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/lightSensor.html">lightSensor</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/linearAcceleration.html">linearAcceleration</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/magneticFieldSensor.html">magneticFieldSensor</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/magnetometer.html">magnetometer</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/mediaScanner.html">mediaScanner</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/moduleSMS.html">moduleSMS</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/multiScreen.html">multiScreen</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/myAppInfo.html">myAppInfo</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/myListeningInfo.html">myListeningInfo</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/mySettingInfo.html">mySettingInfo</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/orientationSensor.html">orientationSensor</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/pasteboard.html">pasteboard</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/pedometer.html">pedometer</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/phoneInfo.html">phoneInfo</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/pingModule.html">pingModule</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/playText.html">playText</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/posPrinter.html">posPrinter</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/posScanner.html">posScanner</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/proximitySensor.html">proximitySensor</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/rotationVector.html">rotationVector</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/seblePrinter.html">seblePrinter</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/simInfo.html">simInfo</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/simInfoImp.html">simInfoImp</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/spModule.html">spModule</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/statusBar.html">statusBar</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/sunmiPrinter.html">sunmiPrinter</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/toBackground.html">toBackground</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/torch.html">torch</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/touchID.html">touchID</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/wifi.html">wifi</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/wifiMgr.html">wifiMgr</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/wifiSSID.html">wifiSSID</a></li>
+                    <li class="page"><a href="../Client-API/Device-Access/yunnex.html">yunnex</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">功能扩展</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Client-API/Func-Ext/FNImageClip.html">FNImageClip</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/FNPhotograph.html">FNPhotograph</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/FNScanner.html">FNScanner</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/aemail.html">aemail</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/alarmNotification.html">alarmNotification</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/appControl.html">appControl</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/appManage.html">appManage</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/arcColorPicker.html">arcColorPicker</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/audio.html">audio</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/audioCover.html">audioCover</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/audioPlayer.html">audioPlayer</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/audioRecorder.html">audioRecorder</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/autoStartUp.html">autoStartUp</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/batteryManager.html">batteryManager</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/blurredView.html">blurredView</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/bookReader.html">bookReader</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/brightness.html">brightness</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/cardReader.html">cardReader</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/chromeDebug.html">chromeDebug</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/cnKeyBoard.html">cnKeyBoard</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/cocoVideo.html">cocoVideo</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/codeLog.html">codeLog</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/compactPicture.html">compactPicture</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/db.html">db</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/djyPrinter.html">djyPrinter</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/docInteraction.html">docInteraction</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/docReader.html">docReader</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/downloadManager.html">downloadManager</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/drawingBoard.html">drawingBoard</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/exifInterface.html">exifInterface</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/fileBrowser.html">fileBrowser</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/fs.html">fs</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/getWebUrl.html">getWebUrl</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/headphone.html">headphone</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/iap.html">iap</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/imageBrowser.html">imageBrowser</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/imageClip.html">imageClip</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/imageCrop.html">imageCrop</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/imageFilter.html">imageFilter</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/imagePalette.html">imagePalette</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/imageSelect.html">imageSelect</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/imageTool.html">imageTool</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/launchImage.html">launchImage</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/liveAudioPlayer.html">liveAudioPlayer</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/logger.html">logger</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/marketScore.html">marketScore</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/mdReader.html">mdReader</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/micoMqtt.html">micoMqtt</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/mqtt.html">mqtt</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/myTimer.html">myTimer</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/navigator.html">navigator</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/netAudio.html">netAudio</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/openAppStore.html">openAppStore</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/patternLock.html">patternLock</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/pdfReader.html">pdfReader</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/phoneListener.html">phoneListener</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/photoBrowser.html">photoBrowser</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/photoPicker.html">photoPicker</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/photoSelect.html">photoSelect</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/photoStream.html">photoStream</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/playModule.html">playModule</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/playRtsp.html">playRtsp</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/privacy.html">privacy</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/realNetwork.html">realNetwork</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/recentPic.html">recentPic</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/recordVideo.html">recordVideo</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/richText.html">richText</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/runBackground.html">runBackground</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/sangforvpn.html">sangforvpn</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/scanner.html">scanner</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/screenClip.html">screenClip</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/screenLock.html">screenLock</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/shareAction.html">shareAction</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/sharePics.html">sharePics</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/shareTool.html">shareTool</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/shortCut.html">shortCut</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/signature.html">signature</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/socketManager.html">socketManager</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/svideo.html">svideo</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/timer.html">timer</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/touchDebugger.html">touchDebugger</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/trans.html">trans</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/ttsModule.html">ttsModule</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/uimusic.html">uimusic</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/videoKit.html">videoKit</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/videoPlayer.html">videoPlayer</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/videoRecorder.html">videoRecorder</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/videoTool.html">videoTool</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/voiceMag.html">voiceMag</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/vpnIOS.html">vpnIOS</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/vrPlayer.html">vrPlayer</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/vtingPlayer.html">vtingPlayer</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/wallPaper.html">wallPaper</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/webBrowser.html">webBrowser</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/webSocket.html">webSocket</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/ytylive.html">ytylive</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/zip.html">zip</a></li>
+                    <li class="page"><a href="../Client-API/Func-Ext/zxycamera.html">zxycamera</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">界面布局</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Client-API/UI-Layout/UIActionProgress.html">UIActionProgress</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIActionSelector.html">UIActionSelector</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIAlbumBrowser.html">UIAlbumBrowser</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIBarChart.html">UIBarChart</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIButton.html">UIButton</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UICalendar.html">UICalendar</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIChatBox.html">UIChatBox</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIChatTools.html">UIChatTools</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UICityList.html">UICityList</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UICoverFlow.html">UICoverFlow</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UICustomPicker.html">UICustomPicker</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIGraph.html">UIGraph</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIInput.html">UIInput</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UILineChart.html">UILineChart</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UILinkedPicker.html">UILinkedPicker</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIListCard.html">UIListCard</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIListCheck.html">UIListCheck</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIListContacts.html">UIListContacts</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIListMeeting.html">UIListMeeting</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIListSearch.html">UIListSearch</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIListView.html">UIListView</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UILoading.html">UILoading</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIMediaScanner.html">UIMediaScanner</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIMultiSelector.html">UIMultiSelector</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIPullRefresh.html">UIPullRefresh</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIPullRefreshDrop.html">UIPullRefreshDrop</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIPullRefreshFlash.html">UIPullRefreshFlash</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIPullRefreshMotive.html">UIPullRefreshMotive</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIScrollPicture.html">UIScrollPicture</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIScrollPromptView.html">UIScrollPromptView</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UISearchBar.html">UISearchBar</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UISelector.html">UISelector</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UISlider.html">UISlider</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UISwitchButton.html">UISwitchButton</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIVividLine.html">UIVividLine</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/UIWebBrowser.html">UIWebBrowser</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/addressView.html">addressView</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/applause.html">applause</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/arcProgress.html">arcProgress</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/barChart.html">barChart</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/brokenLine.html">brokenLine</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/button.html">button</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/calendar.html">calendar</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/chatBox.html">chatBox</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/cityList.html">cityList</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/citySelector.html">citySelector</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/coverFlow.html">coverFlow</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/customSelector.html">customSelector</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/customToast.html">customToast</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/dialogBox.html">dialogBox</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/divisionalLineChart.html">divisionalLineChart</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/doubleBarChart.html">doubleBarChart</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/fluttering.html">fluttering</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/goodsList.html">goodsList</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/graph.html">graph</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/groupList.html">groupList</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/guide.html">guide</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/hintChatBox.html">hintChatBox</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/iOSDialog.html">iOSDialog</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/inputField.html">inputField</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/keyboard.html">keyboard</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/lineChart.html">lineChart</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/listContact.html">listContact</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/listView.html">listView</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/loadingLabel.html">loadingLabel</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/matrixLock.html">matrixLock</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/messageList.html">messageList</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/multiSelector.html">multiSelector</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/orderList.html">orderList</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/overviewList.html">overviewList</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/panorama.html">panorama</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/payPasswordInput.html">payPasswordInput</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/periodSelector.html">periodSelector</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/personalCenter.html">personalCenter</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/photoBrowserQQ.html">photoBrowserQQ</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/photoBrowserTouTiao.html">photoBrowserTouTiao</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/photoBrowserWeiBo.html">photoBrowserWeiBo</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/photoBrowserWeiXin.html">photoBrowserWeiXin</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/pieChart.html">pieChart</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/pullRefreshLoop.html">pullRefreshLoop</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/scrollPicture.html">scrollPicture</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/searchBar.html">searchBar</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/selectList.html">selectList</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/shakeView.html">shakeView</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/slider.html">slider</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/slidingList.html">slidingList</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/slipList.html">slipList</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/suspensionWindow.html">suspensionWindow</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/thwartwiseBarChart.html">thwartwiseBarChart</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/timeSelector.html">timeSelector</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/waterBallProgress.html">waterBallProgress</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/waveProgress.html">waveProgress</a></li>
+                    <li class="page"><a href="../Client-API/UI-Layout/welcomePage.html">welcomePage</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">导航菜单</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Client-API/Nav-Menu/MNActionButton.html">MNActionButton</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/MNNavigationMenu.html">MNNavigationMenu</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/MNPopups.html">MNPopups</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/MNRotationMenu.html">MNRotationMenu</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/MNStack.html">MNStack</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/NVNavigationBar.html">NVNavigationBar</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/NVTabBar.html">NVTabBar</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/actionButton.html">actionButton</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/arcMenu.html">arcMenu</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/bubbleMenu.html">bubbleMenu</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/circularMenu.html">circularMenu</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/navigationBar.html">navigationBar</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/navigationMenu.html">navigationMenu</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/pullMenu.html">pullMenu</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/scrollRotation.html">scrollRotation</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/sideMenu.html">sideMenu</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/stackMenu.html">stackMenu</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/tabBar.html">tabBar</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/tabBarMenu.html">tabBarMenu</a></li>
+                    <li class="page"><a href="../Client-API/Nav-Menu/tuberBar.html">tuberBar</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开放SDK</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Client-API/Open-SDK/QQPlus.html">QQPlus</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aMap.html">aMap</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aMapLBS.html">aMapLBS</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aMapLocation.html">aMapLocation</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aMapNavigation.html">aMapNavigation</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aMapReportLocation.html">aMapReportLocation</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/admob.html">admob</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/adsDomob.html">adsDomob</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/adsYoumi.html">adsYoumi</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/agoraVideo.html">agoraVideo</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/ajpush.html">ajpush</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aliOSS.html">aliOSS</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aliPay.html">aliPay</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aliPayPlus.html">aliPayPlus</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aliPayTrade.html">aliPayTrade</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aliPayTradePlus.html">aliPayTradePlus</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aliPush.html">aliPush</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aliPushNoUtdId.html">aliPushNoUtdId</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aliTrade.html">aliTrade</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aliTradePlus.html">aliTradePlus</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/alibaichuan.html">alibaichuan</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aliyunLive.html">aliyunLive</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/anyRTCModule.html">anyRTCModule</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/aplayer.html">aplayer</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/appleUnionPay.html">appleUnionPay</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/bMap.html">bMap</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/baiXing.html">baiXing</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/baiduAd.html">baiduAd</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/baiduAppx.html">baiduAppx</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/baiduLocation.html">baiduLocation</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/baiduMTJ.html">baiduMTJ</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/baiduMap.html">baiduMap</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/baiduNavigation.html">baiduNavigation</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/baiduPanorama.html">baiduPanorama</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/baiduSpeechRecognizer.html">baiduSpeechRecognizer</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/baiduTrace.html">baiduTrace</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/bcapplepay.html">bcapplepay</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/beecloud.html">beecloud</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/bmobPush.html">bmobPush</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/brightBeacon.html">brightBeacon</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/bugTags.html">bugTags</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/camera360.html">camera360</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/cchelperModule.html">cchelperModule</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/chanceAd.html">chanceAd</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/ciaYi.html">ciaYi</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/cloudwise.html">cloudwise</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/cloudwiseMAgent.html">cloudwiseMAgent</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/coinport.html">coinport</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/csOpenApi.html">csOpenApi</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/didi.html">didi</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/discuz.html">discuz</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/dkSDK.html">dkSDK</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/duiBa.html">duiBa</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/duibaSales.html">duibaSales</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/duibaView.html">duibaView</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/easeChat.html">easeChat</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/facebook.html">facebook</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/fog2.html">fog2</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/fuQianLa.html">付钱拉</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/geeTest.html">geeTest</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/gizWifiSDK.html">gizWifiSDK</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/googleAnalytics.html">googleAnalytics</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/googleMap.html">googleMap</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/gotyeLiveCore.html">亲加视频直播</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/hanvonCloudBcardReader.html">hanvonCloudBcardReader</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/hanvonCloudIdCardReader.html">hanvonCloudIdCardReader</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/hanvonCloudNumberReader.html">hanvonCloudNumberReader</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/hanvonCloudOcrFormulaReader.html">hanvonCloudOcrFormulaReader</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/hanvonCloudTableReader.html">hanvonCloudTableReader</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/huanxin.html">huanxin</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/huaweiPush.html">huaweiPush</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/idcard.html">idcard</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/iflytekvoiceads.html">iflytekvoiceads</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/ipaynow.html">ipaynow</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/ipaynowScanner.html">ipaynowScanner</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/jd.html">jd</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/jyVerify.html">jyVerify</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/kf5.html">kf5</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/kf5sdk.html">kf5sdk</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/ksi.html">ksi</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/ksisdk.html">ksisdk</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/leCloudLive.html">leCloudLive</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/leCloudPlay.html">leCloudPlay</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/leShiLive.html">leShiLive</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/line.html">line</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/liuLiangQianBao.html">liuLiangQianBao</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/logCrash.html">logCrash</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/magicWindow.html">magicWindow</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/maketionCardReader.html">maketionCardReader</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/meChat.html">meChat</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/meiQia.html">meiQia</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/mico.html">mico</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/miniQuPai.html">miniQuPai</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/miniQuPaiPlus.html">miniQuPaiPlus</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/miniVideoRecord.html">miniVideoRecord</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/mipush.html">mipush</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/mobShare.html">mobShare</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/mobVerify.html">mobVerify</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/moduleShareSMS.html">moduleShareSMS</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/mogoAds.html">mogoAds</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/mogoAdsBaidu.html">mogoAdsBaidu</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/mogoAdsGDT.html">mogoAdsGDT</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/mogoAdsdomob.html">mogoAdsdomob</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/nuanceSpeechRecognizer.html">nuanceSpeechRecognizer</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/paypal.html">paypal</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/pingpp.html">pingpp</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/polyVideo.html">polyVideo</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/polyvVideo.html">polyvVideo</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/pushGeTui.html">pushGeTui</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/pushRtmpOrVideoPlay.html">pushRtmpOrVideoPlay</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/qCloudVODPlayer.html">qCloudVODPlayer</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/qiniuLive.html">qiniuLive</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/qiniuStorage.html">qiniuStorage</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/qiniuUpfile.html">qiniuUpfile</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/qiyuSdk.html">qiyuSdk</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/qq.html">qq</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/quPaiModule.html">quPaiModule</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/qupai.html">qupai</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/qupaiLive.html">qupaiLive</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/recordVideo.html">recordVideo</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/reportLocation.html">reportLocation</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/rongCloud.html">rongCloud</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/rongCloud2.html">rongCloud2</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/seckenModule.html">seckenModule</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/sendSms.html">sendSms</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/sensorsAnalyticsAPICloudSDK.html">sensorsAnalyticsAPICloudSDK</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/shareMorePic.html">shareMorePic</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/sinaWeiBo.html">sinaWeiBo</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/smsVerification.html">smsVerification</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/smsVerify.html">smsVerify</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/speechRecognizer.html">speechRecognizer</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/superID.html">superID</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/talkingData.html">talkingData</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/taobao.html">taobao</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/tencentAds.html">tencentAds</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/tencentMTA.html">tencentMTA</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/tencentPlayer.html">tencentPlayer</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/tencentPush.html">tencentPush</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/tingyun.html">tingyun</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/tulingapi.html">tulingapi</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/tyRTC.html">tyRTC</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/tyRTCLive.html">tyRTCLive</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/udesk.html">udesk</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/umengAnalytics.html">umengAnalytics</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/umengTJ.html">umengTJ</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/unionPay.html">unionPay</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/updatethis.html">updatethis</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/upyunUpfile.html">upyunUpfile</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/uscSpeechRecognizer.html">uscSpeechRecognizer</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/vcloudLive.html">vcloudLive</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/vcloudPlay.html">vcloudPlay</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/wapsAd.html">wapsAd</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/weiXin.html">weiXin</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/weibo.html">weibo</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/wx.html">wx</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/wxPay.html">wxPay</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/xGprinter.html">xGprinter</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/ximalaya.html">ximalaya</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/youkuPlayer.html">youkuPlayer</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/yzxVerification.html">yzxVerification</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/zhiChiSobot.html">zhiChiSobot</a></li>
+                    <li class="page"><a href="../Client-API/Open-SDK/zhuge.html">zhuge</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">云服务对接</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Client-API/Cloud-Service/mam.html">mam</a></li>
+                    <li class="page"><a href="../Client-API/Cloud-Service/mcm.html">mcm</a></li>
+                    <li class="page"><a href="../Client-API/Cloud-Service/msm.html">msm</a></li>
+                    <li class="page"><a href="../Client-API/Cloud-Service/push.html">push</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">前端框架</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Front-end-Framework/framework-dev-guide.html">APICloud前端框架</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">云API</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Cloud-API/data-cloud-api.html">数据云API</a></li>
+                    <li class="page"><a href="../Cloud-API/stat-cloud-api.html">统计云API</a></li>
+                    <li class="page"><a href="../Cloud-API/push-cloud-api.html">推送云API</a></li>
+                    <li class="page"><a href="../Cloud-API/sdk-cloud-api.html">云API SDK</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">技术专题</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Dev-Guide/Android-License-Application-Guidance.html">Android签名证书描述及使用流程</a></li>
+                    <li class="page"><a href="../Dev-Guide/Git-APICloud-guide.html">Git 代码托管指南</a></li>
+                    <li class="page"><a href="../Dev-Guide/X5-APICloud-guide.html">如何在APICloud平台使用腾讯X5引擎</a></li>
+                    <li class="page"><a href="../Dev-Guide/screen-adapt-guide.html">屏幕适配原理及实现</a></li>
+                    <li class="page"><a href="../Dev-Guide/smartUpdate.html">云修复</a></li>
+                    <li class="page"><a href="../Dev-Guide/start-page-ad-guid.html">启动页闪屏广告</a></li>
+                    <li class="page"><a href="../Dev-Guide/version_update.html">版本更新</a></li>
+                    <li class="page"><a href="../Dev-Guide/app-config-manual.html">config.xml应用配置说明</a></li>
+                    <li class="page"><a href="../Dev-Guide/widget-package-structure-manual.html">Widget包结构说明</a></li>
+                    <li class="page"><a href="../Dev-Guide/module-package-structure-manual.html">模块包结构说明</a></li>
+                    <li class="page"><a href="../Dev-Guide/Custom_Loader.html">自定义loader说明</a></li>
+                    <li class="page"><a href="../Dev-Guide/data-cloud-dev-guide.html">数据云服务开发指南</a></li>
+                    <li class="page"><a href="../Dev-Guide/data-storage-dev-guide.html">数据存储开发指南</a></li>
+                    <li class="page"><a href="../Dev-Guide/push-guide.html">推送技术指南</a></li>
+                    <li class="page"><a href="../Dev-Guide/key.html">key.xml文件配置说明</a></li>
+                    <li class="page"><a href="../Dev-Guide/iOS-License-Application-Guidance.html">iOS证书及描述文件制作流程</a></li>
+                    <li class="page"><a href="../Dev-Guide/SuperWebview-guide-for-android.html">SuperWebview开发指南Android</a></li>
+                    <li class="page"><a href="../Dev-Guide/SuperWebview-guide-for-ios.html">SuperWebview开发指南iOS</a></li>
+                    <li class="page"><a href="../Dev-Guide/apple-watch-dev-guide.html">Apple Watch开发指南</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开发工具</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Dev-Tools/studio-dev-guide.html">APICloud Studio 2 快速入门</a></li>
+                    <li class="page"><a href="../Dev-Tools/sublime-apicloud-plugin.html">工具：Sublime插件</a></li>
+                    <li class="page"><a href="../Dev-Tools/Atom-apicloud-plugin.html">工具：Atom插件</a></li>
+                    <li class="page"><a href="../Dev-Tools/ide-dev-guide.html">工具：Eclipse 插件</a></li>
+                    <li class="page"><a href="../Dev-Tools/webStorm-apicloud-plugin.html">工具：WebStorm插件</a></li>
+                    <li class="page"><a href="../Dev-Tools/sublime-apicloud-snippets.html">Sublime APICloud 语法提示</a></li>
+                    <li class="page"><a href="../Dev-Tools/Atom-apicloud-snippets.html">Atom APICloud 语法提示</a></li>
+                    <li class="page"><a href="../Dev-Tools/webStorm-apicloud-snippets.html">webStorm APICloud代码提示插件编写</a></li>
+                    <li class="page"><a href="../Dev-Tools/eclipse-wifi.html">Eclipse  WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../Dev-Tools/sublime-wifi-sync.html">Sublime WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../Dev-Tools/wifi-debug.html">APICloud Studio WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../Dev-Tools/webStorm-wifi-sync.html">WebStorm WiFi真机同步和WiFi真机预览使用说明</a></li>
+                    <li class="page"><a href="../Dev-Tools/apicloud-tools-core.html">APICloud 开发工具核心库</a></li>
+                    <li class="page"><a href="../Dev-Tools/apicloud-cli.html">apicloud-cli 工具使用说明</a></li>
+                    <li class="page"><a href="../Dev-Tools/apicloud-polyfill.html">apicloud-polyfill</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">下载</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Download/download.html">Download</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">七天培训课教程</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Seven/Day1.html">Day1</a></li>
+                    <li class="page"><a href="../Seven/Day2.html">Day2</a></li>
+                    <li class="page"><a href="../Seven/Day3.html">Day3</a></li>
+                    <li class="page"><a href="../Seven/Day4.html">Day4</a></li>
+                    <li class="page"><a href="../Seven/Day5.html">Day5</a></li>
+                    <li class="page"><a href="../Seven/Day6.html">Day6</a></li>
+                    <li class="page"><a href="../Seven/Day7.html">Day7</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">其他</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Others/app-custom-faq.html">定制平台常见问题</a></li>
+                    <li class="page"><a href="../Others/app-customization.html">APICloud需求预评估服务规则</a></li>
+                    <li class="page"><a href="../Others/privacy-policy.html">隐私条款</a></li>
+                    <li class="page"><a href="../Others/terms-of-service.html">服务条款</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">Faq</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Others/FAQ/Client-Dev.html">端开发</a></li>
+                    <li class="page"><a href="../Others/FAQ/Cloud-Dev.html">云开发</a></li>
+                    <li class="page"><a href="../Others/FAQ/IDE.html">APICloud Studio</a></li>
+                    <li class="page"><a href="../Others/FAQ/app-service.html">应用服务</a></li>
+                    <li class="page"><a href="../Others/FAQ/Other.html">其它</a></li>
+                </ul>
+            </li>
+            <li class="category">
+                <h5 class="category-title">开放平台接入指南</h5>
+                <ul class="pages">
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/adsYoumi.html">有米广告SDK接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/baiXing.html">百姓网SDK接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/baiduMTJ.html">百度移动统计平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/dkSDK.html">点开广告平台接入指南</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/kf5sdk.html">kf5云客服平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/polyvVideo.html">保利威视平台接入指南</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/pushGeTui_manual.html">个推接入指南</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/sensorsAnalyticsAPICloudSDK.html">神策数据分析平台接入指南</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/tyRTC.html">天翼RTC平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/umengAnalytics.html">友盟统计平台接入指南</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/H2.html">H2移动广告交易平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/alipay.html">支付宝支付平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/baidu.html">百度开放平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/bmobPush.html">Bmob平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/brightBeacon.html">brightBeacon接入指南</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/cchelperModule.html">CChelper移动应用远程协助平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/chanceAd.html">畅思广告平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/domob.html">多盟广告平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/gizWifiSDK.html">gizWifiSDK接入指南</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/kuguo.html">酷果广告平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/meiQia.html">美洽客服平台接入指南</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/qiyuSdk.html">网易七鱼云客服平台接入指南</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/qq.html">QQ开放平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/rongCloud2.html">融云IM 平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/sina.html">新浪微博平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/superID.html">一登刷脸登录平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/talkingData.html">talkingData平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/tingyun.html">听云App iOS SDK接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/udsk.html">Udesk客服平台接入指南</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/weChat.html">微信开放平台接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/youkuPlayer.html">优酷播放器接入</a></li>
+                    <li class="page"><a href="../Others/Open-SDK-Integration-Guide/zhiChi.html">智齿客服平台接入</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    <div class="col-sm-10 main-content">
+
+        <section class="content">
+            <h1 class="title">模块开发指南_iOS</h1>
+
+            <p><a href="#1">1 模块开发介绍</a></p>
+<ul>
+<li><p><a href="#1.1">1.1 简介</a></p>
+</li>
+<li><p><a href="#1.2">1.2 阅读对象</a></p>
+</li>
+<li><p><a href="#1.3">1.3 开发环境</a></p>
+</li>
+<li><p><a href="#1.4">1.4 下载SDK</a></p>
+</li>
+</ul>
+<p><a href="#2">2    模块开发示例</a></p>
+<ul>
+<li><p><a href="#2.1">2.1 配置module.json</a></p>
+</li>
+<li><p><a href="#2.2">2.2 创建和配置静态库工程</a></p>
+</li>
+<li><p><a href="#2.3">2.3 创建模块类</a></p>
+</li>
+<li><p><a href="#2.4">2.4 模块方法实现</a></p>
+</li>
+<li><p><a href="#2.5">2.5 回传数据给JS</a></p>
+</li>
+<li><p><a href="#2.6">2.6 JS调用模块方法</a></p>
+</li>
+</ul>
+<p><a href="#3">3 上传模块包</a></p>
+<ul>
+<li><p><a href="#3.1">3.1 模块包介绍</a></p>
+</li>
+<li><p><a href="#3.2">3.2 制作moduleDemo模块包</a></p>
+</li>
+<li><p><a href="#3.3">3.3 上传模块包到云端</a></p>
+</li>
+</ul>
+<p><a href="#4">4 其它SDK说明</a></p>
+<ul>
+<li><p><a href="#4.1">4.1 显示UI视图</a></p>
+</li>
+<li><p><a href="#4.2">4.2 文件路径转换</a></p>
+</li>
+<li><p><a href="#4.3">4.3 获取模块配置信息</a></p>
+</li>
+<li><p><a href="#4.4">4.4 启动方法</a></p>
+</li>
+<li><p><a href="#4.5">4.5 应用程序代理方法</a></p>
+</li>
+</ul>
+<p><a href="#5">5 同步方法</a></p>
+<ul>
+<li><p><a href="#5.1">5.1 说明</a></p>
+</li>
+<li><p><a href="#5.2">5.2 实现</a></p>
+</li>
+</ul>
+<p><a href="#6">6 Swift支持</a></p>
+<ul>
+<li><p><a href="#6.1">6.1 声明</a></p>
+</li>
+<li><p><a href="#6.2">6.2 集成</a></p>
+</li>
+</ul>
+<p><a href="#7">7 模块审核规范</a></p>
+<h2 id="-http-docs-apicloud-com-apicloud-videos-and-codes">参考视频：<a href="../APICloud/videos-and-codes" target="_blank">http://docs.apicloud.com/APICloud/videos-and-codes</a></h2>
+<h1 id="-1-div-id-1-div-"><strong>1 模块开发介绍</strong><div id="1"></div></h1>
+<h2 id="1-1-div-id-1-1-div-">1.1 简介<div id="1.1"></div></h2>
+<p>APICloud引擎通过系统Webkit浏览器，实现了HTML+CSS+Javascript开发语言和Objective-C/Java/C/C++等Native开发语言之间的桥接，极大的丰富和增强了标准Javascript的能力。令前端开发者通过JS即可调用移动设备的底层功能，如：电话、短信、定位、多媒体、跨域http请求等，并能将如百度地图、支付宝等第三方厂商的SDK很容易的集成到自己的App中来。</p>
+<p>为满足广大开发者自定义扩展Native module的需求，APICloud推出模块扩展SDK，本SDK开放桥接机制，方便具有一定iOS基础的开发者自由开发定义Native扩展模块，丰富JS的能力，提升App的用户体验。</p>
+<h2 id="1-2-div-id-1-2-div-">1.2 阅读对象<div id="1.2"></div></h2>
+<p>本文档面向所有使用该SDK的iOS开发人员、测试人员、合作伙伴以及对此感兴趣的其他用户。阅读该文档要求用户熟悉iOS应用开发，并且对Html、CSS、Javascript有一定了解。APICloud引擎强调传输数据的简洁和统一性，因此选择轻量级的JSON作为Javascript和Native语言之间通讯的数据载体，所以要求开发者同时要熟悉Objective-C和Javascript中JSON格式数据的操作。</p>
+<h2 id="1-3-div-id-1-3-div-">1.3 开发环境<div id="1.3"></div></h2>
+<ul>
+<li>Xcode6.0或更高版本</li>
+<li>Mac os x 10.9以上</li>
+</ul>
+<h2 id="1-4-sdk-div-id-1-4-div-">1.4 下载SDK<div id="1.4"></div></h2>
+<p>前往 <a href="../APICloud/download" target="_blank">http://docs.apicloud.com/APICloud/download</a> 下载最新版本的模块开发SDK，找到里面的ModulesDevProject_iOS.zip，这里面包含ModuleDemo、ModulesDevProject和说明文件，进行模块开发之前一定要先阅读read me.txt，了解各个目录里面的内容和功能。</p>
+<h1 id="-2-div-id-2-div-"><strong>2 模块开发示例</strong><div id="2"></div></h1>
+<h2 id="2-1-module-json-div-id-2-1-div-">2.1 配置module.json<div id="2.1"></div></h2>
+<p>module.json定义了模块的基本信息，我们在开发模块之前最好先定义好模块名称、模块对应的类的名称、开放给JS的方法等。</p>
+<p>字段解释：</p>
+<ul>
+<li><p>name：对应值为模块的名称，JS中通过该名称来使用模块。</p>
+</li>
+<li><p>class：对应值为模块对应的类的名称。</p>
+</li>
+<li><p>methods：开放给JS的异步实例方法，多个方法以英文逗号隔开，此方法实现时需带一个参数。</p>
+</li>
+<li><p>syncMethods：开放给JS的同步实例方法，多个方法以英文逗号隔开，此方法实现时需带一个参数。</p>
+</li>
+<li><p>launchClassMethod：为可选项配置，若配置，引擎将在应用启动的时候调用该方法，注意该方法需是类方法，没有参数。</p>
+</li>
+</ul>
+<p>如图，在UZApp工程中找到uz目录下的module.json文件，在里面添加模块的配置信息：</p>
+<p><img src="../img/docImage/module_dev_ios/0.png" alt="图片说明"></p>
+<h2 id="2-2-div-id-2-2-div-">2.2 创建和配置静态库工程<div id="2.2"></div></h2>
+<p>打开Xcode，在菜单中选择File-New-Project...，在Framework &amp; Library中选择Cocoa Touch Static Library，创建一个名为ModuleDemo的工程。</p>
+<p>这里我们将ModuleDemo工程作为UZApp工程的一个依赖工程，这样做的好处是运行UZApp工程时会自动编译ModuleDemo工程，并且可以方便地在ModuleDemo工程中打断点进行调试。</p>
+<p>先关闭打开的静态库工程，然后打开UZApp工程，将ModuleDemo.xcodeproj直接拖到UZModules下，如图：</p>
+<p><img src="../img/docImage/module_dev_ios/1.png" alt="图片说明"></p>
+<p>然后再按照下图在UZApp工程中的Linked Frameworks and Libraries处将libModuleDemo添加上：</p>
+<p><img src="../img/docImage/module_dev_ios/2.png" alt="图片说明"></p>
+<p><img src="../img/docImage/module_dev_ios/3.png" alt="图片说明"></p>
+<p>最后我们需要将静态库工程的Build Active Architecture Only设置为No，如图：</p>
+<p><img src="../img/docImage/module_dev_ios/4.png" alt="图片说明"></p>
+<h2 id="2-3-div-id-2-3-div-">2.3 创建模块类<div id="2.3"></div></h2>
+<p>在ModuleDemo静态库工程中引入必要的UZModule.h头文件，UZAppDelegate.h和UZAppUtils.h等头文件根据需要引入，这些头文件可以在下载的SDK包里面找到。</p>
+<p>在ModuleDemo静态库工程中新建一个UZModuleDemo类，继承于UZModule类，其中UZModule类为模块的基类。模块开发过程中文件命名时提倡加前缀，以避免和其它模块冲突。</p>
+<p>模块生命周期：</p>
+<ul>
+<li><p>当在前端JS中首次调用模块的方法时，引擎会调用模块类的 - (id)initWithUZWebView:(UZWebView *)webView 方法进行初始化；</p>
+</li>
+<li><p>当模块所在的页面被销毁时，模块类也会被销毁，引擎会主动调用其 - (void)dispose 方法。</p>
+</li>
+</ul>
+<h2 id="2-4-div-id-2-4-div-">2.4 模块方法实现<div id="2.4"></div></h2>
+<p>在UZModuleDemo类中实现module.json里面配置的showAlert方法，该方法必须带一个参数，参数类型为字典。</p>
+<p>如果前端调用该方法时传入了一个function，那么在这里可以通过cbId字段获取该function对应的id，然后在需要的时候把数据通过该function回调给JS。</p>
+<pre><code class="lang-js">- (void)showAlert:(NSDictionary *)paramDict {
+    _cbId = [paramDict integerValueForKey:@&quot;cbId&quot; defaultValue:0];
+    NSString *message = [paramDict stringValueForKey:@&quot;msg&quot; defaultValue:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:@&quot;取消&quot; otherButtonTitles:@&quot;确定&quot;, nil];
+    [alert show];
+}
+</code></pre>
+<h2 id="2-5-js-div-id-2-5-div-">2.5 回传数据给JS<div id="2.5"></div></h2>
+<p>我们在这里将用户点击的按钮的index回调给JS端，注意sendResultEventWithCallbackId:dataDict:errDict:doDelete:方法的最后一个参数，如果需要多次进行回调，那么就必须传NO。</p>
+<pre><code class="lang-js">- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (_cbId &gt; 0) {
+        NSDictionary *ret = @{@&quot;index&quot;:@(buttonIndex)};
+        [self sendResultEventWithCallbackId:_cbId dataDict:ret errDict:nil doDelete:YES];
+    }
+}
+</code></pre>
+<h2 id="2-6-js-div-id-2-6-div-">2.6 JS调用模块方法<div id="2.6"></div></h2>
+<p>前端JS必须使用JSON格式数据作为JS与Native之间交换数据的传参，APICloud引擎会对JS传入的参数进行解析并封装，前端JS使用模块之前需要require模块对象。</p>
+<p>找到UZApp工程中widget目录下的index.html，添加调用moduleDemo模块的showAlert方法的代码：</p>
+<pre><code class="lang-js">function showAlert() {
+    var demo = api.require(&#39;moduleDemo&#39;);
+    demo.showAlert({
+        msg: &#39;Hello App!&#39;
+    },function(ret, err){
+        var msg = &quot;点击了第&quot; + ret.index + &quot;个按钮&quot;;
+        api.toast({
+            msg: msg
+        });
+    });
+}
+</code></pre>
+<h1 id="-3-div-id-3-div-"><strong>3 上传模块包</strong><div id="3"></div></h1>
+<h2 id="3-1-div-id-3-1-div-">3.1 模块包介绍<div id="3.1"></div></h2>
+<p>模块包根目录必须以该模块的JS对象名命名，这里以moduleDemo为例，模块包内包含res_moduleDemo、target、framework等文件夹以及module.json。</p>
+<p>目录解释：</p>
+<ul>
+<li><p>res_moduleDemo目录：（可选配置项）放置资源文件等，此文件夹会以Create folder references方式加入工程，读取资源文件时路径需要加上res_moduleDemo。建议将资源文件放置在此文件夹下读取，以防止资源文件名冲突。读取该文件夹下资源示例代码：</p>
+<pre><code class="lang-js">  NSString *path = [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@&quot;res_moduleDemo/1.png&quot;];
+</code></pre>
+</li>
+<li><p>target目录：存放编译生成的静态库文件、第三方Static类型的framework库（直接添加到工程就能正常使用的是Static类型的，而需要在工程Embedded Binaries处添加才能正常使用的是Dynamic类型的）、以及其它需要以Create groups方式添加到应用工程中使用的文件，如bundle束、图片等。若该目录下存在其它的文件夹，这些文件夹会以Create folder references的方式被加入到应用工程。</p>
+</li>
+<li><p>framework目录：（可选配置项）存放第三方Dynamic类型的framework库（需要在工程Embedded Binaries处添加才能正常使用的是Dynamic类型的）。</p>
+</li>
+<li><p>module.json文件：内容为JSON格式，定义了模块的类名称、JS对象名称、方法等。如：</p>
+<pre><code class="lang-js">   {
+      &quot;name&quot;:&quot;moduleDemo&quot;,
+      &quot;class&quot;:&quot;UZModuleDemo&quot;,
+      &quot;methods&quot;:[&quot;showAlert&quot;]
+   }
+</code></pre>
+<p>  一个模块包里面也可以配置多个模块，各个模块用英文逗号隔开，如：</p>
+<pre><code class="lang-js">   {
+      &quot;name&quot;:&quot;moduleDemo&quot;,
+      &quot;class&quot;:&quot;UZModuleDemo&quot;,
+      &quot;methods&quot;:[&quot;showAlert&quot;]
+   },
+   {
+       &quot;name&quot;:&quot;moduleDemo1&quot;,
+       &quot;class&quot;:&quot;UZModuleDemo1&quot;,
+       &quot;methods&quot;:[&quot;showAlert&quot;]
+   }
+</code></pre>
+</li>
+</ul>
+<h2 id="3-2-moduledemo-div-id-3-2-div-">3.2 制作moduleDemo模块包<div id="3.2"></div></h2>
+<p>1、新建一个moduleDemo文件夹。</p>
+<p>2、在moduleDemo文件夹里面创建一个module.json的文本文件，拷贝以下内容到module.json中，注意双引号一定要是英文状态下的。</p>
+<pre><code class="lang-js"> {
+    &quot;name&quot;:&quot;moduleDemo&quot;,
+    &quot;class&quot;:&quot;UZModuleDemo&quot;,
+    &quot;methods&quot;:[&quot;showAlert&quot;]
+ }
+</code></pre>
+<p>3、在moduleDemo文件夹里面创建target文件夹，将静态库编译出来的libModuleDemo.a库拷贝到target目录下。注意.a库必须是真机环境的，并且需要支持armv7和arm64架构，可以在终端用以下命令查看.a库支持的架构：</p>
+<pre><code class="lang-js">lipo -info libModuleDemo.a
+</code></pre>
+<p>4、将moduleDemo文件夹压缩成moduleDemo.zip。</p>
+<h2 id="3-3-div-id-3-3-div-">3.3 上传模块包到云端<div id="3.3"></div></h2>
+<p>登录到APICloud网站控制台，进入你的应用里面，在模块栏里面找到自定义模块选项卡，选择上传自定义模块，输入模块信息并上传moduleDemo.zip文件然后保存。</p>
+<p><img src="../img/docImage/module_dev_ios/5.png" alt="图片说明"></p>
+<p>保存成功后将会显示出该模块，然后点击模块右上角的加号添加模块。</p>
+<p><img src="../img/docImage/module_dev_ios/6.png" alt="图片说明"></p>
+<h1 id="-4-sdk-div-id-4-div-"><strong>4 其它SDK说明</strong><div id="4"></div></h1>
+<h2 id="4-1-ui-div-id-4-1-div-">4.1 显示UI视图<div id="4.1"></div></h2>
+<p>对于需要添加UIView类视图的接口，需要提供fixedOn参数，让前端JS传入frame的名字，然后将视图添加到该frame上面，同时还应该提供fixed参数，控制视图是否随着frame内容的移动而跟着移动。</p>
+<p>UZModule类提供 - (BOOL)addSubview:(UIView <em>)view fixedOn:(NSString </em>)fixedOn fixed:(BOOL)fixed 方法，用于往指定的frame上面添加视图。</p>
+<pre><code class="lang-js">- (void)show:(NSDictionary *)paramDict {
+    NSString *fixedOn = [paramDict stringValueForKey:@&quot;fixedOn&quot; defaultValue:nil];
+    BOOL fixed = [paramDict boolValueForKey:@&quot;fixed&quot; defaultValue:YES];
+    [self addSubview:yourView fixedOn:fixedOn fixed:fixed];
+}
+</code></pre>
+<p>同时UZModule提供属性controller，可通过该控制器对目标控制器进行push或者present操作。</p>
+<pre><code class="lang-js">// push
+[self.viewController.navigationController pushViewController:controller animated:YES];
+
+// present
+[self.viewController presentViewController:controller animated:YES completion:nil];
+</code></pre>
+<h2 id="4-2-div-id-4-2-div-">4.2 文件路径转换<div id="4.2"></div></h2>
+<p>为消除iOS和Android平台系统间文件路径的差异，APICloud为前端JS提供了fs://、widget://和cache://等虚拟文件路径协议，因此，模块在使用JS端传入的路径时需要调用UZModule里面的 - (NSString <em>)getPathWithUZSchemeURL:(NSString </em>)url 方法来转换成正确的绝对路径。</p>
+<pre><code class="lang-js">NSString *path = [paramDict stringValueForKey:@&quot;path&quot; defaultValue:nil];
+if (path) {
+    NSString *fullPath = [self getPathWithUZSchemeURL:path];
+}
+</code></pre>
+<h2 id="4-3-div-id-4-3-div-">4.3 获取模块配置信息<div id="4.3"></div></h2>
+<p>部分模块可能要求开发者在config.xml里面配置信息，如第三方平台申请的key之类，配置如下：</p>
+<pre><code class="lang-js">&lt;feature name=&quot;moduleDemo&quot;&gt;
+    &lt;param name=&quot;apiKey&quot; value=&quot;123456&quot; /&gt;
+&lt;/feature&gt;
+</code></pre>
+<p>那么在模块中通过UZModule中的 - (NSDictionary <em>)getFeatureByName:(NSString </em>)name方法获取配置信息。</p>
+<pre><code class="lang-js">NSDictionary *feature = [self getFeatureByName:@&quot;moduleDemo&quot;];
+NSString *apiKey = [feature stringValueForKey:@&quot;apiKey&quot; defaultValue:nil];
+</code></pre>
+<h2 id="4-4-div-id-4-4-div-">4.4 启动方法<div id="4.4"></div></h2>
+<p>如果模块需要在应用启动的时候就执行一些操作，那么可以在module.json里面配置launchClassMethod，例如配置的方法为launch，然后在模块里面实现该方法，当应用启动时该方法就会被执行。该启动方法为类方法。</p>
+<p>module.json配置：</p>
+<pre><code class="lang-js">{
+    &quot;name&quot;:&quot;moduleDemo&quot;,
+    &quot;class&quot;:&quot;UZModuleDemo&quot;,
+    &quot;methods&quot;:[&quot;showAlert&quot;],
+    &quot;launchClassMethod&quot;:&quot;launch&quot;
+}
+</code></pre>
+<p>模块类里面实现该类方法：</p>
+<pre><code class="lang-js">+ (void)launch {
+    //
+}
+</code></pre>
+<h2 id="4-5-div-id-4-5-div-">4.5 应用程序代理方法<div id="4.5"></div></h2>
+<p>一些功能需要通过应用程序代理方法才能实现，如获取推送信息、处理第三方应用回调等。</p>
+<p>我们在UZAppDelegate中提供了 - (void)addAppHandle:(id <UIApplicationDelegate>)handle 方法，该方法的handle参数为实现了UIApplicationDelegate协议的对象，引擎会对应用程序代理方法做一次分发。</p>
+<p>注意一定要在- (void)dispose方法里面调用 - (void)removeAppHandle:(id <UIApplicationDelegate>)handle方法移除对象。</p>
+<p>如处理应用被第三方应用调起：</p>
+<pre><code class="lang-js">- (id)initWithUZWebView:(UZWebView *)webView_ {
+    if (self = [super initWithUZWebView:webView_]) {
+        [theApp addAppHandle:self];
+    }
+    return self;
+}
+
+- (void)dispose {
+    [theApp removeAppHandle:self];
+}
+
+#pragma mark - UIApplicationDelegate
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    //处理应用被三方应用调起
+    return YES;
+}
+</code></pre>
+<h1 id="-5-div-id-5-div-"><strong>5 同步方法</strong><div id="5"></div></h1>
+<h2 id="5-1-div-id-5-1-div-">5.1 说明<div id="5.1"></div></h2>
+<p>同步方法是指在js中调用模块方法时直接返回结果，而不使用callback的方式返回结果。方法返回的类型包括NSDictionary、NSArray、NSString、NSNumber等。</p>
+<h2 id="5-2-div-id-5-2-div-">5.2 实现<div id="5.2"></div></h2>
+<p>要使得模块定义的一个方法能够同步返回执行结果，首先需要在module.json里面进行配置，用syncMethods字段定义同步方法，如定义名字叫systemVersion和applicationIconBadgeNumber的同步方法：</p>
+<pre><code class="lang-js">{
+    &quot;name&quot;:&quot;moduleDemo&quot;,
+    &quot;class&quot;:&quot;UZModuleDemo&quot;,
+    &quot;methods&quot;:[&quot;showAlert&quot;],
+    &quot;syncMethods&quot;:[&quot;systemVersion&quot;, &quot;applicationIconBadgeNumber&quot;]
+}
+</code></pre>
+<p>然后在UZModuleDemo中实现方法，注意如果是BOOL、int等基本数据类型，需要用NSNumber对象进行包装。</p>
+<pre><code class="lang-js">- (NSString *)systemVersion:(NSDictionary *)param {
+    NSString *version = [UIDevice currentDevice].systemVersion;
+    return version;
+}
+
+- (NSNumber *)applicationIconBadgeNumber:(NSDictionary *)param {
+    NSInteger badgeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    return @(badgeNumber);
+}
+</code></pre>
+<p>js中调用示例：</p>
+<pre><code class="lang-js">var demo = api.require(&#39;moduleDemo&#39;);
+var systemVersion = demo.systemVersion();
+var badgeNumber = demo.applicationIconBadgeNumber();
+</code></pre>
+<h1 id="-6-swift-div-id-6-div-"><strong>6 Swift支持</strong><div id="6"></div></h1>
+<h2 id="6-1-div-id-6-1-div-">6.1 声明<div id="6.1"></div></h2>
+<p>使用Swift开发模块时，模块类需要继承自UZModule类，同时需要在类的前面加上@objc声明，如下：</p>
+<pre><code class="lang-js">@objc(UZModuleDemoSwift)
+class UZModuleDemoSwift: UZModule {
+
+}
+</code></pre>
+<h2 id="6-2-div-id-6-2-div-">6.2 集成<div id="6.2"></div></h2>
+<p>目前静态库不支持使用swift，上传模块包的时候需要将所有的swift源文件放到target目录下面。</p>
+<h1 id="-7-div-id-7-div-"><strong>7 模块审核规范</strong><div id="7"></div></h1>
+<p>开发者开发的模块务必遵守<a href="Module-audit-specification-ios.html">《模块审核规范-iOS》</a>。</p>
+
+
+            <div class="page-meta clearfix">
+                <div class="last-updated pull-right">
+                    <!-- Last updated on 14th Jan 2017 -->
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <!-- <div class="footer-logo"> -->
+                    <!-- <a href="http://www.apicloud.com" target="_blank" style="width:182px;height:113px;display:inline-block;margin-left: 25px;">
+                        <img src="/img/logo.jpg" alt="">
+                    </a> -->
+                    <!-- <div style="display:inline-block;float:right"> -->
+                        <p class="copyright pull-right" style="margin-top:-70px;">
+                            Copyright &copy; 2017APICloud Docs   &nbsp <a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action">京ICP备14027692号</a>
+                        </p>
+                    <!-- </div> -->
+                <!-- </div> -->
+                
+            </div>
+        </footer>
+        <div id="outlineTip">
+        </div>
+        <a id="backToTop" href="javascript:void(0)">
+        </a>
+        <!-- <iframe id="bbsLogin" style="display:none" src="/bbsLogin.html">
+        </iframe> -->
+        <script src="../bower_components/jquery/dist/jquery.min.js">
+        </script>
+        <script src="../scripts/jquery.qrcode.min.js"></script>
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js">
+        </script>
+        <script src="../bower_components/highlightjs/highlight.pack.js">
+        </script>
+        <script src="../bower_components/fitvids/jquery.fitvids.js">
+        </script>
+        <script src="../bower_components/masonry/dist/masonry.pkgd.min.js">
+        </script>
+        <script src="../scripts/ZeroClipboard.min.js">
+        </script>
+        <script src="../scripts/raneto.js">
+        </script>
+        <div style="display:none;">
+            <script type="text/javascript">
+                var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253236292'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1253236292%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+                // $('#operatingCloud').mouseenter(function () {
+                //     $('.mouse2').css('display','block');
+                //     $('.mouse1').css('display','none');
+                // }).mouseleave(function(){
+                //     $('.mouse2').css('display','none');
+                // })
+                // $('#operatingApp').mouseenter(function () {
+                //     $('.mouse1').css('display','block');
+                //     $('.mouse2').css('display','none');
+                // }).mouseleave(function(){
+                //     $('.mouse1').css('display','none');
+                // })
+                // $('#nav_point').mouseenter(function () {
+                //   $('.mouse2').css('display','none');
+                //   $('.mouse1').css('display','none');
+                // })
+  
+            </script>
+        </div>
+    </body>
+
+<!-- Mirrored from docs.apicloud.com/Module-Dev/module-dev-guide-for-ios by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 27 May 2017 08:19:23 GMT -->
+</html>
